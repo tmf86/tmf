@@ -34,7 +34,7 @@ switch ($routeInfo[0]) {
     case FastRoute\Dispatcher::METHOD_NOT_ALLOWED:
         $allowedMethods = $routeInfo[1];
         // ... 405 Method Not Allowed
-        abort(500);
+        abort(404);
         break;
     case FastRoute\Dispatcher::FOUND:
         processFundedRoot($routeInfo);
