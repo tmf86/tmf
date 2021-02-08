@@ -12,7 +12,8 @@
       "Model\\": "model",
       "Model\\Shema\\": "model/Schema",
       "Repository\\": "Repository",
-      "View\\": "view"
+      "View\\": "view",
+      "Contoller\\HttpRequest\\Request\\":"controller/HttpRequest"
     }
   },
   "require": {
