@@ -44,21 +44,15 @@
                                 class="fas fa-birthday-cake"></i></span></label>
                 <div class="date">
                     <div class="date-item">
-                        <select class="select" name="jour" id="jour">
-                            <option value="01">01</option>
-                            <option value="02">02</option>
+                        <select class="select" name="jour" id="jour"><?= selectBirthDay(31) ?>
                         </select>
                     </div>
                     <div class="date-item space">
-                        <select class="select" name="mois" id="mois">
-                            <option value="01">01</option>
-                            <option value="02">02</option>
+                        <select class="select" name="mois" id="mois"><?= selectBirthDay(12) ?>
                         </select>
                     </div>
                     <div class="date-item space">
-                        <select class="select" name="annnee" id="annee">
-                            <option value="01">2020</option>
-                            <option value="02">2021</option>
+                        <select class="select" name="annnee" id="annee"><?= selectBirthDay(1921, true) ?>
                         </select>
                     </div>
                 </div>
