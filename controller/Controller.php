@@ -6,12 +6,21 @@ namespace Contoller;
 
 use View\View;
 
-class Controller
+class Controller implements Request\Request
 {
 
-    protected function load_views(string $view, array $vars=[])
+    public function __construct()
     {
-        return new View($view,$vars);
+        $this->postRequest();
     }
 
+    protected function load_views(string $view, array $vars = [])
+    {
+        return new View($view, $vars);
+    }
+
+    public function postRequest()
+    {
+        // TODO: Implement postRequest() method.
+    }
 }
