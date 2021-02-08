@@ -25,7 +25,7 @@ class RegisterController extends Controller
     {
         if (is_ajax()) {
             $validator = new RegiserRepositoryValidator();
-            $validation = $validator->validateCustermer($_POST);
+            $validation = $validator->validateCustermer(post());
             if ($validation->fails()) {
                 $errors = $validation->errors()->firstOfAll();
                 $validator->custumErrorMessages($errors);
