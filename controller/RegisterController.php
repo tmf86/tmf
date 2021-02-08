@@ -2,7 +2,7 @@
 
 namespace Contoller;
 
-use Repository\RegiserRepositoryValidator;
+use Contoller\HttpRequest\Request;
 use View\View;
 
 class RegisterController extends Controller
@@ -21,9 +21,10 @@ class RegisterController extends Controller
         return new  View("pages.inscription", compact("title", "scripts"));
     }
 
-    public function registerStore($request)
+    public function registerStore(Request $request)
     {
-        debug($request);
+        $this->processInputsData();
+        var_dump($request->inputs());
         die();
         // if (is_ajax()) {
         //     $validator = new RegiserRepositoryValidator();
@@ -31,7 +32,7 @@ class RegisterController extends Controller
         //     if ($validation->fails()) {
         //         $errors = $validation->errors()->firstOfAll();
         //         $validator->custumErrorMessages($errors);
-                
+
         //     } else {
         //         // validation passes
         //         debug(post());
@@ -43,7 +44,10 @@ class RegisterController extends Controller
         // }
     }
 
-    public function postRequest()
+    /**
+     * @return void
+     */
+    private function processInputsData()
     {
         if (isset($_POST["annee"], $_POST["mois"], $_POST["jour"])) {
             $_POST["date_naissance"] = sprintf("%s-%s-%s", $_POST["annee"], $_POST["mois"], $_POST["jour"]);
