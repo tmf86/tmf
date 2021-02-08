@@ -11,11 +11,17 @@ function processFundedRoot(array $rootResult)
     if (is_array($handler)) {
         $class = $handler['class'];
         $method = $handler['method'];
-        if (key_exists("var", $handler)) {
+        if (key_exists("get", $handler)){
+            $get = $handler['get'];
+            $classToInstanced = new $class();
+            $classToInstanced->$method($vars["$get"]);
+        } 
+        elseif(key_exists("var", $handler)){
             $var = $handler['var'];
             $classToInstanced = new $class();
-            $classToInstanced->$method($vars["$var"]);
-        } else {
+            $classToInstanced->$method($var);
+        }
+        else {
             $classToInstanced = new $class();
             $classToInstanced->$method();
         }
@@ -64,15 +70,15 @@ function post($name = "")
 
 }
 
-/**
- * Checks if the http request is an AJAX call
- * @return bool
- */
-function is_ajax()
-{
-    return (isset($_SERVER['HTTP_X_REQUESTED_WITH']) &&
-        (strtolower(getenv('HTTP_X_REQUESTED_WITH')) === 'xmlhttprequest'));
-}
+// /**
+//  * Checks if the http request is an AJAX call
+//  * @return bool
+//  */
+// function is_ajax()
+// {
+//     return (isset($_SERVER['HTTP_X_REQUESTED_WITH']) &&
+//         (strtolower(getenv('HTTP_X_REQUESTED_WITH')) === 'xmlhttprequest'));
+// }
 
 /**
  * @param $string
