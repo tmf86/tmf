@@ -21,24 +21,26 @@ class RegisterController extends Controller
         return new  View("pages.inscription", compact("title", "scripts"));
     }
 
-    public function registerStore()
+    public function registerStore($request)
     {
-        if (is_ajax()) {
-            $validator = new RegiserRepositoryValidator();
-            $validation = $validator->validateCustermer(post());
-            if ($validation->fails()) {
-                $errors = $validation->errors()->firstOfAll();
-                $validator->custumErrorMessages($errors);
-                print_r($errors);
-            } else {
-                // validation passes
-                debug(post());
-                echo "Success!";
-            }
+        debug($request);
+        die();
+        // if (is_ajax()) {
+        //     $validator = new RegiserRepositoryValidator();
+        //     $validation = $validator->validateCustermer(post());
+        //     if ($validation->fails()) {
+        //         $errors = $validation->errors()->firstOfAll();
+        //         $validator->custumErrorMessages($errors);
+                
+        //     } else {
+        //         // validation passes
+        //         debug(post());
+        //         echo "Success!";
+        //     }
 
-        } else {
-            abort(404);
-        }
+        // } else {
+        //     abort(404);
+        // }
     }
 
     public function postRequest()
