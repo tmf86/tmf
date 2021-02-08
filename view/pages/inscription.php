@@ -52,7 +52,7 @@
                         </select>
                     </div>
                     <div class="date-item space">
-                        <select class="select" name="annnee" id="annee"><?= selectBirthDay(1921, true) ?>
+                        <select class="select" name="annee" id="annee"><?= selectBirthDay(1921, true) ?>
                         </select>
                     </div>
                 </div>
