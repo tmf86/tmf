@@ -116,6 +116,31 @@ function debug($vars, $do = false)
 }
 
 /**
+ * @return string
+ * Build bithday
+ */
+function selectBirthDay($id, $year = false)
+{
+    $option = '';
+    if ($year) {
+        $i = $id;
+        while ($i <= date("Y")):
+            $option .= sprintf("<option value='%d'>%d</option>", $i, $i);
+            $i++;
+        endwhile;
+    } else {
+        $i = 1;
+        while ($i <= $id):
+            $v = (string)$i;
+            $v = (strlen($v) < 2) ? sprintf("0%s", $v) : $v;
+            $option .= sprintf("<option value='%s'>%s</option>", $v, $v);
+            $i++;
+        endwhile;
+    }
+    return sprintf("%s\n", $option);
+}
+
+/**
  * @param $scripts
  * @return string
  */
