@@ -9,10 +9,6 @@ class ValidatorCustumer extends Validator
     /**
      * @var string[]
      */
-    protected $messagesCustomized = [];
-    /**
-     * @var string[]
-     */
     protected $errorsMessages = [
         'required' => ':attribute est obligatoire',
         'email' => ':attribute est invalide'
@@ -32,12 +28,10 @@ class ValidatorCustumer extends Validator
      * @param $errors
      * @return  void
      */
-    public function processFailed(&$errors)
+    public function custumErrorMessage(&$errors)
     {
         foreach ($errors as $key => $v):
-            foreach ($this->messagesCustomized as $index => $val):
-                $errors[$key] = str_replace($index, $val, $errors[$key]);
-            endforeach;
+                $errors[$key] = strtolower($errors[$key]);
         endforeach;
     }
 
