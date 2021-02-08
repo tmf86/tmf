@@ -15,10 +15,6 @@ class Model
      */
     private $pdo;
     /**
-     * @var array
-     */
-    private $config;
-    /**
      * @var string
      */
     protected $table = "Model";
@@ -33,10 +29,10 @@ class Model
 
     public function __construct()
     {
-        $this->config = require "config/config.php";
+        $config = require "config/config.php";
         try {
             $pdo = new PDO(sprintf("mysql:host=localhost;dbname=%s;charset=utf8",
-                $this->config["db_name"]), $this->config["db_user"], $this->config["db_password"]);
+                $config["db_name"]), $config["db_user"], $config["db_password"]);
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         } catch (\PDOException $e) {
             die("Erreur de connexion a la base de donnée =>" . $e->getMessage());
