@@ -46,14 +46,14 @@ function rootUrl()
  * @param int $code
  * check request code
  */
-function abort(int $code)
-{
-    switch ($code) {
-        case 404 :
-            header('HTTP/1.1 404 Internal Server Error');
-            break;
-    }
-}
+//function abort(int $code)
+//{
+//    switch ($code) {
+//        case 404 :
+//            header('HTTP/1.1 404 Internal Server Error');
+//            break;
+//    }
+//}
 
 /**
  * @param $name
