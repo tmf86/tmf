@@ -12,5 +12,6 @@ return array(
     'Model\\Shema\\' => array($baseDir . '/model/Schema'),
     'Model\\' => array($baseDir . '/model'),
     'FastRoute\\' => array($vendorDir . '/nikic/fast-route/src'),
+    'Contoller\\HttpRequest\\Request\\' => array($baseDir . '/controller/HttpRequest'),
     'Contoller\\' => array($baseDir . '/controller'),
 );

@@ -31,6 +31,7 @@ class ComposerStaticInit6264916c20b8cdaf967ae3749af8fbef
         ),
         'C' => 
         array (
+            'Contoller\\HttpRequest\\Request\\' => 30,
             'Contoller\\' => 10,
         ),
     );
@@ -59,6 +60,10 @@ class ComposerStaticInit6264916c20b8cdaf967ae3749af8fbef
         'FastRoute\\' => 
         array (
             0 => __DIR__ . '/..' . '/nikic/fast-route/src',
+        ),
+        'Contoller\\HttpRequest\\Request\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/controller/HttpRequest',
         ),
         'Contoller\\' => 
         array (
