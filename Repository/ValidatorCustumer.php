@@ -9,10 +9,7 @@ class ValidatorCustumer extends Validator
     /**
      * @var string[]
      */
-    protected $errorsMessages = [
-        'required' => ':attribute est obligatoire',
-        'email' => ':attribute est invalide'
-    ];
+    protected $errorsMessages = [];
     /**
      * @var array
      */
