@@ -44,10 +44,7 @@ function abort(int $code)
 {
     switch ($code) {
         case 404 :
-            echo "<h1>Erreur 404</h1>";
-            break;
-        case 500 :
-            echo "<h1>SERVEUR ERROR</h1>";
+            header('HTTP/1.1 404 Internal Server Error');
             break;
     }
 }
@@ -127,7 +124,7 @@ function scripts($scripts)
     $script = "";
     if (isset($scripts)) {
         foreach ($scripts as $val):
-            $script .= $val;
+            $script .= sprintf("%s\n", $val);
         endforeach;
     }
     return $script;
