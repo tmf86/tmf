@@ -28,7 +28,7 @@ class ValidatorCustumer extends Validator
      * @param $errors
      * @return  void
      */
-    public function custumErrorMessage(&$errors)
+    public function custumErrorMessages(&$errors)
     {
         foreach ($errors as $key => $v):
                 $errors[$key] = strtolower($errors[$key]);
