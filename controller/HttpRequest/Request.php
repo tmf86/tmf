@@ -49,6 +49,18 @@ class Request
     }
 
     /**
+     * @param int $code
+     */
+    public static function abort(int $code)
+    {
+        switch ($code) {
+            case 404 :
+                header('HTTP/1.1 404 Internal Server Error');
+                break;
+        }
+    }
+
+    /**
      * @param array $data
      * @param $code
      */
