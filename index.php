@@ -3,6 +3,7 @@
 use Contoller\ConnexionController;
 use Contoller\HomeController;
 use Contoller\RegisterController;
+use Contoller\HttpRequest\Request;
 
 require "vendor/autoload.php";
 require "helpers/helper.php";
@@ -12,7 +13,7 @@ $dispatcher = FastRoute\simpleDispatcher(function (FastRoute\RouteCollector $r) 
     $r->addRoute('GET', '/Cpy-Mvc/connexion', ["class" => ConnexionController::class, "method" => "index"]);
     $r->addRoute('GET', '/Cpy-Mvc/acceuil', ["class" => HomeController::class, "method" => "index"]);
     $r->addRoute('GET', '/Cpy-Mvc/inscription', ["class" => RegisterController::class, "method" => "index"]);
-    $r->addRoute('POST', '/Cpy-Mvc/registerStore', ["class" => RegisterController::class, "method" => "registerStore"]);
+    $r->addRoute('POST', '/Cpy-Mvc/registerStore', ["class" => RegisterController::class, "method" => "registerStore","var"=> new Request()]);
 });
 
 // Fetch method and URI from somewhere
