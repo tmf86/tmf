@@ -25,13 +25,14 @@ class RegisterController extends Controller
     {
         if (is_ajax()) {
             $validator = new RegiserRepositoryValidator();
-            $validation = $validator->validateCustermer(post());
+            $validation = $validator->validateCustermer($_POST);
             if ($validation->fails()) {
                 $errors = $validation->errors()->firstOfAll();
-                $validator->processFailed($errors);
+                $validator->custumErrorMessages($errors);
                 print_r($errors);
             } else {
                 // validation passes
+                debug(post());
                 echo "Success!";
             }
 
@@ -40,9 +41,12 @@ class RegisterController extends Controller
         }
     }
 
-    private function validate()
+    public function postRequest()
     {
-
+        if (isset($_POST["annee"], $_POST["mois"], $_POST["jour"])) {
+            $_POST["date_naissance"] = sprintf("%s-%s-%s", $_POST["annee"], $_POST["mois"], $_POST["jour"]);
+            unset($_POST["jour"], $_POST["annee"], $_POST["mois"]);
+        }
     }
 
 }
