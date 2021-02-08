@@ -31,7 +31,7 @@ trait RelationalShema
     /**
      * @return array|mixed
      */
-    public function hasMany()
+    protected function hasMany()
     {
         return $this->relationShip()->query($this->relationQuery, true);
     }
