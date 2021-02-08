@@ -33,7 +33,7 @@ class Model
 
     public function __construct()
     {
-        $this->config = require "../config/config.php";
+        $this->config = require "config/config.php";
         try {
             $pdo = new PDO(sprintf("mysql:host=localhost;dbname=%s;charset=utf8",
                 $this->config["db_name"]), $this->config["db_user"], $this->config["db_password"]);
