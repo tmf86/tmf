@@ -19,9 +19,9 @@ $(function () {
         } else if ($(year).val() % 400 === 0) {
             isLeapYear = true;
         }
-        console.log($(month).val())
-        console.log(isLeapYear)
-        console.log($(day).val())
+        // console.log($(month).val())
+        // console.log(isLeapYear)
+        // console.log($(day).val())
         if (isLeapYear) {
             if ($(month).val() === '02') {
                 $("option[value=29]").css("display", "block")
