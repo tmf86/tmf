@@ -5,7 +5,7 @@
         </p>
         <div class="fm-inline">
             <div class="fm-item">
-                <label for="nom">Nom <small class="small">*</small></label>
+                <label for="nom">Nom<small class="small">*</small></label>
                 <input type="text" name="nom" id="nom" class="form-control mb-2 mb-2 input-custum-pd"
                        placeholder="Nom">
                 <span class="icon icon-float-1"><i class="fas fa-user-edit"></i></span>
@@ -25,7 +25,7 @@
                 <span class="icon icon-float-1"><i class="fas fa-envelope"></i></span>
             </div>
             <div class="fm-item space">
-                <label for="contact">Contact</label>
+                <label for="contact">Contact<small class="small"></small></label>
                 <input type="text" id="contact" name="contact" class="form-control mb-2 input-custum-pd"
                        placeholder="contact">
                 <span class="icon icon-float-2"><i class="fas fa-phone-square-alt"></i></span>
