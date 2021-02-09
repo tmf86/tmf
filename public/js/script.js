@@ -3,6 +3,11 @@ $(function () {
     const input = $("input")
     input.focus(function () {
         $(`input[name="${this.name}"] ~ span.icon `).toggleClass("active")
+        if ($(`input[name="${this.name}"]`).hasClass("error")) {
+            $(`label[for='${this.name}'] small`).html('*')
+            $(`input[name="${this.name}"] ~ span.icon `).removeClass("error")
+            $(`input[name="${this.name}"]`).removeClass("error")
+        }
     })
     input.focusout(function () {
         $(`input[name="${this.name}"] ~ span.icon `).toggleClass("active")
