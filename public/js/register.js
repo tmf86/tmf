@@ -5,13 +5,20 @@ $(function () {
             url: "http://localhost/Cpy-Mvc/registerStore",
             type: "post",
             data: $(this).serialize(),
-            dataType: "html",
+            dataType: "json",
             success: function (data) {
-                console.log($(this).serialize())
                 console.log(data)
             },
             error: function (xhr) {
-                console.log(xhr)
+                const errors = xhr.responseJSON;
+                if (errors.code === 0) {
+                    for (const property in errors) {
+                        $(`label[for='${property}'] small`).html(errors[property])
+                        $(`input[name="${property}"]`).addClass("error")
+                        $(`input[name="${property}"] ~ span.icon `).addClass("error")
+                        console.log(`${property}: ${errors[property]}`);
+                    }
+                }
             }
         })
     })
