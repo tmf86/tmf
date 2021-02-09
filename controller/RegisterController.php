@@ -3,6 +3,7 @@
 namespace Contoller;
 
 use Contoller\HttpRequest\Request;
+use Repository\RegiserRepositoryValidator;
 use View\View;
 
 class RegisterController extends Controller
@@ -21,27 +22,30 @@ class RegisterController extends Controller
         return new  View("pages.inscription", compact("title", "scripts"));
     }
 
+    /**
+     * @param Request $request
+     * @return Request
+     */
     public function registerStore(Request $request)
     {
         $this->processInputsData();
-        var_dump($request->inputs());
-        die();
-        // if (is_ajax()) {
-        //     $validator = new RegiserRepositoryValidator();
-        //     $validation = $validator->validateCustermer(post());
-        //     if ($validation->fails()) {
-        //         $errors = $validation->errors()->firstOfAll();
-        //         $validator->custumErrorMessages($errors);
+        if ($request->isAjax()) {
+            $validator = new RegiserRepositoryValidator();
+            $validation = $validator->validateCustermer($request->inputs());
+            if ($validation->fails()) {
+                $errors = $validation->errors()->firstOfAll();
+                $validator->custumErrorMessages($errors);
+                return $request->ajax($errors, 500);
+            } else {
+                // validation passes
+                debug(post());
+                echo "Success!";
+            }
 
-        //     } else {
-        //         // validation passes
-        //         debug(post());
-        //         echo "Success!";
-        //     }
-
-        // } else {
-        //     abort(404);
-        // }
+        } else {
+            Request::abort(404);
+        }
+        return $request;
     }
 
     /**
