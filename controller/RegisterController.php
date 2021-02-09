@@ -28,13 +28,14 @@ class RegisterController extends Controller
      */
     public function registerStore(Request $request)
     {
-        $this->processInputsData();
         if ($request->isAjax()) {
             $validator = new RegiserRepositoryValidator();
+            $this->processInputsData();
             $validation = $validator->validateCustermer($request->inputs());
             if ($validation->fails()) {
                 $errors = $validation->errors()->firstOfAll();
                 $validator->custumErrorMessages($errors);
+                $errors["code"] = 0;
                 return $request->ajax($errors, 500);
             } else {
                 // validation passes
