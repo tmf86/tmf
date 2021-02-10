@@ -31,7 +31,7 @@ class Model
     {
         $config = require "config/config.php";
         try {
-            $pdo = new PDO(sprintf("mysql:host=localhost;dbname=%s;charset=utf8",
+            $pdo = new PDO(sprintf("mysql:host=$config['db_host'];dbname=%s;charset=utf8",
                 $config["db_name"]), $config["db_user"], $config["db_password"]);
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         } catch (\PDOException $e) {
