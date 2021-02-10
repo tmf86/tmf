@@ -2,7 +2,7 @@
 
 use Contollers\ConnexionController;
 use Contollers\HomeController;
-use Contollers\HttpRequest\Request;
+use Contollers\Http\Request;
 use Contollers\RegisterController;
 
 require "vendor/autoload.php";
