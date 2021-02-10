@@ -13,7 +13,7 @@ $(function () {
                 console.log(xhr)
                 const errors = xhr.responseJSON;
                 console.log(errors)
-                if (errors.code === 0) {
+                if (xhr.status === 400) {
                     for (const property in errors) {
                         $(`label[for='${property}'] small`).html(errors[property])
                         $(`input[name="${property}"]`).addClass("error")
