@@ -134,6 +134,16 @@ a:hover {
     justify-content: space-between;
 }
 
+.fm-btn-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.fm-btn-container .fm-btn {
+    width: 30%;
+}
+
 .form-container .fm-item, .form-container .date-item {
     position: relative;
     width: 100%;
@@ -264,5 +274,9 @@ i {
 
     .icon.icon-float-2 {
         left: 4%;
+    }
+
+    .fm-btn-container .fm-btn {
+        width: 60%;
     }
 }

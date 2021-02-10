@@ -78,6 +78,8 @@
                 </select>
             </div>
         </div>
-        <button class="btn btn-info btn-block my-4" type="submit">S'Inscrire</button>
+        <div class="fm-btn-container ">
+            <button class="btn btn-info btn-block my-4 fm-btn" id="register" type="submit">S'Inscrire</button>
+        </div>
     </form>
 </div>

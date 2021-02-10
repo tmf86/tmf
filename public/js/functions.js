@@ -6,3 +6,6 @@ const buildUrl = (value) => {
     const bashPath = window.location.href.substr(0, slashPos)
     return sprintf("%/%", '%', bashPath, value)
 }
+const btnTransform = (id, text) => {
+    $(id).html(text).toggleClass("disabled")
+}

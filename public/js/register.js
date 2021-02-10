@@ -1,6 +1,10 @@
 $(function () {
     $("#form-register").submit(function (e) {
         e.preventDefault()
+        btnTransform("#register", `
+        s'inscrir   <span class="spinner-border" role="status">
+            <span class="sr-only">Loading...</span>
+         </span>`)
         $.ajax({
             url: buildUrl("registerStore"),
             type: "post",
@@ -10,6 +14,7 @@ $(function () {
                 console.log(data)
             },
             error: function (xhr) {
+                btnTransform("#register", `S'inscrir`)
                 console.log(xhr)
                 const errors = xhr.responseJSON;
                 console.log(errors)
