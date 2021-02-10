@@ -71,7 +71,7 @@ class ComposerStaticInit6264916c20b8cdaf967ae3749af8fbef
         ),
         'Contollers\\Http\\' => 
         array (
-            0 => __DIR__ . '/../..' . '/contollers/HttpRequest',
+            0 => __DIR__ . '/../..' . '/contollers/Http',
         ),
         'Contoller\\' => 
         array (

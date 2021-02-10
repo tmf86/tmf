@@ -13,6 +13,6 @@ return array(
     'Model\\Shema\\' => array($baseDir . '/models/Schema'),
     'Model\\' => array($baseDir . '/models'),
     'FastRoute\\' => array($vendorDir . '/nikic/fast-route/src'),
-    'Contollers\\Http\\' => array($baseDir . '/contollers/HttpRequest'),
+    'Contollers\\Http\\' => array($baseDir . '/contollers/Http'),
     'Contoller\\' => array($baseDir . '/contollers'),
 );

@@ -13,7 +13,7 @@
       "Model\\Shema\\": "models/Schema",
       "Repository\\": "src/Repository",
       "View\\": "Views",
-      "Contollers\\Http\\": "contollers/HttpRequest"
+      "Contollers\\Http\\": "contollers/Http"
     }
   },
   "require": {
