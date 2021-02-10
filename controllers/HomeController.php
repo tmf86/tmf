@@ -8,9 +8,10 @@ use View\View;
 
 class HomeController extends Controller
 {
-    public function index(){
+    public function index()
+    {
         $title = "Acceuil";
-        return new  View("pages.acceuil",compact("title"));
+        return new  View("pages.acceuil", compact("title"));
     }
 
 }

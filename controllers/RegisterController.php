@@ -36,7 +36,7 @@ class RegisterController extends Controller
             if ($validation->fails()) {
                 $errors = $validation->errors()->firstOfAll();
                 $validator->custumErrorMessages($errors);
-                $errors["code"] = 0;
+                $errors["code"] = 400;
                 return $request->ajax($errors, 400);
             } else {
                 // validation passes
