@@ -6,6 +6,7 @@ $config = [];
 $config["db_name"] = "cpy";
 $config["db_user"] = "root";
 $config["db_password"] = "";
+$config["bb_host"] = "localhost";
 /**
  * configuration reserver a la gestion de fichier
  */
