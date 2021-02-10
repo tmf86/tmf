@@ -35,7 +35,7 @@ class ComposerStaticInit6264916c20b8cdaf967ae3749af8fbef
         ),
         'C' => 
         array (
-            'Contoller\\HttpRequest\\Request\\' => 30,
+            'Contollers\\Http\\' => 16,
             'Contoller\\' => 10,
         ),
     );
@@ -43,7 +43,7 @@ class ComposerStaticInit6264916c20b8cdaf967ae3749af8fbef
     public static $prefixDirsPsr4 = array (
         'View\\' => 
         array (
-            0 => __DIR__ . '/../..' . '/view',
+            0 => __DIR__ . '/../..' . '/Views',
         ),
         'Repository\\' => 
         array (
@@ -59,23 +59,23 @@ class ComposerStaticInit6264916c20b8cdaf967ae3749af8fbef
         ),
         'Model\\Shema\\' => 
         array (
-            0 => __DIR__ . '/../..' . '/model/Schema',
+            0 => __DIR__ . '/../..' . '/models/Schema',
         ),
         'Model\\' => 
         array (
-            0 => __DIR__ . '/../..' . '/model',
+            0 => __DIR__ . '/../..' . '/models',
         ),
         'FastRoute\\' => 
         array (
             0 => __DIR__ . '/..' . '/nikic/fast-route/src',
         ),
-        'Contoller\\HttpRequest\\Request\\' => 
+        'Contollers\\Http\\' => 
         array (
-            0 => __DIR__ . '/../..' . '/controller/HttpRequest',
+            0 => __DIR__ . '/../..' . '/contollers/HttpRequest',
         ),
         'Contoller\\' => 
         array (
-            0 => __DIR__ . '/../..' . '/controller',
+            0 => __DIR__ . '/../..' . '/contollers',
         ),
     );
 

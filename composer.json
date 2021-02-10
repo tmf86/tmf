@@ -8,12 +8,12 @@
   ],
   "autoload": {
     "psr-4": {
-      "Contoller\\": "Contollers",
-      "Model\\": "Models",
-      "Model\\Shema\\": "Models/Schema",
+      "Contoller\\": "contollers",
+      "Model\\": "models",
+      "Model\\Shema\\": "models/Schema",
       "Repository\\": "src/Repository",
       "View\\": "Views",
-      "Contoller\\HttpRequest\\Request\\": "Contollers/HttpRequest"
+      "Contollers\\Http\\": "contollers/HttpRequest"
     }
   },
   "require": {
