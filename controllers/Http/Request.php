@@ -80,6 +80,15 @@ class Request
     }
 
     /**
+     * @param int $value
+     * @return void
+     */
+    public function sleepRequest(int $value)
+    {
+        sleep($value);
+    }
+
+    /**
      * @param $name
      * @return mixed|string
      */
