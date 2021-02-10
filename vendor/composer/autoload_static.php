@@ -20,6 +20,10 @@ class ComposerStaticInit6264916c20b8cdaf967ae3749af8fbef
             'Repository\\' => 11,
             'Rakit\\Validation\\' => 17,
         ),
+        'P' => 
+        array (
+            'PHPMailer\\PHPMailer\\' => 20,
+        ),
         'M' => 
         array (
             'Model\\Shema\\' => 12,
@@ -43,11 +47,15 @@ class ComposerStaticInit6264916c20b8cdaf967ae3749af8fbef
         ),
         'Repository\\' => 
         array (
-            0 => __DIR__ . '/../..' . '/Repository',
+            0 => __DIR__ . '/../..' . '/src/Repository',
         ),
         'Rakit\\Validation\\' => 
         array (
             0 => __DIR__ . '/..' . '/rakit/validation/src',
+        ),
+        'PHPMailer\\PHPMailer\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/phpmailer/phpmailer/src',
         ),
         'Model\\Shema\\' => 
         array (

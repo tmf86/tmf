@@ -7,8 +7,9 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'View\\' => array($baseDir . '/view'),
-    'Repository\\' => array($baseDir . '/Repository'),
+    'Repository\\' => array($baseDir . '/src/Repository'),
     'Rakit\\Validation\\' => array($vendorDir . '/rakit/validation/src'),
+    'PHPMailer\\PHPMailer\\' => array($vendorDir . '/phpmailer/phpmailer/src'),
     'Model\\Shema\\' => array($baseDir . '/model/Schema'),
     'Model\\' => array($baseDir . '/model'),
     'FastRoute\\' => array($vendorDir . '/nikic/fast-route/src'),
