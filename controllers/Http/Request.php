@@ -23,6 +23,13 @@ class Request
      */
     private $sessions;
 
+    /**
+     * Request constructor.
+     * @param array $post
+     * @param array $get
+     * @param array $cookies
+     * @param array $sessions
+     */
     public function __construct(&$post = [], &$get = [], $cookies = [], $sessions = [])
     {
         $this->get = &$get;
@@ -63,12 +70,13 @@ class Request
     /**
      * @param array $data
      * @param $code
+     * @return $this
      */
     public function ajax(array $data, $code)
     {
-//        http_response_code($code);
+        http_response_code($code);
         echo json_encode($data);
-//        return $this;
+        return $this;
     }
 
     /**
