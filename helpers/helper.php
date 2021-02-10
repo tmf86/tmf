@@ -11,17 +11,15 @@ function processFundedRoot(array $rootResult)
     if (is_array($handler)) {
         $class = $handler['class'];
         $method = $handler['method'];
-        if (key_exists("get", $handler)){
+        if (key_exists("get", $handler)) {
             $get = $handler['get'];
             $classToInstanced = new $class();
             $classToInstanced->$method($vars["$get"]);
-        } 
-        elseif(key_exists("var", $handler)){
+        } elseif (key_exists("var", $handler)) {
             $var = $handler['var'];
             $classToInstanced = new $class();
             $classToInstanced->$method($var);
-        }
-        else {
+        } else {
             $classToInstanced = new $class();
             $classToInstanced->$method();
         }
@@ -150,10 +148,10 @@ function selectBirthDay($id, $year = false)
  * @param $scripts
  * @return string
  */
-function scripts($scripts)
+function scripts($scripts = [])
 {
     $script = "";
-    if (isset($scripts)) {
+    if (!empty($scripts)) {
         foreach ($scripts as $val):
             $script .= sprintf("%s\n", $val);
         endforeach;
