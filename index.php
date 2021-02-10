@@ -1,9 +1,9 @@
 <?php
 
-use Contollers\ConnexionController;
-use Contollers\HomeController;
-use Contollers\Http\Request;
-use Contollers\RegisterController;
+use Contoller\ConnexionController;
+use Contoller\HomeController;
+use Contoller\Http\Request;
+use Contoller\RegisterController;
 
 require "vendor/autoload.php";
 require "helpers/helper.php";

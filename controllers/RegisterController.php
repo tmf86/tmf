@@ -1,16 +1,16 @@
 <?php
 
-namespace Contollers;
+namespace Contoller;
 
-use Contollers\HttpRequest\Request;
+use Contoller\Http\Request;
 use Repository\RegiserRepositoryValidator;
-use Views\View;
+use View\View;
 
 class RegisterController extends Controller
 {
 
     /**
-     * @return \Views\View
+     * @return View
      */
     public function index()
     {

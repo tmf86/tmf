@@ -1,6 +1,6 @@
 <?php
 
-namespace Views;
+namespace View;
 
 class View
 {
@@ -26,6 +26,9 @@ class View
 
     }
 
+    /**
+     * @return void
+     */
     public function view()
     {
         if (strpos($this->view_name, ".")) {

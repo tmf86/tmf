@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Models\Shema;
+namespace Model\Shema;
 
 
 trait RelationalShema

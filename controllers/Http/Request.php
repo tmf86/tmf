@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Contollers\Http;
+namespace Contoller\Http;
 
 
 class Request

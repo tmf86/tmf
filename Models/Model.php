@@ -1,9 +1,9 @@
 <?php
 
-namespace Models;
+namespace Model;
 
 
-use Models\Shema\RelationalShema;
+use Model\Shema\RelationalShema;
 use PDO;
 
 class Model
@@ -31,8 +31,8 @@ class Model
     {
         $config = require "config/config.php";
         try {
-            $pdo = new PDO(sprintf("mysql:host=$config['db_host'];dbname=%s;charset=utf8",
-                $config["db_name"]), $config["db_user"], $config["db_password"]);
+            $pdo = new PDO(sprintf("mysql:host=%s;dbname=%s;charset=utf8",
+                $config["db_host"], $config["db_name"]), $config["db_user"], $config["db_password"]);
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         } catch (\PDOException $e) {
             die("Erreur de connexion a la base de donnée =>" . $e->getMessage());

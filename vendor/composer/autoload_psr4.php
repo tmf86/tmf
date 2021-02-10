@@ -6,13 +6,13 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    'View\\' => array($baseDir . '/Views'),
+    'View\\' => array($baseDir . '/views'),
     'Repository\\' => array($baseDir . '/src/Repository'),
     'Rakit\\Validation\\' => array($vendorDir . '/rakit/validation/src'),
     'PHPMailer\\PHPMailer\\' => array($vendorDir . '/phpmailer/phpmailer/src'),
     'Model\\Shema\\' => array($baseDir . '/models/Schema'),
     'Model\\' => array($baseDir . '/models'),
     'FastRoute\\' => array($vendorDir . '/nikic/fast-route/src'),
-    'Contollers\\Http\\' => array($baseDir . '/contollers/Http'),
-    'Contoller\\' => array($baseDir . '/contollers'),
+    'Contoller\\Http\\' => array($baseDir . '/controllers/Http'),
+    'Contoller\\' => array($baseDir . '/controllers'),
 );

@@ -11,7 +11,7 @@ $config["bb_host"] = "localhost";
  * configuration reserver a la gestion de fichier
  */
 
-$config["views_directory"] = "view/";
+$config["views_directory"] = "views/";
 /**
  * Root path
  */
