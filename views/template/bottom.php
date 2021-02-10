@@ -42,7 +42,7 @@
 <!--load js files -->
 <script src="public/js/import/jquery.js"></script>
 <script src="public/js/import/bootstrap.js"></script>
-<script src="public/js/import/popper.min.js"></script>
+<script src="public/js/import/popper.js"></script>
 <script src="public/js/import/mdb.js"></script>
 <?= scripts($scripts ?? []) ?>
 <!--end of js files loading  -->

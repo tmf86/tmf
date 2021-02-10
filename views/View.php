@@ -17,6 +17,11 @@ class View
      */
     private $vars;
 
+    /**
+     * View constructor.
+     * @param string $view_name
+     * @param array $vars
+     */
     public function __construct(string $view_name, array $vars = [])
     {
         $this->config = require "config/config.php";
