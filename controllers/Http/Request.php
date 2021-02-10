@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Contoller\HttpRequest;
+namespace Contollers\HttpRequest;
 
 
 class Request
@@ -66,9 +66,9 @@ class Request
      */
     public function ajax(array $data, $code)
     {
-        http_response_code($code);
+//        http_response_code($code);
         echo json_encode($data);
-        return $this;
+//        return $this;
     }
 
     /**

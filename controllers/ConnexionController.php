@@ -1,11 +1,11 @@
 <?php
 
-namespace Contoller;
+namespace Contollers;
 
 class ConnexionController extends Controller
 {
     /**
-     * @return \View\View
+     * @return \Views\View
      */
     public function index()
     {

@@ -1,9 +1,9 @@
 <?php
 
-namespace Model;
+namespace Models;
 
 
-use Model\Shema\RelationalShema;
+use Models\Shema\RelationalShema;
 use PDO;
 
 class Model

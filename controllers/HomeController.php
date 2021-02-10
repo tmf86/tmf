@@ -1,10 +1,10 @@
 <?php
 
 
-namespace Contoller;
+namespace Contollers;
 
 
-use View\View;
+use Views\View;
 
 class HomeController extends Controller
 {

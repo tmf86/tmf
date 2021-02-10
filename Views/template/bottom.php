@@ -44,7 +44,7 @@
 <script src="public/js/import/bootstrap.js"></script>
 <script src="public/js/import/popper.min.js"></script>
 <script src="public/js/import/mdb.js"></script>
-<?= scripts($scripts) ?>
+<?= scripts($scripts ?? []) ?>
 <!--end of js files loading  -->
 </body>
 </html>

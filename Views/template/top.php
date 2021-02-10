@@ -15,6 +15,7 @@
     <!-- Stylesheet   -->
     <!-- Script-->
     <script src="https://kit.fontawesome.com/bb2a11cf5b.js" defer crossorigin="anonymous"></script>
+<!--    <script src="public/js/import/hnl.mobileConsole.js"></script>-->
     <!-- Script-->
 </head>
 <body>

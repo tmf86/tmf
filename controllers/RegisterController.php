@@ -1,16 +1,16 @@
 <?php
 
-namespace Contoller;
+namespace Contollers;
 
-use Contoller\HttpRequest\Request;
+use Contollers\HttpRequest\Request;
 use Repository\RegiserRepositoryValidator;
-use View\View;
+use Views\View;
 
 class RegisterController extends Controller
 {
 
     /**
-     * @return \View\View
+     * @return \Views\View
      */
     public function index()
     {
@@ -36,7 +36,7 @@ class RegisterController extends Controller
                 $errors = $validation->errors()->firstOfAll();
                 $validator->custumErrorMessages($errors);
                 $errors["code"] = 0;
-                return $request->ajax($errors, 500);
+                $request->ajax($errors, 200);
             } else {
                 // validation passes
                 debug(post());
