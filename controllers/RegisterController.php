@@ -16,6 +16,7 @@ class RegisterController extends Controller
     {
         $title = "Inscription";
         $scripts = [
+            "<script  src='public/js/functions.js'></script>",
             "<script  src='public/js/register.js'></script>",
             "<script  src='public/js/script.js'></script>"
         ];
@@ -36,7 +37,7 @@ class RegisterController extends Controller
                 $errors = $validation->errors()->firstOfAll();
                 $validator->custumErrorMessages($errors);
                 $errors["code"] = 0;
-                $request->ajax($errors, 200);
+                return $request->ajax($errors, 400);
             } else {
                 // validation passes
                 debug(post());
