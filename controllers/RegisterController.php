@@ -39,9 +39,7 @@ class RegisterController extends Controller
                 $validator->custumErrorMessages($errors);
                 return $request->ajax($errors, 400);
             } else {
-                // validation passes
-                debug(post());
-                echo "Success!";
+                return $request->ajax(["success" => true], 200);
             }
 
         } else {
