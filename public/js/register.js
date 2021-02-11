@@ -11,7 +11,10 @@ $(function () {
             data: $(this).serialize(),
             dataType: "json",
             success: function (data) {
-                console.log(data)
+                btnTransform("#register", `Patientez &nbsp<span class="spinner-border" role="status">
+            <span class="sr-only">Loading...</span>
+         </span>`, false)
+                if (data.success === true) $("#alertsucces").modal("show")
             },
             error: function (xhr) {
                 btnTransform("#register", `S'inscrir`)
