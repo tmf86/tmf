@@ -19,6 +19,7 @@ $(function () {
                 const errors = xhr.responseJSON;
                 console.log(errors)
                 if (xhr.status === 400) {
+                    $("#alerterror").modal("show")
                     for (const property in errors) {
                         $(`label[for='${property}'] small`).html(errors[property])
                         $(`input[name="${property}"]`).addClass("error")
