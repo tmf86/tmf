@@ -83,3 +83,41 @@
         </div>
     </form>
 </div>
+<!--Error Modal-->
+<div class="modal fade" id="alerterror" tabindex="-1" role="dialog" aria-labelledby="alertModal"
+     aria-hidden="true">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title w-100" id="alertModal">Oops !</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body text-center">
+                <span style="font-size: 3rem">😢</span>
+                <div>Desolé quelques erreurs ce sont produites veuillez revoire les données fournies !</div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--Error Modal-->
+<!--Sucess Modal-->
+<div class="modal fade" id="alertsucces" tabindex="-1" role="dialog" aria-labelledby="alertModal"
+     aria-hidden="true">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title w-100" id="alertModal">Bravo !</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body text-center">
+                <span style="font-size: 3rem">😇</span>
+                <div>Un mail vous a été envoyé pour la validation de votre compte !</div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--Success Modal-->
