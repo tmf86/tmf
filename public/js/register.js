@@ -2,15 +2,16 @@ $(function () {
     $("#form-register").submit(function (e) {
         e.preventDefault()
         btnTransform("#register", `
-        s'inscrir   <span class="spinner-border" role="status">
+        s'inscrir &nbsp<span class="spinner-border" role="status">
             <span class="sr-only">Loading...</span>
          </span>`)
         $.ajax({
             url: buildUrl("registerStore"),
             type: "post",
             data: $(this).serialize(),
-            dataType: "json",
+            dataType: "html",
             success: function (data) {
+                console.log(data)
                 btnTransform("#register", `Patientez &nbsp<span class="spinner-border" role="status">
             <span class="sr-only">Loading...</span>
          </span>`, false)
