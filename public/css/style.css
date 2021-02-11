@@ -125,7 +125,7 @@ a:hover {
 }
 
 .form-container .form-box {
-    width: 60%;
+    width: 40rem;
 }
 
 .form-container .fm-inline, .form-container .date {
@@ -173,7 +173,7 @@ i {
 .icon.icon-float-2 {
     position: absolute;
     top: 50%;
-    left: 8%;
+    left: 9%;
     color: grey;
 }
 
@@ -247,7 +247,7 @@ i {
 
 @media (max-width: 780px) {
     .form-container .form-box {
-        width: 80%;
+        width: 90%;
     }
 }
 
