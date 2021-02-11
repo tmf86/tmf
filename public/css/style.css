@@ -70,7 +70,7 @@ a:hover {
 /*Form register Css*/
 .form-control {
     border-radius: 0;
-    font-family: 'Lato', sans-serif;
+    font-family: 'Product Sans Thin Regular', 'Lato', sans-serif;
     font-weight: 100;
     transition: all 0.5s ease;
 }
@@ -93,18 +93,18 @@ a:hover {
     height: calc(1.5em + 0.75rem + 2px);
     width: 100%;
     color: #495057;
-    font-family: 'Lato', sans-serif;
+    font-family: 'Product Sans Thin Regular', 'Lato', sans-serif;
     font-weight: 100;
     border: 1px solid #ced4da;
     transition: all 0.5s ease;
 }
 
 .select::-ms-value {
-    font-family: 'Lato', sans-serif;
+    font-family: 'Product Sans Thin Regular', 'Lato', sans-serif;
 }
 
 .form-control::placeholder, option, .btn {
-    font-family: 'Lato', sans-serif;
+    font-family: 'Product Sans Thin Regular', 'Lato', sans-serif;
     font-weight: 100;
 }
 
@@ -115,7 +115,7 @@ a:hover {
 }
 
 .fm-family {
-    font-family: 'Lato', sans-serif;
+    font-family: 'Product Sans Thin Regular', 'Lato', sans-serif;
 }
 
 .form-container {
@@ -191,7 +191,7 @@ i {
 
 .small {
     color: red;
-    font-family: 'Lato', sans-serif;
+    font-family: 'Product Sans Thin Regular', 'Lato', sans-serif;
     font-weight: 300;
     font-size: 0.9rem;
     padding-left: 0.3rem;
