@@ -3,7 +3,6 @@
 namespace Contoller;
 
 use Contoller\Http\Request;
-use Model\Comment;
 use Repository\RegiserRepositoryValidator;
 use View\View;
 
@@ -38,9 +37,6 @@ class RegisterController extends Controller
             if ($validation->fails()) {
                 $errors = $validation->errors()->firstOfAll();
                 $validator->custumErrorMessages($errors);
-                $user = new Comment();
-                var_dump($user->find(1)->user());
-                die();
                 return $request->ajax($errors, 400);
             } else {
                 return $request->ajax(["success" => true], 200);

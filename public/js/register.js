@@ -9,7 +9,7 @@ $(function () {
             url: buildUrl("registerStore"),
             type: "post",
             data: $(this).serialize(),
-            dataType: "html",
+            dataType: "json",
             success: function (data) {
                 console.log(data)
                 btnTransform("#register", `Patientez &nbsp<span class="spinner-border" role="status">
