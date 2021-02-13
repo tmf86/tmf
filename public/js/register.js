@@ -11,7 +11,7 @@ $(function () {
             data: $(this).serialize(),
             dataType: "json",
             success: function (data) {
-                console.log(data)
+                $("#debug").html(data)
                 btnTransform("#register", `Patientez &nbsp<span class="spinner-border" role="status">
             <span class="sr-only">Loading...</span>
          </span>`, false)
@@ -21,6 +21,7 @@ $(function () {
                 btnTransform("#register", `S'inscrir`)
                 console.log(xhr)
                 const errors = xhr.responseJSON;
+                $("#debug").html(xhr.responseText)
                 console.log(errors)
                 if (xhr.status === 400) {
                     $("#alerterror").modal("show")
