@@ -163,7 +163,8 @@ class Validator
             'default' => new Rules\Defaults, // alias of defaults
             'nullable' => new Rules\Nullable,
             'phone' => new Rules\PhoneNumber,
-            'name' => new Rules\Name
+            'name' => new Rules\Name,
+            'unique' => new Rules\Unique
         ];
 
         foreach ($baseValidator as $key => $validator) {
