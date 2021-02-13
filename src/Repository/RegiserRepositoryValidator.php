@@ -10,9 +10,9 @@ class RegiserRepositoryValidator extends ValidatorCustumer
         'required' => ':attribute obligatoire.',
         'numeric' => ':attribute invalide.',
         'min' => ':attribute invalide',
-        'email' => ':attribute obligatoire.',
         'phone' => ':attribute invalide.',
-        "name" => ":attribute invalide."
+        "name" => ":attribute invalide.",
+        "unique" => ":attribute deja utilisé."
     ];
     /**
      * @var string[]
@@ -20,8 +20,8 @@ class RegiserRepositoryValidator extends ValidatorCustumer
     protected $rules = [
         'nom' => 'required|min:2|name',
         'prenom' => 'required|min:2|name',
-        'contact' => 'required|numeric|phone',
-        "email" => "required|email"
+        'contact' => 'required|numeric|phone|unique:membre,contact',
+        "email" => "required|unique:membre,email"
     ];
 
 }
