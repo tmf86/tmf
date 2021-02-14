@@ -15,7 +15,10 @@ $(function () {
                 btnTransform("#register", `Patientez &nbsp<span class="spinner-border" role="status">
             <span class="sr-only">Loading...</span>
          </span>`, false)
-                if (data.success === true) $("#alertsucces").modal("show")
+                if (data.success === true) {
+                    $("#form-register").trigger("reset")
+                    $("#alertsucces").modal("show")
+                }
             },
             error: function (xhr) {
                 btnTransform("#register", `S'inscrir`)
@@ -31,6 +34,8 @@ $(function () {
                         $(`input[name="${property}"] ~ span.icon `).addClass("error")
                         console.log(`${property}: ${errors[property]}`);
                     }
+                } else if (xhr.status === 500) {
+                    alert("erreur interne !")
                 }
             }
         })

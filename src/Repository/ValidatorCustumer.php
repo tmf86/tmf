@@ -4,7 +4,7 @@ namespace Repository;
 
 use Rakit\Validation\Validator;
 
-class ValidatorCustumer extends Validator
+abstract class ValidatorCustumer extends Validator
 {
     /**
      * @var string[]
@@ -28,7 +28,7 @@ class ValidatorCustumer extends Validator
     public function custumErrorMessages(&$errors)
     {
         foreach ($errors as $key => $v):
-                $errors[$key] = strtolower($errors[$key]);
+            $errors[$key] = strtolower($errors[$key]);
         endforeach;
     }
 

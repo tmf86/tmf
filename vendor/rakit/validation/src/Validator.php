@@ -2,6 +2,8 @@
 
 namespace Rakit\Validation;
 
+use Repository\EmailRuleCustumer;
+
 class Validator
 {
     use Traits\TranslationsTrait, Traits\MessagesTrait;
@@ -164,7 +166,8 @@ class Validator
             'nullable' => new Rules\Nullable,
             'phone' => new Rules\PhoneNumber,
             'name' => new Rules\Name,
-            'unique' => new Rules\Unique
+            'unique' => new Rules\Unique,
+            "emailApi" => new EmailRuleCustumer()
         ];
 
         foreach ($baseValidator as $key => $validator) {

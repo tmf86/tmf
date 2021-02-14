@@ -21,6 +21,7 @@
     "ext-pdo": "*",
     "rakit/validation": "^1.4.0",
     "ext-json": "*",
-    "phpmailer/phpmailer": "^6.2"
+    "phpmailer/phpmailer": "^6.2",
+    "ext-curl": "*"
   }
 }

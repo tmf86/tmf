@@ -4,6 +4,7 @@ namespace Contoller;
 
 use Contoller\Http\Request;
 use Repository\RegiserRepositoryValidator;
+use Repository\SendMAil;
 use View\View;
 
 class RegisterController extends Controller
@@ -29,7 +30,7 @@ class RegisterController extends Controller
      */
     public function registerStore(Request $request)
     {
-        $request->sleepRequest(2);
+        $request->sleepRequest(1);
         if ($request->isAjax()) {
             $validator = new RegiserRepositoryValidator();
             $this->processInputsData();
@@ -39,6 +40,11 @@ class RegisterController extends Controller
                 $validator->custumErrorMessages($errors);
                 return $request->ajax($errors, 400);
             } else {
+                $sendMail = new SendMAil();
+                $name = sprintf("%s %s", $request->nom, $request->prenom);
+//                debug($name);
+//                die();
+                $sendMail->sendMail($name, "", $request->email);
                 return $request->ajax(["success" => true], 200);
             }
 

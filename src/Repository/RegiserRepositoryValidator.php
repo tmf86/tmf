@@ -12,7 +12,8 @@ class RegiserRepositoryValidator extends ValidatorCustumer
         'min' => ':attribute invalide',
         'phone' => ':attribute invalide.',
         "name" => ":attribute invalide.",
-        "unique" => ":attribute deja utilisé."
+        "unique" => ":attribute deja utilisé.",
+        "emailApi" => "l :attribute est invalide."
     ];
     /**
      * @var string[]
@@ -21,7 +22,7 @@ class RegiserRepositoryValidator extends ValidatorCustumer
         'nom' => 'required|min:2|name',
         'prenom' => 'required|min:2|name',
         'contact' => 'required|numeric|phone|unique:membre,contact',
-        "email" => "required|unique:membre,email"
+        "email" => "required|emailApi|unique:membre,email"
     ];
 
 }

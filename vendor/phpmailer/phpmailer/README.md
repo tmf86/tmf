@@ -60,7 +60,7 @@ Alternatively, if you're not using Composer, copy the contents of the PHPMailer 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-require 'path/to/PHPMailer/src/Exception.php';
+require 'path/to/PHPMailer/src/Exeption.php';
 require 'path/to/PHPMailer/src/PHPMailer.php';
 require 'path/to/PHPMailer/src/SMTP.php';
 ```
