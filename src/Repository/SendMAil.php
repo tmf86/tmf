@@ -245,13 +245,10 @@ class SendMAil extends PHPMailer implements AjaxCallError
 </table>
 </body>
 </html>';
-            var_dump($mail->send());
             return true;
-//            echo 'Message has been sent';
         } catch (Exception $e) {
             $this->abortAjaxError();
             return false;
-//            echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
         }
     }
 
