@@ -54,15 +54,16 @@ class Mailer extends PHPMailer implements AjaxCallError
             $mail->Body = $this->buildMailBody();
             return $mail->send();
         } catch (Exception $e) {
-            $this->abortAjaxError();
+            debug($e->getMessage());
+            $this->abortAjaxError(500);
             return false;
         }
     }
 
     /*** @return void */
-    public function abortAjaxError()
+    public function abortAjaxError($code)
     {
-        http_response_code(500);
+        http_response_code($code);
         die();
     }
 

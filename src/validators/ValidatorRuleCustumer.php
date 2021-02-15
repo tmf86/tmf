@@ -9,9 +9,8 @@ use Rakit\Validation\Rule;
 abstract class ValidatorRuleCustumer extends Rule implements AjaxCallError
 {
 
-    public function abortAjaxError()
+    public function abortAjaxError($code)
     {
-        http_response_code(500);
-        die();
+        http_response_code($code);
     }
 }

@@ -6,5 +6,5 @@ namespace Repository;
 
 interface AjaxCallError
 {
-    public function abortAjaxError();
+    public function abortAjaxError($code);
 }

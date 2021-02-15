@@ -15,7 +15,7 @@ $dispatcher = FastRoute\simpleDispatcher(function (FastRoute\RouteCollector $r) 
     $r->addRoute('GET', '/Cpy-Mvc/inscription', ["class" => RegisterController::class, "method" => "index"]);
     $r->addRoute('POST', '/Cpy-Mvc/registerStore', ["class" => RegisterController::class, "method" => "registerStore", "var" => new Request($_POST)]);
     $r->addRoute('GET', '/Cpy-Mvc/test', function () {
-        $mail = new \Repository\Mailer("kofi jack", 'assemiensamuel48@gmail.com');
+        $mail = new \Repositories\MailerRepository("kofi jack", 'assemiensamuel48@gmail.com');
         $mail->mailerSend();
     });
 });
