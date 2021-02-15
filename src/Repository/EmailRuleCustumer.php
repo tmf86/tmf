@@ -22,11 +22,14 @@ class EmailRuleCustumer extends ValidatorRuleCustumer
             $this->abortAjaxError();
         } else {
             $data = json_decode($data, true);
-//            debug($data);
-//            debug([$data["mx_found"], $data["smtp_check"], $data["format_valid"]]);
+            if (isset($data["mx_found"]) && isset($data["smtp_check"]) && isset($data["format_valid"])) {
+                return (($data["mx_found"] === true) && ($data["smtp_check"] === true) && ($data["format_valid"] === true));
+            } else {
+                $this->abortAjaxError();
+            }
         }
         curl_close($curl);
-        return (($data["mx_found"] === true) && ($data["smtp_check"] === true) && ($data["format_valid"] === true));
+        return false;
     }
 
     public function check($value): bool

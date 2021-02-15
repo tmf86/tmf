@@ -30,7 +30,6 @@ class RegisterController extends Controller
      */
     public function registerStore(Request $request)
     {
-        $request->sleepRequest(1);
         if ($request->isAjax()) {
             $validator = new RegiserRepositoryValidator();
             $this->processInputsData();

@@ -16,7 +16,7 @@ $(function () {
             <span class="sr-only">Loading...</span>
          </span>`)
                 if (data.success === true) {
-                    $("#form-register").trigger("reset")
+                    // $("#form-register").trigger("reset")
                     $("#alertsucces").modal("show")
                 }
             },
@@ -35,7 +35,9 @@ $(function () {
                         console.log(`${property}: ${errors[property]}`);
                     }
                 } else if (xhr.status === 500) {
-                    alert("erreur interne !")
+                    alert("Oops ! Desolé veuillez reéseyez ou verifier l'etat de votre connexion internet .")
+                } else {
+                    alert("Oops ! Desolé veuillez reéseyez ou verifier l'etat de votre connexion internet .")
                 }
             }
         })
