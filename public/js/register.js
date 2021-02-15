@@ -14,7 +14,7 @@ $(function () {
                 $("#debug").html(data)
                 btnTransform("#register", `Patientez &nbsp<span class="spinner-border" role="status">
             <span class="sr-only">Loading...</span>
-         </span>`, false)
+         </span>`)
                 if (data.success === true) {
                     $("#form-register").trigger("reset")
                     $("#alertsucces").modal("show")
