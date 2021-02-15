@@ -70,16 +70,15 @@ class Mailer extends PHPMailer implements AjaxCallError
     protected function buildMailBody()
     {
         return '<!doctype html>
-<html lang="fr">
+<html lang="fr" style="font-family: Courier New, sans-serif;">
 <head>
     <title>CPY-EMAIL</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="preconnect" href="https://fonts.gstatic.com">
-	<link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,400;0,500;1,300&display=swap" rel="stylesheet">
     <style type="text/css">
         body, html {
-            font-family: \'Ubuntu\', sans-serif;
+            font-family: Courier New, sans-serif;
         }
 
         a {
@@ -119,26 +118,26 @@ class Mailer extends PHPMailer implements AjaxCallError
         }
     </style>
 </head>
-<body style="margin:0; padding:0;" bgcolor="#eaeced">
+<body style="margin: 0;padding: 0;font-family: Courier New, sans-serif;" bgcolor="#eaeced">
 <table width="100%" cellpadding="0" cellspacing="0">
     <tr>
-        <td bgcolor="#eaeced">
+        <td bgcolor="#eaeced" style="text-align: center;border-collapse: collapse !important;">
             <table class="flexible" width="400" height="100" align="center" style="margin:0 auto;" cellpadding="0" cellspacing="0">
                 <tr>
-                    <td class="img-flex" style="padding-top:5%">
+                    <!--td class="img-flex" style="padding-top:5%">
 						<img src="http://work-smy.byethost15.com/images/cpy.jpeg?i=1" style="vertical-align:top;" width="500" height="300" alt=""/>
-					</td>
+					</td-->
                 </tr>
                 <tr>
-                    <td data-bgcolor="bg-block" class="holder" style="padding:58px 60px 52px;" bgcolor="#f9f9f9">
+                    <td data-bgcolor="bg-block" class="holder" style="padding: 58px 60px 52px;text-align: center;border-collapse: collapse !important;" bgcolor="#f9f9f9">
                         <table width="100%" cellpadding="0" cellspacing="0">
                             <tr>
-                                <td class="title" align="center" style="font-family: \'Ubuntu\', sans-serif; font-weight :400 ;font-size: 1.5rem; color:#292c34; padding:0 0 24px; text-transform:uppercase;">
+                                <td class="title" align="center" style="font-family: Courier New, sans-serif;font-weight: 400;font-size: 1.5rem;color: #292c34;padding: 0 0 24px;text-transform: uppercase;text-align: center;border-collapse: collapse !important;">
                                     Validation de compte
                                 </td>
                             </tr>
                             <tr>
-                                <td align="center" style="font-weight: 400; text-align:start; padding:0 0 23px; font-size:1.5rem font-family: \'Ubuntu\', sans-serif;">
+                                <td align="center" style="font-weight: 400;text-align: start;padding: 0 0 23px;font-size: 1.5rem font-family: Courier New, sans-serif;border-collapse: collapse !important;">
                                     Chez etudiant <strong>' . $this->name . '</strong>  nous vous avons
                                     envoyé ce mail pour la validation de votre compte il ne reste plus que cette etape
                                     pour que votre compte soit activé ! Merci de bien vouloir appuyer sur le bouton
@@ -147,8 +146,8 @@ class Mailer extends PHPMailer implements AjaxCallError
                                 </td>
                             </tr>
                             <tr>
-                                <td style="padding-top:5%">
-									<a href="#" style="color: #fff">Valider</a>
+                                <td style="padding-top: 5%;text-align: center;border-collapse: collapse !important;">
+									<a href="#" style="outline: none;color: #fff;text-decoration: none;background: #43BBE7;text-align: center;padding: 1rem 6rem;text-transform: uppercase;">Valider</a>
 								</td>
                             </tr>
                         </table>
