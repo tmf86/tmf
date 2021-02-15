@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Repository;
+namespace Validator;
 
 
 class EmailRuleCustumer extends ValidatorRuleCustumer

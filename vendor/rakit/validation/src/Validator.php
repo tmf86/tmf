@@ -2,7 +2,7 @@
 
 namespace Rakit\Validation;
 
-use Repository\EmailRuleCustumer;
+use Repositories\EmailRuleCustumer;
 
 class Validator
 {
@@ -33,7 +33,7 @@ class Validator
     }
 
     /**
-     * Register or override existing validator
+     * Register or override existing validators
      *
      * @param mixed $key
      * @param \Rakit\Validation\Rule $rule
@@ -46,7 +46,7 @@ class Validator
     }
 
     /**
-     * Get validator object from given $key
+     * Get validators object from given $key
      *
      * @param mixed $key
      * @return mixed
@@ -176,7 +176,7 @@ class Validator
     }
 
     /**
-     * Given $ruleName and $rule to add new validator
+     * Given $ruleName and $rule to add new validators
      *
      * @param string $ruleName
      * @param \Rakit\Validation\Rule $rule

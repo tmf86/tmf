@@ -1,9 +1,10 @@
 <?php
 
 
-namespace Repository;
+namespace Validator;
 
 
+use Interfaces\AjaxCallError;
 use Rakit\Validation\Rule;
 
 abstract class ValidatorRuleCustumer extends Rule implements AjaxCallError

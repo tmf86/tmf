@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Repository;
+namespace Interfaces;
 
 
 interface AjaxCallError

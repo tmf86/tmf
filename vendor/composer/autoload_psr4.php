@@ -7,11 +7,13 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'View\\' => array($baseDir . '/views'),
-    'Repository\\' => array($baseDir . '/src/Repository'),
+    'Validator\\' => array($baseDir . '/src/validators'),
+    'Repositories\\' => array($baseDir . '/src/Repositories'),
     'Rakit\\Validation\\' => array($vendorDir . '/rakit/validation/src'),
     'PHPMailer\\PHPMailer\\' => array($vendorDir . '/phpmailer/phpmailer/src'),
     'Model\\Shema\\' => array($baseDir . '/models/Schema'),
     'Model\\' => array($baseDir . '/models'),
+    'Interfaces\\' => array($baseDir . '/src/interfaces'),
     'FastRoute\\' => array($vendorDir . '/nikic/fast-route/src'),
     'Contoller\\Http\\' => array($baseDir . '/controllers/Http'),
     'Contoller\\' => array($baseDir . '/controllers'),

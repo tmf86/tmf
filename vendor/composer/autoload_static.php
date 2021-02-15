@@ -14,10 +14,11 @@ class ComposerStaticInit6264916c20b8cdaf967ae3749af8fbef
         'V' => 
         array (
             'View\\' => 5,
+            'Validator\\' => 10,
         ),
         'R' => 
         array (
-            'Repository\\' => 11,
+            'Repositories\\' => 13,
             'Rakit\\Validation\\' => 17,
         ),
         'P' => 
@@ -28,6 +29,10 @@ class ComposerStaticInit6264916c20b8cdaf967ae3749af8fbef
         array (
             'Model\\Shema\\' => 12,
             'Model\\' => 6,
+        ),
+        'I' => 
+        array (
+            'Interfaces\\' => 11,
         ),
         'F' => 
         array (
@@ -45,9 +50,13 @@ class ComposerStaticInit6264916c20b8cdaf967ae3749af8fbef
         array (
             0 => __DIR__ . '/../..' . '/views',
         ),
-        'Repository\\' => 
+        'Validator\\' => 
         array (
-            0 => __DIR__ . '/../..' . '/src/Repository',
+            0 => __DIR__ . '/../..' . '/src/validators',
+        ),
+        'Repositories\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/src/Repositories',
         ),
         'Rakit\\Validation\\' => 
         array (
@@ -64,6 +73,10 @@ class ComposerStaticInit6264916c20b8cdaf967ae3749af8fbef
         'Model\\' => 
         array (
             0 => __DIR__ . '/../..' . '/models',
+        ),
+        'Interfaces\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/src/interfaces',
         ),
         'FastRoute\\' => 
         array (

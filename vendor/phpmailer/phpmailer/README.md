@@ -106,7 +106,7 @@ try {
     $mail->Port       = 587;                                    // TCP port to connect to, use 465 for `PHPMailer::ENCRYPTION_SMTPS` above
 
     //Recipients
-    $mail->setFrom('from@example.com', 'Mailer');
+    $mail->setFrom('from@example.com', 'MailerRepository');
     $mail->addAddress('joe@example.net', 'Joe User');     // Add a recipient
     $mail->addAddress('ellen@example.com');               // Name is optional
     $mail->addReplyTo('info@example.com', 'Information');
@@ -126,7 +126,7 @@ try {
     $mail->send();
     echo 'Message has been sent';
 } catch (Exception $e) {
-    echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+    echo "Message could not be sent. MailerRepository Error: {$mail->ErrorInfo}";
 }
 ```
 

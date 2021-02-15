@@ -1,10 +1,10 @@
 <?php
 
 
-namespace Repository;
+namespace Validator;
 
 
-class RegiserRepositoryValidator extends ValidatorCustumer
+class RegisterValidator extends ValidatorCustumer
 {
     protected $errorsMessages = [
         'required' => ':attribute obligatoire.',

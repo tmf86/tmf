@@ -1,14 +1,15 @@
 <?php
 
 
-namespace Repository;
+namespace Repositories;
 
 
+use interfaces\AjaxCallError;
 use PHPMailer\PHPMailer\Exception;
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 
-class Mailer extends PHPMailer implements AjaxCallError
+class MailerRepository extends PHPMailer implements AjaxCallError
 {
     /**
      * @var string

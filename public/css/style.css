@@ -2,6 +2,10 @@
 
 html, body {
     font-family: 'Product Sans Thin Regular', 'Lato', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    height: 100%;
 }
 
 * {
@@ -220,6 +224,42 @@ i {
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
+}
+
+/*Register Loading*/
+.loader-conatiner {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.cloud {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    z-index: -1;
+    background: rgba(255, 255, 255, .3);
+    transition: all .3s ease;
+}
+
+.loader-conatiner {
+    opacity: 0;
+    z-index: -1;
+    transition: all .3s ease;
+}
+
+.cloud.active, .loader-conatiner.active {
+    opacity: 1;
+    z-index: 999;
+}
+
+.loader-conatiner .spinner-grow {
+    width: 5rem !important;
+    height: 5rem !important;
 }
 
 /*Medi Queries*/

@@ -140,7 +140,7 @@ if (!isset($_GET['code'])) {
             'code' => $_GET['code']
         ]
     );
-    // Use this to interact with an API on the users behalf
-    // Use this to get a new access token if the old one expires
+    // uses this to interact with an API on the users behalf
+    // uses this to get a new access token if the old one expires
     echo 'Refresh Token: ', $token->getRefreshToken();
 }

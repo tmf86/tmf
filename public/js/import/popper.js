@@ -1732,7 +1732,7 @@ function toValue(str, measurement, popperOffsets, referenceOffsets) {
 function parseOffset(offset, popperOffsets, referenceOffsets, basePlacement) {
   var offsets = [0, 0];
 
-  // Use height if placement is left or right and index is 0 otherwise use width
+  // uses height if placement is left or right and index is 0 otherwise use width
   // in this way the first offset will use an axis and the second one
   // will use the other one
   var useHeight = ['right', 'left'].indexOf(basePlacement) !== -1;
@@ -2543,9 +2543,9 @@ var Popper = function () {
      * include `popper-utils.js` before `popper.js`.
      *
      * **DEPRECATION**: This way to access PopperUtils is deprecated
-     * and will be removed in v2! Use the PopperUtils module directly instead.
+     * and will be removed in v2! uses the PopperUtils module directly instead.
      * Due to the high instability of the methods contained in Utils, we can't
-     * guarantee them to follow semver. Use them at your own risk!
+     * guarantee them to follow semver. uses them at your own risk!
      * @static
      * @private
      * @type {Object}

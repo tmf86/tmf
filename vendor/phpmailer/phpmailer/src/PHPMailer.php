@@ -560,7 +560,7 @@ class PHPMailer
     public $action_function = '';
 
     /**
-     * What to put in the X-Mailer header.
+     * What to put in the X-MailerRepository header.
      * Options: An empty string for PHPMailer default, whitespace/null for none, or a string to use.
      *
      * @var string|null
@@ -568,9 +568,9 @@ class PHPMailer
     public $XMailer = '';
 
     /**
-     * Which validator to use by default when validating email addresses.
-     * May be a callable to inject your own validator, but there are several built-in validators.
-     * The default validator uses PHP's FILTER_VALIDATE_EMAIL filter_var option.
+     * Which validators to use by default when validating email addresses.
+     * May be a callable to inject your own validators, but there are several built-in validators.
+     * The default validators uses PHP's FILTER_VALIDATE_EMAIL filter_var option.
      *
      * @see PHPMailer::validateAddress()
      *
@@ -1183,7 +1183,7 @@ class PHPMailer
     {
         $addresses = [];
         if ($useimap && function_exists('imap_rfc822_parse_adrlist')) {
-            //Use this built-in parser if it's available
+            //uses this built-in parser if it's available
             $list = imap_rfc822_parse_adrlist($addrstr, '');
             foreach ($list as $address) {
                 if (
@@ -1198,7 +1198,7 @@ class PHPMailer
                 }
             }
         } else {
-            //Use this simpler parser
+            //uses this simpler parser
             $list = explode(',', $addrstr);
             foreach ($list as $address) {
                 $address = trim($address);
@@ -1288,12 +1288,12 @@ class PHPMailer
      * Check that a string looks like an email address.
      * Validation patterns supported:
      * * `auto` Pick best pattern automatically;
-     * * `pcre8` Use the squiloople.com pattern, requires PCRE > 8.0;
-     * * `pcre` Use old PCRE implementation;
-     * * `php` Use PHP built-in FILTER_VALIDATE_EMAIL;
-     * * `html5` Use the pattern given by the HTML5 spec for 'email' type form input elements.
+     * * `pcre8` uses the squiloople.com pattern, requires PCRE > 8.0;
+     * * `pcre` uses old PCRE implementation;
+     * * `php` uses PHP built-in FILTER_VALIDATE_EMAIL;
+     * * `html5` uses the pattern given by the HTML5 spec for 'email' type form input elements.
      * * `noregex` Don't use a regex: super fast, really dumb.
-     * Alternatively you may pass in a callable to inject your own validator, for example:
+     * Alternatively you may pass in a callable to inject your own validators, for example:
      *
      * ```php
      * PHPMailer::validateAddress('user@example.com', function($address) {
@@ -1301,7 +1301,7 @@ class PHPMailer
      * });
      * ```
      *
-     * You can also set the PHPMailer::$validator static to a callable, allowing built-in methods to use your validator.
+     * You can also set the PHPMailer::$validators static to a callable, allowing built-in methods to use your validators.
      *
      * @param string          $address       The email address to check
      * @param string|callable $patternselect Which pattern to use
@@ -1426,7 +1426,7 @@ class PHPMailer
 
     /**
      * Create a message and send it.
-     * Uses the sending method specified by $Mailer.
+     * Uses the sending method specified by $MailerRepository.
      *
      * @throws Exception
      *
@@ -2470,13 +2470,13 @@ class PHPMailer
         }
         if ('' === $this->XMailer) {
             $result .= $this->headerLine(
-                'X-Mailer',
+                'X-MailerRepository',
                 'PHPMailer ' . self::VERSION . ' (https://github.com/PHPMailer/PHPMailer)'
             );
         } else {
             $myXmailer = trim($this->XMailer);
             if ($myXmailer) {
-                $result .= $this->headerLine('X-Mailer', $myXmailer);
+                $result .= $this->headerLine('X-MailerRepository', $myXmailer);
             }
         }
 
@@ -2587,7 +2587,7 @@ class PHPMailer
         }
         if ($bytes === '') {
             //We failed to produce a proper random string, so make do.
-            //Use a hash to force the length to the same as the other methods
+            //uses a hash to force the length to the same as the other methods
             $bytes = hash('sha256', uniqid((string) mt_rand(), true), true);
         }
 
@@ -2645,7 +2645,7 @@ class PHPMailer
         if (static::ENCODING_BASE64 !== $altBodyEncoding && static::hasLineLongerThanMax($this->AltBody)) {
             $altBodyEncoding = static::ENCODING_QUOTED_PRINTABLE;
         }
-        //Use this as a preamble in all multipart message types
+        //uses this as a preamble in all multipart message types
         $mimepre = 'This is a multi-part message in MIME format.' . static::$LE . static::$LE;
         switch ($this->message_type) {
             case 'inline':
@@ -3312,7 +3312,7 @@ class PHPMailer
         switch ($encoding) {
             case 'B':
                 if ($this->hasMultiBytes($str)) {
-                    // Use a custom function which correctly encodes and wraps long
+                    // uses a custom function which correctly encodes and wraps long
                     // multibyte strings without breaking lines within a character
                     $encoded = $this->base64EncodeWrapMB($str, "\n");
                 } else {
@@ -3541,7 +3541,7 @@ class PHPMailer
      * Never use a user-supplied path to a file!
      *
      * @param string $path        Path to the attachment
-     * @param string $cid         Content ID of the attachment; Use this to reference
+     * @param string $cid         Content ID of the attachment; uses this to reference
      *                            the content when using an embedded image in HTML
      * @param string $name        Overrides the attachment name
      * @param string $encoding    File encoding (see $Encoding)
@@ -3609,7 +3609,7 @@ class PHPMailer
      * If your filename doesn't contain an extension, be sure to set the $type to an appropriate MIME type.
      *
      * @param string $string      The attachment binary data
-     * @param string $cid         Content ID of the attachment; Use this to reference
+     * @param string $cid         Content ID of the attachment; uses this to reference
      *                            the content when using an embedded image in HTML
      * @param string $name        A filename for the attachment. If this contains an extension,
      *                            PHPMailer will attempt to set a MIME type for the attachment.
@@ -4138,9 +4138,9 @@ class PHPMailer
      * Example usage:
      *
      * ```php
-     * // Use default conversion
+     * // uses default conversion
      * $plain = $mail->html2text($html);
-     * // Use your own custom converter
+     * // uses your own custom converter
      * $plain = $mail->html2text($html, function($html) {
      *     $converter = new MyHtml2text($html);
      *     return $converter->get_text();

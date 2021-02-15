@@ -11,7 +11,9 @@
       "Contoller\\": "controllers",
       "Model\\": "models",
       "Model\\Shema\\": "models/Schema",
-      "Repository\\": "src/Repository",
+      "Repositories\\": "src/Repositories",
+      "Interfaces\\": "src/interfaces",
+      "Validator\\": "src/validators",
       "View\\": "views",
       "Contoller\\Http\\": "controllers/Http"
     }
