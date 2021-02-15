@@ -3,8 +3,8 @@
 namespace Contoller;
 
 use Contoller\Http\Request;
+use Repository\Mailer;
 use Repository\RegiserRepositoryValidator;
-use Repository\SendMAil;
 use View\View;
 
 class RegisterController extends Controller
@@ -40,11 +40,9 @@ class RegisterController extends Controller
                 $validator->custumErrorMessages($errors);
                 return $request->ajax($errors, 400);
             } else {
-                $sendMail = new SendMAil();
                 $name = sprintf("%s %s", $request->nom, $request->prenom);
-//                debug($name);
-//                die();
-                $sendMail->sendMail($name, "", $request->email);
+                $maller = new Mailer($name, $request->email);
+                $maller->mailerSend();
                 return $request->ajax(["success" => true], 200);
             }
 

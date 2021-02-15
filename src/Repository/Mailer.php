@@ -8,12 +8,34 @@ use PHPMailer\PHPMailer\Exception;
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 
-class SendMAil extends PHPMailer implements AjaxCallError
+class Mailer extends PHPMailer implements AjaxCallError
 {
+    /**
+     * @var string
+     */
+    private $name;
+    /**
+     * @var string
+     */
+    private $url;
+    /**
+     * @var string
+     */
+    private $email;
+
+    public function __construct(string $name, string $email, string $url = null, $exceptions = null)
+    {
+        parent::__construct($exceptions);
+
+        $this->name = $name;
+        $this->url = $url;
+        $this->email = $email;
+    }
+
     /**
      * @return bool
      */
-    public function sendMail($name, $url, $email)
+    public function mailerSend()
     {
         $mail = new PHPMailer(true);
         try {
@@ -26,10 +48,28 @@ class SendMAil extends PHPMailer implements AjaxCallError
             $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;         // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` encouraged
             $mail->Port = 587;                                    // TCP port to connect to, use 465 for `PHPMailer::ENCRYPTION_SMTPS` above
             $mail->setFrom('cpypigier@gmail.com', 'CPY');
-            $mail->addAddress($email, $name);
+            $mail->addAddress($this->email, $this->name);
             $mail->isHTML(true);                                  // Set email format to HTML
             $mail->Subject = 'Validation de compte';
-            $mail->Body = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+            $mail->Body = $this->buildMailBody();
+            return $mail->send();
+        } catch (Exception $e) {
+            $this->abortAjaxError();
+            return false;
+        }
+    }
+
+    /*** @return void */
+    public function abortAjaxError()
+    {
+        http_response_code(500);
+        die();
+    }
+
+    /*** @return string */
+    protected function buildMailBody()
+    {
+        return '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
 <head>
@@ -207,8 +247,8 @@ class SendMAil extends PHPMailer implements AjaxCallError
                                     data-link-color="link text color"
                                     data-link-style="font-weight:bold; text-decoration:underline; color:#40aceb;"
                                     align="center"
-                                    style="font-weight: 500; text-align: justify; padding:0 0 23px;">
-                                    Chez etudiant <strong>' . $name . '</strong> vous appatenez desormais au club informatique de Pigier Yamoussoukro
+                                    style="font-weight: 500; text-align: justify; padding:0 0 23px; font-size: 1.3rem">
+                                    Chez etudiant <strong>' . $this->name . '</strong> vous appatenez desormais au club informatique de Pigier Yamoussoukro
                                     Pour une question de securité et pour une meilleurs gestion de vos données nous vous
                                     avons
                                     envoyé ce mail pour la validation de votre compte il ne reste plus que cette etape
@@ -223,11 +263,11 @@ class SendMAil extends PHPMailer implements AjaxCallError
                                         <tr>
                                             <td data-bgcolor="bg-button" data-size="size button" data-min="10"
                                                 data-max="16" class="btn" align="center"
-                                                style="font-weight:300 ;font-size:12px;color:#f8f9fb; text-transform:uppercase; mso-padding-alt:12px 10px 10px; border-radius:2px;"
+                                                style="font-weight:300 ;font-size:12px;color:#f8f9fb; text-transform:uppercase; mso-padding-alt:12px 10px 10px; border-radius:2px; font-size: 1.3rem"
                                                 bgcolor="#33B5E5" width="50px">
                                                 <a target="_blank"
                                                    style="text-decoration:none; color:#f8f9fb; display:block; padding:1rem 5rem"
-                                                   href="' . $url . '">Valider</a>
+                                                   href="' . $this->url . '">Valider</a>
                                             </td>
                                         </tr>
                                     </table>
@@ -245,16 +285,6 @@ class SendMAil extends PHPMailer implements AjaxCallError
 </table>
 </body>
 </html>';
-            return true;
-        } catch (Exception $e) {
-            $this->abortAjaxError();
-            return false;
-        }
     }
 
-    public function abortAjaxError()
-    {
-        http_response_code(500);
-        die();
-    }
 }
