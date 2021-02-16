@@ -737,7 +737,7 @@ class PHPMailer
     protected $exceptions = false;
 
     /**
-     * Unique ID used for message ID and boundaries.
+     * UniqueRuleCustumer ID used for message ID and boundaries.
      *
      * @var string
      */
@@ -3481,7 +3481,7 @@ class PHPMailer
      * such as a BLOB record from a database.
      *
      * @param string $string      String attachment data
-     * @param string $filename    Name of the attachment
+     * @param string $filename    NameRuleCustumer of the attachment
      * @param string $encoding    File encoding (see $Encoding)
      * @param string $type        File extension (MIME) type
      * @param string $disposition Disposition to use

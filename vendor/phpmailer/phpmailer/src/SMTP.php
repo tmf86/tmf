@@ -1136,7 +1136,7 @@ class SMTP
      *     $name == any other string: if extension $name exists, returns True
      *       or its options (e.g. AUTH mechanisms supported). Otherwise returns False.
      *
-     * @param string $name Name of SMTP extension or 'HELO'|'EHLO'
+     * @param string $name NameRuleCustumer of SMTP extension or 'HELO'|'EHLO'
      *
      * @return string|bool|null
      */

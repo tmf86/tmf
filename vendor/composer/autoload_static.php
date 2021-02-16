@@ -14,6 +14,7 @@ class ComposerStaticInit6264916c20b8cdaf967ae3749af8fbef
         'V' => 
         array (
             'View\\' => 5,
+            'Validator\\Rules\\' => 16,
             'Validator\\' => 10,
         ),
         'R' => 
@@ -50,9 +51,13 @@ class ComposerStaticInit6264916c20b8cdaf967ae3749af8fbef
         array (
             0 => __DIR__ . '/../..' . '/views',
         ),
+        'Validator\\Rules\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/src/Validators/Rules',
+        ),
         'Validator\\' => 
         array (
-            0 => __DIR__ . '/../..' . '/src/validators',
+            0 => __DIR__ . '/../..' . '/src/Validators',
         ),
         'Repositories\\' => 
         array (
@@ -76,7 +81,7 @@ class ComposerStaticInit6264916c20b8cdaf967ae3749af8fbef
         ),
         'Interfaces\\' => 
         array (
-            0 => __DIR__ . '/../..' . '/src/interfaces',
+            0 => __DIR__ . '/../..' . '/src/Interfaces',
         ),
         'FastRoute\\' => 
         array (
