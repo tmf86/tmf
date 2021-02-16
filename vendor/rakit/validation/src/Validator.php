@@ -2,7 +2,9 @@
 
 namespace Rakit\Validation;
 
-use Repositories\EmailRuleCustumer;
+use Validator\Rules\EmailRuleCustumer;
+use Validator\Rules\NameRuleCustumer;
+use Validator\Rules\UniqueRuleCustumer;
 
 class Validator
 {
@@ -164,9 +166,9 @@ class Validator
             'defaults' => new Rules\Defaults,
             'default' => new Rules\Defaults, // alias of defaults
             'nullable' => new Rules\Nullable,
-            'phone' => new Rules\PhoneNumber,
-            'name' => new Rules\Name,
-            'unique' => new Rules\Unique,
+            'phone' => new EmailRuleCustumer(),
+            'name' => new NameRuleCustumer(),
+            'unique' => new UniqueRuleCustumer(),
             "emailApi" => new EmailRuleCustumer()
         ];
 
