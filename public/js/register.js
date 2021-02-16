@@ -4,7 +4,7 @@ $(function () {
         $(".cloud").toggleClass("active")
         $(".loader-conatiner").toggleClass("active")
         btnTransform("#register", `
-        s'inscrir &nbsp<span class="spinner-border" role="status">
+        s'inscrir &nbsp<span class="spinner-border reziseInter" role="status">
             <span class="sr-only">Loading...</span>
          </span>`)
         $.ajax({
@@ -16,9 +16,9 @@ $(function () {
                 $("#debug").html(data)
                 $(".cloud").toggleClass("active")
                 $(".loader-conatiner").toggleClass("active")
-                btnTransform("#register", `Patientez &nbsp<span class="spinner-border" role="status">
+                btnTransform("#register", `<span class="spinner-border reziseInter" role="status">
             <span class="sr-only">Loading...</span>
-         </span>`)
+         </span>`, false)
                 if (data.success === true) {
                     $("#form-register").trigger("reset")
                     $("#alertsucces").modal("show")

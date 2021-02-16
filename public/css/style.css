@@ -266,6 +266,11 @@ i {
     height: 5rem !important;
 }
 
+.reziseInter {
+    width: 1rem !important;
+    height: 1rem !important;
+}
+
 .loader-label {
     position: absolute;
     top: 4rem;
