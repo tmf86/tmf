@@ -24,19 +24,16 @@ class EmailRuleCustumer extends ValidatorRuleCustumer
             $this->abortAjaxError(401);
         } else {
             $data = json_decode($data, true);
-            foreach ($data as &$val):
-                if (is_null($val)) {
-                    $val = 0;
-                }
-            endforeach;
+            foreach ($data as &$val):if (is_null($val))  $val = 0;endforeach;
 //            isset($data["mx_found"])) &&($data["mx_found"] === true) && ($data["mx_found"] === true) &&
-            if (($data["smtp_check"] === true) && (($data["format_valid"]) === true)) {
-//                return (($data["smtp_check"] === true) && ($data["format_valid"] === true));
-                return true;
+            if ((isset($data["smtp_check"])) && (isset($data["format_valid"]))) {
+                if (($data["smtp_check"] === true) && (($data["format_valid"]) === true)) {
+                    return true;
+                } else {
+                    return false;
+                }
             } else {
-//                debug([$data, "Api"]);
-//                $this->abortAjaxError(400);
-                return false;
+                $this->abortAjaxError(401);
             }
         }
         curl_close($curl);
