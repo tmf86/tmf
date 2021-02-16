@@ -20,7 +20,7 @@ $(function () {
             <span class="sr-only">Loading...</span>
          </span>`)
                 if (data.success === true) {
-                    // $("#form-register").trigger("reset")
+                    $("#form-register").trigger("reset")
                     $("#alertsucces").modal("show")
                 }
             },
@@ -48,4 +48,13 @@ $(function () {
             }
         })
     })
+    //Point loader
+    setInterval(function () {
+        if ($(".loader-conatiner").hasClass("active")) {
+            if ($("#point-loader").html().length === 3) {
+                $("#point-loader").html("")
+            }
+            $("#point-loader").html($("#point-loader").html() + ".")
+        }
+    }, 1000)
 })

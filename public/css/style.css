@@ -237,6 +237,12 @@ i {
     transition: all .3s ease;
 }
 
+.rezise {
+    width: 3rem !important;
+    height: 3rem !important;
+    color: #33B5E5 !important;
+}
+
 .cloud {
     position: fixed;
     top: 0;
@@ -245,7 +251,7 @@ i {
     height: 100%;
     opacity: 0;
     z-index: -1;
-    background: rgba(255, 255, 255, .3);
+    background: rgb(255, 255, 255);
     transition: all .3s ease;
 }
 
@@ -258,6 +264,13 @@ i {
 .loader-conatiner .spinner-grow {
     width: 5rem !important;
     height: 5rem !important;
+}
+
+.loader-label {
+    position: absolute;
+    top: 4rem;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 /*Medi Queries*/

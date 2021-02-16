@@ -124,7 +124,13 @@
 <div id="debug"></div>
 <div class="cloud"></div>
 <div class="loader-conatiner">
-    <div class="spinner-grow" role="status">
+    <!--    <div class="spinner-grow" role="status">-->
+    <!--        <span class="sr-only">Loading...</span>-->
+    <!--    </div>-->
+    <div class="spinner-border text-primary rezise" role="status">
         <span class="sr-only">Loading...</span>
+    </div>
+    <div class="loader-label">
+        Patientez<span id="point-loader" style="font-size:1.7rem">.</span>
     </div>
 </div>
