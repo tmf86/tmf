@@ -62,7 +62,7 @@ class Mailer extends PHPMailer implements AjaxCallError
     /*** @return string */
     protected function buildMailBody()
     {
-        return '<!doctype html><html lang="fr" style="font-family: Courier New, sans-serif;">
+        return '<!doctype html><html lang="fr" style="font-family: Helvetica, sans-serif;">
 <head>
     <title>CPY-EMAIL</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -70,7 +70,7 @@ class Mailer extends PHPMailer implements AjaxCallError
 	<link rel="preconnect" href="https://fonts.gstatic.com">
     <style type="text/css">
         body, html {
-            font-family: Courier New, sans-serif;
+            font-family: Helvetica, sans-serif;
         }
 
         a {
@@ -105,7 +105,7 @@ class Mailer extends PHPMailer implements AjaxCallError
         }
     </style>
 </head>
-<body style="margin: 0;padding: 0;font-family: Courier New, sans-serif;" bgcolor="#eaeced">
+<body style="margin: 0;padding: 0;font-family: Helvetica, sans-serif;" bgcolor="#eaeced">
 <table width="100%" cellpadding="0" cellspacing="0">
     <tr>
         <td bgcolor="#eaeced" style="text-align: center;border-collapse: collapse !important;">
@@ -119,12 +119,12 @@ class Mailer extends PHPMailer implements AjaxCallError
                     <td data-bgcolor="bg-block" class="holder" style="padding: 58px 60px 52px;text-align: center;border-collapse: collapse !important;">
                         <table width="500" cellpadding="0" cellspacing="0">
                             <tr>
-                                <td class="title" align="center" style="font-family: Courier New, sans-serif;font-weight: 400;font-size: 1.5rem;color: #292c34;padding: 0 0 24px;text-transform: uppercase;text-align: center;border-collapse: collapse !important;">
+                                <td class="title" align="center" style="font-family: Helvetica, sans-serif;font-weight: 400;font-size: 1.5rem;color: #292c34;padding: 0 0 24px;text-transform: uppercase;text-align: center;border-collapse: collapse !important;">
                                     Validation de compte
                                 </td>
                             </tr>
                             <tr>
-                                <td align="center" style="font-weight: 400;text-align: start;padding: 0 0 23px;font-size:1.5rem;border-collapse:collapse!important;font-family: Courier New, sans-serif;">
+                                <td align="center" style="font-weight: 400;text-align: start;padding: 0 0 23px;font-size:1.5rem;border-collapse:collapse!important;font-family: Helvetica, sans-serif;">
                                     Chez etudiant <strong>' . $this->name . '</strong>  nous vous avons
                                     envoyé ce mail pour la validation de votre compte il ne reste plus que cette etape
                                     pour que votre compte soit activé ! Merci de bien vouloir appuyer sur le bouton
@@ -137,7 +137,7 @@ class Mailer extends PHPMailer implements AjaxCallError
                                     <tr>
                                         <td  bgcolor="#f9f9f9">
                                             <td style="text-align: center;border-collapse: collapse !important;">
-                                                <a href="#" style="outline: none;color: #fff;text-decoration: none;background: #43BBE7;text-align: center;padding: 1rem 6rem;text-transform: uppercase;font-family: Courier New, sans-serif;font-size: 1.3rem">Valider</a>
+                                                <a href="#" style="outline: none;color: #fff;text-decoration: none;background: #43BBE7;text-align: center;padding: 1rem 6rem;text-transform: uppercase;font-family: Helvetica, sans-serif;font-size: 1.3rem">Valider</a>
                                             </td>
                                         </td>
                                     </tr>
