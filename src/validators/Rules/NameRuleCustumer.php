@@ -1,12 +1,10 @@
 <?php
 
 
-namespace Rakit\Validation\Rules;
-
-
+namespace Validator\Rules;
 use Rakit\Validation\Rule;
 
-class Name extends Rule
+class NameRuleCustumer extends Rule
 {
     /** @var string */
     protected $message = "The :attribute must be a name valide";

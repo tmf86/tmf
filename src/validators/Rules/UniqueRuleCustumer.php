@@ -1,13 +1,13 @@
 <?php
 
 
-namespace Rakit\Validation\Rules;
+namespace Validator\Rules;
 
 
 use Model\Model;
 use Rakit\Validation\Rule;
 
-class Unique extends Rule
+class UniqueRuleCustumer extends Rule
 {
     /** @var string */
     protected $message = ":attribute :value has been used";

@@ -1,10 +1,10 @@
 <?php
 
-namespace Rakit\Validation\Rules;
+namespace Validator\Rules;
 
 use Rakit\Validation\Rule;
 
-class PhoneNumber extends Rule
+class PhoneNumberRuleCustumer extends Rule
 {
 
 
@@ -19,7 +19,7 @@ class PhoneNumber extends Rule
      */
     public function check($value): bool
     {
-       $value = (string) $value;
-       return (strlen($value) === 8 || strlen($value)===10 );
+        $value = (string)$value;
+        return (strlen($value) === 8 || strlen($value) === 10);
     }
 }

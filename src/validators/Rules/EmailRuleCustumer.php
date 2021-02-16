@@ -1,8 +1,10 @@
 <?php
 
 
-namespace Validator;
+namespace Validator\Rules;
 
+
+use Validator\ValidatorRuleCustumer;
 
 class EmailRuleCustumer extends ValidatorRuleCustumer
 {
