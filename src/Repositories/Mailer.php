@@ -9,33 +9,24 @@ use PHPMailer\PHPMailer\Exception;
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 
-class MailerRepository extends PHPMailer implements AjaxCallError
+class Mailer extends PHPMailer implements AjaxCallError
 {
-    /**
-     * @var string
-     */
+    /*** @var string */
     private $name;
-    /**
-     * @var string
-     */
+    /*** @var string */
     private $url;
-    /**
-     * @var string
-     */
+    /*** @var string */
     private $email;
 
     public function __construct(string $name, string $email, string $url = null, $exceptions = null)
     {
         parent::__construct($exceptions);
-
         $this->name = $name;
         $this->url = $url;
         $this->email = $email;
     }
 
-    /**
-     * @return bool
-     */
+    /*** @return bool */
     public function mailerSend()
     {
         $mail = new PHPMailer(true);
