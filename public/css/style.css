@@ -5,7 +5,6 @@ html, body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    height: 100%;
 }
 
 * {
@@ -18,24 +17,6 @@ a:hover {
 
 .bg {
     background: url("../../images/font.jpg") no-repeat center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    height: 100%;
-}
-
-.bg-login {
-    background: url("../../images/dark-.png") no-repeat center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    height: 100%;
-}
-
-.bg-footer {
-    background: url("../../images/footer.jpg") no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -292,7 +273,6 @@ i {
 
 @media (min-width: 450px ) and (max-width: 999px) {
     .card {
-        align-items: center;
         margin: 0 auto;
     }
 
@@ -340,10 +320,4 @@ i {
     .loader-conatiner {
         top: 30rem;
     }
-}
-
-@media (max-width: 991px) {
-    /*.loader-conatiner {*/
-    /*    top: 70%;*/
-    /*}*/
 }
