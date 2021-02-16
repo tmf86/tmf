@@ -41,9 +41,9 @@ $(function () {
                         console.log(`${property}: ${errors[property]}`);
                     }
                 } else if (xhr.status === 500) {
-                    alert("Oops ...\nVeuillez Réeseigner !")
+                    alert("Oops ...\nVeuillez Réessayer !")
                 } else if (xhr.status === 401) {
-                    alert("Oops...\nVeuillez verifier l'etat de votre connexion internet et rééseyer !")
+                    alert("Oops...\nVeuillez verifier l'etat de votre connexion internet et Réesayer !")
                 }
             }
         })
