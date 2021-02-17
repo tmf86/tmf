@@ -48,7 +48,7 @@
 <script>
     setTimeout(function () {
         $(".waiting").toggleClass("hidden")
-    }, 2000)
+    }, 3000)
 </script>
 <!--end of js files loading  -->
 </body>
