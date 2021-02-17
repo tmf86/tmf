@@ -15,10 +15,16 @@
     <!-- Stylesheet   -->
     <!-- Script-->
     <script src="https://kit.fontawesome.com/bb2a11cf5b.js" defer crossorigin="anonymous"></script>
-<!--    <script src="public/js/import/hnl.mobileConsole.js"></script>-->
+    <!--    <script src="public/js/import/hnl.mobileConsole.js"></script>-->
     <!-- Script-->
 </head>
 <body>
+<div class="hide-containt"></div>
+<div class="waiting">
+    <div class="spinner-grow rezise" role="status">
+        <span class="sr-only">Loading...</span>
+    </div>
+</div>
 <header class="header">
     <nav class="mb-1 navbar navbar-expand-lg navbar-light grey darken-2 lighten-1">
         <a href="#" class="navbar-brand"><img src="images/cpy.jpeg" alt=""

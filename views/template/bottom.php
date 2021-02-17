@@ -45,6 +45,14 @@
 <script src="public/js/import/popper.js"></script>
 <script src="public/js/import/mdb.js"></script>
 <?= scripts($scripts ?? []) ?>
+<script>
+    $(function () {
+        setTimeout(function () {
+            $(".waiting").toggleClass("fade")
+            $(".hide-containt").toggleClass("fade")
+        }, 2000)
+    })
+</script>
 <!--end of js files loading  -->
 </body>
 </html>
