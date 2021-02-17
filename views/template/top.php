@@ -19,10 +19,11 @@
     <!-- Script-->
 </head>
 <body>
-<div class="hide-containt"></div>
 <div class="waiting">
-    <div class="spinner-grow rezise" role="status">
-        <span class="sr-only">Loading...</span>
+    <div class="loader">
+        <div class="spinner-grow rezise" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
     </div>
 </div>
 <header class="header">
