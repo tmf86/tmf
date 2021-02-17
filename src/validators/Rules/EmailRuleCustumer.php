@@ -21,10 +21,10 @@ class EmailRuleCustumer extends ValidatorRuleCustumer
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
         $data = curl_exec($curl);
         if ($data === false) {
-            $this->abortAjaxError(401);
+            $this->abortAjaxError(401, true);
         } else {
             $data = json_decode($data, true);
-            foreach ($data as &$val):if (is_null($val))  $val = 0;endforeach;
+            foreach ($data as &$val):if (is_null($val)) $val = 0;endforeach;
 //            isset($data["mx_found"])) &&($data["mx_found"] === true) && ($data["mx_found"] === true) &&
             if ((isset($data["smtp_check"])) && (isset($data["format_valid"]))) {
                 if (($data["smtp_check"] === true) && (($data["format_valid"]) === true)) {
@@ -33,7 +33,7 @@ class EmailRuleCustumer extends ValidatorRuleCustumer
                     return false;
                 }
             } else {
-                $this->abortAjaxError(401);
+                $this->abortAjaxError(401, true);
             }
         }
         curl_close($curl);

@@ -3,7 +3,7 @@
 namespace Contoller;
 
 use Contoller\Http\Request;
-use Repositories\Mailer;
+use Model\User;
 use Validator\RegisterValidator;
 use View\View;
 
@@ -39,9 +39,13 @@ class RegisterController extends Controller
                 $validator->custumErrorMessages($errors);
                 return $request->ajax($errors, 400);
             } else {
-                $name = sprintf("%s %s", $request->nom, $request->prenom);
-                $maller = new Mailer($name, $request->email);
-                $maller->mailerSend();
+                $user = new User();
+                $user = $user->create($request->inputs());
+                debug($user);
+                die();
+//                $name = sprintf("%s %s", $request->nom, $request->prenom);
+//                $maller = new Mailer($name, $request->email);
+//                $maller->mailerSend();
                 return $request->ajax(["success" => true], 200);
             }
 
