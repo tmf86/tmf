@@ -1,4 +1,7 @@
 <?php
+
+use Contoller\Http\Request;
+
 /**
  * @param array $rootResult
  * @return void
@@ -7,26 +10,29 @@
 function processFundedRoot(array $rootResult)
 {
     $handler = $rootResult[1];
-    $vars = $rootResult[2];
+    $urlVars = $rootResult[2];
     if (is_array($handler)) {
         $class = $handler['class'];
         $method = $handler['method'];
-        if (key_exists("get", $handler)) {
-            $get = $handler['get'];
+        if (key_exists("gets", $handler) && key_exists("vars", $handler)) {
+            $vars = $handler['vars'];
             $classToInstanced = new $class();
-            $classToInstanced->$method($vars["$get"]);
-        } elseif (key_exists("var", $handler)) {
-            $var = $handler['var'];
+            $classToInstanced->$method(...$urlVars, ...$vars);
+        } elseif (key_exists("gets", $handler)) {
             $classToInstanced = new $class();
-            $classToInstanced->$method($var);
+            $classToInstanced->$method(...$urlVars);
+        } elseif (key_exists("vars", $handler)) {
+            $vars = $handler['vars'];
+            $classToInstanced = new $class();
+            $classToInstanced->$method(...$vars);
         } else {
             $classToInstanced = new $class();
             $classToInstanced->$method();
         }
     } else if (is_callable($handler)) {
-        call_user_func($handler, $vars);
+        call_user_func($handler, $urlVars);
     } else {
-        var_dump($handler);
+        Request::abort(404);
     }
 
 }
