@@ -3,39 +3,26 @@
 
 namespace Contoller\Http;
 
-
 class Request
 {
-    /**
-     * @var array
-     */
+    /*** @var array */
     private $inputs;
-    /**
-     * @var array
-     */
+    /*** @var array */
     private $get;
-    /**
-     * @var array
-     */
+    /*** @var array */
     private $cookies;
-    /**
-     * @var array
-     */
+    /*** @var array */
     private $sessions;
 
     /**
      * Request constructor.
-     * @param array $post
-     * @param array $get
-     * @param array $cookies
-     * @param array $sessions
      */
-    public function __construct(&$post = [], &$get = [], $cookies = [], $sessions = [])
+    public function __construct()
     {
-        $this->get = &$get;
-        $this->cookies = $cookies;
-        $this->sessions = $sessions;
-        $this->inputs = &$post;
+        $this->get = &$_GET;
+        $this->cookies = &$_COOKIE;
+        $this->sessions = &$_SESSION;
+        $this->inputs = &$_POST;
     }
 
     /**
@@ -88,25 +75,36 @@ class Request
         sleep($value);
     }
 
+    public function session(string $key = "", string $value = "")
+    {
+        if (!empty($key) && empty($value)) {
+            if (key_exists($key, $this->sessions)) {
+                return $this->sessions["$key"];
+            } else {
+                throw  new  \Exception("The key ask  doesn't exist.");
+            }
+        } else if (!empty($key) && !empty($value)) {
+            $this->sessions["$key"] = $value;
+            return $this->sessions["$key"];
+        } else {
+            return $this->sessions;
+        }
+    }
+
     /**
      * @param $name
      * @return mixed|string
      */
     public function __get($name)
     {
-        //Je verifie si la propriéte demander est une clé de l'un de
-        // des attribut $post , $get , $cookies ou encore $session
-        $value = "";
+        //Je verifie si la propriéte demander est une clé de l'un
+        // des attribut $post ou $get
         if (key_exists($name, $this->inputs)) {
             $value = $this->inputs["$name"];
-        } else if (key_exists($name, $this->sessions)) {
-            $value = $this->sessions["$name"];
         } else if (key_exists($name, $this->get)) {
             $value = $this->get["$name"];
-        } else if (key_exists($name, $this->cookies)) {
-            $value = $this->cookies["$name"];
         } else {
-            echo "cette priopriétés n'existe pas !";
+            throw new \Exception("The property don't exist.");
         }
         return $value;
     }

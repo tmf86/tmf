@@ -27,10 +27,13 @@ class RegisterController extends Controller
     /**
      * @param Request $request
      * @return Request
+     * @throws \Exception
      */
     public function registerStore(Request $request)
     {
         if ($request->isAjax()) {
+            debug($request->session());
+            die();
             $validator = new RegisterValidator();
             $this->processInputsData();
             $validation = $validator->validateCustermer($request->inputs());
@@ -41,8 +44,6 @@ class RegisterController extends Controller
             } else {
                 $user = new User();
                 $user = $user->create($request->inputs());
-                debug($user);
-                die();
 //                $name = sprintf("%s %s", $request->nom, $request->prenom);
 //                $maller = new Mailer($name, $request->email);
 //                $maller->mailerSend();
