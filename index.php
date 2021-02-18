@@ -8,7 +8,7 @@ use Repositories\Mailer;
 
 require "vendor/autoload.php";
 require "helpers/helper.php";
-
+session_start();
 $dispatcher = FastRoute\simpleDispatcher(function (FastRoute\RouteCollector $r) {
     $r->addRoute('GET', '/Cpy-Mvc/', ["class" => HomeController::class, "method" => "index"]);
     $r->addRoute('GET', '/Cpy-Mvc/connexion', ["class" => ConnexionController::class, "method" => "index"]);
@@ -17,7 +17,7 @@ $dispatcher = FastRoute\simpleDispatcher(function (FastRoute\RouteCollector $r) 
     $r->addRoute('POST', '/Cpy-Mvc/registerStore',
         ["class" => RegisterController::class, "method" => "registerStore", "vars" =>
             [
-                new Request($_POST)
+                new Request()
             ]
         ]);
     $r->addRoute('GET', '/Cpy-Mvc/test', function () {
