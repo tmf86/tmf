@@ -71,7 +71,7 @@ abstract class DispatcherTest extends TestCase
 
     /**
      * @expectedException \FastRoute\BadRouteException
-     * @expectedExceptionMessage Cannot use the same placeholder "test" twice
+     * @expectedExceptionMessage Cannot utils the same placeholder "test" twice
      */
     public function testDuplicateVariableNameError()
     {

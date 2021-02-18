@@ -520,7 +520,7 @@
         return i(t) && ("function" != typeof(n = t.constructor) || n !== Array && !i(n.prototype) ? r(n) && null === (n = n[o]) && (n = void 0) : n = void 0), new(void 0 === n ? Array : n)(0 === e ? 0 : e)
     }
 }, function(t, e, n) {
-    "use strict";
+    "utils strict";
     var r = n(1);
     t.exports = function(t, e) {
         var n = [][t];
@@ -531,7 +531,7 @@
         }))
     }
 }, function(t, e, n) {
-    "use strict";
+    "utils strict";
     var r, i, o = n(68),
         a = RegExp.prototype.exec,
         s = String.prototype.replace,
@@ -545,7 +545,7 @@
         })), r
     }), t.exports = l
 }, function(t, e, n) {
-    "use strict";
+    "utils strict";
     var r = {}.propertyIsEnumerable,
         i = Object.getOwnPropertyDescriptor,
         o = i && !r.call({
@@ -601,7 +601,7 @@
         return t
     }
 }, function(t, e, n) {
-    "use strict";
+    "utils strict";
     var r = n(10),
         i = n(58),
         o = n(40),
@@ -640,7 +640,7 @@
         t.exports = e
     }).call(this, {})
 }, function(t, e, n) {
-    "use strict";
+    "utils strict";
     var r, i = n(9),
         o = n(0),
         a = n(5),
@@ -746,7 +746,7 @@
         TypedArrayPrototype: k
     }
 }, function(t, e, n) {
-    "use strict";
+    "utils strict";
     var r = n(19),
         i = n(8),
         o = n(17);
@@ -818,7 +818,7 @@
         })
     }
 }, function(t, e, n) {
-    "use strict";
+    "utils strict";
     var r = n(3),
         i = n(93),
         o = n(60),
@@ -876,7 +876,7 @@
         return w
     }
 }, function(t, e, n) {
-    "use strict";
+    "utils strict";
     var r, i, o, a = n(60),
         s = n(6),
         l = n(4),
@@ -891,7 +891,7 @@
         BUGGY_SAFARI_ITERATORS: f
     }
 }, function(t, e, n) {
-    "use strict";
+    "utils strict";
     var r = n(7);
     t.exports = function() {
         var t = r(this),
@@ -934,7 +934,7 @@
         unsafe: !0
     })
 }, function(t, e, n) {
-    "use strict";
+    "utils strict";
     var r = n(6),
         i = n(14),
         o = n(1),
@@ -1054,13 +1054,13 @@
         }(e = Object(t), i)) ? n : o ? r(e) : "Object" == (a = r(e)) && "function" == typeof e.callee ? "Arguments" : a
     }
 }, function(t, e, n) {
-    "use strict";
+    "utils strict";
     var r = n(69).charAt;
     t.exports = function(t, e, n) {
         return e + (n ? r(t, e).length : 1)
     }
 }, function(t, e, n) {
-    "use strict";
+    "utils strict";
     var r = n(3),
         i = n(0),
         o = n(24),
@@ -1294,7 +1294,7 @@
     var r = n(35);
     t.exports = r("document", "documentElement")
 }, function(t, e, n) {
-    "use strict";
+    "utils strict";
     var r = n(3),
         i = n(9),
         o = n(0),
@@ -1335,7 +1335,7 @@
 }, function(t, e, n) {
     n(65)("iterator")
 }, function(t, e, n) {
-    "use strict";
+    "utils strict";
     var r = n(3),
         i = n(45);
     r({
@@ -1346,7 +1346,7 @@
         exec: i
     })
 }, function(t, e, n) {
-    "use strict";
+    "utils strict";
     var r = n(69).charAt,
         i = n(21),
         o = n(66),
@@ -1458,7 +1458,7 @@
         return t
     }
 }, function(t, e, n) {
-    "use strict";
+    "utils strict";
     var r = n(76),
         i = {};
     i[n(2)("toStringTag")] = "z", t.exports = "[object z]" !== String(i) ? function() {
@@ -1481,7 +1481,7 @@
         trim: s(3)
     }
 }, function(t, e, n) {
-    "use strict";
+    "utils strict";
     var r = n(3),
         i = n(41).indexOf,
         o = n(44),
@@ -1512,7 +1512,7 @@
         }(t) : i(r(t))
     }
 }, function(t, e, n) {
-    "use strict";
+    "utils strict";
     var r = n(67).IteratorPrototype,
         i = n(34),
         o = n(17),
@@ -1534,7 +1534,7 @@
         return t.prototype.constructor = null, Object.getPrototypeOf(new t) !== t.prototype
     }))
 }, function(t, e, n) {
-    "use strict";
+    "utils strict";
     var r = n(3),
         i = n(23).map;
     r({
@@ -1547,7 +1547,7 @@
         }
     })
 }, function(t, e, n) {
-    "use strict";
+    "utils strict";
     var r = n(3),
         i = n(5),
         o = n(29),
@@ -1575,7 +1575,7 @@
         }
     })
 }, function(t, e, n) {
-    "use strict";
+    "utils strict";
     var r = n(3),
         i = n(32),
         o = n(12),
@@ -1608,7 +1608,7 @@
         }
     })
 }, function(t, e, n) {
-    "use strict";
+    "utils strict";
     var r = n(72),
         i = n(7),
         o = n(16),
@@ -1691,7 +1691,7 @@
         }
     }))
 }, function(t, e, n) {
-    "use strict";
+    "utils strict";
     var r = n(3),
         i = n(23).filter;
     r({
@@ -1704,7 +1704,7 @@
         }
     })
 }, function(t, e, n) {
-    "use strict";
+    "utils strict";
     var r = n(3),
         i = n(23).find,
         o = n(58),
@@ -1721,7 +1721,7 @@
         }
     }), o("find")
 }, function(t, e, n) {
-    "use strict";
+    "utils strict";
     var r = n(3),
         i = n(31),
         o = n(10),
@@ -1739,7 +1739,7 @@
         }
     })
 }, function(t, e, n) {
-    "use strict";
+    "utils strict";
     var r = n(3),
         i = n(1),
         o = n(29),
@@ -1806,7 +1806,7 @@
         parseFloat: i
     })
 }, function(t, e, n) {
-    "use strict";
+    "utils strict";
     var r = n(14),
         i = n(7),
         o = n(1),
@@ -1869,7 +1869,7 @@
         return 0 === n && "-" == e.charAt(0) ? -0 : n
     } : a
 }, function(t, e, n) {
-    "use strict";
+    "utils strict";
     var r = n(72),
         i = n(110),
         o = n(7),
@@ -1937,7 +1937,7 @@
         return r(t) && (void 0 !== (e = t[o]) ? !!e : "RegExp" == i(t))
     }
 }, function(t, e, n) {
-    "use strict";
+    "utils strict";
     var r = n(23).forEach,
         i = n(44);
     t.exports = i("forEach") ? function(t) {
@@ -1951,7 +1951,7 @@
         return i && "function" == typeof(o = e.constructor) && o !== n && r(a = o.prototype) && a !== n.prototype && i(t, a), t
     }
 }, function(t, e, n) {
-    "use strict";
+    "utils strict";
     var r = n(72),
         i = n(7),
         o = n(11),
@@ -1979,7 +1979,7 @@
         }]
     }))
 }, function(t, e, n) {
-    "use strict";
+    "utils strict";
     var r = n(3),
         i = n(12),
         o = n(115),
@@ -2039,7 +2039,7 @@
         return +t
     }
 }, function(t, e, n) {
-    "use strict";
+    "utils strict";
     var r = n(12),
         i = n(13);
     t.exports = "".repeat || function(t) {
@@ -2052,7 +2052,7 @@
         return n
     }
 }, , , function(t, e, n) {
-    "use strict";
+    "utils strict";
     var r = n(3),
         i = n(111);
     r({
@@ -2063,7 +2063,7 @@
         forEach: i
     })
 }, function(t, e, n) {
-    "use strict";
+    "utils strict";
     var r = n(3),
         i = n(107).left;
     r({
@@ -2076,7 +2076,7 @@
         }
     })
 }, function(t, e, n) {
-    "use strict";
+    "utils strict";
     var r = n(3),
         i = n(29),
         o = [].reverse,
@@ -2091,7 +2091,7 @@
         }
     })
 }, function(t, e, n) {
-    "use strict";
+    "utils strict";
     var r = n(3),
         i = n(53),
         o = n(16),
@@ -2116,7 +2116,7 @@
         }
     })
 }, function(t, e, n) {
-    "use strict";
+    "utils strict";
     var r = n(9),
         i = n(0),
         o = n(51),
@@ -2192,7 +2192,7 @@
         }
     }
 }, function(t, e, n) {
-    "use strict";
+    "utils strict";
     var r = n(35),
         i = n(8),
         o = n(2),
@@ -2276,7 +2276,7 @@
     }
     h("RegExp")
 }, function(t, e, n) {
-    "use strict";
+    "utils strict";
     var r = n(10),
         i = n(12),
         o = n(11),
@@ -2295,7 +2295,7 @@
         return -1
     } : l
 }, , function(t, e, n) {
-    "use strict";
+    "utils strict";
     var r = n(16),
         i = n(32),
         o = n(11);
@@ -2304,7 +2304,7 @@
         return e
     }
 }, function(t, e, n) {
-    "use strict";
+    "utils strict";
     n.r(e);
     n(100), n(101), n(95), n(123), n(83), n(98);
 
@@ -2465,7 +2465,7 @@
         }))
     }))
 }, function(t, e, n) {
-    "use strict";
+    "utils strict";
     n.r(e);
     n(100);
     jQuery((function(t) {
@@ -2508,7 +2508,7 @@
         }
     }))
 }, function(t, e, n) {
-    "use strict";
+    "utils strict";
     n.r(e);
     n(96), n(104), n(71), n(106);
 
@@ -2701,7 +2701,7 @@
         }
     })
 }, function(t, e, n) {
-    "use strict";
+    "utils strict";
     var r = n(0),
         i = n(9),
         o = n(56).NATIVE_ARRAY_BUFFER,
@@ -2923,11 +2923,11 @@
 }, function(t, e, n) {
     n(153), t.exports = n(154)
 }, function(t, e, n) {}, function(t, e, n) {
-    "use strict";
+    "utils strict";
     n.r(e);
     n(155), n(156), n(162), n(167), n(168), n(169), n(204), n(133), n(134), n(135), n(136)
 }, function(t, e, n) {
-    "use strict";
+    "utils strict";
     (function(t) {
         var e, r;
         n(78), n(81), n(82), n(99), n(91), n(54), n(101), n(95), n(96), n(127), n(71), n(83), n(84), n(109), n(85);
@@ -3031,7 +3031,7 @@
         }))
     }).call(this, n(87)(t))
 }, function(t, e, n) {
-    "use strict";
+    "utils strict";
     (function(t, e) {
         var i;
         n(78), n(81), n(82), n(102), n(144), n(99), n(157), n(119), n(91), n(54), n(101), n(95), n(120), n(121), n(96), n(122), n(97), n(104), n(158), n(159), n(123), n(161), n(145), n(146), n(114), n(147), n(71), n(105), n(124), n(83), n(106), n(84), n(113), n(109), n(125), n(85);
@@ -9450,7 +9450,7 @@
                     e.exports = function() {
                         var t = a.extend({
                             initialize: function() {
-                                if (!r) throw new Error("Chart.js - Moment.js could not be found! You must include it before Chart.js to use the time scale. Download at https://momentjs.com");
+                                if (!r) throw new Error("Chart.js - Moment.js could not be found! You must include it before Chart.js to utils the time scale. Download at https://momentjs.com");
                                 this.mergeTicksOptions(), a.prototype.initialize.call(this)
                             },
                             update: function() {
@@ -9661,7 +9661,7 @@
         }))
     }).call(this, n(87)(t), n(59))
 }, function(t, e, n) {
-    "use strict";
+    "utils strict";
     var r = n(3),
         i = n(23).findIndex,
         o = n(58),
@@ -9708,7 +9708,7 @@
         EPSILON: Math.pow(2, -52)
     })
 }, function(t, e, n) {
-    "use strict";
+    "utils strict";
     (function(t) {
         var e, r;
         n(78), n(81), n(82), n(102), n(144), n(119), n(91), n(54), n(120), n(96), n(122), n(97), n(123), n(145), n(146), n(147), n(71), n(83), n(84), n(109), n(163), n(125), n(85);
@@ -10391,7 +10391,7 @@
         }, "object" === ("undefined" == typeof exports ? "undefined" : i(exports)) && void 0 !== t ? t.exports = r(n(166)) : "function" == typeof define && n(55) ? define(["chart.js"], r) : (e = e || self).ChartDataLabels = r(e.Chart)
     }).call(this, n(87)(t))
 }, function(t, e, n) {
-    "use strict";
+    "utils strict";
     var r = n(3),
         i = n(164);
     r({
@@ -10554,7 +10554,7 @@
         }
     })
 }, function(t, e, n) {
-    "use strict";
+    "utils strict";
     (function(t) {
         var e;
         n(78), n(81), n(82), n(102), n(54), n(101), n(121), n(96), n(170), n(104), n(71), n(105), n(124), n(129), n(83), n(106), n(84), n(113), n(98), n(109), n(172), n(180), n(182), n(183), n(184), n(185), n(186), n(187), n(188), n(189), n(190), n(191), n(192), n(193), n(194), n(195), n(196), n(197), n(198), n(199), n(200), n(201), n(202), n(203), n(85);
@@ -11706,7 +11706,7 @@
         }, "object" == r(t) && "object" == r(t.exports) ? t.exports = e() : "function" == typeof define && n(55) ? define(e) : e())
     }).call(this, n(87)(t))
 }, function(t, e, n) {
-    "use strict";
+    "utils strict";
     var r = n(3),
         i = n(1),
         o = n(148),
@@ -11744,7 +11744,7 @@
         }
     }))
 }, function(t, e, n) {
-    "use strict";
+    "utils strict";
     var r = n(3),
         i = n(0),
         o = n(9),
@@ -11966,7 +11966,7 @@
         return void 0 !== t && (i.Array === t || a[o] === t)
     }
 }, function(t, e, n) {
-    "use strict";
+    "utils strict";
     var r = n(56),
         i = n(181),
         o = r.aTypedArray;
@@ -11974,7 +11974,7 @@
         return i.call(o(this), t, e, arguments.length > 2 ? arguments[2] : void 0)
     }))
 }, function(t, e, n) {
-    "use strict";
+    "utils strict";
     var r = n(16),
         i = n(32),
         o = n(11),
@@ -11991,7 +11991,7 @@
         return n
     }
 }, function(t, e, n) {
-    "use strict";
+    "utils strict";
     var r = n(56),
         i = n(23).every,
         o = r.aTypedArray;
@@ -11999,7 +11999,7 @@
         return i(o(this), t, arguments.length > 1 ? arguments[1] : void 0)
     }))
 }, function(t, e, n) {
-    "use strict";
+    "utils strict";
     var r = n(56),
         i = n(132),
         o = r.aTypedArray;
@@ -12007,7 +12007,7 @@
         return i.apply(o(this), arguments)
     }))
 }, function(t, e, n) {
-    "use strict";
+    "utils strict";
     var r = n(56),
         i = n(23).filter,
         o = n(103),
@@ -12018,7 +12018,7 @@
         return u
     }))
 }, function(t, e, n) {
-    "use strict";
+    "utils strict";
     var r = n(56),
         i = n(23).find,
         o = r.aTypedArray;
@@ -12026,7 +12026,7 @@
         return i(o(this), t, arguments.length > 1 ? arguments[1] : void 0)
     }))
 }, function(t, e, n) {
-    "use strict";
+    "utils strict";
     var r = n(56),
         i = n(23).findIndex,
         o = r.aTypedArray;
@@ -12034,7 +12034,7 @@
         return i(o(this), t, arguments.length > 1 ? arguments[1] : void 0)
     }))
 }, function(t, e, n) {
-    "use strict";
+    "utils strict";
     var r = n(56),
         i = n(23).forEach,
         o = r.aTypedArray;
@@ -12042,7 +12042,7 @@
         i(o(this), t, arguments.length > 1 ? arguments[1] : void 0)
     }))
 }, function(t, e, n) {
-    "use strict";
+    "utils strict";
     var r = n(56),
         i = n(41).includes,
         o = r.aTypedArray;
@@ -12050,7 +12050,7 @@
         return i(o(this), t, arguments.length > 1 ? arguments[1] : void 0)
     }))
 }, function(t, e, n) {
-    "use strict";
+    "utils strict";
     var r = n(56),
         i = n(41).indexOf,
         o = r.aTypedArray;
@@ -12058,7 +12058,7 @@
         return i(o(this), t, arguments.length > 1 ? arguments[1] : void 0)
     }))
 }, function(t, e, n) {
-    "use strict";
+    "utils strict";
     var r = n(0),
         i = n(56),
         o = n(54),
@@ -12080,7 +12080,7 @@
         return u.call(d(this))
     })), f("values", g, !p), f(a, g, !p)
 }, function(t, e, n) {
-    "use strict";
+    "utils strict";
     var r = n(56),
         i = r.aTypedArray,
         o = [].join;
@@ -12088,7 +12088,7 @@
         return o.apply(i(this), arguments)
     }))
 }, function(t, e, n) {
-    "use strict";
+    "utils strict";
     var r = n(56),
         i = n(130),
         o = r.aTypedArray;
@@ -12096,7 +12096,7 @@
         return i.apply(o(this), arguments)
     }))
 }, function(t, e, n) {
-    "use strict";
+    "utils strict";
     var r = n(56),
         i = n(23).map,
         o = n(103),
@@ -12108,7 +12108,7 @@
         }))
     }))
 }, function(t, e, n) {
-    "use strict";
+    "utils strict";
     var r = n(56),
         i = n(107).left,
         o = r.aTypedArray;
@@ -12116,7 +12116,7 @@
         return i(o(this), t, arguments.length, arguments.length > 1 ? arguments[1] : void 0)
     }))
 }, function(t, e, n) {
-    "use strict";
+    "utils strict";
     var r = n(56),
         i = n(107).right,
         o = r.aTypedArray;
@@ -12124,7 +12124,7 @@
         return i(o(this), t, arguments.length, arguments.length > 1 ? arguments[1] : void 0)
     }))
 }, function(t, e, n) {
-    "use strict";
+    "utils strict";
     var r = n(56),
         i = r.aTypedArray,
         o = Math.floor;
@@ -12133,7 +12133,7 @@
         return this
     }))
 }, function(t, e, n) {
-    "use strict";
+    "utils strict";
     var r = n(56),
         i = n(11),
         o = n(151),
@@ -12154,7 +12154,7 @@
         for (; u < s;) this[e + u] = r[u++]
     }), u)
 }, function(t, e, n) {
-    "use strict";
+    "utils strict";
     var r = n(56),
         i = n(103),
         o = n(1),
@@ -12169,7 +12169,7 @@
         return c
     }), u)
 }, function(t, e, n) {
-    "use strict";
+    "utils strict";
     var r = n(56),
         i = n(23).some,
         o = r.aTypedArray;
@@ -12177,7 +12177,7 @@
         return i(o(this), t, arguments.length > 1 ? arguments[1] : void 0)
     }))
 }, function(t, e, n) {
-    "use strict";
+    "utils strict";
     var r = n(56),
         i = r.aTypedArray,
         o = [].sort;
@@ -12185,7 +12185,7 @@
         return o.call(i(this), t)
     }))
 }, function(t, e, n) {
-    "use strict";
+    "utils strict";
     var r = n(56),
         i = n(11),
         o = n(32),
@@ -12198,7 +12198,7 @@
         return new(a(n, n.constructor))(n.buffer, n.byteOffset + l * n.BYTES_PER_ELEMENT, i((void 0 === e ? r : o(e, r)) - l))
     }))
 }, function(t, e, n) {
-    "use strict";
+    "utils strict";
     var r = n(0),
         i = n(56),
         o = n(1),
@@ -12218,7 +12218,7 @@
         return l.apply(c ? u.call(s(this)) : s(this), arguments)
     }), d)
 }, function(t, e, n) {
-    "use strict";
+    "utils strict";
     var r = n(0),
         i = n(56),
         o = n(1),
@@ -12232,7 +12232,7 @@
         return u.call(this)
     }), i.exportProto("toString", l, (s || {}).toString != l)
 }, function(t, e, n) {
-    "use strict";
+    "utils strict";
     (function(t) {
         n(78), n(81), n(82), n(91), n(54), n(101), n(104), n(123), n(71), n(106), n(84), n(85);
 
@@ -12450,7 +12450,7 @@
                         button: 1
                     }, n = 0, r = (t = a(t)).length; n < r; n++) u.hide(e, t[n])
             }, t.displayEffect = function(e) {
-                console.error("Waves.displayEffect() has been deprecated and will be removed in future version. Please use Waves.init() to initialize Waves effect"), t.init(e)
+                console.error("Waves.displayEffect() has been deprecated and will be removed in future version. Please utils Waves.init() to initialize Waves effect"), t.init(e)
             }, t
         })), $(document).ready((function() {
             Waves.attach(".btn:not(.btn-flat), .btn-floating", ["waves-light"]), Waves.attach(".btn-flat"), Waves.attach(".chip"), Waves.attach(".view a .mask", ["waves-light"]), Waves.attach(".waves-light", ["waves-light"]), Waves.attach(".navbar-nav a:not(.navbar-brand), .nav-icons li a, .nav-tabs .nav-item:not(.dropdown)", ["waves-light"]), Waves.attach(".pager li a", ["waves-light"]), Waves.attach(".pagination .page-item .page-link"), Waves.init()

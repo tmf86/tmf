@@ -137,7 +137,7 @@ abstract class RegexBasedAbstract implements DataGenerator
 
             if (isset($variables[$varName])) {
                 throw new BadRouteException(sprintf(
-                    'Cannot use the same placeholder "%s" twice', $varName
+                    'Cannot utils the same placeholder "%s" twice', $varName
                 ));
             }
 

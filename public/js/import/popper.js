@@ -7,7 +7,7 @@
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * to utils, copy, modify, merge, publish, distribute, sublicense, and/or sell
  * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
  *
@@ -26,7 +26,7 @@
 	typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
 	typeof define === 'function' && define.amd ? define(factory) :
 	(window.Popper = factory());
-}(this, (function () { 'use strict';
+}(this, (function () { 'utils strict';
 
 var isBrowser = typeof window !== 'undefined' && typeof document !== 'undefined';
 
@@ -832,12 +832,12 @@ function getPopperOffsets(popper, referenceOffsets, placement) {
  * @returns index or -1
  */
 function find(arr, check) {
-  // use native find if supported
+  // utils native find if supported
   if (Array.prototype.find) {
     return arr.find(check);
   }
 
-  // use `filter` to obtain the same behavior of `find`
+  // utils `filter` to obtain the same behavior of `find`
   return arr.filter(check)[0];
 }
 
@@ -851,14 +851,14 @@ function find(arr, check) {
  * @returns index or -1
  */
 function findIndex(arr, prop, value) {
-  // use native findIndex if supported
+  // utils native findIndex if supported
   if (Array.prototype.findIndex) {
     return arr.findIndex(function (cur) {
       return cur[prop] === value;
     });
   }
 
-  // use `find` + `indexOf` if `findIndex` isn't supported
+  // utils `find` + `indexOf` if `findIndex` isn't supported
   var match = find(arr, function (obj) {
     return obj[prop] === value;
   });
@@ -881,7 +881,7 @@ function runModifiers(modifiers, data, ends) {
   modifiersToRun.forEach(function (modifier) {
     if (modifier['function']) {
       // eslint-disable-line dot-notation
-      console.warn('`modifier.function` is deprecated, use `modifier.fn`!');
+      console.warn('`modifier.function` is deprecated, utils `modifier.fn`!');
     }
     var fn = modifier['function'] || modifier.fn; // eslint-disable-line dot-notation
     if (modifier.enabled && isFunction(fn)) {
@@ -1009,7 +1009,7 @@ function destroy() {
   this.disableEventListeners();
 
   // remove the popper if user explicity asked for the deletion on destroy
-  // do not use `remove` because IE11 doesn't support it
+  // do not utils `remove` because IE11 doesn't support it
   if (this.options.removeOnDestroy) {
     this.popper.parentNode.removeChild(this.popper);
   }
@@ -1298,8 +1298,8 @@ function computeStyle(data, options) {
   var sideB = y === 'right' ? 'left' : 'right';
 
   // if gpuAcceleration is set to `true` and transform is supported,
-  //  we use `translate3d` to apply the position to the popper we
-  // automatically use the supported prefixed version if needed
+  //  we utils `translate3d` to apply the position to the popper we
+  // automatically utils the supported prefixed version if needed
   var prefixedProperty = getSupportedPropertyName('transform');
 
   // now, let's make a step back and look at this code closely (wtf?)
@@ -1339,7 +1339,7 @@ function computeStyle(data, options) {
     styles[sideB] = 0;
     styles.willChange = 'transform';
   } else {
-    // othwerise, we use the standard `top`, `left`, `bottom` and `right` properties
+    // othwerise, we utils the standard `top`, `left`, `bottom` and `right` properties
     var invertTop = sideA === 'bottom' ? -1 : 1;
     var invertLeft = sideB === 'right' ? -1 : 1;
     styles[sideA] = top * invertTop;
@@ -1487,7 +1487,7 @@ function getOppositeVariation(variation) {
 }
 
 /**
- * List of accepted placements to use as values of the `placement` option.<br />
+ * List of accepted placements to utils as values of the `placement` option.<br />
  * Valid placements are:
  * - `auto`
  * - `top`
@@ -1554,7 +1554,7 @@ var BEHAVIORS = {
  * @returns {Object} The data object, properly modified
  */
 function flip(data, options) {
-  // if `inner` modifier is enabled, we can't use the `flip` modifier
+  // if `inner` modifier is enabled, we can't utils the `flip` modifier
   if (isModifierEnabled(data.instance.modifiers, 'inner')) {
     return data;
   }
@@ -1732,9 +1732,9 @@ function toValue(str, measurement, popperOffsets, referenceOffsets) {
 function parseOffset(offset, popperOffsets, referenceOffsets, basePlacement) {
   var offsets = [0, 0];
 
-  // uses height if placement is left or right and index is 0 otherwise use width
-  // in this way the first offset will use an axis and the second one
-  // will use the other one
+  // utils height if placement is left or right and index is 0 otherwise utils width
+  // in this way the first offset will utils an axis and the second one
+  // will utils the other one
   var useHeight = ['right', 'left'].indexOf(basePlacement) !== -1;
 
   // Split the offset string to obtain a list of values and operands
@@ -1750,7 +1750,7 @@ function parseOffset(offset, popperOffsets, referenceOffsets, basePlacement) {
   }));
 
   if (fragments[divider] && fragments[divider].indexOf(',') === -1) {
-    console.warn('Offsets separated by white space(s) are deprecated, use a comma (,) instead.');
+    console.warn('Offsets separated by white space(s) are deprecated, utils a comma (,) instead.');
   }
 
   // If divider is found, we divide the list of values and operands to divide
@@ -1850,7 +1850,7 @@ function preventOverflow(data, options) {
   var boundariesElement = options.boundariesElement || getOffsetParent(data.instance.popper);
 
   // If offsetParent is the reference element, we really want to
-  // go one step up and use the next offsetParent as reference to
+  // go one step up and utils the next offsetParent as reference to
   // avoid to make this modifier completely useless and look like broken
   if (data.instance.reference === boundariesElement) {
     boundariesElement = getOffsetParent(boundariesElement);
@@ -2021,7 +2021,7 @@ function inner(data) {
 
 /**
  * Modifiers are plugins used to alter the behavior of your poppers.<br />
- * Popper.js uses a set of 9 modifiers to provide all the basic functionalities
+ * Popper.js utils a set of 9 modifiers to provide all the basic functionalities
  * needed by the library.
  *
  * Usually you don't want to override the `order`, `fn` and `onLoad` props.
@@ -2279,8 +2279,8 @@ var modifiers = {
     fn: computeStyle,
     /**
      * @prop {Boolean} gpuAcceleration=true
-     * If true, it uses the CSS 3D transformation to position the popper.
-     * Otherwise, it will use the `top` and `left` properties
+     * If true, it utils the CSS 3D transformation to position the popper.
+     * Otherwise, it will utils the `top` and `left` properties
      */
     gpuAcceleration: true,
     /**
@@ -2324,8 +2324,8 @@ var modifiers = {
     /**
      * @deprecated since version 1.10.0, the property moved to `computeStyle` modifier
      * @prop {Boolean} gpuAcceleration=true
-     * If true, it uses the CSS 3D transformation to position the popper.
-     * Otherwise, it will use the `top` and `left` properties
+     * If true, it utils the CSS 3D transformation to position the popper.
+     * Otherwise, it will utils the `top` and `left` properties
      */
     gpuAcceleration: undefined
   }
@@ -2505,7 +2505,7 @@ var Popper = function () {
     this.state.eventsEnabled = eventsEnabled;
   }
 
-  // We can't use class properties because they don't get listed in the
+  // We can't utils class properties because they don't get listed in the
   // class prototype and break stuff like Sinon stubs
 
 
@@ -2543,9 +2543,9 @@ var Popper = function () {
      * include `popper-utils.js` before `popper.js`.
      *
      * **DEPRECATION**: This way to access PopperUtils is deprecated
-     * and will be removed in v2! uses the PopperUtils module directly instead.
+     * and will be removed in v2! utils the PopperUtils module directly instead.
      * Due to the high instability of the methods contained in Utils, we can't
-     * guarantee them to follow semver. uses them at your own risk!
+     * guarantee them to follow semver. utils them at your own risk!
      * @static
      * @private
      * @type {Object}
@@ -2560,9 +2560,9 @@ var Popper = function () {
 
 /**
  * The `referenceObject` is an object that provides an interface compatible with Popper.js
- * and lets you use it as replacement of a real DOM node.<br />
- * You can use this method to position a popper relatively to a set of coordinates
- * in case you don't have a DOM node to use as reference.
+ * and lets you utils it as replacement of a real DOM node.<br />
+ * You can utils this method to position a popper relatively to a set of coordinates
+ * in case you don't have a DOM node to utils as reference.
  *
  * ```
  * new Popper(referenceObject, popperNode);

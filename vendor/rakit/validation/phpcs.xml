@@ -4,7 +4,7 @@
 
     <!-- display progress -->
     <arg value="p"/>
-    <!-- use colors in output -->
+    <!-- utils colors in output -->
     <arg name="colors"/>
 
     <!-- inherit rules from: -->

@@ -208,7 +208,7 @@ class Validator
     }
 
     /**
-     * Set this can use humanize keys
+     * Set this can utils humanize keys
      *
      * @param boolean $useHumanizedKeys
      * @return void

@@ -98,7 +98,7 @@ class ErrorBag
     }
 
     /**
-     * Get messages from given key, can be use custom format
+     * Get messages from given key, can be utils custom format
      *
      * @param string $key
      * @param string $format

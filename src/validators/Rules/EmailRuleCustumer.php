@@ -4,24 +4,27 @@
 namespace Validator\Rules;
 
 
-use Validator\ValidatorRuleCustumer;
+use Contoller\Http\Request;
+use Rakit\Validation\Rule;
 
-class EmailRuleCustumer extends ValidatorRuleCustumer
+class EmailRuleCustumer extends Rule
 {
     /** @var string */
     protected $message = "The :attribute is not valid email";
 
     /**
      * @param $val
-     * @return bool
+     * @param Request $request
+     * @return bool|Request
      */
-    private function curl($val)
+    private function curl($val, Request $request)
     {
         $curl = curl_init("https://apilayer.net/api/check?access_key=d3b984711681e7fe785d67d8a41fdc46&email=$val&smtp=1&format=1");
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
         $data = curl_exec($curl);
         if ($data === false) {
-            $this->abortAjaxError(401, true);
+            return $request->ajax([], 401);
+            die();
         } else {
             $data = json_decode($data, true);
             foreach ($data as &$val):if (is_null($val)) $val = 0;endforeach;
@@ -33,7 +36,8 @@ class EmailRuleCustumer extends ValidatorRuleCustumer
                     return false;
                 }
             } else {
-                $this->abortAjaxError(401, true);
+                return $request->ajax([], 401);
+                die();
             }
         }
         curl_close($curl);
@@ -43,6 +47,6 @@ class EmailRuleCustumer extends ValidatorRuleCustumer
     public function check($value): bool
     {
         // TODO: Implement check() method.
-        return $this->curl($value);
+        return $this->curl($value, new Request());
     }
 }

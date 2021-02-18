@@ -45,7 +45,7 @@ class SMTP
     const LE = "\r\n";
 
     /**
-     * The SMTP port to use if one is not specified.
+     * The SMTP port to utils if one is not specified.
      *
      * @var int
      */
@@ -143,7 +143,7 @@ class SMTP
     public $Debugoutput = 'echo';
 
     /**
-     * Whether to use VERP.
+     * Whether to utils VERP.
      *
      * @see http://en.wikipedia.org/wiki/Variable_envelope_return_path
      * @see http://www.postfix.org/VERP_README.html Info on VERP
@@ -509,7 +509,7 @@ class SMTP
             }
 
             if (empty($authtype)) {
-                //If no auth mechanism is specified, attempt to use these, in this order
+                //If no auth mechanism is specified, attempt to utils these, in this order
                 //Try CRAM-MD5 first as it's more secure than the others
                 foreach (['CRAM-MD5', 'LOGIN', 'PLAIN', 'XOAUTH2'] as $method) {
                     if (in_array($method, $this->server_caps['AUTH'], true)) {
@@ -661,7 +661,7 @@ class SMTP
 
     /**
      * Close the socket and clean up the state of the class.
-     * Don't use this function without first trying to use QUIT.
+     * Don't utils this function without first trying to utils QUIT.
      *
      * @see quit()
      */
@@ -693,7 +693,7 @@ class SMTP
      */
     public function data($msg_data)
     {
-        //This will use the standard timelimit
+        //This will utils the standard timelimit
         if (!$this->sendCommand('DATA', 'DATA', 354)) {
             return false;
         }
@@ -1307,7 +1307,7 @@ class SMTP
     /**
      * Set debug output method.
      *
-     * @param string|callable $method The name of the mechanism to use for debugging output, or a callable to handle it
+     * @param string|callable $method The name of the mechanism to utils for debugging output, or a callable to handle it
      */
     public function setDebugOutput($method = 'echo')
     {

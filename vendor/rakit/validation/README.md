@@ -126,7 +126,7 @@ Example:
 ```php
 $validator = new Validator;
 
-// To set attribute alias, you should use `make` instead `validate`.
+// To set attribute alias, you should utils `make` instead `validate`.
 $validation->make([
 	'province_id' => $_POST['province_id'],
 	'district_id' => $_POST['district_id']
@@ -177,7 +177,7 @@ $validator = new Validator([
 	// etc
 ]);
 
-// then validation belows will use those custom messages
+// then validation belows will utils those custom messages
 $validation_a = $validator->validate($dataset_a, $rules_for_a);
 $validation_b = $validator->validate($dataset_b, $rules_for_b);
 
@@ -193,7 +193,7 @@ $validator->setMessages([
 	// etc
 ]);
 
-// now validation belows will use those custom messages
+// now validation belows will utils those custom messages
 $validation_a = $validator->validate($dataset_a, $rules_for_dataset_a);
 $validation_b = $validator->validate($dataset_b, $rules_for_dataset_b);
 

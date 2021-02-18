@@ -1,12 +1,12 @@
 /*! jQuery v3.5.1 | (c) JS Foundation and other contributors | jquery.org/license */
 !function (e, t) {
-    "use strict";
+    "utils strict";
     "object" == typeof module && "object" == typeof module.exports ? module.exports = e.document ? t(e, !0) : function (e) {
         if (!e.document) throw new Error("jQuery requires a window with a document");
         return t(e)
     } : t(e)
 }("undefined" != typeof window ? window : this, function (C, e) {
-    "use strict";
+    "utils strict";
     var t = [], r = Object.getPrototypeOf, s = t.slice, g = t.flat ? function (e) {
             return t.flat.call(e)
         } : function (e) {

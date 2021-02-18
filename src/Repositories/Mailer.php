@@ -3,13 +3,12 @@
 
 namespace Repositories;
 
-
-use interfaces\AjaxCallError;
+use Contoller\Http\Request;
 use PHPMailer\PHPMailer\Exception;
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 
-class Mailer extends PHPMailer implements AjaxCallError
+class Mailer extends PHPMailer
 {
     /*** @var string */
     private $name;
@@ -26,8 +25,11 @@ class Mailer extends PHPMailer implements AjaxCallError
         $this->email = $email;
     }
 
-    /*** @return bool */
-    public function mailerSend()
+    /**
+     * @param Request $request
+     * @return bool|Request
+     */
+    public function mail(Request $request)
     {
         $mail = new PHPMailer(true);
         try {
@@ -38,7 +40,7 @@ class Mailer extends PHPMailer implements AjaxCallError
             $mail->Username = 'cpypigier@gmail.com';                     // SMTP username
             $mail->Password = 'cpy@2020';                               // SMTP password
             $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;         // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` encouraged
-            $mail->Port = 587;                                    // TCP port to connect to, use 465 for `PHPMailer::ENCRYPTION_SMTPS` above
+            $mail->Port = 587;                                    // TCP port to connect to, utils 465 for `PHPMailer::ENCRYPTION_SMTPS` above
             $mail->setFrom('cpypigier@gmail.com', 'CPY');
             $mail->addAddress($this->email, $this->name);
             $mail->isHTML(true);                                  // Set email format to HTML
@@ -47,16 +49,8 @@ class Mailer extends PHPMailer implements AjaxCallError
             return $mail->send();
         } catch (Exception $e) {
             debug($e->getMessage());
-            $this->abortAjaxError(500);
-            return false;
+            return $request->ajax([], 500);
         }
-    }
-
-    /*** @return void */
-    public function abortAjaxError($code)
-    {
-        http_response_code($code);
-        die();
     }
 
     /*** @return string */
