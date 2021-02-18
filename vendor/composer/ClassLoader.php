@@ -27,7 +27,7 @@ namespace Composer\Autoload;
  *     // to enable searching the include path (eg. for PEAR packages)
  *     $loader->setUseIncludePath(true);
  *
- * In this example, if you try to utils a class in the Symfony\Component
+ * In this example, if you try to use a class in the Symfony\Component
  * namespace or one of its children (Symfony\Component\Console for instance),
  * the autoloader will first look for the class under the component/
  * directory, and it will then fallback to the framework/ directory if not
@@ -241,7 +241,7 @@ class ClassLoader
     }
 
     /**
-     * Can be used to check if the autoloader utils the include path to check
+     * Can be used to check if the autoloader uses the include path to check
      * for classes.
      *
      * @return bool
@@ -273,7 +273,7 @@ class ClassLoader
     }
 
     /**
-     * APCu prefix to utils to cache found/not-found classes, if the extension is enabled.
+     * APCu prefix to use to cache found/not-found classes, if the extension is enabled.
      *
      * @param string|null $apcuPrefix
      */
@@ -283,7 +283,7 @@ class ClassLoader
     }
 
     /**
-     * The APCu prefix in utils, or null if APCu caching is not enabled.
+     * The APCu prefix in use, or null if APCu caching is not enabled.
      *
      * @return string|null
      */

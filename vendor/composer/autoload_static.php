@@ -31,10 +31,6 @@ class ComposerStaticInit6264916c20b8cdaf967ae3749af8fbef
             'Model\\Shema\\' => 12,
             'Model\\' => 6,
         ),
-        'I' => 
-        array (
-            'Interfaces\\' => 11,
-        ),
         'F' => 
         array (
             'FastRoute\\' => 10,
@@ -78,10 +74,6 @@ class ComposerStaticInit6264916c20b8cdaf967ae3749af8fbef
         'Model\\' => 
         array (
             0 => __DIR__ . '/../..' . '/models',
-        ),
-        'Interfaces\\' => 
-        array (
-            0 => __DIR__ . '/../..' . '/src/Interfaces',
         ),
         'FastRoute\\' => 
         array (
