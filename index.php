@@ -1,9 +1,11 @@
 <?php
 
 use Contoller\ConnexionController;
+use Contoller\FormationController;
 use Contoller\HomeController;
 use Contoller\Http\Request;
 use Contoller\RegisterController;
+use Contoller\SujetController;
 use Repositories\Mailer;
 
 require "vendor/autoload.php";
@@ -20,9 +22,12 @@ $dispatcher = FastRoute\simpleDispatcher(function (FastRoute\RouteCollector $r) 
                 new Request()
             ]
         ]);
+    $r->addRoute('GET', '/Cpy-Mvc/sujets', ["class" => SujetController::class, "method" => "index"]);
+    $r->addRoute('GET', '/Cpy-Mvc/cours', ["class" => FormationController::class, "method" => "index"]);
+    $r->addRoute('GET', '/Cpy-Mvc/videos_formation', ["class" => FormationController::class, "method" => "index"]);
     $r->addRoute('GET', '/Cpy-Mvc/test', function () {
-        $mail = new Mailer("kofi jack", 'assemiensamuel48@gmail.com');
-        $mail->mailerSend();
+        $mailer = new Mailer("kofi jack", 'assemiensamuel48@gmail.com');
+        $mailer->mail(new Request());
     });
 });
 
