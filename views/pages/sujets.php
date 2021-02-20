@@ -54,7 +54,11 @@
                         <?php
                             $correct= new \Model\Correction();
                             $correct = $correct->find_correction($sj->id_sujet);
-                        var_dump($correct);
+                            if (!$correct){
+                                echo "<span>Aucune Correction</span>";
+                            }else{
+                                echo '<a download="'.$correct->lien_correct.'">'.$correct->nom_correct.'</a>';
+                            }
 
                         ?></td>
                     <td><?=$sj->date_ajout?></td>
@@ -82,7 +86,11 @@
                         <td><?php
                             $correct= new \Model\Correction();
                             $correct = $correct->find_correction($sj->id_sujet);
-                            var_dump($correct);
+                            if (!$correct){
+                                echo "<span>Aucune Correction</span>";
+                            }else{
+                                echo '<a download="'.$correct->lien_correct.'">'.$correct->nom_correct.'</a>';
+                            }
                             ?>
                         </td>
                         <td><?=$sj->date_ajout?></td>
@@ -111,7 +119,11 @@
                             <?php
                             $correct= new \Model\Correction();
                             $correct = $correct->find_correction($sj->id_sujet);
-                            var_dump($correct);
+                            if (!$correct){
+                                echo "<span>Aucune Correction</span>";
+                            }else{
+                                echo '<a download="'.$correct->lien_correct.'">'.$correct->nom_correct.'</a>';
+                            }
 
                             ?>
                         </td>

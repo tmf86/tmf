@@ -15,10 +15,17 @@ class Model
      */
     private $pdo;
     /**
+     * @var array
+     */
+    private $config;
+    /**
      * @var string
      */
     protected $table = "Model";
-    protected $self;
+    /**
+     * @var string
+     */
+    protected $self = self::class;
     /**
      * @var string
      */
@@ -53,9 +60,9 @@ class Model
         return $queryExec->fetch();
     }
 
-    public function all()
+    public function all($precision="")
     {
-        $queryExec = $this->pdo->query("select * from $this->table");
+        $queryExec = $this->pdo->query("select * from $this->table $precision");
         $queryExec->setFetchMode(PDO::FETCH_CLASS, $this->self);
         return $queryExec->fetchAll();
     }
@@ -65,6 +72,12 @@ class Model
         $queryExec = $this->pdo->query(sprintf("select * from $this->table where $this->primaryKeyStr=%d limit 1", $id));
         $queryExec->setFetchMode(PDO::FETCH_CLASS, $this->self);
         return $queryExec->fetch();
+    }
+    public function find_many($id)
+    {
+        $queryExec = $this->pdo->query(sprintf("select * from $this->table where $this->primaryKeyStr=%d", $id));
+        $queryExec->setFetchMode(PDO::FETCH_CLASS, $this->self);
+        return $queryExec->fetchAll();
     }
 
     /**
