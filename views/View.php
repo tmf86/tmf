@@ -16,19 +16,23 @@ class View
      * @var array
      */
     private $vars;
+    /**
+     * @var bool
+     */
+    private $use_templatig;
 
     /**
      * View constructor.
      * @param string $view_name
      * @param array $vars
      */
-    public function __construct(string $view_name, array $vars = [])
+    public function __construct(string $view_name, array $vars = [], bool $use_templatig = true)
     {
         $this->config = require "config/config.php";
         $this->view_name = $view_name;
         $this->vars = $vars;
+        $this->use_templatig = $use_templatig;
         $this->view();
-
     }
 
     /**
@@ -36,14 +40,28 @@ class View
      */
     public function view()
     {
-        if (strpos($this->view_name, ".")) {
-            $this->view_name = str_replace('.', '/', $this->view_name);
-            extract($this->vars);
-            require "template/top.php";
-            require sprintf("%s%s.php", $this->config["views_directory"], $this->view_name);
-            require "template/bottom.php";
+        if ($this->use_templatig) {
+            if (strpos($this->view_name, ".")) {
+                $this->view_name = str_replace('.', '/', $this->view_name);
+                extract($this->vars);
+                require "template/top.php";
+                require sprintf("%s%s.php", $this->config["views_directory"], $this->view_name);
+                require "template/bottom.php";
+            } else {
+                extract($this->vars);
+                require "template/top.php";
+                require sprintf("%s%s.php", $this->config["views_directory"], $this->view_name);
+                require "template/bottom.php";
+            }
         } else {
-            require sprintf("%s%s.php", $this->config["views_directory"], $this->view_name);
+            if (strpos($this->view_name, ".")) {
+                $this->view_name = str_replace('.', '/', $this->view_name);
+                extract($this->vars);
+                require sprintf("%s%s.php", $this->config["views_directory"], $this->view_name);
+            } else {
+                extract($this->vars);
+                require sprintf("%s%s.php", $this->config["views_directory"], $this->view_name);
+            }
         }
     }
 
