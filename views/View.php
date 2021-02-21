@@ -19,19 +19,19 @@ class View
     /**
      * @var bool
      */
-    private $use_templatig;
+    private $use_templating;
 
     /**
      * View constructor.
      * @param string $view_name
      * @param array $vars
      */
-    public function __construct(string $view_name, array $vars = [], bool $use_templatig = true)
+    public function __construct(string $view_name, array $vars = [], bool $use_templating = true)
     {
         $this->config = require "config/config.php";
         $this->view_name = $view_name;
         $this->vars = $vars;
-        $this->use_templatig = $use_templatig;
+        $this->use_templating = $use_templating;
         $this->view();
     }
 
@@ -40,7 +40,7 @@ class View
      */
     public function view()
     {
-        if ($this->use_templatig) {
+        if ($this->use_templating) {
             if (strpos($this->view_name, ".")) {
                 $this->view_name = str_replace('.', '/', $this->view_name);
                 extract($this->vars);
