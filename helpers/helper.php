@@ -164,3 +164,13 @@ function scripts($scripts = [])
     }
     return $script;
 }
+
+/**
+ * @param $file
+ * @return string
+ */
+function buildpath($file)
+{
+    $config = require "config/config.php";
+    return sprintf("%s%s", $config["app_url"], $file);
+}
