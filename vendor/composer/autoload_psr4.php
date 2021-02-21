@@ -14,6 +14,7 @@ return array(
     'PHPMailer\\PHPMailer\\' => array($vendorDir . '/phpmailer/phpmailer/src'),
     'Model\\Shema\\' => array($baseDir . '/models/Schema'),
     'Model\\' => array($baseDir . '/models'),
+    'Firebase\\JWT\\' => array($vendorDir . '/firebase/php-jwt/src'),
     'FastRoute\\' => array($vendorDir . '/nikic/fast-route/src'),
     'Contoller\\Http\\' => array($baseDir . '/controllers/Http'),
     'Contoller\\' => array($baseDir . '/controllers'),

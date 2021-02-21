@@ -19,11 +19,20 @@ private static $installed = array (
     'aliases' => 
     array (
     ),
-    'reference' => '1b2c44d83452cccd3e6799a245efe8d568726e7c',
+    'reference' => 'e7e3c49c2157a1145a6bbadab222693abce5bd89',
     'name' => 'samy/cpy-mvc',
   ),
   'versions' => 
   array (
+    'firebase/php-jwt' => 
+    array (
+      'pretty_version' => 'v5.2.1',
+      'version' => '5.2.1.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'f42c9110abe98dd6cfe9053c49bc86acc70b2d23',
+    ),
     'nikic/fast-route' => 
     array (
       'pretty_version' => 'v1.3.0',
@@ -58,7 +67,7 @@ private static $installed = array (
       'aliases' => 
       array (
       ),
-      'reference' => '1b2c44d83452cccd3e6799a245efe8d568726e7c',
+      'reference' => 'e7e3c49c2157a1145a6bbadab222693abce5bd89',
     ),
   ),
 );
