@@ -22,6 +22,9 @@ $dispatcher = FastRoute\simpleDispatcher(function (FastRoute\RouteCollector $r) 
                 new Request()
             ]
         ]);
+    $r->addRoute('GET', '/Cpy-Mvc/create_account/{email:[A-Za-z0-9]+}', function ($email) {
+        return new View\View("pages.create_account", [], false);
+    });
     $r->addRoute('GET', '/Cpy-Mvc/sujets', ["class" => SujetController::class, "method" => "index"]);
     $r->addRoute('GET', '/Cpy-Mvc/cours', ["class" => FormationController::class, "method" => "index"]);
     $r->addRoute('GET', '/Cpy-Mvc/videos_formation', ["class" => FormationController::class, "method" => "index"]);
