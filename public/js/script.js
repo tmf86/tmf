@@ -13,7 +13,7 @@ $(document).ready(function (){
          }
      });*/
     $(".annonce_click").click(function (){
-       // alert("ok");
+        //alert("ok");
         if ($(".annonce_content").css("display")==="block"){
             $(".annonce_content").hide(1500);
             $(this).html("EN SAVOIR PLUS");
@@ -22,7 +22,7 @@ $(document).ready(function (){
             $(this).html("MOINS");
         }
     });
-    lecteur();
+   /* lecteur();
     function lecteur(){
         $("#current_moovie").src = $("#moovie_list iframe")[2];
         $("#current_moovie").play();
@@ -31,7 +31,7 @@ $(document).ready(function (){
             $("current_moovie").src = this;
             $("#current_moovie").play();
         });
-    }
+    }*/
 
     $(function () {
         //Toggle active class on fa icon

@@ -3,7 +3,7 @@ $config = [];
 /*
  * partie de la configuration reservé a la base de donné
  */
-$config["db_name"] = "cpy";
+$config["db_name"] = "cipy";
 $config["db_user"] = "root";
 $config["db_password"] = "";
 $config["db_host"] = "localhost";

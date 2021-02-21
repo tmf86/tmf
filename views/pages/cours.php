@@ -8,7 +8,7 @@
                     <div class="card-body">
                         <h5 class="card-title">Chapitre<?=$i;?> </h5>
 
-                            <a class="venobox_custom" data-vbtype="iframe" href="<?= $video->lien_video;?>">
+                            <a class="venobox_custom " data-vbtype="iframe" href="<?= $video->lien_video;?>">
                                 <div class="card-footer">
                                 Regarder </div>
                             </a>
