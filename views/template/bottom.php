@@ -40,10 +40,10 @@
 </footer>
 <!-- Footer -->
 <!--load js files -->
-<script src="public/js/import/jquery.js"></script>
-<script src="public/js/import/bootstrap.js"></script>
-<script src="public/js/import/popper.js"></script>
-<script src="public/js/import/mdb.js"></script>
+<script src="<?= buildpath('public/js/import/jquery.js') ?>"></script>
+<script src="<?= buildpath('public/js/import/bootstrap.js') ?>"></script>
+<script src="<?= buildpath('public/js/import/popper.js') ?>"></script>
+<script src="<?= buildpath('public/js/import/mdb.js') ?>"></script>
 <?= scripts($scripts ?? []) ?>
 <script>
     setTimeout(function () {
