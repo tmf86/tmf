@@ -30,7 +30,7 @@ function processFundedRoot(array $rootResult)
             $classToInstanced->$method();
         }
     } else if (is_callable($handler)) {
-        call_user_func($handler,...$urlVars);
+        call_user_func($handler, ...$urlVars);
     } else {
         Request::abort(404);
     }
