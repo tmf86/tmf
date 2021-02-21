@@ -120,7 +120,7 @@ class Mailer extends PHPMailer
                             <tr>
                                 <td align="center" style="font-weight: 400;text-align: start;padding: 0 0 23px;font-size:1.5rem;border-collapse:collapse!important;font-family: Helvetica, sans-serif;">
                                     Chez etudiant <strong>' . $this->name . '</strong>  nous vous avons
-                                    envoyé ce mail pour la validation de votre compte il ne reste plus que cette etape
+                                    envoyé ce mail pour Finaliser la creation de  votre compte il ne reste plus que cette etape
                                     pour que votre compte soit activé ! Merci de bien vouloir appuyer sur le bouton
                                     ci-dessous !
                                    <br>
