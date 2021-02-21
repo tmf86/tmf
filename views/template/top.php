@@ -7,17 +7,16 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="icon" type="image/png" href="images/logo.png"/>
     <!-- Stylesheet   -->
-    <link rel="stylesheet" href="public/css/b-and-mb.css">
+    <link rel="stylesheet" href='<?= buildpath("public/css/b-and-mb.css") ?>'>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700&display=swap"
           rel="stylesheet">
-    <link rel="stylesheet" href="public/css/style.css">
-    <link rel="stylesheet" href="public/js/import/VenoBox-master/venobox/venobox.min.css">
-    <title><?= $title ?? "Default" ?></title>
+    <link rel="stylesheet" href='<?= buildpath("public/css/style.css") ?>'>
+    <link rel="stylesheet" href="<?= buildpath('public/js/import/VenoBox-master/venobox/venobox.min.css') ?>">
+    <title><?= $title ?? "Title" ?></title>
     <!-- Stylesheet   -->
     <!-- Script-->
     <script src="https://kit.fontawesome.com/bb2a11cf5b.js" defer crossorigin="anonymous"></script>
-    <!--    <script src="public/js/import/hnl.mobileConsole.js"></script>-->
     <!-- Script-->
 </head>
 <body>
