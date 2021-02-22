@@ -1,20 +1,20 @@
 <?php
-$config = [];
-/*
- * partie de la configuration reservé a la base de donné
- */
-$config["db_name"] = "cipy";
-$config["db_user"] = "root";
-$config["db_password"] = "";
-$config["db_host"] = "localhost";
-/**
- * configuration reserver a la gestion de fichier
- */
 
-$config["views_directory"] = "views/";
-/**
- * Root path
- */
-$config["app_url"] = "http://localhost/Cpy-Mvc/";
+/**  Configuration des accès a la base de donée*/
 
-return $config;
+putenv("DB_NAME=cipy");
+putenv("DB_USER=root");
+putenv("DB_PASSWORD=");
+putenv("DB_HOST=localhost");
+
+/** Configuration des dossiers et URL*/
+
+putenv("VIEW_DIRECTORY=views/");
+putenv("APP_URL=http://localhost/Cpy-Mvc/");
+
+/** Constantes Globale*/
+
+define('N', 100 * 100);
+define('I', 1);
+define('SCRIPT', 'script');
+define('LINK', 'link');
