@@ -27,6 +27,7 @@
                 <!-- Card -->
             </div>
         <?php } ?>
-
-        <!--End of  content-->
-        <!-- Footer -->
+    </div>
+</div>
+<!--End of  content-->
+<!-- Footer -->

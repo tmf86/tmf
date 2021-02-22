@@ -47,10 +47,4 @@
 </div>
 <!--end of content body-->
 <!-- Footer -->
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
 
