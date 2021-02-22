@@ -103,18 +103,20 @@ $(function () {
 //  Annimation des inputs de type password
     $(".password-eye").click(function () {
         let class_name = '';
-        const input_neighbour = $(`${class_name} ~ input`)
         for (let i = 0; i < $(this)[0].classList.length; i++) {
             class_name += `.` + $(this)[0].classList[i]
         }
+        const input_neighbour = $(`${class_name} ~ input`)
         if ($(this).hasClass(`eye-hide`)) {
             $(this).removeClass('eye-hide')
             $(this).addClass($(this).addClass(`eye-open`))
-            $(this).html(`<i class="fas fa-eye-slash"></i>`)
+            $(this).html(`<i class="fas fa-eye">`)
+            input_neighbour.attr(`type`, 'text').css("font-weight", 400)
         } else if ($(this).hasClass(`eye-open`)) {
             $(this).removeClass('eye-open')
             $(this).addClass($(this).addClass(`eye-hide`))
-            $(this).html(`<i class="fas fa-eye">`)
+            $(this).html(`<i class="fas fa-eye-slash"></i>`)
+            input_neighbour.attr(`type`, 'password').css("font-weight", 700)
         }
     })
 
