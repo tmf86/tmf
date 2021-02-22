@@ -24,7 +24,6 @@ trait RelationalShema
         } else if ($cardinality == 2) {
             $relationship = "select * from $this->table inner join $this->foreignTable on $this->table.$this->primaryKeyStr = $this->foreignTable.$this->foreignkey where $this->primaryKeyStr = $id ";
             $this->relationQuery = $relationship;
-            var_dump($relationship);
         }
         return $this;
     }

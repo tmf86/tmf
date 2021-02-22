@@ -1,5 +1,5 @@
 <!--content body---->
-<div class="container">
+<div class="mt-1">
     <ul class="nav nav-tabs justify-content-end special-color mb-4" id=myTab" role="tablist">
         <li class="nav-item">
             <a class="nav-link active btn" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home"
@@ -142,4 +142,5 @@
         </div>
     </div>
 </div>
+<br><br><br><br>
 
