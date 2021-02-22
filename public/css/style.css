@@ -55,18 +55,18 @@ a:hover {
 /*Form register Css*/
 .form-control {
     border-radius: 0;
-    font-family: 'Product Sans Thin Regular', 'Lato', sans-serif;
+    font-family: 'Lato', 'Product Sans Thin Regular', sans-serif;
     font-weight: 100;
     transition: all 0.5s ease;
 }
 
 .title-custum {
     padding: 1rem;
-    background: linear-gradient(to top, rgb(51, 181, 229) 0%, rgb(51, 181, 229) 4px, transparent 3px) no-repeat;
+    background: linear-gradient(to top, rgb(51, 181, 229) 0%, rgb(51, 181, 229) 2px, transparent 3px) no-repeat;
     background-size: 100% 100%;
     transition: background-size .3s;
     cursor: pointer;
-    font-weight: 800;
+    font-weight: 700;
     font-size: 1rem;
 }
 
@@ -74,22 +74,34 @@ a:hover {
     background-size: 0 100%;
 }
 
+.underline {
+    width: 25rem;
+    height: 0.2rem;
+    background: rgb(51, 181, 229);
+    display: inline-block;
+    position: absolute;
+    top: 2rem;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
 .select {
     height: calc(1.5em + 0.75rem + 2px);
     width: 100%;
     color: #495057;
-    font-family: 'Product Sans Thin Regular', 'Lato', sans-serif;
+    font-family: 'Lato', 'Product Sans Thin Regular', sans-serif;
     font-weight: 100;
     border: 1px solid #ced4da;
     transition: all 0.5s ease;
 }
 
 .select::-ms-value {
-    font-family: 'Product Sans Thin Regular', 'Lato', sans-serif;
+    font-family: 'Lato', 'Product Sans Thin Regular', sans-serif;
 }
 
 .form-control::placeholder, option, .btn {
-    font-family: 'Product Sans Thin Regular', 'Lato', sans-serif;
+    font-family: 'Lato', 'Product Sans Thin Regular', sans-serif;
     font-weight: 100;
 }
 
@@ -97,10 +109,6 @@ a:hover {
     outline: 0;
     border-color: rgb(51, 181, 229);
     box-shadow: 0 0 0 1px rgba(51, 181, 229, .3);
-}
-
-.fm-family {
-    font-family: 'Product Sans Thin Regular', 'Lato', sans-serif;
 }
 
 .form-container {
@@ -129,6 +137,19 @@ a:hover {
     width: 30%;
 }
 
+.fm-p {
+    padding: 2rem 4rem;
+    font-weight: 700;
+}
+
+.password-eye {
+    position: absolute;
+    top: 1.5rem;
+    font-size: 1.2rem;
+    cursor: pointer;
+    left: 1rem;
+}
+
 .form-container .fm-item, .form-container .date-item {
     position: relative;
     width: 100%;
@@ -137,6 +158,7 @@ a:hover {
 i {
     transition: color 0.5s ease;
 }
+
 
 .icon {
     color: grey !important;
@@ -206,12 +228,14 @@ i {
     align-items: flex-start;
     justify-content: space-between;
 }
-.finalize-account-container{
+
+.finalize-account-container {
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 4rem;
 }
+
 /*Main loader*/
 .loader {
     position: absolute;
@@ -350,4 +374,19 @@ i {
     .loader-conatiner {
         top: 30rem;
     }
+}
+
+@media (max-width: 573px) {
+
+    .underline {
+        width: 16rem;
+        height: 0.2rem;
+        background: rgb(51, 181, 229);
+        display: inline-block;
+        position: absolute;
+        top: 3.2rem;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
 }
