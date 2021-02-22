@@ -14,14 +14,23 @@ function processFundedRoot(array $rootResult)
     if (is_array($handler)) {
         $class = $handler['class'];
         $method = $handler['method'];
-        if (key_exists("gets", $handler) && key_exists("vars", $handler)) {
+        /*
+         *  Ici je verifie si le tableau hanler passé contient une clé gets si oui alors je verifie si sa valeur
+            est egale a true (booleen) aussi je veriie si la clé vars existe egalement cette clé permet de faire
+            passer a la methode qui sera instancié les variables dont elle aura besoin ( donc une sorte d'injection de dependance )
+            Il peut arrivé que aussi des variable soit passé par la methode GET et si c'est le cas je signale leur presence
+            a l'aide de la clé gets voila pourquoi je verifie si elle aussi existe ainsi  de je peux poser des actions differntes
+            En fonctions de ces tests
+        */
+
+        if ((key_exists("gets", $handler)) && ($handler['gets'] === true) && (key_exists("vars", $handler))) {
             $vars = $handler['vars'];
             $classToInstanced = new $class();
-            $classToInstanced->$method(...$urlVars, ...$vars);
-        } elseif (key_exists("gets", $handler)) {
+            $classToInstanced->$method(...$vars, ...$urlVars);
+        } elseif ((key_exists("gets", $handler)) && ($handler['gets'] === true) && (!key_exists("vars", $handler))) {
             $classToInstanced = new $class();
             $classToInstanced->$method(...$urlVars);
-        } elseif (key_exists("vars", $handler)) {
+        } elseif (key_exists("vars", $handler) && !key_exists("gets", $handler)) {
             $vars = $handler['vars'];
             $classToInstanced = new $class();
             $classToInstanced->$method(...$vars);
@@ -39,50 +48,13 @@ function processFundedRoot(array $rootResult)
 
 /**
  * @return string
+ * Renvoie le nom de domain du site
  */
 function rootUrl()
 {
-    $config = require "config/config.php";
-    return $config["app_url"];
+    return getenv('APP_URL');
 }
 
-/**
- * @param int $code
- * check request code
- */
-//function abort(int $code)
-//{
-//    switch ($code) {
-//        case 404 :
-//            header('HTTP/1.1 404 Internal Server Error');
-//            break;
-//    }
-//}
-
-/**
- * @param $name
- * @return mixed
- * Manage the global post variable more easily
- */
-function post($name = "")
-{
-    if (empty($name)) {
-        return $_POST;
-    } else {
-        return $_POST["name"];
-    }
-
-}
-
-// /**
-//  * Checks if the http request is an AJAX call
-//  * @return bool
-//  */
-// function is_ajax()
-// {
-//     return (isset($_SERVER['HTTP_X_REQUESTED_WITH']) &&
-//         (strtolower(getenv('HTTP_X_REQUESTED_WITH')) === 'xmlhttprequest'));
-// }
 
 /**
  * @param $string
@@ -151,26 +123,33 @@ function selectBirthDay($id, $year = false)
 }
 
 /**
- * @param $scripts
+ * @param array $scripts
+ * @param array $links
+ * @param string $to_do
  * @return string
+ * Affiche les balise scripts et links supplementaires
  */
-function scripts($scripts = [])
+function suppl_tags(array $scripts = [], array $links = [], string $to_do = '')
 {
-    $script = "";
-    if (!empty($scripts)) {
+    $path = '';
+    if (!empty($scripts) && $to_do === SCRIPT) {
         foreach ($scripts as $val):
-            $script .= sprintf("%s\n", $val);
+            $path .= sprintf("%s\n", $val);
+        endforeach;
+    } elseif (!empty($links) && $to_do === LINK) {
+        foreach ($scripts as $val):
+            $path .= sprintf("%s\n", $val);
         endforeach;
     }
-    return $script;
+    return $path;
 }
 
 /**
  * @param $file
  * @return string
+ * construit le chemin d'accès a un fichier en partan du domain root
  */
 function buildpath($file)
 {
-    $config = require "config/config.php";
-    return sprintf("%s%s", $config["app_url"], $file);
+    return sprintf("%s%s", getenv('APP_URL'), $file);
 }
