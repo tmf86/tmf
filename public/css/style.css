@@ -379,14 +379,22 @@ i {
 @media (max-width: 573px) {
 
     .underline {
-        width: 16rem;
-        height: 0.2rem;
-        background: rgb(51, 181, 229);
-        display: inline-block;
-        position: absolute;
+        width: 10rem;
         top: 3.2rem;
-        left: 50%;
-        transform: translate(-50%, -50%);
     }
 
+}
+
+@media (min-width: 574px) and (max-width: 589px) {
+    .underline {
+        width: 10rem;
+        top: 3.5rem;
+    }
+}
+
+@media (min-width: 320px) and (max-width: 382px) {
+    .underline {
+        width: 10rem;
+        top: 4.5rem;
+    }
 }
