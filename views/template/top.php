@@ -29,7 +29,7 @@
 </div>
 <header class="header">
     <nav class="mb-1 navbar navbar-expand-lg navbar-light grey darken-2 lighten-1">
-        <a href="#" class="navbar-brand"><img src="images/cpy.jpeg" alt=""
+        <a href="#" class="navbar-brand"><img src="<?= buildpath('images/cpy.jpeg') ?>" alt=""
                                               class="img-responsive rounded-circle" width="40px"><span class="ml-2 ">CIPY</span></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#cpy"
                 aria-controls="navbarSupportedContent-555" aria-expanded="false" aria-label="Toggle navigation">
@@ -38,21 +38,21 @@
         <div class="collapse navbar-collapse" id="cpy">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="acceuil/"><i class="fa fa-home"></i>Acceuil
+                    <a class="nav-link" href="<?= buildpath('acceuil') ?>"><i class="fa fa-home"></i>Acceuil
                         <span class="sr-only">(current)</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="connexion/"><i class="fas fa-user"></i>Connexion</a>
+                    <a class="nav-link" href="<?= buildpath('connexion') ?>"><i class="fas fa-user"></i>Connexion</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="inscription/"><i class="fas fa-sign-in-alt"></i>Inscriprtion</a>
+                    <a class="nav-link" href="<?= buildpath('inscription') ?>"><i class="fas fa-sign-in-alt"></i>Inscriprtion</a>
                 </li>
             </ul>
             <ul class="navbar-nav ml-auto nav-flex-icons">
                 <li class="nav-item avatar">
                     <i class="nav-link p-0">
-                        <img src="images/user-default.jpg" class="rounded-circle z-depth-0"
+                        <img src="<?= buildpath('images/user-default.jpg') ?>" class="rounded-circle z-depth-0"
                              alt="avatar image" height="35px">
                     </i>
                 </li>
