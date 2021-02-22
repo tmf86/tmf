@@ -33,10 +33,9 @@ class Model
 
     public function __construct()
     {
-        $config = require "config/config.php";
         try {
             $pdo = new PDO(sprintf("mysql:host=%s;dbname=%s;charset=utf8",
-                $config["db_host"], $config["db_name"]), $config["db_user"], $config["db_password"]);
+                getenv('DB_HOST'), getenv('DB_NAME')), getenv('DB_USER'), getenv('DB_PASSWORD'));
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         } catch (\PDOException $e) {
             die("Erreur de connexion a la base de donnée =>" . $e->getMessage());
@@ -60,7 +59,7 @@ class Model
         return $queryExec->fetch();
     }
 
-    public function all($precision="")
+    public function all($precision = "")
     {
         $queryExec = $this->pdo->query("select * from $this->table $precision");
         $queryExec->setFetchMode(PDO::FETCH_CLASS, $this->self);
@@ -73,6 +72,7 @@ class Model
         $queryExec->setFetchMode(PDO::FETCH_CLASS, $this->self);
         return $queryExec->fetch();
     }
+
     public function find_many($id)
     {
         $queryExec = $this->pdo->query(sprintf("select * from $this->table where $this->primaryKeyStr=%d", $id));
