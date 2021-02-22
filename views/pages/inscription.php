@@ -25,7 +25,7 @@
                 <span class="icon icon-float-1"><i class="fas fa-envelope"></i></span>
             </div>
             <div class="fm-item space">
-                <label for="contact">Contact<small class="small"></small></label>
+                <label for="contact">Contact<small class="small">*</small></label>
                 <input type="text" id="contact" name="contact" class="form-control mb-2 input-custum-pd"
                        placeholder="contact">
                 <span class="icon icon-float-2"><i class="fas fa-phone-square-alt"></i></span>
@@ -58,15 +58,25 @@
                 </div>
             </div>
         </div>
+        <div class="fm-inline mt-3">
+            <div class="fm-item">
+                <label for="classe">Niveau <span class="icon"><i class="fa fa-level-up"
+                                                                 aria-hidden="true"></i></span></label>
+                <select name="status" class="select" id="status">
+                    <option value="Reseaux Genie Logiciel 1ère année">Reseaux Genie Logiciel 1ère année</option>
+                    <option value="Reseaux Genie Logiciel 2ème année">Reseaux Genie Logiciel 2ème année</option>
+                </select>
+            </div>
+        </div>
         <div class="fm-inline mt-2">
             <div class="fm-item radio ps">
                 <label>Genre <span class="icon"> <i class="fas fa-venus-mars"></i></span></label>
                 <div class="custom-control custom-checkbox">
-                    <input type="radio" class="custom-control-input" id="h" name="genre" value="H" checked>
+                    <input type="radio" class="custom-control-input" id="h" name="genre" value="homme" checked>
                     <label class="custom-control-label" for="h">Homme</label>
                 </div>
                 <div class="custom-control custom-checkbox">
-                    <input type="radio" class="custom-control-input" name="genre" id="f" value="F">
+                    <input type="radio" class="custom-control-input" name="genre" id="f" value="femme">
                     <label class="custom-control-label" for="f">Femme</label>
                 </div>
             </div>
