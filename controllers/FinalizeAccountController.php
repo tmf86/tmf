@@ -5,6 +5,7 @@ namespace Contoller;
 
 
 use Contoller\Http\Request;
+use Model\Account;
 use Model\User;
 
 class FinalizeAccountController extends Controller
@@ -46,10 +47,12 @@ class FinalizeAccountController extends Controller
     private function urlValidate(string $id, string $email)
     {
         $user = new User();
+        $account = new Account();
         $bool = false;
         $user = $user->query(sprintf("select * from membre where email='%s'", $email));
-        if ($user) {
-            $bool = buildUniqueID($user->mat_membre) === $id;
+        $account = $account->query(sprintf("select * from compte where identifiant='%s'", $id));
+        if ($user && !$account) {
+            $bool = buildUniqueID($user->mat_membre, $user->filiere, $user->contact, sprintf("%s%s", $user->nom, $user->prenom)) === $id;
         }
         return $bool;
     }
