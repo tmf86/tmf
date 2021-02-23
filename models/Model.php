@@ -25,7 +25,7 @@ class Model
     /**
      * @var string
      */
-    protected $self = self::class;
+    private $self = self::class;
     /**
      * @var string
      */
