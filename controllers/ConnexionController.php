@@ -9,6 +9,7 @@ class ConnexionController extends Controller
      */
     public function index()
     {
-        return $this->load_views("pages.connexion");
+        $title = "Connexion";
+        return $this->load_views("pages.connexion", compact("title"));
     }
 }
