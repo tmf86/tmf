@@ -180,11 +180,16 @@ function custum_number(int $number, int $threshold = 1000)
 }
 
 /**
- * @param $id
+ * @param int $id
+ * @param string $filiere
+ * @param string $contact
+ * @param string $name
  * @return string
- * Cré un identifiant unique pour chaque membre
  */
-function buildUniqueID($id)
+function buildUniqueID(int $id, string $filiere, string $contact, string $name)
 {
-    return sprintf('pig_%s', custum_number($id));
+    $last_three_char_level = substr($filiere, 0, strlen($filiere) - 2);
+    $last_second_char_name = substr($name, -3);
+    $last_three_char_phone = substr($contact, -3);
+    return strtoupper(sprintf("%s%s%s-%s", $last_three_char_level, $last_three_char_phone, $last_second_char_name, custum_number($id)));
 }
