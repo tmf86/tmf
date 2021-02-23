@@ -60,11 +60,13 @@
         </div>
         <div class="fm-inline mt-3">
             <div class="fm-item">
-                <label for="classe">Niveau <span class="icon"><i class="fa fa-level-up"
-                                                                 aria-hidden="true"></i></span></label>
-                <select name="status" class="select" id="status">
-                    <option value="Reseaux Genie Logiciel 1ère année">Reseaux Genie Logiciel 1ère année</option>
-                    <option value="Reseaux Genie Logiciel 2ème année">Reseaux Genie Logiciel 2ème année</option>
+                <label for='filiere'>Niveau <span class="icon"><i class="fa fa-level-up"
+                                                                  aria-hidden="true"></i></span></label>
+                <select name="filiere" class="select" id="filiere">
+                    <option value="RGL1A">Reseaux Genie Logiciel 1ère Année</option>
+                    <option value="RGL2A">Reseaux Genie Logiciel 2ème Année</option>
+                    <option value="CF1A">Comptabilité Financière 1ère Année</option>
+                    <option value="CF2A">Comptabilité Financière 2ème Année</option>
                 </select>
             </div>
         </div>
