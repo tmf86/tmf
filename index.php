@@ -46,10 +46,7 @@ $dispatcher = FastRoute\simpleDispatcher(function (FastRoute\RouteCollector $r) 
         [
             'class' => RegisterController::class,
             'method' => 'registerStore',
-            'vars' =>
-                [
-                    new Request()
-                ]
+            'vars' => [new Request()]
         ]);
     $r->addGroup('/Cpy-Mvc/finalize_account_creation/', function (FastRoute\RouteCollector $r) {
 
@@ -57,14 +54,17 @@ $dispatcher = FastRoute\simpleDispatcher(function (FastRoute\RouteCollector $r) 
             [
                 'class' => FinalizeAccountController::class,
                 'method' => 'index',
-                'gets' => true,
-                'vars' =>
-                    [
-                        new Request()
-                    ]
+                'gets' => true
 
             ]);
-//
+        $r->addRoute('POST', '{email:[A-Za-z0-9]+}',
+            [
+                'class' => FinalizeAccountController::class,
+                'method' => 'accountStore',
+                'gets' => true,
+                'vars' => [new Request()]
+
+            ]);
 
     });
     $r->addRoute('GET', '/Cpy-Mvc/sujets',

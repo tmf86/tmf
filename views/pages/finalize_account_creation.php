@@ -1,5 +1,5 @@
 <div class="form-container p-5 mb-5">
-    <form class="text-center p-5 form-box" action="" method="post">
+    <form class="text-center p-5 form-box" action='' method="post">
         <div class="position-relative">
             <p class="text-center mb-4">
                 <span class="text-uppercase"
