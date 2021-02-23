@@ -48,14 +48,14 @@ $dispatcher = FastRoute\simpleDispatcher(function (FastRoute\RouteCollector $r) 
         ]);
     $r->addGroup('/Cpy-Mvc/finalize_account_creation/', function (FastRoute\RouteCollector $r) {
 
-        $r->addRoute('GET', '{id:[a-z0-9\-]+}/{email:[A-Za-z0-9.@]+}',
+        $r->addRoute('GET', '{id:[A-Z0-9\-]+}/{email:[A-Za-z0-9.@]+}',
             [
                 'class' => FinalizeAccountController::class,
                 'method' => 'index',
                 'gets' => true
 
             ]);
-        $r->addRoute('POST', '{id:[a-z0-9\-]+}/{email:[A-Za-z0-9@.]+}',
+        $r->addRoute('POST', '{id:[A-Z0-9\-]+}/{email:[A-Za-z0-9@.]+}',
             [
                 'class' => FinalizeAccountController::class,
                 'method' => 'accountStore',

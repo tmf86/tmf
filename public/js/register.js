@@ -16,9 +16,7 @@ $(function () {
                 $("#debug").html(data)
                 $(".cloud").toggleClass("active")
                 $(".loader-conatiner").toggleClass("active")
-                btnTransform("#register", `<span class="spinner-border reziseInter" role="status">
-            <span class="sr-only">Loading...</span>
-         </span>`, false)
+                btnTransform("#register", `s'inscrir`)
                 if (data.success === true) {
                     $("#form-register").trigger("reset")
                     $("#alertsucces").modal("show")
