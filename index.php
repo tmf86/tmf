@@ -42,7 +42,7 @@ $dispatcher = FastRoute\simpleDispatcher(function (FastRoute\RouteCollector $r) 
             'class' => RegisterController::class,
             'method' => 'index'
         ]);
-    $r->addRoute('POST', '/Cpy-Mvc/registerStore',
+    $r->addRoute('POST', '/Cpy-Mvc/registerstore',
         [
             'class' => RegisterController::class,
             'method' => 'registerStore',
@@ -53,14 +53,6 @@ $dispatcher = FastRoute\simpleDispatcher(function (FastRoute\RouteCollector $r) 
         ]);
     $r->addGroup('/Cpy-Mvc/finalize_account_creation/', function (FastRoute\RouteCollector $r) {
 
-//        $r->addRoute(['GET', 'POST'], '{email:[A-Za-z0-9]+}', function ($email) {
-////        var_dump($_POST);
-//            $scripts = [
-//                sprintf("<script src='%spublic/js/functions.js'></script>", rootUrl()),
-//                sprintf("<script src='%spublic/js/script.js'></script>", rootUrl())
-//            ];
-//            return new View\View("pages.finalize_account_creation", compact('scripts'));
-//        });
         $r->addRoute('GET', '{email:[A-Za-z0-9]+}',
             [
                 'class' => FinalizeAccountController::class,
@@ -72,11 +64,7 @@ $dispatcher = FastRoute\simpleDispatcher(function (FastRoute\RouteCollector $r) 
                     ]
 
             ]);
-//            $scripts = [
-//                sprintf("<script src='%spublic/js/functions.js'></script>", rootUrl()),
-//                sprintf("<script src='%spublic/js/script.js'></script>", rootUrl())
-//            ];
-//            return new View\View("pages.finalize_account_creation", compact('scripts'));
+//
 
     });
     $r->addRoute('GET', '/Cpy-Mvc/sujets',

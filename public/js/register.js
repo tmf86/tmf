@@ -8,7 +8,7 @@ $(function () {
             <span class="sr-only">Loading...</span>
          </span>`)
         $.ajax({
-            url: buildUrl("registerStore"),
+            url: buildUrl("registerstore"),
             type: "post",
             data: $(this).serialize(),
             dataType: "json",
