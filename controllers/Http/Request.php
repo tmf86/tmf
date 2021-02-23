@@ -3,6 +3,9 @@
 
 namespace Contoller\Http;
 
+
+use View\View;
+
 class Request
 {
     /*** @var array */
@@ -44,14 +47,17 @@ class Request
 
     /**
      * @param int $code
+     * @return bool|View
      */
     public static function abort(int $code)
     {
         switch ($code) {
             case 404 :
-                header('HTTP/1.1 404 Internal Server Error');
+                http_response_code(404);
+                return new View('pages.404.404', [], false);
                 break;
         }
+        return true;
     }
 
     /**
