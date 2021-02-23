@@ -4,6 +4,7 @@ namespace Contoller;
 
 use Contoller\Http\Request;
 use Model\User;
+use Repositories\Mailer;
 use Validator\RegisterValidator;
 use View\View;
 
@@ -45,11 +46,10 @@ class RegisterController extends Controller
                 $user = $user->create($request->inputs());
                 if ($user) {
                     $name = sprintf("%s %s", $request->nom, $request->prenom);
-                    $name_id = sprintf("%s%s", $request->nom, $request->prenom);
-//                  $maller = new Mailer($name, $request->email);
-//                   $maller->mailerSend();
-                    debug(buildUniqueID($user->mat_membre, $user->filiere, $user->contact, $name_id));
-                    die();
+                    $name_id = sprintf("%s%s", str_replace(" ", '', $request->nom), str_replace(" ", '', $request->prenom));
+                    $url = buildpath(sprintf('finalize_account_creation/%s/%s', buildUniqueID($user->mat_membre, $user->filiere, $user->contact, $name_id), $request->email));
+                    $maller = new Mailer($name, $request->email, $url);
+                    $maller->mail($request);
                     return $request->ajax(["success" => true], 200);
                 } else {
                     return $request->ajax(["input_error" => false], 400);
