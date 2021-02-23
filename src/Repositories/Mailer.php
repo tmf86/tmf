@@ -131,7 +131,7 @@ class Mailer extends PHPMailer
                                     <tr>
                                         <td  bgcolor="#f9f9f9">
                                             <td style="text-align: center;border-collapse: collapse !important;">
-                                                <a href="#" style="outline: none;color: #fff;text-decoration: none;background: #43BBE7;text-align: center;padding: 1rem 6rem;text-transform: uppercase;font-family: Helvetica, sans-serif;font-size: 1.3rem">Valider</a>
+                                                <a href="' . $this->url . '" target="_blank" style="outline: none;color: #fff;text-decoration: none;background: #43BBE7;text-align: center;padding: 1rem 6rem;text-transform: uppercase;font-family: Helvetica, sans-serif;font-size: 1.3rem">Valider</a>
                                             </td>
                                         </td>
                                     </tr>
