@@ -44,7 +44,7 @@
 <script src="<?= buildpath('public/js/import/bootstrap.js') ?>"></script>
 <script src="<?= buildpath('public/js/import/popper.js') ?>"></script>
 <script src="<?= buildpath('public/js/import/mdb.js') ?>"></script>
-<?= scripts($scripts ?? []) ?>
+<?= suppl_tags($scripts ?? [], SCRIPT) ?>
 <script>
     setTimeout(function () {
         $(".waiting").toggleClass("hidden")

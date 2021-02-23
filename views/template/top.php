@@ -13,6 +13,7 @@
           rel="stylesheet">
     <link rel="stylesheet" href='<?= buildpath("public/css/style.css") ?>'>
     <link rel="stylesheet" href="<?= buildpath('public/js/import/VenoBox-master/venobox/venobox.min.css') ?>">
+    <?= suppl_tags($links ?? [], LINK) ?>
     <title><?= $title ?? "Title" ?></title>
     <!-- Stylesheet   -->
     <!-- Script-->
