@@ -18,10 +18,10 @@ trait RelationalShema
      */
     private function relationShip(int $id, int $cardinality)
     {
-        if ($cardinality == 1) {
+        if ($cardinality == I) {
             $relationship = "select * from $this->table inner join $this->foreignTable on $this->table.$this->foreignkey = $this->foreignTable.$this->foreignTableKey where $this->primaryKeyStr = $id  limit 1";
             $this->relationQuery = $relationship;
-        } else if ($cardinality == 2) {
+        } else if ($cardinality == N) {
             $relationship = "select * from $this->table inner join $this->foreignTable on $this->table.$this->primaryKeyStr = $this->foreignTable.$this->foreignkey where $this->primaryKeyStr = $id ";
             $this->relationQuery = $relationship;
         }
@@ -35,7 +35,7 @@ trait RelationalShema
     protected function hasMany($table)
     {
         $this->self = $table;
-        return $this->relationShip($this->{$this->primaryKeyStr}, 2)->query($this->relationQuery, true);
+        return $this->relationShip($this->{$this->primaryKeyStr}, N)->query($this->relationQuery, true);
     }
 
     /**
@@ -45,6 +45,6 @@ trait RelationalShema
     protected function belongTo($table)
     {
         $this->self = $table;
-        return $this->relationShip($this->{$this->primaryKeyStr}, 1)->query($this->relationQuery);
+        return $this->relationShip($this->{$this->primaryKeyStr}, I)->query($this->relationQuery);
     }
 }
