@@ -126,8 +126,8 @@
                 </button>
             </div>
             <div class="modal-body text-center">
-                <span style="font-size: 3rem">😇</span>
-                <div>Un mail vous a été envoyé pour la validation de votre compte !</div>
+                <span style="font-size: 3rem">✅</span>
+                <div>Un mail vous a été envoyé pour la finalisation de la creation de votre compte !</div>
             </div>
         </div>
     </div>
