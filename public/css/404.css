@@ -1,0 +1,46 @@
+@import "../fonts/fonts.css";
+
+body {
+    background-color: #616161;
+}
+
+.main-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.mainbox {
+    background-color: #616161;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.err {
+    font-size: 12rem;
+    color: #ffffff;
+}
+
+.far {
+    font-size: 11rem;
+    color: #ffffff;
+}
+
+.msg {
+    text-align: justify;
+    font-family: 'Product Sans Thin Regular', 'Lato', sans-serif;
+    font-weight: 700;
+    font-size: 1.4rem;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+a:hover {
+    text-decoration: underline;
+}
