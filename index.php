@@ -7,7 +7,6 @@ use Contoller\HomeController;
 use Contoller\Http\Request;
 use Contoller\RegisterController;
 use Contoller\SujetController;
-use Repositories\Mailer;
 
 require "vendor/autoload.php";
 require 'config/config.php';
@@ -49,14 +48,14 @@ $dispatcher = FastRoute\simpleDispatcher(function (FastRoute\RouteCollector $r) 
         ]);
     $r->addGroup('/Cpy-Mvc/finalize_account_creation/', function (FastRoute\RouteCollector $r) {
 
-        $r->addRoute('GET', '{email:[A-Za-z0-9]+}',
+        $r->addRoute('GET', '{id:[a-z0-9_]+}/{email:[A-Za-z0-9.@]+}',
             [
                 'class' => FinalizeAccountController::class,
                 'method' => 'index',
                 'gets' => true
 
             ]);
-        $r->addRoute('POST', '{email:[A-Za-z0-9]+}',
+        $r->addRoute('POST', '{id:[a-z0-9_]+}/{email:[A-Za-z0-9@.]+}',
             [
                 'class' => FinalizeAccountController::class,
                 'method' => 'accountStore',
@@ -82,8 +81,8 @@ $dispatcher = FastRoute\simpleDispatcher(function (FastRoute\RouteCollector $r) 
             'method' => 'index'
         ]);
     $r->addRoute('GET', '/Cpy-Mvc/test', function () {
-        $mailer = new Mailer("kofi jack", 'assemiensamuel48@gmail.com');
-        $mailer->mail(new Request());
+        http_response_code(404);
+        return new View\View('pages.404.404', [], false);
     });
 });
 
