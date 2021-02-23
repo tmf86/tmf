@@ -123,21 +123,20 @@ function selectBirthDay($id, $year = false)
 }
 
 /**
- * @param array $scripts
- * @param array $links
+ * @param array $paths
  * @param string $to_do
  * @return string
  * Affiche les balise scripts et links supplementaires
  */
-function suppl_tags(array $scripts = [], array $links = [], string $to_do = '')
+function suppl_tags(array $paths = [], string $to_do = '')
 {
     $path = '';
-    if (!empty($scripts) && $to_do === SCRIPT) {
-        foreach ($scripts as $val):
+    if (!empty($paths) && $to_do === SCRIPT) {
+        foreach ($paths as $val):
             $path .= sprintf("%s\n", $val);
         endforeach;
-    } elseif (!empty($links) && $to_do === LINK) {
-        foreach ($scripts as $val):
+    } elseif (!empty($paths) && $to_do === LINK) {
+        foreach ($paths as $val):
             $path .= sprintf("%s\n", $val);
         endforeach;
     }
