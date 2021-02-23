@@ -178,3 +178,13 @@ function custum_number(int $number, int $threshold = 1000)
     return $number;
 
 }
+
+/**
+ * @param $id
+ * @return string
+ * Cré un identifiant unique pour chaque membre
+ */
+function buildUniqueID($id)
+{
+    return sprintf('pig_%s', custum_number($id));
+}
