@@ -32,22 +32,26 @@ class RegisterController extends Controller
     public function registerStore(Request $request)
     {
         if ($request->isAjax()) {
-            debug($request->session());
-            die();
             $validator = new RegisterValidator();
             $this->processInputsData();
             $validation = $validator->validateCustermer($request->inputs());
             if ($validation->fails()) {
                 $errors = $validation->errors()->firstOfAll();
                 $validator->custumErrorMessages($errors);
+                $errors['input_error'] = true;
                 return $request->ajax($errors, 400);
             } else {
                 $user = new User();
                 $user = $user->create($request->inputs());
-//                $name = sprintf("%s %s", $request->nom, $request->prenom);
-//                $maller = new Mailer($name, $request->email);
-//                $maller->mailerSend();
-                return $request->ajax(["success" => true], 200);
+                if ($user) {
+                    $name = sprintf("%s %s", $request->nom, $request->prenom);
+//                  $maller = new Mailer($name, $request->email);
+//                   $maller->mailerSend();
+                    return $request->ajax(["success" => true], 200);
+                } else {
+                    return $request->ajax(["input_error" => false], 400);
+                }
+//
             }
 
         } else {

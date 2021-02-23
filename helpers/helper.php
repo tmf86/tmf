@@ -152,3 +152,29 @@ function buildpath($file)
 {
     return sprintf("%s%s", getenv('APP_URL'), $file);
 }
+
+/**
+ * @param int $number
+ * @param int $threshold
+ * @return string
+ * Modifie un nombre en completant des zeros a l'avant pour atteindre la longueur du $threshold
+ */
+function custum_number(int $number, int $threshold = 1000)
+{
+    $number = (string)$number;
+    $threshold = (string)$threshold;
+    $number_lenght = strlen($number);
+    $threshold_lenght = strlen($threshold);
+//    1000
+//    1
+    if ($threshold_lenght > $number_lenght) {
+        $diff = $threshold_lenght - $number_lenght;
+        $zeros = '';
+        for ($i = 0; $i < $diff; $i++) {
+            $zeros .= '0';
+        }
+        $number = sprintf("%s%s", $zeros, $number);
+    }
+    return $number;
+
+}

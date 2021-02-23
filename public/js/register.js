@@ -33,16 +33,23 @@ $(function () {
                 $("#debug").html(xhr.responseText)
                 console.log(errors)
                 if (xhr.status === 400) {
-                    $("#alerterror").modal("show")
-                    for (const property in errors) {
-                        $(`label[for='${property}'] small`).html(errors[property])
-                        $(`input[name="${property}"]`).addClass("error")
-                        $(`input[name="${property}"] ~ span.icon `).addClass("error")
-                        console.log(`${property}: ${errors[property]}`);
+                    switch (errors.input_error) {
+                        case true :
+                            $("#alerterror").modal("show")
+                            for (const property in errors) {
+                                $(`label[for='${property}'] small`).html(errors[property])
+                                $(`input[name="${property}"]`).addClass("error")
+                                $(`input[name="${property}"] ~ span.icon `).addClass("error")
+                                console.log(`${property}: ${errors[property]}`);
+                            }
+                            break;
+                        case false :
+                            alert("Oops ...\0Veuillez Réessayer !")
+                            break;
                     }
                 } else if (xhr.status === 500) {
                     alert("Oops ...\nVeuillez Réessayer !")
-                } else if (xhr.status === 401) {
+                } else if (xhr.status === 409) {
                     alert("Oops...\nVeuillez verifier l'etat de votre connexion internet et Réesayer !")
                 }
             }

@@ -9,7 +9,6 @@ use Contoller\RegisterController;
 use Contoller\SujetController;
 use Repositories\Mailer;
 
-
 require "vendor/autoload.php";
 require 'config/config.php';
 require "helpers/helper.php";

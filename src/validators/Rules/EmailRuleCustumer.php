@@ -23,7 +23,7 @@ class EmailRuleCustumer extends Rule
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
         $data = curl_exec($curl);
         if ($data === false) {
-            return $request->ajax([], 401);
+            return $request->ajax([], 409);
             die();
         } else {
             $data = json_decode($data, true);
@@ -36,7 +36,7 @@ class EmailRuleCustumer extends Rule
                     return false;
                 }
             } else {
-                return $request->ajax([], 401);
+                return $request->ajax([], 409);
                 die();
             }
         }
