@@ -47,6 +47,8 @@ class RegisterController extends Controller
                     $name = sprintf("%s %s", $request->nom, $request->prenom);
 //                  $maller = new Mailer($name, $request->email);
 //                   $maller->mailerSend();
+                    debug(buildUniqueID($user->mat_membre));
+                    die();
                     return $request->ajax(["success" => true], 200);
                 } else {
                     return $request->ajax(["input_error" => false], 400);
