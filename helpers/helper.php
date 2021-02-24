@@ -24,11 +24,12 @@ function processFundedRoot(array $rootResult)
         */
         $gets_test = ((array_key_exists("gets", $handler)) && ($handler['gets'] === true));
         $vars_test = (array_key_exists("vars", $handler));
+        
         if ($gets_test && $vars_test) {
             $vars = $handler['vars'];
             $classToInstanced = new $class();
             $classToInstanced->$method(...$vars, ...$urlVars);
-        } elseif ($gets_test && $vars_test) {
+        } elseif ($gets_test && !$vars_test) {
             $classToInstanced = new $class();
             $classToInstanced->$method(...$urlVars);
         } elseif ($vars_test && !array_key_exists("gets", $handler)) {

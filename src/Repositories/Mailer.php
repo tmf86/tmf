@@ -44,7 +44,7 @@ class Mailer extends PHPMailer
             $mail->setFrom('cpypigier@gmail.com', 'CPY');
             $mail->addAddress($this->email, $this->name);
             $mail->isHTML(true);                                  // Set email format to HTML
-            $mail->Subject = 'Validation de compte';
+            $mail->Subject = 'Finalisation de la creation du compte';
             $mail->Body = $this->buildMailBody();
             return $mail->send();
         } catch (Exception $e) {
