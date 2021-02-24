@@ -56,6 +56,7 @@ class Model
         if ($all) {
             return $queryExec->fetchAll();
         }
+        $this->pdo = null;
         return $queryExec->fetch();
     }
 
@@ -63,6 +64,7 @@ class Model
     {
         $queryExec = $this->pdo->query("select * from $this->table $precision");
         $queryExec->setFetchMode(PDO::FETCH_CLASS, $this->self);
+        $this->pdo = null;
         return $queryExec->fetchAll();
     }
 
@@ -70,6 +72,7 @@ class Model
     {
         $queryExec = $this->pdo->query(sprintf("select * from $this->table where $this->primaryKeyStr=%d limit 1", $id));
         $queryExec->setFetchMode(PDO::FETCH_CLASS, $this->self);
+        $this->pdo = null;
         return $queryExec->fetch();
     }
 
@@ -77,6 +80,7 @@ class Model
     {
         $queryExec = $this->pdo->query(sprintf("select * from $this->table where $this->primaryKeyStr=%d", $id));
         $queryExec->setFetchMode(PDO::FETCH_CLASS, $this->self);
+        $this->pdo = null;
         return $queryExec->fetchAll();
     }
 
@@ -100,6 +104,7 @@ class Model
                 $rep = $this->query("select * from $this->table where $this->primaryKeyStr= $user->id");
             }
         }
+        $this->pdo = null;
         return $rep;
     }
 
