@@ -80,6 +80,14 @@ $dispatcher = FastRoute\simpleDispatcher(function (FastRoute\RouteCollector $r) 
             'class' => FormationController::class,
             'method' => 'index'
         ]);
+    $r->addRoute('GET', '/Cpy-Mvc/about-us', function () {
+        $title = 'A propos';
+        return new View\View('pages.apropos', compact('title'));
+    });
+    $r->addRoute('GET', '/Cpy-Mvc/profile', function () {
+        $title = 'Profile';
+        return new View\View('pages.profile', compact('title'), false);
+    });
     $r->addRoute('GET', '/Cpy-Mvc/test', function () {
 //        http_response_code(404);
 //        return new View\View('pages.404.404', [], false);
