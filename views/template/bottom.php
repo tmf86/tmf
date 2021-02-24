@@ -4,7 +4,7 @@
         <div class="row">
             <div class="col-md-6 mt-md-0 mt-3">
                 <h5 class="text-uppercase font-weight-bold">
-                    <button class="btn btn-warning">Apropos</button>
+                    <a href="about-us" class="btn btn-warning">Apropos</a>
                 </h5>
                 <p></p>
             </div>
