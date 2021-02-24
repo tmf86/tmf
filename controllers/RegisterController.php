@@ -53,9 +53,7 @@ class RegisterController extends Controller
                 $maller->mail($request);
                 return $request->ajax(["success" => true], 200);
             }
-
             return $request->ajax(["input_error" => false], 400);
-//
 
         }
         Request::abort(404);
