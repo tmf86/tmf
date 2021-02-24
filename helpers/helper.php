@@ -22,15 +22,16 @@ function processFundedRoot(array $rootResult)
             a l'aide de la clé gets voila pourquoi je verifie si elle aussi existe ainsi  de je peux poser des actions differntes
             En fonctions de ces tests
         */
-
-        if ((key_exists("gets", $handler)) && ($handler['gets'] === true) && (key_exists("vars", $handler))) {
+        $gets_test = ((array_key_exists("gets", $handler)) && ($handler['gets'] === true));
+        $vars_test = (array_key_exists("vars", $handler));
+        if ($gets_test && $vars_test) {
             $vars = $handler['vars'];
             $classToInstanced = new $class();
             $classToInstanced->$method(...$vars, ...$urlVars);
-        } elseif ((key_exists("gets", $handler)) && ($handler['gets'] === true) && (!key_exists("vars", $handler))) {
+        } elseif ($gets_test && $vars_test) {
             $classToInstanced = new $class();
             $classToInstanced->$method(...$urlVars);
-        } elseif (key_exists("vars", $handler) && !key_exists("gets", $handler)) {
+        } elseif ($vars_test && !array_key_exists("gets", $handler)) {
             $vars = $handler['vars'];
             $classToInstanced = new $class();
             $classToInstanced->$method(...$vars);
@@ -52,7 +53,7 @@ function processFundedRoot(array $rootResult)
  */
 function rootUrl()
 {
-    return getenv('APP_URL');
+    return APP_URL;
 }
 
 
@@ -131,11 +132,12 @@ function selectBirthDay($id, $year = false)
 function suppl_tags(array $paths = [], string $to_do = '')
 {
     $path = '';
-    if (!empty($paths) && $to_do === SCRIPT) {
+    $test_empty_path = !empty($paths);
+    if ($test_empty_path && $to_do === SCRIPT) {
         foreach ($paths as $val):
             $path .= sprintf("%s\n", $val);
         endforeach;
-    } elseif (!empty($paths) && $to_do === LINK) {
+    } elseif ($test_empty_path && $to_do === LINK) {
         foreach ($paths as $val):
             $path .= sprintf("%s\n", $val);
         endforeach;
@@ -150,7 +152,7 @@ function suppl_tags(array $paths = [], string $to_do = '')
  */
 function buildpath($file)
 {
-    return sprintf("%s%s", getenv('APP_URL'), $file);
+    return sprintf("%s%s", APP_URL, $file);
 }
 
 /**
@@ -188,8 +190,8 @@ function custum_number(int $number, int $threshold = 1000)
  */
 function buildUniqueID(int $id, string $filiere, string $contact, string $name)
 {
-    $last_three_char_level = substr($filiere, 0, strlen($filiere) - 2);
+    $first_three_char_level = substr($filiere, 0, -2);
     $last_second_char_name = substr($name, -3);
     $last_three_char_phone = substr($contact, -3);
-    return strtoupper(sprintf("%s%s%s-%s", $last_three_char_level, $last_three_char_phone, $last_second_char_name, custum_number($id)));
+    return strtoupper(sprintf("%s%s%s-%s", $first_three_char_level, $last_three_char_phone, $last_second_char_name, custum_number($id)));
 }

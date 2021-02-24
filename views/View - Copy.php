@@ -40,22 +40,22 @@ class View
                 $this->view_name = str_replace('.', '/', $this->view_name);
                 extract($this->vars);
                 require "template/top.php";
-                require sprintf("%s%s.php", VIEW_DIRECTORY, $this->view_name);
+                require sprintf("%s%s.php", getenv('VIEW_DIRECTORY'), $this->view_name);
                 require "template/bottom.php";
             } else {
                 extract($this->vars);
                 require "template/top.php";
-                require sprintf("%s%s.php", VIEW_DIRECTORY, $this->view_name);
+                require sprintf("%s%s.php", getenv('VIEW_DIRECTORY'), $this->view_name);
                 require "template/bottom.php";
             }
         } else {
             if (strpos($this->view_name, ".")) {
                 $this->view_name = str_replace('.', '/', $this->view_name);
                 extract($this->vars);
-                require sprintf("%s%s.php", VIEW_DIRECTORY, $this->view_name);
+                require sprintf("%s%s.php", getenv('VIEW_DIRECTORY'), $this->view_name);
             } else {
                 extract($this->vars);
-                require sprintf("%s%s.php", VIEW_DIRECTORY, $this->view_name);
+                require sprintf("%s%s.php", getenv('VIEW_DIRECTORY'), $this->view_name);
             }
         }
     }

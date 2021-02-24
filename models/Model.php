@@ -35,7 +35,7 @@ class Model
     {
         try {
             $pdo = new PDO(sprintf("mysql:host=%s;dbname=%s;charset=utf8",
-                getenv('DB_HOST'), getenv('DB_NAME')), getenv('DB_USER'), getenv('DB_PASSWORD'));
+                DB_HOST, DB_NAME), DB_USER, DB_PASSWORD);
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         } catch (\PDOException $e) {
             die("Erreur de connexion a la base de donnée =>" . $e->getMessage());

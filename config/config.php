@@ -1,16 +1,15 @@
 <?php
 
 /**  Configuration des accès a la base de donée*/
-
-putenv("DB_NAME=cipy");
-putenv("DB_USER=root");
-putenv("DB_PASSWORD=");
-putenv("DB_HOST=localhost");
+define("DB_NAME", "cipy");
+define("DB_USER", "root");
+define("DB_PASSWORD", "");
+define("DB_HOST", "localhost");
 
 /** Configuration des dossiers et URL*/
 
-putenv("VIEW_DIRECTORY=views/");
-putenv("APP_URL=http://localhost/Cpy-Mvc/");
+define("VIEW_DIRECTORY", "views/");
+define("APP_URL", "http://localhost/Cpy-Mvc/");
 
 /** Constantes Globale*/
 

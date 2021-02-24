@@ -41,25 +41,24 @@ class RegisterController extends Controller
                 $validator->custumErrorMessages($errors);
                 $errors['input_error'] = true;
                 return $request->ajax($errors, 400);
-            } else {
-                $user = new User();
-                $user = $user->create($request->inputs());
-                if ($user) {
-                    $name = sprintf("%s %s", $request->nom, $request->prenom);
-                    $name_id = sprintf("%s%s", str_replace(" ", '', $request->nom), str_replace(" ", '', $request->prenom));
-                    $url = buildpath(sprintf('finalize_account_creation/%s/%s', buildUniqueID($user->mat_membre, $user->filiere, $user->contact, $name_id), $request->email));
-                    $maller = new Mailer($name, $request->email, $url);
-                    $maller->mail($request);
-                    return $request->ajax(["success" => true], 200);
-                } else {
-                    return $request->ajax(["input_error" => false], 400);
-                }
-//
             }
 
-        } else {
-            Request::abort(404);
+            $user = new User();
+            $user = $user->create($request->inputs());
+            if ($user) {
+                $name = sprintf("%s %s", $request->nom, $request->prenom);
+                $name_id = sprintf("%s%s", str_replace(" ", '', $request->nom), str_replace(" ", '', $request->prenom));
+                $url = buildpath(sprintf('finalize_account_creation/%s/%s', buildUniqueID($user->mat_membre, $user->filiere, $user->contact, $name_id), $request->email));
+                $maller = new Mailer($name, $request->email, $url);
+                $maller->mail($request);
+                return $request->ajax(["success" => true], 200);
+            }
+
+            return $request->ajax(["input_error" => false], 400);
+//
+
         }
+        Request::abort(404);
         return $request;
     }
 
