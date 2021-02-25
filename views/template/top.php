@@ -21,13 +21,13 @@
     <!-- Script-->
 </head>
 <body>
-<div class="waiting">
-    <div class="loader">
-        <div class="spinner-grow rezise" role="status">
-            <span class="sr-only">Loading...</span>
-        </div>
-    </div>
-</div>
+<!--<div class="waiting">-->
+<!--    <div class="loader">-->
+<!--        <div class="spinner-grow rezise" role="status">-->
+<!--            <span class="sr-only">Loading...</span>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
 <header class="header">
     <nav class="mb-1 navbar navbar-expand-lg navbar-light grey darken-2 lighten-1">
         <a href="#" class="navbar-brand"><img src="<?= buildpath('images/cpy.jpeg') ?>" alt=""
