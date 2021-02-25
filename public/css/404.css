@@ -2,6 +2,9 @@
 
 body {
     background-color: #616161;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 .main-container {
@@ -9,6 +12,7 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    padding: 2rem;
 }
 
 .mainbox {
@@ -20,12 +24,12 @@ body {
 }
 
 .err {
-    font-size: 12rem;
+    font-size: 11rem;
     color: #ffffff;
 }
 
 .far {
-    font-size: 11rem;
+    font-size: 9rem;
     color: #ffffff;
 }
 
@@ -34,6 +38,7 @@ body {
     font-family: 'Product Sans Thin Regular', 'Lato', sans-serif;
     font-weight: 700;
     font-size: 1.4rem;
+    padding: 2rem;
 }
 
 a {
