@@ -52,7 +52,8 @@ $dispatcher = FastRoute\simpleDispatcher(function (FastRoute\RouteCollector $r) 
             [
                 'class' => FinalizeAccountController::class,
                 'method' => 'index',
-                'gets' => true
+                'gets' => true,
+                'vars' => [new Request()]
 
             ]);
         $r->addRoute('POST', '{id:[A-Z0-9\-]+}/{email:[A-Za-z0-9@.]+}',
