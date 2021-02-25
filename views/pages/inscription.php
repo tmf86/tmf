@@ -35,7 +35,7 @@
             <div class="fm-item mt-2">
                 <label for="ville">Ville <span class="icon"><i class="fas fa-building"></i></span></label>
                 <select class="select" name="ville" id="ville">
-                    <option value="Yamoussoukro">Abidjan</option>
+                    <option value="Abidjan">Abidjan</option>
                     <option value="Yamoussoukro">Yamoussoukro</option>
                 </select>
             </div>
