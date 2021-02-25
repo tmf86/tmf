@@ -10,7 +10,7 @@ use Contoller\Http\Request;
 function processFundedRoot(array $rootResult)
 {
     $handler = $rootResult[1];
-    $urlVars = $rootResult[2];
+    $urlVars = associative_array($rootResult[2]);
     if (is_array($handler)) {
         $class = $handler['class'];
         $method = $handler['method'];
@@ -24,7 +24,7 @@ function processFundedRoot(array $rootResult)
         */
         $gets_test = ((array_key_exists("gets", $handler)) && ($handler['gets'] === true));
         $vars_test = (array_key_exists("vars", $handler));
-        
+
         if ($gets_test && $vars_test) {
             $vars = $handler['vars'];
             $classToInstanced = new $class();
@@ -44,6 +44,7 @@ function processFundedRoot(array $rootResult)
         call_user_func($handler, ...$urlVars);
     } else {
         Request::abort(404);
+        exit();
     }
 
 }
@@ -195,4 +196,18 @@ function buildUniqueID(int $id, string $filiere, string $contact, string $name)
     $last_second_char_name = substr($name, -3);
     $last_three_char_phone = substr($contact, -3);
     return strtoupper(sprintf("%s%s%s-%s", $first_three_char_level, $last_three_char_phone, $last_second_char_name, custum_number($id)));
+}
+
+/**
+ * @param array $initial_array
+ * @return array
+ * convertie un tableau associatif en tableau indexé
+ */
+function associative_array(array $initial_array)
+{
+    $indexed_array = [];
+    foreach ($initial_array as $value) {
+        $indexed_array[] = $value;
+    }
+    return $indexed_array;
 }
