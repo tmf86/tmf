@@ -17,8 +17,7 @@ abstract class ValidatorCustumer extends Validator
 
     public function __construct(array $messages = [])
     {
-        $messages = $this->errorsMessages;
-        parent::__construct($messages);
+        parent::__construct($this->errorsMessages);
     }
 
     /**
