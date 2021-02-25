@@ -54,7 +54,12 @@ class FinalizeAccountController extends Controller
             foreach ($errors as $key => $value) {
                 $request->error($key, $value);
             }
-            return redirect('pages.finalize_account_creation', false, 301, compact('request'));
+            $scripts =
+                [
+                    sprintf("<script src='%spublic/js/functions.js'></script>", rootUrl()),
+                    sprintf("<script src='%spublic/js/script.js'></script>", rootUrl())
+                ];
+            return redirect('pages.finalize_account_creation', false, 301, compact('request', 'scripts'));
         } else {
             debug($request->inputs());
         }
