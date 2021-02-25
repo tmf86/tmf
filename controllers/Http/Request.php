@@ -16,6 +16,8 @@ class Request
     private $cookies;
     /*** @var array */
     private $sessions;
+    /*** @var array */
+    private $errors = [];
 
     /**
      * Request constructor.
@@ -103,6 +105,48 @@ class Request
         }
 
         return $this->sessions;
+    }
+
+    /**
+     * @param string $key
+     * @return bool
+     * verifie si cette clé de session existe
+     */
+    public function hasSession(string $key)
+    {
+        return (isset($this->sessions[$key]));
+    }
+
+    /**
+     * @param string $key
+     * @param string $value
+     * @return array|mixed|string
+     * @throws \Exception
+     */
+    public function error(string $key = "", string $value = "")
+    {
+        if (!empty($key) && empty($value)) {
+            if (array_key_exists($key, $this->errors)) {
+                return $this->errors["$key"];
+            }
+            throw  new  \Exception("The key ask  doesn't exist.");
+        }
+        if (!empty($key) && !empty($value)) {
+            $this->errors["$key"] = $value;
+            return $this->errors["$key"];
+        }
+
+        return $this->errors;
+    }
+
+    /**
+     * @param string $key
+     * @return bool
+     * verifie si cette clé d'erreur existe
+     */
+    public function hasError(string $key)
+    {
+        return (isset($this->errors[$key]));
     }
 
     /**
