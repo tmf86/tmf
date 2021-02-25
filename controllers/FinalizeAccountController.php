@@ -25,12 +25,13 @@ class FinalizeAccountController extends Controller
             Request::abort(404);
             exit();
         }
+        $title = 'Finalisation de creation de compte';
         $scripts =
             [
                 sprintf("<script src='%spublic/js/functions.js'></script>", rootUrl()),
                 sprintf("<script src='%spublic/js/script.js'></script>", rootUrl())
             ];
-        return $this->load_views("pages.finalize_account_creation", compact('scripts', 'request'));
+        return $this->load_views("pages.finalize_account_creation", compact('scripts', 'title', 'request'));
 
     }
 
