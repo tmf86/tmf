@@ -7,15 +7,19 @@ namespace Contoller;
 use Contoller\Http\Request;
 use Model\Account;
 use Model\User;
+use Validator\FinalizeAccountValidator;
+use View\View;
 
 class FinalizeAccountController extends Controller
 {
 
     /***
+     * @param Request $request
+     * @param string $id
      * @param string $email
-     * @return \View\View
+     * @return View
      */
-    public function index(string $id, string $email)
+    public function index(Request $request, string $id, string $email): View
     {
         if (!$this->urlValidate($id, $email)) {
             Request::abort(404);
@@ -26,16 +30,33 @@ class FinalizeAccountController extends Controller
                 sprintf("<script src='%spublic/js/functions.js'></script>", rootUrl()),
                 sprintf("<script src='%spublic/js/script.js'></script>", rootUrl())
             ];
-        return $this->load_views("pages.finalize_account_creation", compact('scripts'));
+        return $this->load_views("pages.finalize_account_creation", compact('scripts', 'request'));
 
     }
 
     /**
      * @param Request $request
      * @param string $email
+     * @throws \Exception
      */
     public function accountStore(Request $request, string $id, string $email)
     {
+        if (!$this->urlValidate($id, $email)) {
+            Request::abort(404);
+            exit();
+        }
+        $validator = new FinalizeAccountValidator();
+        $validation = $validator->validateCustermer($request->inputs());
+        if ($validation->fails()) {
+            $errors = $validation->errors()->firstOfAll();
+            $validator->custumErrorMessages($errors);
+            foreach ($errors as $key => $value) {
+                $request->error($key, $value);
+            }
+            return redirect('pages.finalize_account_creation', false, 301, compact('request'));
+        } else {
+            debug($request->inputs());
+        }
 
     }
 
@@ -44,7 +65,7 @@ class FinalizeAccountController extends Controller
      * @param string $email
      * @return bool
      */
-    private function urlValidate(string $id, string $email)
+    private function urlValidate(string $id, string $email): bool
     {
         $user = new User();
         $account = new Account();
