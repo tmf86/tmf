@@ -226,4 +226,5 @@ function redirect(string $adresse, bool $location = false, int $code = 301, arra
     }
     header("Status: 301 Moved Permanently", false, $code);
     return new View($adresse, $vars, $use_templating);
+    exit();
 }
