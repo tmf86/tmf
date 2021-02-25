@@ -8,9 +8,12 @@
             <div class="underline"></div>
         </div>
         <div class="mt-5">
+            <?php if ($request->hasError('mot_pass')): ?>
+                <small class="small"><?= $request->error('mot_pass') ?></small>
+            <?php endif; ?>
             <div class="position-relative">
                 <span class="password-eye first eye-hide"><i class="fas fa-eye-slash"></i></i></span>
-                <input type="password" id="password" class="form-control mb-4 fm-p" name="password"
+                <input type="password" id="password" class="form-control mb-4 fm-p" name="mot_pass"
                        placeholder="Mot de passe" autocomplete="new-password">
             </div>
             <div class="position-relative">
