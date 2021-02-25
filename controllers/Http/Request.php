@@ -55,6 +55,7 @@ class Request
             case 404 :
                 http_response_code(404);
                 return new View('pages.404.404', [], false);
+                exit();
                 break;
         }
         return true;
@@ -70,6 +71,7 @@ class Request
         http_response_code($code);
         echo json_encode($data);
         return $this;
+        exit();
     }
 
     /**
@@ -81,20 +83,26 @@ class Request
         sleep($value);
     }
 
+    /***
+     * @param string $key
+     * @param string $value
+     * @return array|mixed|string
+     * @throws \Exception
+     */
     public function session(string $key = "", string $value = "")
     {
         if (!empty($key) && empty($value)) {
-            if (key_exists($key, $this->sessions)) {
+            if (array_key_exists($key, $this->sessions)) {
                 return $this->sessions["$key"];
-            } else {
-                throw  new  \Exception("The key ask  doesn't exist.");
             }
-        } else if (!empty($key) && !empty($value)) {
+            throw  new  \Exception("The key ask  doesn't exist.");
+        }
+        if (!empty($key) && !empty($value)) {
             $this->sessions["$key"] = $value;
             return $this->sessions["$key"];
-        } else {
-            return $this->sessions;
         }
+
+        return $this->sessions;
     }
 
     /**
@@ -105,14 +113,24 @@ class Request
     {
         //Je verifie si la propriéte demander est une clé de l'un
         // des attribut $post ou $get
-        if (key_exists($name, $this->inputs)) {
+        if (array_key_exists($name, $this->inputs)) {
             $value = $this->inputs["$name"];
-        } else if (key_exists($name, $this->get)) {
+        } else if (array_key_exists($name, $this->get)) {
             $value = $this->get["$name"];
         } else {
             throw new \Exception("The property don't exist.");
         }
         return $value;
+    }
+
+    public function __set($name, $value)
+    {
+        // TODO: Implement __set() method.
+    }
+
+    public function __isset($name)
+    {
+        // TODO: Implement __isset() method.
     }
 
 }
