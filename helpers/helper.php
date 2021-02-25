@@ -1,6 +1,7 @@
 <?php
 
 use Contoller\Http\Request;
+use View\View;
 
 /**
  * @param array $rootResult
@@ -81,23 +82,19 @@ function secureData(string $var)
 
 /**
  * @param $vars
- * @param bool $do
- * Custum Vardump Print
+ * @param bool $die
  */
-function debug($vars, $do = false)
+function debug(bool $die = true, ...$vars)
 {
-    if (is_array($vars) && $do) {
-        foreach ($vars as $var) {
-            echo '<pre>';
-            var_dump($var);
-            echo '</pre>';
-        }
-    } else {
-        $var = $vars;
+    if ($die) {
         echo '<pre>';
-        var_dump($var);
+        var_dump($vars);
         echo '</pre>';
+        die();
     }
+    echo '<pre>';
+    var_dump($vars);
+    echo '</pre>';
 }
 
 /**
@@ -210,4 +207,23 @@ function associative_array(array $initial_array)
         $indexed_array[] = $value;
     }
     return $indexed_array;
+}
+
+/**
+ * @param string $adresse
+ * @param bool $location
+ * @param int $code
+ * @param array $vars
+ * @param bool $use_templating
+ * @return View
+ */
+function redirect(string $adresse, bool $location = false, int $code = 301, array $vars = [], bool $use_templating = true)
+{
+    if ($location) {
+        header("Status: 301 Moved Permanently", false, $code);
+        header(sprintf("Location: %s", APP_URL . $adresse));
+        exit();
+    }
+    header("Status: 301 Moved Permanently", false, $code);
+    return new View($adresse, $vars, $use_templating);
 }
