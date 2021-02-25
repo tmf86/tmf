@@ -6,6 +6,9 @@ namespace Validator;
 
 class RegisterValidator extends ValidatorCustumer
 {
+    /**
+     * @var string[]
+     */
     protected $errorsMessages = [
         'required' => ':attribute obligatoire.',
         'numeric' => ':attribute invalide.',
