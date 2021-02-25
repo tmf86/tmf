@@ -13,35 +13,32 @@ class EmailRuleCustumer extends Rule
     protected $message = "The :attribute is not valid email";
 
     /**
-     * @param $val
+     * @param string $val
      * @param Request $request
      * @return bool|Request
      */
-    private function curl($val, Request $request)
+    private function curl(string $val, Request $request)
     {
-        $curl = curl_init("https://apilayer.net/api/check?access_key=d3b984711681e7fe785d67d8a41fdc46&email=$val&smtp=1&format=1");
+        $url = sprintf(API_CALL, API_KEY, $val, API_SMTP, API_FORMAT);
+        $curl = curl_init($url);
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
         $data = curl_exec($curl);
         if ($data === false) {
             return $request->ajax([], 409);
-            die();
-        } else {
-            $data = json_decode($data, true);
-            foreach ($data as &$val):if (is_null($val)) $val = 0;endforeach;
-//            isset($data["mx_found"])) &&($data["mx_found"] === true) && ($data["mx_found"] === true) &&
-            if ((isset($data["smtp_check"])) && (isset($data["format_valid"]))) {
-                if (($data["smtp_check"] === true) && (($data["format_valid"]) === true)) {
-                    return true;
-                } else {
-                    return false;
-                }
-            } else {
-                return $request->ajax([], 409);
-                die();
-            }
+            exit();
         }
+
+        $data = json_decode($data, true);
+        foreach ($data as &$value):if (is_null($val)) $value = 0;endforeach;
+        unset($value);
+//            isset($data["mx_found"])) &&($data["mx_found"] === true) && ($data["mx_found"] === true) &&
+        if ((isset($data["smtp_check"])) && (isset($data["format_valid"]))) {
+            return ($data["smtp_check"] === true) && (($data["format_valid"]) === true);
+        }
+
         curl_close($curl);
-        return false;
+        return $request->ajax([], 409);
+        exit();
     }
 
     public function check($value): bool
