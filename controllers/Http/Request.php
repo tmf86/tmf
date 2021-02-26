@@ -177,4 +177,12 @@ class Request
         // TODO: Implement __isset() method.
     }
 
+    /**
+     * @param array $errors
+     */
+    public function setErrors(array $errors): void
+    {
+        $this->errors = $errors;
+    }
+
 }
