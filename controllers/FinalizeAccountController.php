@@ -42,7 +42,7 @@ class FinalizeAccountController extends Controller
      * @return View
      * @throws \Exception
      */
-    public function accountStore(Request $request, string $id, string $email)
+    public function accountStore(Request $request, string $id, string $email): View
     {
         if (!$this->urlValidate($id, $email)) {
             Request::abort(404);
