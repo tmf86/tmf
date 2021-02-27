@@ -58,12 +58,14 @@ $(function () {
         })
     })
     //Point loader
-    setInterval(function () {
+    const id = setInterval(function () {
         if ($(".loader-conatiner").hasClass("active")) {
             if ($("#point-loader").html().length === 3) {
                 $("#point-loader").html("")
             }
             $("#point-loader").html($("#point-loader").html() + ".")
+        } else {
+            clearInterval(id)
         }
     }, 1000)
 })
