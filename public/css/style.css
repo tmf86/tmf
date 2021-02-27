@@ -332,6 +332,7 @@ i {
     align-content: center;
     justify-content: center;
     font-size: 5rem;
+    font-weight: 700;
 }
 
 .success-img {
@@ -344,6 +345,7 @@ i {
     /*padding: 2rem;*/
     font-family: 'Lato', 'Product Sans Thin Regular', sans-serif !important;
     font-weight: 400;
+    width: 100%;
 }
 
 .not-yet-received {

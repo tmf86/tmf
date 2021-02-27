@@ -122,15 +122,21 @@ $(function () {
 // Register sucess Annimated
     let timer = 6;
     setTimeout(function () {
+        gsap.from("#img", {duration: 3, x: -1, opacity: 0, scale: -0.5});
+        setTimeout(function () {
+            $('#img').css('display', 'none')
+        }, 500)
         const timer_id = setInterval(function () {
             timer--
             console.log(timer)
             if (timer >= 0) {
-                $('.success-container').html(`${timer}s`)
+                $('#timer').html(`${timer}s`)
+                gsap.from("#timer", {duration: 3, x: 1, opacity: 3, scale: 0.5});
             } else {
                 $('.not-yet-received').toggleClass('active')
                 clearInterval(timer_id)
             }
         }, 1000)
-    }, 1000)
+    }, 5000)
+    gsap.from("#img", {duration: 3, x: -1, opacity: 0, scale: 0.5});
 })
