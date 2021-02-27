@@ -150,6 +150,26 @@ class Request
     }
 
     /**
+     * @param string $key
+     * @return bool
+     * verifie si cette clé existe existe dans la variable globale get
+     */
+    public function hasGetKey(string $key)
+    {
+        return (isset($this->get[$key]));
+    }
+
+    /**
+     * @param string $key
+     * @return bool
+     * verifie si cette clé existe existe dans la variable globale post
+     */
+    public function hasPostKey(string $key)
+    {
+        return (isset($this->post[$key]));
+    }
+
+    /**
      * @param $name
      * @return mixed|string
      */
