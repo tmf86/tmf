@@ -51,7 +51,10 @@ class RegisterController extends Controller
                 $url = buildpath(sprintf('finalize_account_creation/%s/%s', buildUniqueID($user->mat_membre, $user->filiere, $user->contact, $name_id), $request->email));
                 $maller = new Mailer($name, $request->email, $url);
                 $maller->mail($request);
-                return $request->ajax(["success" => true], 200);
+                $request->session('name', $name);
+                $request->session('email', $request->email);
+                $request->session('url', $url);
+                return $request->ajax(["success" => true, 'redirectTo' => buildpath('registration-success')], 200);
             }
             return $request->ajax(["input_error" => false], 400);
 

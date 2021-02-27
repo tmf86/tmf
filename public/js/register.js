@@ -16,10 +16,14 @@ $(function () {
                 $("#debug").html(data)
                 $(".cloud").toggleClass("active")
                 $(".loader-conatiner").toggleClass("active")
-                btnTransform("#register", `s'inscrir`)
+                btnTransform("#register", `<span class="spinner-border reziseInter" role="status">
+                         <span class="sr-only">Loading...</span>
+                         </span>`)
                 if (data.success === true) {
                     $("#form-register").trigger("reset")
-                    $("#alertsucces").modal("show")
+                    setTimeout(function () {
+                        document.location.assign(data.redirectTo);
+                    }, 2000)
                 }
             },
             error: function (xhr) {

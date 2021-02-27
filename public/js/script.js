@@ -120,6 +120,7 @@ $(function () {
         }
     })
 // Register sucess Annimated
+//     <?php if ($request->hasSession('resend')): ?>resended<?php endif; ?>
     let timer = 6;
     setTimeout(function () {
         gsap.from("#img", {duration: 3, x: -1, opacity: 0, scale: -0.5});
@@ -131,7 +132,6 @@ $(function () {
             console.log(timer)
             if (timer >= 0) {
                 $('#timer').html(`${timer}s`)
-                gsap.from("#timer", {duration: 3, x: 1, opacity: 3, scale: 0.5});
             } else {
                 $('.not-yet-received').toggleClass('active')
                 clearInterval(timer_id)

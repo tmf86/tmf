@@ -6,6 +6,7 @@ use Contoller\FormationController;
 use Contoller\HomeController;
 use Contoller\Http\Request;
 use Contoller\RegisterController;
+use Contoller\RegisterSuccess;
 use Contoller\SujetController;
 
 require "vendor/autoload.php";
@@ -89,6 +90,12 @@ $dispatcher = FastRoute\simpleDispatcher(function (FastRoute\RouteCollector $r) 
         $title = 'Profile';
         return new View\View('pages.profile', compact('title'), false);
     });
+    $r->addRoute('GET', '/Cpy-Mvc/registration-success',
+        [
+            'class' => RegisterSuccess::class,
+            'method' => 'index',
+            'vars' => [new Request()]
+        ]);
     $r->addRoute('GET', '/Cpy-Mvc/test', function () {
 //        http_response_code(404);
         return new View\View('pages.register_success', [], false);

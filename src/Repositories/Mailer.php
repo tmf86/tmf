@@ -27,9 +27,10 @@ class Mailer extends PHPMailer
 
     /**
      * @param Request $request
+     * @param bool $ajax
      * @return bool|Request
      */
-    public function mail(Request $request)
+    public function mail(Request $request, bool $ajax = true)
     {
         $mail = new PHPMailer(true);
         try {
@@ -48,9 +49,12 @@ class Mailer extends PHPMailer
             $mail->Body = $this->buildMailBody();
             return $mail->send();
         } catch (Exception $e) {
-            debug($e->getMessage());
-            return $request->ajax([], 500);
+            if ($ajax) {
+                debug($e->getMessage());
+                return $request->ajax([], 500);
+            }
         }
+        return $request;
     }
 
     /*** @return string */

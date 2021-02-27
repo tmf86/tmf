@@ -11,18 +11,37 @@
           rel="stylesheet">
     <link rel="stylesheet" href="<?= sprintf("%spublic/css/style.css", rootUrl()) ?>">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/gsap.min.js" defer></script>
+    <script src="https://kit.fontawesome.com/bb2a11cf5b.js" defer crossorigin="anonymous"></script>
     <title>Inscription Reussie</title>
 </head>
 <body>
 <div class="main-success">
     <div class="success-container">
-        <img id="img" src="<?= sprintf("%simages/success.png", rootUrl()) ?>" class="success-img" alt="succes-icon">
-        <span id="timer"></span>
+        <?php if (!$request->hasSession('resend')): ?>
+            <img id="img" src="<?= sprintf("%simages/success.png", rootUrl()) ?>" class="success-img" alt="succes-icon">
+            <span id="timer"></span>
+        <?php else: ?>
+            <div id="timer">
+                <span class="email-resended"><i class="fas fa-envelope-open-text"></i> MAIL RENVOYE</span>
+            </div>
+        <?php endif; ?>
+
     </div>
     <div class="success-msg">
-        Felicitation !<br>
-        Un mail vient de vous être envoyé pour finaliser la creation de votre compte utilisateur.<br>
-        <a href="#" class="not-yet-received">Je n'es pas encore reçu l'email de confirmation </a>
+        <?php if (!$request->hasSession('resend')): ?>
+            <div>
+                Felicitaion <strong><?= ucfirst($request->session('name')) ?></strong> <br>
+                Un mail vient de vous être envoyé pour finaliser la creation de votre compte utilisateur.<br>
+            </div>
+        <?php else: ?>
+            <div>
+                Felicitaion <strong><?= ucfirst($request->session('name')) ?></strong>,<br>
+                le mail a bien été renvoyé !
+            </div>
+        <?php endif; ?>
+        <a href="<?= buildpath('registration-success?resend=true') ?>"
+           class="not-yet-received" style="font-size:1em !important;">Je n'es pas encore reçu l'email de
+            confirmation </a>
     </div>
 </div>
 <script src="<?= buildpath('public/js/import/jquery.js') ?>"></script>
