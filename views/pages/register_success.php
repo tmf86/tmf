@@ -21,7 +21,7 @@
     </div>
     <div class="success-msg">
         Felicitation !<br>
-        Un mail vient de vous être envoyé pour finaliser la creation de votre compte d'utilisateur.<br>
+        Un mail vient de vous être envoyé pour finaliser la creation de votre compte utilisateur.<br>
         <a href="#" class="not-yet-received">Je n'es pas encore reçu l'email de confirmation </a>
     </div>
 </div>
