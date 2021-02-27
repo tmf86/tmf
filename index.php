@@ -91,8 +91,8 @@ $dispatcher = FastRoute\simpleDispatcher(function (FastRoute\RouteCollector $r) 
     });
     $r->addRoute('GET', '/Cpy-Mvc/test', function () {
 //        http_response_code(404);
-//        return new View\View('pages.404.404', [], false);
-        debug(buildUniqueID(6, 'CF2A', '01937964', 'kouassikoffijean'));
+        return new View\View('pages.register_success', [], false);
+//        debug(buildUniqueID(6, 'CF2A', '01937964', 'kouassikoffijean'));
     });
 });
 

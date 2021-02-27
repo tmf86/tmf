@@ -119,5 +119,18 @@ $(function () {
             input_neighbour.attr(`type`, 'password').css("font-weight", 700)
         }
     })
-
+// Register sucess Annimated
+    let timer = 6;
+    setTimeout(function () {
+        const timer_id = setInterval(function () {
+            timer--
+            console.log(timer)
+            if (timer >= 0) {
+                $('.success-container').html(`${timer}s`)
+            } else {
+                $('.not-yet-received').toggleClass('active')
+                clearInterval(timer_id)
+            }
+        }, 1000)
+    }, 1000)
 })
