@@ -57,7 +57,7 @@ class Request
             case 404 :
                 http_response_code(404);
                 return new View('pages.404.404', [], false);
-                exit();
+                die();
                 break;
         }
         return true;
