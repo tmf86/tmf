@@ -1,7 +1,7 @@
 @import url(../fonts/fonts.css);
 
 html, body {
-    font-family: 'Product Sans Thin Regular', 'Lato', sans-serif;
+    font-family: 'Lato','Product Sans Thin Regular', sans-serif;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -204,7 +204,7 @@ i {
 
 .small {
     color: red;
-    font-family: 'Product Sans Thin Regular', 'Lato', sans-serif;
+    font-family: 'Lato','Product Sans Thin Regular', sans-serif;
     font-weight: 300;
     font-size: 0.9rem;
     padding-left: 0.3rem;
@@ -298,6 +298,14 @@ i {
 
 
 .cloud.active, .loader-conatiner.active {
+    z-index: 999;
+}
+
+.cloud.active {
+    opacity: 0.7;
+}
+
+.loader-conatiner.active {
     opacity: 1;
     z-index: 999;
 }
@@ -317,6 +325,11 @@ i {
     top: 4rem;
     left: 50%;
     transform: translate(-50%, -50%);
+    font-family: 'Lato', 'Product Sans Thin Regular', sans-serif !important;
+    font-weight: 400;
+    background: white;
+    z-index: -1;
+    /*height: 0.2rem;*/
 }
 
 /*Registration success css*/
@@ -443,6 +456,7 @@ i {
         font-size: 2rem;
         color: green
     }
+    
 }
 
 @media (max-width: 573px) {

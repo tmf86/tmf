@@ -114,31 +114,9 @@
     </div>
 </div>
 <!--Error Modal-->
-<!--Sucess Modal-->
-<div class="modal fade" id="alertsucces" tabindex="-1" role="dialog" aria-labelledby="alertModal"
-     aria-hidden="true">
-    <div class="modal-dialog modal-sm" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title w-100" id="alertModal">Bravo !</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body text-center">
-                <span style="font-size: 3rem">✅</span>
-                <div>Un mail vous a été envoyé pour la finalisation de la creation de votre compte !</div>
-            </div>
-        </div>
-    </div>
-</div>
-<!--Success Modal-->
 <div id="debug"></div>
 <div class="cloud"></div>
 <div class="loader-conatiner">
-    <!--    <div class="spinner-grow" role="status">-->
-    <!--        <span class="sr-only">Loading...</span>-->
-    <!--    </div>-->
     <div class="spinner-border text-primary rezise" role="status">
         <span class="sr-only">Loading...</span>
     </div>

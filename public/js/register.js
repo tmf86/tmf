@@ -3,8 +3,7 @@ $(function () {
         e.preventDefault()
         $(".cloud").toggleClass("active")
         $(".loader-conatiner").toggleClass("active")
-        btnTransform("#register", `
-        s'inscrir &nbsp<span class="spinner-border reziseInter" role="status">
+        btnTransform("#register", `<span class="spinner-border reziseInter" role="status">
             <span class="sr-only">Loading...</span>
          </span>`)
         $.ajax({
@@ -64,8 +63,6 @@ $(function () {
                 $("#point-loader").html("")
             }
             $("#point-loader").html($("#point-loader").html() + ".")
-        } else {
-            clearInterval(id)
         }
     }, 1000)
 })
