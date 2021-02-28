@@ -19,7 +19,7 @@
     </div>
     <div class="msg">
         Peut-être que cette page a été déplacée ? Ou a été supprimée !
-        Retournez a l' <a href="acceuil">acceuil</a> et essayez à partir de là.
+        Retournez a l' <a href="<?= buildpath('acceuil') ?>">acceuil</a> et essayez à partir de là.
     </div>
 </div>
 </body>
