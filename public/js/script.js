@@ -111,12 +111,12 @@ $(function () {
             $(this).removeClass('eye-hide')
             $(this).addClass($(this).addClass(`eye-open`))
             $(this).html(`<i class="fas fa-eye">`)
-            input_neighbour.attr(`type`, 'text').css("font-weight", 400)
+            input_neighbour.attr(`type`, 'text')
         } else if ($(this).hasClass(`eye-open`)) {
             $(this).removeClass('eye-open')
             $(this).addClass($(this).addClass(`eye-hide`))
             $(this).html(`<i class="fas fa-eye-slash"></i>`)
-            input_neighbour.attr(`type`, 'password').css("font-weight", 700)
+            input_neighbour.attr(`type`, 'password')
         }
     })
 // Register sucess Annimated

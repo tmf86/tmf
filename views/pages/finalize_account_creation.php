@@ -1,5 +1,5 @@
 <div class="form-container p-5 mb-5">
-    <form class="p-5 form-box box" action='' method="post">
+    <form class="p-5 form-box box password-box" action='' method="post">
         <div class="position-relative">
             <p class="text-center mb-4">
                 <span class="text-uppercase"
@@ -37,7 +37,7 @@
                 <input type="password" id="password_verify"
                        class="form-control mb-4 fm-p <?php if ($request->hasError('password_verify')): ?>error <?php endif; ?>"
                        name="password_verify"
-                       placeholder="Retappez le mot de passe" autocomplete="new-password">
+                       placeholder="Repeter le mot de passe" autocomplete="new-password">
             </div>
         </div>
         <button class="btn btn-info btn-block fm-btn" type="submit">Suivant</button>

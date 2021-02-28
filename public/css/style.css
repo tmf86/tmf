@@ -1,7 +1,7 @@
 @import url(../fonts/fonts.css);
 
 html, body {
-    font-family: 'Lato','Product Sans Thin Regular', sans-serif;
+    font-family: 'Lato', 'Product Sans Thin Regular', sans-serif;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -127,6 +127,7 @@ a:hover {
     width: 40rem;
 }
 
+
 .form-container .fm-inline, .form-container .date {
     display: flex;
     align-items: center;
@@ -145,7 +146,6 @@ a:hover {
 
 .fm-p {
     padding: 2rem 4rem;
-    font-weight: 700;
 }
 
 .password-eye {
@@ -204,7 +204,7 @@ i {
 
 .small {
     color: red;
-    font-family: 'Lato','Product Sans Thin Regular', sans-serif;
+    font-family: 'Lato', 'Product Sans Thin Regular', sans-serif;
     font-weight: 300;
     font-size: 0.9rem;
     padding-left: 0.3rem;
@@ -420,6 +420,11 @@ i {
         width: 100%;
     }
 
+    .form-container .form-box.password-box {
+        padding: 0 !important;
+    }
+
+
     .form-container .form-box {
         padding: 1rem !important;
     }
@@ -456,7 +461,7 @@ i {
         font-size: 2rem;
         color: green
     }
-    
+
 }
 
 @media (max-width: 573px) {
