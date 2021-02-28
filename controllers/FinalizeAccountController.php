@@ -17,7 +17,7 @@ class FinalizeAccountController extends Controller
      * @param Request $request
      * @param string $id
      * @param string $email
-     * @return View
+     * @return View|$this
      */
     public function index(Request $request, string $id, string $email): View
     {
@@ -39,7 +39,7 @@ class FinalizeAccountController extends Controller
      * @param Request $request
      * @param string $id
      * @param string $email
-     * @return $this
+     * @return View
      * @throws \Exception
      */
     public function accountStore(Request $request, string $id, string $email): View
@@ -77,7 +77,7 @@ class FinalizeAccountController extends Controller
             ];
         $account = new Account();
         $account = $account->create($account_data);
-        return $this;
+        return redirect('pages.account_created_successfull', false, 301, compact('request'), false);
     }
 
     /**

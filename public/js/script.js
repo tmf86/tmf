@@ -119,8 +119,7 @@ $(function () {
             input_neighbour.attr(`type`, 'password')
         }
     })
-// Register sucess Annimated
-//     <?php if ($request->hasSession('resend')): ?>resended<?php endif; ?>
+// Register sucess an Account created succesfull Animated
     let timer = 6;
     setTimeout(function () {
         gsap.from("#img", {duration: 3, x: -1, opacity: 0, scale: -0.5});
@@ -131,12 +130,15 @@ $(function () {
             timer--
             console.log(timer)
             if (timer >= 0) {
-                $('#timer').html(`${timer}s`)
+                ($('.main-success').hasClass('account-created-successful')) ? $('.success-msg').html(`Vous serrez redirigé vers 
+                votre page de profile dans <strong>${timer}s</strong>`) : $('#timer').html(`${timer}s`)
             } else {
-                $('.not-yet-received').toggleClass('active')
+                ($('.main-success').hasClass('account-created-successful')) ? document.location.assign
+                ('http://localhost/Cpy-Mvc/profile') : $('.not-yet-received').toggleClass('active')
                 clearInterval(timer_id)
             }
         }, 1000)
     }, 5000)
     gsap.from("#img", {duration: 3, x: -1, opacity: 0, scale: 0.5});
+
 })
