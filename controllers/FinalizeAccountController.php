@@ -39,7 +39,7 @@ class FinalizeAccountController extends Controller
      * @param Request $request
      * @param string $id
      * @param string $email
-     * @return View
+     * @return $this
      * @throws \Exception
      */
     public function accountStore(Request $request, string $id, string $email): View
@@ -66,8 +66,18 @@ class FinalizeAccountController extends Controller
             }
             return redirect('pages.finalize_account_creation', false, 301, compact('request', 'scripts', 'title'));
         }
-        debug(true, $request->inputs());
 
+        $user = new User();
+        $user = $user->query(sprintf("select * from membre where email='%s'", $email));
+        $account_data =
+            [
+                'identifiant' => $id,
+                'mot_pass' => password_hash($request->mot_pass, PASSWORD_BCRYPT, ['cost' => 12]),
+                'mat_membre' => $user->mat_membre
+            ];
+        $account = new Account();
+        $account = $account->create($account_data);
+        return $this;
     }
 
     /**
