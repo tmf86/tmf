@@ -37,15 +37,11 @@ class RegisterSuccess extends Controller
      */
     private function resendEmail(Request $request)
     {
-        if ($request->resend === 'true') {
-            if ($request->hasSession('name') && $request->hasSession('email') && $request->hasSession('url')) {
-                $mailer = new Mailer($request->session('name'), $request->session('email'), $request->session('url'));
-                $mailer->mail($request, false);
-                $request->session('resend', true);
-                return redirect('registration-success', true);
-                exit();
-            }
-            Request::abort(404);
+        if ($request->resend === 'true' && ($request->hasSession('name') && $request->hasSession('email') && $request->hasSession('url'))) {
+            $mailer = new Mailer($request->session('name'), $request->session('email'), $request->session('url'));
+            $mailer->mail($request, false);
+            $request->session('resend', true);
+            return redirect('registration-success', true);
             exit();
         }
         Request::abort(404);
