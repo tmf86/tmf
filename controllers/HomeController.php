@@ -4,11 +4,14 @@
 namespace Contoller;
 
 
+use Contoller\middleware\Auth;
 use Model\Annonce;
 use View\View;
 
 class HomeController extends Controller
 {
+    use Auth;
+
     public function index()
     {
         $title = "Acceuil";

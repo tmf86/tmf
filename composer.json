@@ -15,7 +15,8 @@
       "Validator\\": "src/Validators",
       "Validator\\Rules\\": "src/Validators/Rules",
       "View\\": "views",
-      "Contoller\\Http\\": "controllers/Http"
+      "Contoller\\Http\\": "controllers/Http",
+      "Contoller\\middleware\\": "controllers/middlewares"
     }
   },
   "require": {
@@ -26,8 +27,7 @@
     "phpmailer/phpmailer": "^6.2",
     "ext-curl": "*",
     "firebase/php-jwt": "^5.2"
-  }
-  ,
+  },
   "require-dev": {
     "roave/security-advisories": "dev-master"
   }

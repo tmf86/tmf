@@ -16,6 +16,7 @@ return array(
     'Model\\' => array($baseDir . '/models'),
     'Firebase\\JWT\\' => array($vendorDir . '/firebase/php-jwt/src'),
     'FastRoute\\' => array($vendorDir . '/nikic/fast-route/src'),
+    'Contoller\\middleware\\' => array($baseDir . '/controllers/middlewares'),
     'Contoller\\Http\\' => array($baseDir . '/controllers/Http'),
     'Contoller\\' => array($baseDir . '/controllers'),
 );
