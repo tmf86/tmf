@@ -29,7 +29,5 @@ define('API_FORMAT', 1);
 
 define('JWT_KEY', '944ae01b90a281daa23c2b23e619ae4c');
 define('JWT_ALGORITHM', ['HS256']);
-define('JWT_TIME_LIMIT', time() + (300));
-define('JWT_START_VALIDATE', time() + (10));
-//var_dump(date('Y-m-d', 1475878357));
-//die();
+define('JWT_TIME_LIMIT', time() + 3600);
+define('JWT_START_VALIDATE', time() + 10);
