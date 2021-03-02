@@ -53,7 +53,8 @@
             <ul class="navbar-nav ml-auto nav-flex-icons">
                 <li class="nav-item avatar">
                     <i class="nav-link p-0">
-                        <img src="<?= buildpath('images/user-default.jpg') ?>" class="rounded-circle z-depth-0"
+                        <img src="<?= buildpath($user_image ?? 'images/user-default.jpg') ?>"
+                             class="rounded-circle z-depth-0"
                              alt="avatar image" height="35px">
                     </i>
                 </li>

@@ -7,17 +7,17 @@ namespace Contoller;
 use Contoller\Http\Request;
 use Contoller\middleware\Auth;
 use Model\Annonce;
+use Model\User;
 use View\View;
 
 class HomeController extends Controller
 {
     use Auth;
 
-    public function __construct(Request $request)
-    {
-        parent::__construct($request);
-    }
-
+    /**
+     * @return View
+     * @throws \Exception
+     */
     public function index()
     {
         $title = "Acceuil";
@@ -25,7 +25,23 @@ class HomeController extends Controller
         $annonce = new Annonce();
         $annonce = $annonce->all('ORDER BY (date_ann) DESC');
         $i = count($annonce);
-        return new  View("pages.acceuil", compact("title", "annonce", "i", "scripts"));
+        $user_image = $this->getUserImage();
+        return new  View("pages.acceuil", compact("title", "annonce", "i", "scripts", 'user_image'));
+    }
+
+    /**
+     * @return string
+     * @throws \Exception
+     */
+    private function getUserImage(): string
+    {
+        $user_image = 'images/user-default.jpg';
+        if ($this->isAuth()) {
+            $user = new User();
+            $user = $user->find($this->request->session('user_id'));
+            $user_image = $user->image;
+        }
+        return $user_image;
     }
 
 
