@@ -12,7 +12,7 @@ class Controller
     /**
      * @var Request
      */
-    protected $request;
+    protected Request $request;
 
 
     /**
