@@ -33,7 +33,17 @@ trait Auth
      */
     public function isAuth()
     {
-        return ($this->request->hasSession('user_id') && $this->getToken($this->request->session('token')));
+        $isAuth = ($this->request->hasSession('user_id') && $this->getToken($this->request->session('token')));
+        if ($isAuth) {
+            return true;
+        }
+        $this->request->sessionUnset('user_id');
+        $this->request->sessionUnset('token');
+        $this->request->sessionUnset('name');
+        $this->request->sessionUnset('email');
+        $this->request->sessionUnset('url');
+        $this->request->sessionUnset('resended');
+        return false;
     }
 
     /**
