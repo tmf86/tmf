@@ -5,6 +5,7 @@ namespace Contoller;
 
 
 use Contoller\Http\Request;
+use Contoller\middleware\Auth;
 use Model\Account;
 use Model\User;
 use Validator\FinalizeAccountValidator;
@@ -12,7 +13,7 @@ use View\View;
 
 class FinalizeAccountController extends Controller
 {
-
+    use Auth;
 
     public function index(string $id, string $email): View
     {
@@ -73,7 +74,9 @@ class FinalizeAccountController extends Controller
                 'mat_membre' => $user->mat_membre
             ];
         $account = new Account();
-        $account = $account->create($account_data);
+        $account->create($account_data);
+        $this->request->session('user_id', $user->mat_membre);
+        $this->request->session('token', $this->generateToken());
         return redirect('pages.account_created_successfull', false, 301, compact('request'), false);
     }
 

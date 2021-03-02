@@ -21,6 +21,10 @@ trait Auth
         }
         $this->request->sessionUnset('user_id');
         $this->request->sessionUnset('token');
+        $this->request->sessionUnset('name');
+        $this->request->sessionUnset('email');
+        $this->request->sessionUnset('url');
+        $this->request->sessionUnset('resended');
         return redirect('connexion', true);
     }
 

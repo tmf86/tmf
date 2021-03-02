@@ -3,6 +3,7 @@
 namespace Contoller;
 
 use Contoller\Http\Request;
+use Contoller\middleware\Auth;
 use Model\User;
 use Repositories\Mailer;
 use Validator\RegisterValidator;
@@ -10,6 +11,13 @@ use View\View;
 
 class RegisterController extends Controller
 {
+    use Auth;
+
+    public function __construct(Request $request)
+    {
+        parent::__construct($request);
+        $this->AuthProcess();
+    }
 
     /**
      * @return View
@@ -60,6 +68,16 @@ class RegisterController extends Controller
         }
         Request::abort(404);
         return $this;
+    }
+
+    /**
+     * @return void
+     */
+    public function AuthProcess(): void
+    {
+        if ($this->isAuth()) {
+            redirect('profile', true);
+        }
     }
 
     /**
