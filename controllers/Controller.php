@@ -17,7 +17,7 @@ class Controller
 
     /**
      * Controller constructor.
-     * @param Request $request
+     * @param $request
      */
     public function __construct(Request $request)
     {
