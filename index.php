@@ -44,8 +44,7 @@ $dispatcher = FastRoute\simpleDispatcher(function (FastRoute\RouteCollector $r) 
     $r->addRoute('POST', '/Cpy-Mvc/registerstore',
         [
             'class' => RegisterController::class,
-            'method' => 'registerStore',
-            'vars' => [new Request()]
+            'method' => 'registerStore'
         ]);
     $r->addGroup('/Cpy-Mvc/finalize_account_creation/', function (FastRoute\RouteCollector $r) {
 
@@ -53,16 +52,14 @@ $dispatcher = FastRoute\simpleDispatcher(function (FastRoute\RouteCollector $r) 
             [
                 'class' => FinalizeAccountController::class,
                 'method' => 'index',
-                'gets' => true,
-                'vars' => [new Request()]
+                'gets' => true
 
             ]);
         $r->addRoute('POST', '{id:[A-Z0-9\-]+}/{email:[A-Za-z0-9@.]+}',
             [
                 'class' => FinalizeAccountController::class,
                 'method' => 'accountStore',
-                'gets' => true,
-                'vars' => [new Request()]
+                'gets' => true
 
             ]);
 
@@ -93,8 +90,7 @@ $dispatcher = FastRoute\simpleDispatcher(function (FastRoute\RouteCollector $r) 
     $r->addRoute('GET', '/Cpy-Mvc/registration-success',
         [
             'class' => RegisterSuccess::class,
-            'method' => 'index',
-            'vars' => [new Request()]
+            'method' => 'index'
         ]);
     $r->addRoute('GET', '/Cpy-Mvc/test', function () {
 //        http_response_code(404);

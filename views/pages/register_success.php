@@ -18,7 +18,7 @@
 <body>
 <div class="main-success">
     <div class="success-container">
-        <?php if (!$request->hasSession('resend')): ?>
+        <?php if (!$request->hasSession('resended')): ?>
             <img id="img" src="<?= sprintf("%simages/success.png", rootUrl()) ?>" class="success-img" alt="succes-icon">
             <span id="timer"></span>
         <?php else: ?>

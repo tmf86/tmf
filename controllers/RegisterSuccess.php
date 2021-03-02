@@ -6,41 +6,37 @@ namespace Contoller;
 
 use Contoller\Http\Request;
 use Repositories\Mailer;
-use View\View;
 
 class RegisterSuccess extends Controller
 {
 
-    /**
-     * @param Request $request
-     * @return View|Request
-     * @throws \Exception
-     */
-    public function index(Request $request)
+
+    public function index()
     {
-        if ($request->hasGetKey('resend')) {
-            $this->resendEmail($request);
+        if ($this->request->hasGetKey('resend')) {
+            $this->resendEmail();
         } else {
-            if ($request->hasSession('name') && $request->hasSession('email') && $request->hasSession('url')) {
+            if ($this->request->hasSession('name') && $this->request->hasSession('email') && $this->request->hasSession('url')) {
+                $request = $this->request;
                 return $this->load_views('pages.register_success', compact('request'), false);
             }
             Request::abort(404);
             exit();
         }
-        return $request;
+        return $this->request;
     }
 
-    /**
-     * @param Request $request
-     * @return View
-     * @throws \Exception
-     */
-    private function resendEmail(Request $request)
+
+    private function resendEmail()
     {
-        if ($request->resend === 'true' && ($request->hasSession('name') && $request->hasSession('email') && $request->hasSession('url'))) {
-            $mailer = new Mailer($request->session('name'), $request->session('email'), $request->session('url'));
-            $mailer->mail($request, false);
-            $request->session('resend', true);
+        if ($this->request->resend === 'true' && ($this->request->hasSession('name') && $this->request->hasSession('email') && $this->request->hasSession('url'))) {
+            try {
+                $mailer = new Mailer($this->request->session('name'), $this->request->session('email'), $this->request->session('url'));
+            } catch (\Exception $e) {
+                debug(true, $e->getMessage());
+            }
+            $mailer->mail($this->request, false);
+            $this->request->session('resended', true);
             return redirect('registration-success', true);
             exit();
         }
