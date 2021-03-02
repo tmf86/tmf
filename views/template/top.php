@@ -38,16 +38,16 @@
         </button>
         <div class="collapse navbar-collapse" id="cpy">
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="<?= buildpath('acceuil') ?>"><i class="fa fa-home"></i>Acceuil
+                <li class="nav-item <?php if (current_route() == buildpath('home')): ?>active<?php endif; ?>">
+                    <a class="nav-link" href="<?= buildpath('home') ?>"><i class="fa fa-home"></i>Acceuil
                         <span class="sr-only">(current)</span>
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="<?= buildpath('connexion') ?>"><i class="fas fa-user"></i>Connexion</a>
+                <li class="nav-item <?php if (current_route() == buildpath('login')): ?>active<?php endif; ?>">
+                    <a class="nav-link" href="<?= buildpath('login') ?>"><i class="fas fa-user"></i>Connexion</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="<?= buildpath('inscription') ?>"><i class="fas fa-sign-in-alt"></i>Inscriprtion</a>
+                <li class="nav-item <?php if (current_route() == buildpath('register')): ?>active<?php endif; ?>">
+                    <a class="nav-link" href="<?= buildpath('register') ?>"><i class="fas fa-sign-in-alt"></i>Inscriprtion</a>
                 </li>
             </ul>
             <ul class="navbar-nav ml-auto nav-flex-icons">

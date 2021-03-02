@@ -25,7 +25,7 @@ trait Auth
         $this->request->sessionUnset('email');
         $this->request->sessionUnset('url');
         $this->request->sessionUnset('resended');
-        return redirect('connexion', true);
+        return redirect('login', true);
     }
 
     /**

@@ -228,3 +228,22 @@ function redirect(string $adresse, bool $location = false, int $code = 301, arra
     return new View($adresse, $vars, $use_templating);
     exit();
 }
+
+/**
+ * @return string
+ * Recupère la route courante
+ */
+function current_route()
+{
+    if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on')
+        $url = "https";
+    else
+        $url = "http";
+// Ajout de  // à l'URL.
+    $url .= "://";
+// Ajoute de  l'hôte (nom de domaine, ip) à l'URL.
+    $url .= $_SERVER['HTTP_HOST'];
+// Ajout l'emplacement de la ressource demandée à l'URL
+    $url .= $_SERVER['REQUEST_URI'];
+    return $url;
+}

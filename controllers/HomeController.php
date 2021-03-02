@@ -16,7 +16,6 @@ class HomeController extends Controller
     public function __construct(Request $request)
     {
         parent::__construct($request);
-        $this->useAuth();
     }
 
     public function index()

@@ -26,17 +26,17 @@ $dispatcher = FastRoute\simpleDispatcher(function (FastRoute\RouteCollector $r) 
             'class' => HomeController::class,
             'method' => 'index'
         ]);
-    $r->addRoute('GET', '/Cpy-Mvc/connexion',
+    $r->addRoute('GET', '/Cpy-Mvc/login',
         [
             'class' => ConnexionController::class,
             'method' => 'index'
         ]);
-    $r->addRoute('GET', '/Cpy-Mvc/acceuil',
+    $r->addRoute('GET', '/Cpy-Mvc/home',
         [
             'class' => HomeController::class,
             'method' => 'index'
         ]);
-    $r->addRoute('GET', '/Cpy-Mvc/inscription',
+    $r->addRoute('GET', '/Cpy-Mvc/register',
         [
             'class' => RegisterController::class,
             'method' => 'index'
