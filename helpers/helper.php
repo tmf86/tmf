@@ -28,21 +28,21 @@ function processFundedRoot(array $rootResult)
 
         if ($gets_test && $vars_test) {
             $vars = $handler['vars'];
-            $classToInstanced = new $class();
+            $classToInstanced = new $class(new Request());
             $classToInstanced->$method(...$vars, ...$urlVars);
         } elseif ($gets_test && !$vars_test) {
-            $classToInstanced = new $class();
+            $classToInstanced = new $class(new Request());
             $classToInstanced->$method(...$urlVars);
         } elseif ($vars_test && !array_key_exists("gets", $handler)) {
             $vars = $handler['vars'];
-            $classToInstanced = new $class();
+            $classToInstanced = new $class(new Request());
             $classToInstanced->$method(...$vars);
         } else {
-            $classToInstanced = new $class();
+            $classToInstanced = new $class(new Request());
             $classToInstanced->$method();
         }
     } else if (is_callable($handler)) {
-        call_user_func($handler, ...$urlVars);
+        $handler(...$urlVars);
     } else {
         Request::abort(404);
         exit();

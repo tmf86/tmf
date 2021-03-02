@@ -4,10 +4,26 @@
 namespace Contoller;
 
 
+use Contoller\Http\Request;
 use View\View;
 
 class Controller
 {
+    /**
+     * @var Request
+     */
+    protected Request $request;
+
+
+    /**
+     * Controller constructor.
+     * @param Request $request
+     */
+    public function __construct(Request $request)
+    {
+
+        $this->request = $request;
+    }
 
     /**
      * @param string $view

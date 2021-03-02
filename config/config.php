@@ -24,3 +24,12 @@ define('API_KEY', 'c89c1aaf00cad60c068acb789b2c041b');
 define('API_CALL', 'https://apilayer.net/api/check?access_key=%s&email=%s&smtp=%d&format=%d');
 define('API_SMTP', 1);
 define('API_FORMAT', 1);
+
+/** JWT configuration*/
+
+define('JWT_KEY', '944ae01b90a281daa23c2b23e619ae4c');
+define('JWT_ALGORITHM', ['HS256']);
+define('JWT_TIME_LIMIT', time() + (300));
+define('JWT_START_VALIDATE', time() + (10));
+//var_dump(date('Y-m-d', 1475878357));
+//die();

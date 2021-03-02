@@ -28,6 +28,7 @@ class Request
         $this->cookies = &$_COOKIE;
         $this->sessions = &$_SESSION;
         $this->inputs = &$_POST;
+//        var_dump('okl');
     }
 
     /**
@@ -45,6 +46,17 @@ class Request
     {
         return (isset($_SERVER['HTTP_X_REQUESTED_WITH']) &&
             (strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) === 'xmlhttprequest'));
+    }
+
+    /**
+     * @param string $key
+     */
+    public function sessionUnset(string $key): void
+    {
+
+        if ($this->hasSession($key)) {
+            unset($this->sessions[$key]);
+        }
     }
 
     /**

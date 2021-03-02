@@ -4,6 +4,7 @@
 namespace Contoller;
 
 
+use Contoller\Http\Request;
 use Contoller\middleware\Auth;
 use Model\Annonce;
 use View\View;
@@ -11,6 +12,12 @@ use View\View;
 class HomeController extends Controller
 {
     use Auth;
+
+    public function __construct(Request $request)
+    {
+        parent::__construct($request);
+        $this->useAuth();
+    }
 
     public function index()
     {
