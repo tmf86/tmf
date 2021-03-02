@@ -4,18 +4,12 @@
 namespace Contoller\middleware;
 
 
-use Contoller\Http\Request;
 use Firebase\JWT\ExpiredException;
 use Firebase\JWT\JWT;
 use View\View;
 
 trait Auth
 {
-
-    public function __construct()
-    {
-        $this->request = new Request();
-    }
 
     /**
      * @return bool|View
@@ -35,13 +29,13 @@ trait Auth
      */
     public function isAuth()
     {
-        return ($this->request->hasSession('user_id') && self::getToken($this->request->session('token')));
+        return ($this->request->hasSession('user_id') && $this->getToken($this->request->session('token')));
     }
 
     /**
      * @return string
      */
-    public static function generateToken()
+    public function generateToken()
     {
         return JWT::encode([
             "iat" => JWT_START_VALIDATE,
@@ -53,7 +47,7 @@ trait Auth
      * @param string $jwt
      * @return false|object
      */
-    public static function getToken(string $jwt)
+    public function getToken(string $jwt)
     {
         try {
             $jwt = JWT::decode($jwt, JWT_KEY, JWT_ALGORITHM);
