@@ -119,7 +119,7 @@ $(function () {
             input_neighbour.attr(`type`, 'password')
         }
     })
-//Soumission du formulaire d'inscription en ajax
+//Soumission du formulaire d'inscription en Ajax
     $("#form-register").submit(function (e) {
         e.preventDefault()
         $(".cloud").toggleClass("active")
@@ -186,4 +186,12 @@ $(function () {
             $("#point-loader").html($("#point-loader").html() + ".")
         }
     }, 1000)
+
+//Soumission du formulaire de connexion en Ajax
+    $('#form-login').submit(function (e) {
+        e.preventDefault()
+        btnTransform("#login", `<span class="spinner-border reziseInter" role="status">
+            <span class="sr-only">Loading...</span>
+         </span>`)
+    })
 })

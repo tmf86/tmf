@@ -11,7 +11,7 @@
 <!--</div>-->
 <div class="form-container mt-4 p-3">
     <div class="col-md-5">
-        <form id="login-form">
+        <form id="form-login">
             <p class="h4 text-center py-4 text-uppercase font-italic" style="text-decoration: underline">
                 Connexion</p>
             <div class="md-form">
@@ -26,8 +26,8 @@
                 <label for="materialFormCardPasswordEx" class="font-weight-light">Mot de
                     passe</label>
             </div>
-            <div class="text-center py-4 mt-3">
-                <button class="btn btn-cyan font-italic" id="login" type="submit">Se connecter</button>
+            <div class="fm-btn-container ">
+                <button class="btn btn-info btn-block my-4 fm-btn" id="login" type="submit">S'Inscrire</button>
             </div>
         </form>
     </div>

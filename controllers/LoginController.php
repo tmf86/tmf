@@ -12,6 +12,10 @@ class LoginController extends Controller
     public function index(): View
     {
         $title = "Connexion";
-        return $this->load_views("pages.login", compact("title"));
+        $scripts = [
+            sprintf("<script  src='%spublic/js/functions.js'></script>", rootUrl()),
+            sprintf("<script  src='%spublic/js/script.js'></script>", rootUrl())
+        ];
+        return $this->load_views("pages.login", compact("title", 'scripts'));
     }
 }
