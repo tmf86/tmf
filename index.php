@@ -1,6 +1,6 @@
 <?php
 
-use Contoller\ConnexionController;
+use Contoller\LoginController;
 use Contoller\FinalizeAccountController;
 use Contoller\FormationController;
 use Contoller\HomeController;
@@ -28,7 +28,7 @@ $dispatcher = FastRoute\simpleDispatcher(function (FastRoute\RouteCollector $r) 
         ]);
     $r->addRoute('GET', '/Cpy-Mvc/login',
         [
-            'class' => ConnexionController::class,
+            'class' => LoginController::class,
             'method' => 'index'
         ]);
     $r->addRoute('GET', '/Cpy-Mvc/home',

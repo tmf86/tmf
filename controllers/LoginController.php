@@ -2,7 +2,7 @@
 
 namespace Contoller;
 
-class ConnexionController extends Controller
+class LoginController extends Controller
 {
     /**
      * @return \View\View
