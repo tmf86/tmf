@@ -27,7 +27,6 @@ class RegisterController extends Controller
         $title = "Inscription";
         $scripts = [
             sprintf("<script  src='%spublic/js/functions.js'></script>", rootUrl()),
-            sprintf("<script  src='%spublic/js/register.js'></script>", rootUrl()),
             sprintf("<script  src='%spublic/js/script.js'></script>", rootUrl())
         ];
         return new  View("pages.register", compact("title", "scripts"));
