@@ -31,6 +31,6 @@
 </div>
 <script src="<?= buildpath('public/js/import/jquery.js') ?>"></script>
 <script src="<?= buildpath('public/js/functions.js') ?>"></script>
-<script src="<?= sprintf("%spublic/js/script.js", rootUrl()) ?>"></script>
+<script src="<?= sprintf("%spublic/js/register-success.js", rootUrl()) ?>"></script>
 </body>
 </html>

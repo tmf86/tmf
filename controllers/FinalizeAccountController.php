@@ -77,7 +77,7 @@ class FinalizeAccountController extends Controller
         $account->create($account_data);
         $this->request->session('user_id', $user->mat_membre);
         $this->request->session('token', $this->generateToken());
-        return redirect('pages.account_created_successfull', false, 301, compact('request'), false);
+        return redirect('pages.account_created', false, 301, compact('request'), false);
     }
 
     /**
