@@ -30,7 +30,7 @@ class RegisterController extends Controller
             sprintf("<script  src='%spublic/js/register.js'></script>", rootUrl()),
             sprintf("<script  src='%spublic/js/script.js'></script>", rootUrl())
         ];
-        return new  View("pages.inscription", compact("title", "scripts"));
+        return new  View("pages.register", compact("title", "scripts"));
     }
 
     /**

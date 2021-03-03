@@ -25,7 +25,7 @@ class HomeController extends Controller
         $annonce = $annonce->all('ORDER BY (date_ann) DESC');
         $i = count($annonce);
         $user_image = $this->getUserImage();
-        return new  View("pages.acceuil", compact("title", "annonce", "i", "scripts", 'user_image'));
+        return new  View("pages.home", compact("title", "annonce", "i", "scripts", 'user_image'));
     }
 
     /**

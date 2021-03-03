@@ -2,14 +2,16 @@
 
 namespace Contoller;
 
+use View\View;
+
 class LoginController extends Controller
 {
     /**
-     * @return \View\View
+     * @return View
      */
-    public function index()
+    public function index(): View
     {
         $title = "Connexion";
-        return $this->load_views("pages.connexion", compact("title"));
+        return $this->load_views("pages.login", compact("title"));
     }
 }
