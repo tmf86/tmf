@@ -9,7 +9,7 @@
         </div>
         <div class="mt-5">
             <?php if ($request->hasError('mot_pass')): ?>
-                <div class="alert alert-danger alert-dismissible fade show fm-family" role="alert">
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
                     <strong><?= $request->error('mot_pass') ?></strong>
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
@@ -17,7 +17,7 @@
                 </div>
             <?php endif; ?>
             <?php if ($request->hasError('password_verify')): ?>
-                <div class="alert alert-danger alert-dismissible fade show fm-family <?php if (empty($request->error('password_verify'))): ?>d-none <?php endif; ?>"
+                <div class="alert alert-danger alert-dismissible fade show<?php if (empty($request->error('password_verify'))): ?>d-none <?php endif; ?>"
                      role="alert">
                     <strong><?= $request->error('password_verify') ?></strong>
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
