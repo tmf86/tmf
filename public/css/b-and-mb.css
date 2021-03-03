@@ -21459,9 +21459,9 @@ body.scrollable {
 .md-form input[type="phone"]:not(.browser-default):focus:not([readonly]),
 .md-form input[type="search-md"]:focus:not([readonly]),
 .md-form textarea.md-textarea:focus:not([readonly]) {
-    border-bottom: 1px solid #4285f4;
-    -webkit-box-shadow: 0 1px 0 0 #4285f4;
-    box-shadow: 0 1px 0 0 #4285f4;
+    border-bottom: 1px solid #00BCD4;
+    -webkit-box-shadow: 0 1px 0 0 #00BCD4;
+    box-shadow: 0 1px 0 0 #00BCD4;
 }
 
 .md-form input:not([type]):focus:not([readonly]) + label,
@@ -21479,7 +21479,7 @@ body.scrollable {
 .md-form input[type="phone"]:not(.browser-default):focus:not([readonly]) + label,
 .md-form input[type="search-md"]:focus:not([readonly]) + label,
 .md-form textarea.md-textarea:focus:not([readonly]) + label {
-    color: #4285f4;
+    color: #00BCD4;
 }
 
 .md-form input:not([type]) + label::after,
