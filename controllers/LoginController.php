@@ -28,7 +28,7 @@ class LoginController extends Controller
         $errors = [];
         if ($validation->fails()) {
             $errors = $validation->errors->firstOfAll();
+            return $this->request->ajax($errors, 400);
         }
-        return $this->request->ajax($errors, 200);
     }
 }

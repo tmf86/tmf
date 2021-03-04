@@ -15,17 +15,17 @@
             <p class="text-center mb-4">
                 <span class="title-custum text-uppercase">connexion</span>
             </p>
-            <div class="alert alert-danger alert-dismissible fade" id="error-alert" role="alert"></div>
+            <div id="error-alert"></div>
             <div class="md-form">
                 <i class="fa fa-envelope prefix grey-text"></i>
-                <input type="email" id="materialFormCardEmailEx" name="id" class="form-control">
-                <label for="materialFormCardEmailEx" class="font-weight-light">Identifiant ou
+                <input type="email" id="email_ou_identifiant" name="email_ou_identifiant" class="form-control">
+                <label for="email_ou_identifiant" class="font-weight-light">Identifiant ou
                     Email</label>
             </div>
             <div class="md-form">
                 <i class="fa fa-lock prefix grey-text"></i>
-                <input type="password" id="materialFormCardPasswordEx" name="password" class="form-control">
-                <label for="materialFormCardPasswordEx" class="font-weight-light">Mot de
+                <input type="password" id="mot_de_passe" name="mot_de_passe" class="form-control">
+                <label for="mot_de_passe" class="font-weight-light">Mot de
                     passe</label>
             </div>
             <button class="btn btn-info btn-block my-4 fm-btn font-italic" id="login" type="submit">S'Inscrire

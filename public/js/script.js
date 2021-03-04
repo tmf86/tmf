@@ -208,6 +208,23 @@ $(function () {
             },
             error: function (xhr) {
                 console.log(xhr.responseText)
+                const errors = xhr.responseJSON
+                let message = ''
+                for (const errorsKey in errors) {
+                    message += '<strong>' + errors[errorsKey] + '<strong><br>';
+                    $(`label[for='${errorsKey}']`).addClass('error')
+                    $(`input[name="${errorsKey}"]`).addClass("error")
+                }
+                console.log(message)
+                if (xhr.status === 400) {
+                    $("#error-alert").html(`
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            ${message}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                 <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>`)
+                }
             }
         })
     })

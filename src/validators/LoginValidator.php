@@ -18,7 +18,7 @@ class LoginValidator extends ValidatorCustumer
      * @var string[]
      */
     protected $rules = [
-        'id' => 'required|emailOrId',
-        'password' => 'required|password'
+        'email_ou_identifiant' => 'required|emailOrId',
+        'mot_de_passe' => 'required|password'
     ];
 }
