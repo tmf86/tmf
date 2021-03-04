@@ -28,20 +28,5 @@ class HomeController extends Controller
         return new  View("pages.home", compact("title", "annonce", "i", "scripts", 'user_image'));
     }
 
-    /**
-     * @return string
-     * @throws \Exception
-     */
-    private function getUserImage(): string
-    {
-        $user_image = 'images/user-default.jpg';
-        if ($this->isAuth()) {
-            $user = new User();
-            $user = $user->find($this->request->session('user_id'));
-            $user_image = $user->image;
-        }
-        return $user_image;
-    }
-
 
 }

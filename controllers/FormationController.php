@@ -13,17 +13,18 @@ class FormationController extends Controller
     {
         $fm = new Formation();
         $vd = new Videos();
+        $user_image = $this->getUserImage();
         $scripts =
             [
                 "<script  src='public/js/import/Venobox-master/venobox/venobox.min.js'></script>",
                 "<script  src='public/js/import/Venobox-master/venobox/venoboxActive.js'></script>"
             ];
-        if (isset($_GET['id'])) {
-            $videos = $vd->show_formation_videos($_GET["id"]);
-            $this->load_views("pages.cours", compact("videos", "scripts"));
+        if ($this->request->hasGetKey('id')) {
+            $videos = $vd->show_formation_videos($this->request->id);
+            $this->load_views("pages.cours", compact("videos", "scripts", 'user_image'));
         } else {
             $formations = $fm->show_all();
-            $this->load_views("pages.formation", compact("formations"));
+            $this->load_views("pages.formation", compact("formations", 'user_image'));
         }
     }
 }

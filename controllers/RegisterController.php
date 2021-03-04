@@ -29,7 +29,8 @@ class RegisterController extends Controller
             sprintf("<script  src='%spublic/js/functions.js'></script>", rootUrl()),
             sprintf("<script  src='%spublic/js/script.js'></script>", rootUrl())
         ];
-        return new  View("pages.register", compact("title", "scripts"));
+        $user_image = $this->getUserImage();
+        return new  View("pages.register", compact("title", "scripts", 'user_image'));
     }
 
     /**

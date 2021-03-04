@@ -27,7 +27,8 @@
                     passe</label>
             </div>
             <div class="fm-btn-container ">
-                <button class="btn btn-info btn-block my-4 fm-btn" id="login" type="submit">S'Inscrire</button>
+                <button class="btn btn-info btn-block my-4 fm-btn font-italic" id="login" type="submit">S'Inscrire
+                </button>
             </div>
         </form>
     </div>

@@ -5,10 +5,14 @@ namespace Contoller;
 
 
 use Contoller\Http\Request;
+use Contoller\middleware\Auth;
+use Model\User;
 use View\View;
 
 class Controller
 {
+    use Auth;
+
     /**
      * @var Request
      */
@@ -35,5 +39,21 @@ class Controller
     {
         return new View($view, $vars, $use_templating);
     }
+
+    /**
+     * @return string
+     * @throws \Exception
+     */
+    protected function getUserImage(): string
+    {
+        $user_image = 'images/user-default.jpg';
+        if ($this->isAuth()) {
+            $user = new User();
+            $user = $user->find($this->request->session('user_id'));
+            $user_image = $user->image;
+        }
+        return $user_image;
+    }
+
 
 }
