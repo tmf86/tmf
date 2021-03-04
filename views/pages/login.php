@@ -12,24 +12,24 @@
 <div class="form-container mt-4 p-3">
     <div class="col-md-5">
         <form id="form-login">
-            <p class="h4 text-center py-4 text-uppercase font-italic" style="text-decoration: underline">
-                Connexion</p>
+            <p class="text-center mb-4">
+                <span class="title-custum text-uppercase">connexion</span>
+            </p>
+            <div class="alert alert-danger alert-dismissible fade" id="error-alert" role="alert"></div>
             <div class="md-form">
                 <i class="fa fa-envelope prefix grey-text"></i>
-                <input type="email" id="materialFormCardEmailEx" class="form-control">
+                <input type="email" id="materialFormCardEmailEx" name="id" class="form-control">
                 <label for="materialFormCardEmailEx" class="font-weight-light">Identifiant ou
                     Email</label>
             </div>
             <div class="md-form">
                 <i class="fa fa-lock prefix grey-text"></i>
-                <input type="password" id="materialFormCardPasswordEx" class="form-control">
+                <input type="password" id="materialFormCardPasswordEx" name="password" class="form-control">
                 <label for="materialFormCardPasswordEx" class="font-weight-light">Mot de
                     passe</label>
             </div>
-            <div class="fm-btn-container ">
-                <button class="btn btn-info btn-block my-4 fm-btn font-italic" id="login" type="submit">S'Inscrire
-                </button>
-            </div>
+            <button class="btn btn-info btn-block my-4 fm-btn font-italic" id="login" type="submit">S'Inscrire
+            </button>
         </form>
     </div>
 </div>

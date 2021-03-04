@@ -11,20 +11,14 @@ class LoginValidator extends ValidatorCustumer
      */
     protected $errorsMessages = [
         'required' => ':attribute obligatoire.',
-        'numeric' => ':attribute invalide.',
-        'min' => ':attribute invalide',
-        'phone' => ':attribute invalide.',
-        "name" => ":attribute invalide.",
-        "unique" => ":attribute deja utilisé.",
-        "emailApi" => "l :attribute est invalide."
+        'emailOrId' => 'Email ou Identifiant incorrect',
+        'password' => 'Mot de passe incorrect'
     ];
     /**
      * @var string[]
      */
     protected $rules = [
-        'nom' => 'required|min:2|name',
-        'prenom' => 'required|min:2|name',
-        'contact' => 'required|numeric|phone|unique:membre,contact',
-        "email" => "required|emailApi|unique:membre,email"
+        'id' => 'required|emailOrId',
+        'password' => 'required|password'
     ];
 }

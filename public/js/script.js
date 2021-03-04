@@ -190,8 +190,25 @@ $(function () {
 //Soumission du formulaire de connexion en Ajax
     $('#form-login').submit(function (e) {
         e.preventDefault()
-        btnTransform("#login", `<span class="spinner-border reziseInter" role="status">
-            <span class="sr-only">Loading...</span>
-         </span>`)
+        // btnTransform("#login", `
+        //     <span class="spinner-border reziseInter" role="status">
+        //     <span class="sr-only">Loading...</span>
+        //     </span>`)
+        // $("#error-alert").html(`
+        //     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        //          <span aria-hidden="true">&times;</span>
+        //     </button>`).addClass('show')
+        $.ajax({
+            url: buildUrl('post-login'),
+            type: 'post',
+            dataType: 'json',
+            data: $(this).serialize(),
+            success: function (data) {
+                console.log(data)
+            },
+            error: function (xhr) {
+                console.log(xhr.responseText)
+            }
+        })
     })
 })

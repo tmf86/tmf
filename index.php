@@ -31,6 +31,11 @@ $dispatcher = FastRoute\simpleDispatcher(function (FastRoute\RouteCollector $r) 
             'class' => LoginController::class,
             'method' => 'index'
         ]);
+    $r->addRoute('POST', '/Cpy-Mvc/post-login',
+        [
+            'class' => LoginController::class,
+            'method' => 'postLogin'
+        ]);
     $r->addRoute('GET', '/Cpy-Mvc/home',
         [
             'class' => HomeController::class,

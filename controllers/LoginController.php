@@ -2,6 +2,7 @@
 
 namespace Contoller;
 
+use Validator\LoginValidator;
 use View\View;
 
 class LoginController extends Controller
@@ -22,6 +23,12 @@ class LoginController extends Controller
 
     public function postLogin()
     {
-
+        $validator = new LoginValidator();
+        $validation = $validator->validateCustermer($this->request->inputs());
+        $errors = [];
+        if ($validation->fails()) {
+            $errors = $validation->errors->firstOfAll();
+        }
+        return $this->request->ajax($errors, 200);
     }
 }

@@ -2,8 +2,10 @@
 
 namespace Rakit\Validation;
 
+use Validator\Rules\EmailOrIDRuleCustumer;
 use Validator\Rules\EmailRuleCustumer;
 use Validator\Rules\NameRuleCustumer;
+use Validator\Rules\PasswordRuleCustumer;
 use Validator\Rules\PhoneNumberRuleCustumer;
 use Validator\Rules\UniqueRuleCustumer;
 
@@ -170,7 +172,9 @@ class Validator
             'phone' => new PhoneNumberRuleCustumer(),
             'name' => new NameRuleCustumer(),
             'unique' => new UniqueRuleCustumer(),
-            "emailApi" => new EmailRuleCustumer()
+            "emailApi" => new EmailRuleCustumer(),
+            'emailOrId' => new EmailOrIDRuleCustumer(),
+            'password' => new PasswordRuleCustumer()
         ];
 
         foreach ($baseValidator as $key => $validator) {
