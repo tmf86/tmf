@@ -16,7 +16,7 @@ trait RelationalShema
      * @param int $cardinality
      * @return $this
      */
-    private function relationShip(int $id, int $cardinality)
+    private function relationShipOneToMany(int $id, int $cardinality)
     {
         if ($cardinality == I) {
             $relationship = "select * from $this->table inner join $this->foreignTable on $this->table.$this->foreignkey = $this->foreignTable.$this->foreignTableKey where $this->primaryKeyStr = $id  limit 1";
@@ -29,13 +29,25 @@ trait RelationalShema
     }
 
     /**
+     * @param int $id
+     * @return $this
+     */
+    private function relationShipOneToOne(int $id)
+    {
+
+        $relationship = "select * from $this->table inner join $this->foreignTable on $this->table.$this->foreignkey = $this->foreignTable.$this->foreignTableKey where $this->primaryKeyStr = $id  limit 1";
+        $this->relationQuery = $relationship;
+        return $this;
+    }
+
+    /**
      * @param $table
      * @return mixed
      */
     protected function hasMany($table)
     {
         $this->self = $table;
-        return $this->relationShip($this->{$this->primaryKeyStr}, N)->query($this->relationQuery, true);
+        return $this->relationShipOneToMany($this->{$this->primaryKeyStr}, N)->query($this->relationQuery, true);
     }
 
     /**
@@ -45,6 +57,16 @@ trait RelationalShema
     protected function belongTo($table)
     {
         $this->self = $table;
-        return $this->relationShip($this->{$this->primaryKeyStr}, I)->query($this->relationQuery);
+        return $this->relationShipOneToMany($this->{$this->primaryKeyStr}, I)->query($this->relationQuery);
+    }
+
+    /**
+     * @param $table
+     * @return array|mixed
+     */
+    protected function one($table)
+    {
+        $this->self = $table;
+        return $this->relationShipOneToMany($this->{$this->primaryKeyStr}, I)->query($this->relationQuery);
     }
 }
