@@ -13,6 +13,8 @@ return array(
     'Rakit\\Validation\\' => array($vendorDir . '/rakit/validation/src'),
     'PHPMailer\\PHPMailer\\' => array($vendorDir . '/phpmailer/phpmailer/src'),
     'Model\\Shema\\' => array($baseDir . '/models/Schema'),
+    'Model\\QueriesBulder\\' => array($baseDir . '/models/QueriesBulder'),
+    'Model\\DataBaseManagement\\' => array($baseDir . '/models/Trait'),
     'Model\\' => array($baseDir . '/models'),
     'Firebase\\JWT\\' => array($vendorDir . '/firebase/php-jwt/src'),
     'FastRoute\\' => array($vendorDir . '/nikic/fast-route/src'),

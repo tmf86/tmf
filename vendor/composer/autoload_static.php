@@ -29,6 +29,8 @@ class ComposerStaticInit6264916c20b8cdaf967ae3749af8fbef
         'M' => 
         array (
             'Model\\Shema\\' => 12,
+            'Model\\QueriesBulder\\' => 20,
+            'Model\\DataBaseManagement\\' => 25,
             'Model\\' => 6,
         ),
         'F' => 
@@ -72,6 +74,14 @@ class ComposerStaticInit6264916c20b8cdaf967ae3749af8fbef
         'Model\\Shema\\' => 
         array (
             0 => __DIR__ . '/../..' . '/models/Schema',
+        ),
+        'Model\\QueriesBulder\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/models/QueriesBulder',
+        ),
+        'Model\\DataBaseManagement\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/models/Trait',
         ),
         'Model\\' => 
         array (

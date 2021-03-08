@@ -6,7 +6,7 @@ namespace Model\Shema;
 
 use Model\Model;
 
-class RelationalShema
+abstract class RelationalShema
 {
     /*** @var string[] */
     protected $foreignkeys = [];

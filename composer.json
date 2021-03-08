@@ -9,14 +9,16 @@
   "autoload": {
     "psr-4": {
       "Contoller\\": "controllers",
-      "Model\\": "models",
-      "Model\\Shema\\": "models/Schema",
+      "Contoller\\Http\\": "controllers/Http",
+      "Contoller\\middleware\\": "controllers/middlewares",
       "Repositories\\": "src/Repositories",
       "Validator\\": "src/Validators",
       "Validator\\Rules\\": "src/Validators/Rules",
       "View\\": "views",
-      "Contoller\\Http\\": "controllers/Http",
-      "Contoller\\middleware\\": "controllers/middlewares"
+      "Model\\": "models",
+      "Model\\Shema\\": "models/Schema",
+      "Model\\DataBaseManagement\\": "models/Trait",
+      "Model\\QueriesBulder\\": "models/QueriesBulder"
     }
   },
   "require": {
