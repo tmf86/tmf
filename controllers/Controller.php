@@ -50,7 +50,7 @@ class Controller
         if ($this->isAuth()) {
             $user = new User();
             $user = $user->find($this->request->session('user_id'));
-            $user_image = $user->image;
+            $user_image = $user->image ?? 'images/user-default.jpg';
         }
         return $user_image;
     }
