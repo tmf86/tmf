@@ -189,8 +189,9 @@ function custum_number(int $number, int $threshold = 1000)
  */
 function buildUniqueID(int $id, string $filiere, string $contact, string $name)
 {
+
     $first_three_char_level = substr($filiere, 0, -2);
-    $last_second_char_name = substr($name, -3);
+    $last_second_char_name = substr(md5($name), -3);
     $last_three_char_phone = substr($contact, -3);
     return strtoupper(sprintf("%s%s%s-%s", $first_three_char_level, $last_three_char_phone, $last_second_char_name, custum_number($id)));
 }
