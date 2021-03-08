@@ -9,7 +9,7 @@ use Contoller\middleware\Auth;
 use Model\User;
 use View\View;
 
-class Controller
+abstract class Controller
 {
     use Auth;
 
