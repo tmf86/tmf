@@ -20,9 +20,12 @@ class PasswordRuleCustumer extends Rule
         // TODO: Implement check() method.
         $account = new Account();
         $bool = false;
-        $account = $account->query(sprintf("select * from compte where mot_pass='%s'", password_hash($value, PASSWORD_BCRYPT, ['cost' => 12])));
-        if ($account) {
-            $bool = true;
+        $accounts = $account->query("select * from compte", true);
+        foreach ($accounts as $account) {
+            $bool = password_verify($value, $account->mot_pass);
+            if ($bool) {
+                break;
+            }
         }
         return $bool;
     }
