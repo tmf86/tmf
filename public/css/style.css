@@ -1,3 +1,5 @@
+@import url('fontawersome/all.css');
+
 html, body {
     font-family: 'Lato', sans-serif;
     margin: 0;
@@ -152,6 +154,10 @@ a:hover {
     padding: 2rem 4rem;
 }
 
+.lg-m {
+    margin-top: 2rem;
+}
+
 .password-eye {
     position: absolute;
     top: 1.5rem;
@@ -165,9 +171,12 @@ a:hover {
     width: 100%;
 }
 
+label {
+    font-weight: 100 !important;
+}
+
 i, label {
     transition: color 0.5s ease;
-    font-weight: 100 !important;
 }
 
 
@@ -543,8 +552,12 @@ label.error, i.error {
         color: green
     }
 
-    .sm-m {
+    .sm-p {
         padding-top: 0.5rem;
+    }
+
+    .lg-m {
+        margin-top: 0;
     }
 
     .md-form {
@@ -555,6 +568,9 @@ label.error, i.error {
         background: transparent;
     }
 
+    .card-custumer.fm-login {
+        padding: 0 !important;
+    }
 }
 
 @media (max-width: 573px) {
