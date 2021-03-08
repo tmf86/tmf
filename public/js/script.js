@@ -35,7 +35,9 @@ $(function () {
     //Annimation des fa icon a coté des inputs et aussi des labels lorsqu'il y a une erreur
     const input = $("input")
     input.focus(function () {
+        ($('#alert')) ? $('#alert').html('') : '';
         $(`input[name="${this.name}"] ~ span.icon `).toggleClass("active")
+
         if ($(`input[name="${this.name}"]`).hasClass("error")) {
             $(`label[for='${this.name}'] small`).html('*')
             $(`label[for='${this.name}']`).removeClass("error")
@@ -204,16 +206,19 @@ $(function () {
                 $('.cipy-loader-container').toggleClass('active')
                 if (data.success === true) {
                     $("#alert").html(`
-                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                            Bienvenu <strong>${data.username}</strong>
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            Bienvenu <strong>${data.username}</strong> patientez un instant le temps d'être redirigé vers votre page de profile
                             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                  <span aria-hidden="true">&times;</span>
                             </button>
                         </div>`)
-                    btnTransform("#register",
+                    btnTransform("#login",
                         `<span class="spinner-border reziseInter" role="status">
                                 <span class="sr-only">Loading...</span>
                                </span>`,)
+                    setTimeout(function () {
+                        document.location.assign(data.redirectTo);
+                    }, 2000)
                 }
             },
             error: function (xhr) {
@@ -222,7 +227,7 @@ $(function () {
                 const errors = xhr.responseJSON
                 let message = ''
                 for (const errorsKey in errors) {
-                    message += '<strong>' + errors[errorsKey] + '<strong><br>';
+                    message += errors[errorsKey] + '<br>';
                     $(`label[for='${errorsKey}']`).addClass('error')
                     $(`input[name="${errorsKey}"]`).addClass("error")
                     $(`i[data-name='${errorsKey}']`).addClass('error')

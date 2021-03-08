@@ -52,7 +52,7 @@ trait Auth
     public function generateToken()
     {
         return JWT::encode([
-            "iat" => time() + 10,
+            "iat" => time() + 2,
             'exp' => time() + 600],
             JWT_KEY);
     }

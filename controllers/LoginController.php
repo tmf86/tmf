@@ -44,7 +44,7 @@ class LoginController extends Controller
                 $user = $user->query(sprintf("select * from membre where email='%s'", $this->request->email_ou_identifiant));
                 $this->request->session('user_id', $user->mat_membre);
                 $this->request->session('token', $this->generateToken());
-                $sucess_data = ['success' => true, 'redirecTo' => buildpath('profile'), 'username' => $user->prenom];
+                $sucess_data = ['success' => true, 'redirectTo' => buildpath('profile'), 'username' => $user->prenom];
                 break;
             case false :
                 $account = new Account();
@@ -52,7 +52,7 @@ class LoginController extends Controller
                 $user = $account->user();
                 $this->request->session('user_id', $user->mat_membre);
                 $this->request->session('token', $this->generateToken());
-                $sucess_data = ['success' => true, 'redirecTo' => buildpath('profile'), 'username' => $user->prenom];
+                $sucess_data = ['success' => true, 'redirectTo' => buildpath('profile'), 'username' => $user->prenom];
 
         }
         return $this->request->ajax($sucess_data, 200);
