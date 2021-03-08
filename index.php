@@ -98,9 +98,18 @@ $dispatcher = FastRoute\simpleDispatcher(function (FastRoute\RouteCollector $r) 
             'method' => 'index'
         ]);
     $r->addRoute('GET', '/Cpy-Mvc/test', function () {
-//        http_response_code(404);
-        return new View\View('pages.register_success', [], false);
-//        debug(buildUniqueID(6, 'CF2A', '01937964', 'kouassikoffijean'));
+
+        $user = new Model\User();
+        try {
+            debug(true, $user
+                ->select('membre')
+                ->whereBetween('created_at', '2022-03-08', '2022-12-20')
+                ->getQueryBuilded()
+            );
+        } catch (Exception $e) {
+            debug(true, $e->getMessage());
+        }
+
     });
 });
 
