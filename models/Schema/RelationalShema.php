@@ -3,9 +3,6 @@
 
 namespace Model\Shema;
 
-
-use Model\Model;
-
 abstract class RelationalShema
 {
     /*** @var string[] */
@@ -17,7 +14,7 @@ abstract class RelationalShema
     /*** @var string */
     private $currentForeignTable = '';
     /*** @var string */
-    protected $self = self::class;
+    protected $primaryKeyStr = "id";
 
     /**
      * @param string $currentForeignTable
