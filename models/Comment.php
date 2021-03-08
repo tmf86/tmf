@@ -8,12 +8,11 @@ class Comment extends Model
 {
     protected $table = "commentaire";
     protected $primaryKeyStr = "id_comentaire";
-    protected $foreignkey = "cible";
-    protected $foreignTable = "membre";
-    protected $foreignTableKey = "mat_membre";
+    protected $foreignkeys = ['membre' => 'cible'];
+    protected $foreignTableKeys = ['membre' => 'mat_membre'];
 
     public function user()
     {
-        return $this->belongTo(User::class);
+        return $this->setCurrentForeignTable('membre')->belongTo(User::class);
     }
 }

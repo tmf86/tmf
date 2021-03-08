@@ -7,12 +7,16 @@ class User extends Model
 {
     protected $table = "membre";
     protected $primaryKeyStr = "mat_membre";
-    protected $foreignkey = "cible";
-    protected $foreignTable = "commentaire";
-
+    protected $foreignkeys = ['commentaire' => 'cible', 'compte' => 'mat_membre'];
+    protected $foreignTableKeys = ['compte' => 'id_compte'];
 
     public function commentaires()
     {
-        return $this->hasMany(Comment::class);
+        return $this->setCurrentForeignTable('commentaire')->hasMany(Comment::class);
+    }
+
+    public function account()
+    {
+        return $this->setCurrentForeignTable('compte')->one(Account::class);
     }
 }

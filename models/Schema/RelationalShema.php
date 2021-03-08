@@ -4,12 +4,30 @@
 namespace Model\Shema;
 
 
-trait RelationalShema
+use Model\Model;
+
+class RelationalShema
 {
-    protected $foreignkey;
-    protected $foreignTable;
-    protected $foreignTableKey;
-    private $relationQuery = "";
+    /*** @var string[] */
+    protected $foreignkeys = [];
+    /*** @var string[] */
+    protected $foreignTableKeys = [];
+    /*** @var string */
+    private $relationQuery = '';
+    /*** @var string */
+    private $currentForeignTable = '';
+    /*** @var string */
+    protected $self = self::class;
+
+    /**
+     * @param string $currentForeignTable
+     * @return $this
+     */
+    public function setCurrentForeignTable(string $currentForeignTable): RelationalShema
+    {
+        $this->currentForeignTable = $currentForeignTable;
+        return $this;
+    }
 
     /**
      * @param int $id
@@ -18,11 +36,13 @@ trait RelationalShema
      */
     private function relationShipOneToMany(int $id, int $cardinality)
     {
+        $foreignkey = $this->foreignkeys[$this->currentForeignTable];
         if ($cardinality == I) {
-            $relationship = "select * from $this->table inner join $this->foreignTable on $this->table.$this->foreignkey = $this->foreignTable.$this->foreignTableKey where $this->primaryKeyStr = $id  limit 1";
+            $foreignTableKey = $this->foreignTableKeys[$this->currentForeignTable];
+            $relationship = "select * from $this->table inner join $this->currentForeignTable on $this->table.$foreignkey = $this->currentForeignTable.$foreignTableKey where $this->table.$this->primaryKeyStr = $id  limit 1";
             $this->relationQuery = $relationship;
         } else if ($cardinality == N) {
-            $relationship = "select * from $this->table inner join $this->foreignTable on $this->table.$this->primaryKeyStr = $this->foreignTable.$this->foreignkey where $this->primaryKeyStr = $id ";
+            $relationship = "select * from $this->table inner join $this->currentForeignTable on $this->table.$this->primaryKeyStr = $this->currentForeignTable.{$foreignkey} where $this->table.$this->primaryKeyStr = $id ";
             $this->relationQuery = $relationship;
         }
         return $this;
@@ -32,10 +52,12 @@ trait RelationalShema
      * @param int $id
      * @return $this
      */
-    private function relationShipOneToOne(int $id)
+    private
+    function relationShipOneToOne(int $id)
     {
-
-        $relationship = "select * from $this->table inner join $this->foreignTable on $this->table.$this->foreignkey = $this->foreignTable.$this->foreignTableKey where $this->primaryKeyStr = $id  limit 1";
+        $foreignkey = $this->foreignkeys[$this->currentForeignTable];
+        $foreignTableKey = $this->foreignTableKeys[$this->currentForeignTable];
+        $relationship = "select * from $this->table inner join $this->currentForeignTable on $this->table.$foreignkey = $this->currentForeignTable.$foreignTableKey where $this->table.$this->primaryKeyStr = $id  limit 1";
         $this->relationQuery = $relationship;
         return $this;
     }
@@ -44,7 +66,8 @@ trait RelationalShema
      * @param $table
      * @return mixed
      */
-    protected function hasMany($table)
+    protected
+    function hasMany($table)
     {
         $this->self = $table;
         return $this->relationShipOneToMany($this->{$this->primaryKeyStr}, N)->query($this->relationQuery, true);
@@ -54,7 +77,8 @@ trait RelationalShema
      * @param $table
      * @return mixed
      */
-    protected function belongTo($table)
+    protected
+    function belongTo($table)
     {
         $this->self = $table;
         return $this->relationShipOneToMany($this->{$this->primaryKeyStr}, I)->query($this->relationQuery);
@@ -64,9 +88,10 @@ trait RelationalShema
      * @param $table
      * @return array|mixed
      */
-    protected function one($table)
+    protected
+    function one($table)
     {
         $this->self = $table;
-        return $this->relationShipOneToMany($this->{$this->primaryKeyStr}, I)->query($this->relationQuery);
+        return $this->relationShipOneToOne($this->{$this->primaryKeyStr})->query($this->relationQuery);
     }
 }

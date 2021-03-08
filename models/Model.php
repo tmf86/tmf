@@ -6,9 +6,9 @@ namespace Model;
 use Model\Shema\RelationalShema;
 use PDO;
 
-class Model
+class Model extends RelationalShema
 {
-    use RelationalShema;
+
 
     /**
      * @var PDO
@@ -25,7 +25,6 @@ class Model
     /**
      * @var string
      */
-    private $self = self::class;
     /**
      * @var string
      */
