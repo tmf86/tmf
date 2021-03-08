@@ -14,9 +14,6 @@ html, body {
 /*    font-weight: 700 !important;*/
 /*    text-align: start;*/
 /*}*/
-label {
-    font-weight: 100 !important;
-}
 
 a:hover {
     color: white;
@@ -65,6 +62,12 @@ a:hover {
     font-family: 'Lato', sans-serif;
     font-weight: 100;
     transition: all 0.5s ease;
+}
+
+.card-custumer {
+    border: 0;
+    -webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
 }
 
 .title-custum {
@@ -164,6 +167,7 @@ a:hover {
 
 i, label {
     transition: color 0.5s ease;
+    font-weight: 100 !important;
 }
 
 
@@ -443,6 +447,7 @@ label.error, i.error {
     animation-delay: -0.15s;
 }
 
+/*Animation @Keyframes*/
 @keyframes sc {
     0%, 80%, 100% {
         transform: scale(0);
@@ -538,16 +543,16 @@ label.error, i.error {
         color: green
     }
 
-    .card {
-        padding: 0 !important;
-    }
-
     .sm-m {
         padding-top: 0.5rem;
     }
 
     .md-form {
         width: 100% !important;
+    }
+
+    .loader-label {
+        background: transparent;
     }
 
 }
