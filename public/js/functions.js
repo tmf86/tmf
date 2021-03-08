@@ -18,5 +18,5 @@ const buildUrl = (value) => {
  * @param toggledisabled
  */
 const btnTransform = (id, text, toggledisabled = true) => {
-    (toggledisabled) ? $(id).html(text).toggleClass("disabled") : $(id).html(text)
+    (toggledisabled) ? $(id).html(text).toggleClass('disabled') : $(id).html(text)
 }

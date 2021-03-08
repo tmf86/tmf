@@ -32,13 +32,15 @@ $(function () {
              $("#current_moovie").play();
          });
      }*/
-    //Annimation des fa icon a coté des inputs
+    //Annimation des fa icon a coté des inputs et aussi des labels lorsqu'il y a une erreur
     const input = $("input")
     input.focus(function () {
         $(`input[name="${this.name}"] ~ span.icon `).toggleClass("active")
         if ($(`input[name="${this.name}"]`).hasClass("error")) {
             $(`label[for='${this.name}'] small`).html('*')
+            $(`label[for='${this.name}']`).removeClass("error")
             $(`input[name="${this.name}"] ~ span.icon `).removeClass("error")
+            $(`i[data-name='${this.name}']`).removeClass('error')
             $(`input[name="${this.name}"]`).removeClass("error")
         }
     })
@@ -124,9 +126,10 @@ $(function () {
         e.preventDefault()
         $(".cloud").toggleClass("active")
         $(".loader-conatiner").toggleClass("active")
-        btnTransform("#register", `<span class="spinner-border reziseInter" role="status">
-            <span class="sr-only">Loading...</span>
-         </span>`)
+        btnTransform("#register", `
+            <span class="spinner-border reziseInter" role="status">
+                <span class="sr-only">Loading...</span>
+            </span>`)
         $.ajax({
             url: buildUrl("registerstore"),
             type: "post",
@@ -136,9 +139,10 @@ $(function () {
                 $("#debug").html(data)
                 $(".cloud").toggleClass("active")
                 $(".loader-conatiner").toggleClass("active")
-                btnTransform("#register", `<span class="spinner-border reziseInter" role="status">
-                         <span class="sr-only">Loading...</span>
-                         </span>`)
+                btnTransform("#register", `
+                         <span class="spinner-border reziseInter" role="status">
+                            <span class="sr-only">Loading...</span>
+                         </span>`, false)
                 if (data.success === true) {
                     $("#form-register").trigger("reset")
                     setTimeout(function () {
@@ -190,34 +194,42 @@ $(function () {
 //Soumission du formulaire de connexion en Ajax
     $('#form-login').submit(function (e) {
         e.preventDefault()
-        // btnTransform("#login", `
-        //     <span class="spinner-border reziseInter" role="status">
-        //     <span class="sr-only">Loading...</span>
-        //     </span>`)
-        // $("#error-alert").html(`
-        //     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        //          <span aria-hidden="true">&times;</span>
-        //     </button>`).addClass('show')
+        $('.cipy-loader-container').toggleClass('active')
         $.ajax({
             url: buildUrl('post-login'),
             type: 'post',
             dataType: 'json',
             data: $(this).serialize(),
             success: function (data) {
-                console.log(data)
+                $('.cipy-loader-container').toggleClass('active')
+                if (data.success === true) {
+                    $("#alert").html(`
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            Bienvenu <strong>${data.username}</strong>
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                 <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>`)
+                    btnTransform("#register",
+                        `<span class="spinner-border reziseInter" role="status">
+                                <span class="sr-only">Loading...</span>
+                               </span>`,)
+                }
             },
             error: function (xhr) {
-                console.log(xhr.responseText)
+                $('.cipy-loader-container').toggleClass('active')
+                $(`.debug`).html(xhr.responseText)
                 const errors = xhr.responseJSON
                 let message = ''
                 for (const errorsKey in errors) {
                     message += '<strong>' + errors[errorsKey] + '<strong><br>';
                     $(`label[for='${errorsKey}']`).addClass('error')
                     $(`input[name="${errorsKey}"]`).addClass("error")
+                    $(`i[data-name='${errorsKey}']`).addClass('error')
                 }
                 console.log(message)
                 if (xhr.status === 400) {
-                    $("#error-alert").html(`
+                    $("#alert").html(`
                         <div class="alert alert-danger alert-dismissible fade show" role="alert">
                             ${message}
                             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
