@@ -1,11 +1,11 @@
 <div class="form-container mt-5 p-2">
-    <div class="col-md-6 card p-5 fm-login">
+    <div class="col-md-6 card-custumer p-5 fm-login">
         <form id="form-login" class="p-3 w-100">
             <p class="text-center mb-4">
                 <span class="title-custum text-uppercase">connexion</span>
             </p>
             <div id="alert" class="mt-5"></div>
-            <div class="sm-m">
+            <div class="sm-p lg-m">
                 <div class="md-form mt-3">
                     <i class="fa fa-envelope prefix grey-text" data-name="email_ou_identifiant"></i>
                     <input type="text" id="email_ou_identifiant" name="email_ou_identifiant" class="form-control">
