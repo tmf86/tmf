@@ -20,7 +20,7 @@ class PasswordRuleCustumer extends Rule
         // TODO: Implement check() method.
         $account = new Account();
         $bool = false;
-        $accounts = $account->query("select * from compte", true);
+        $accounts = $account->all();
         foreach ($accounts as $account) {
             $bool = password_verify($value, $account->mot_pass);
             if ($bool) {

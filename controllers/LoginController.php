@@ -41,14 +41,24 @@ class LoginController extends Controller
         switch ($is_email_adresse) {
             case $this->request->email_ou_identifiant:
                 $user = new User();
-                $user = $user->query(sprintf("select * from membre where email='%s'", $this->request->email_ou_identifiant));
+//                $user = $user->query(sprintf("select * from membre where email='%s'", $this->request->email_ou_identifiant));
+                $user = $user
+                    ->select('membre')
+                    ->whereEqual('email', $this->request->email_ou_identifiant)
+                    ->limit('1')
+                    ->run();
                 $this->request->session('user_id', $user->mat_membre);
                 $this->request->session('token', $this->generateToken());
                 $sucess_data = ['success' => true, 'redirectTo' => buildpath('profile'), 'username' => $user->prenom];
                 break;
             case false :
                 $account = new Account();
-                $account = $account->query(sprintf("select * from compte where identifiant='%s'", $this->request->email_ou_identifiant));
+//                $account = $account->query(sprintf("select * from compte where identifiant='%s'", $this->request->email_ou_identifiant));
+                $account = $account
+                    ->select('compte')
+                    ->whereEqual('identifiant', $this->request->email_ou_identifiant)
+                    ->limit('1')
+                    ->run();
                 $user = $account->user();
                 $this->request->session('user_id', $user->mat_membre);
                 $this->request->session('token', $this->generateToken());

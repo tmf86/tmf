@@ -66,7 +66,8 @@ class FinalizeAccountController extends Controller
         }
 
         $user = new User();
-        $user = $user->query(sprintf("select * from membre where email='%s'", $email));
+        $user = $user->select('membre')->whereEqual('email', $email)->run();
+//        $user = $user->query(sprintf("select * from membre where email='%s'", $email));
         $account_data =
             [
                 'identifiant' => $id,
@@ -85,6 +86,7 @@ class FinalizeAccountController extends Controller
      * @param string $id
      * @param string $email
      * @return bool
+     * @throws \Exception
      */
     private
     function urlValidate(string $id, string $email): bool
@@ -92,8 +94,10 @@ class FinalizeAccountController extends Controller
         $user = new User();
         $account = new Account();
         $bool = false;
-        $user = $user->query(sprintf("select * from membre where email='%s'", $email));
-        $account = $account->query(sprintf("select * from compte where identifiant='%s'", $id));
+//        $user = $user->query(sprintf("select * from membre where email='%s'", $email));
+        $user = $user->select('membre')->whereEqual('email', $email)->run();
+//        $account = $account->query(sprintf("select * from compte where identifiant='%s'", $id));
+        $account = $account->select('compte')->whereEqual('identifiant', $id)->run();
         if ($user && !$account) {
             $name_id = sprintf("%s%s", str_replace(" ", '', $user->nom), str_replace(" ", '', $user->prenom));
             $bool = buildUniqueID($user->mat_membre, $user->filiere, $user->contact, $name_id) === $id;

@@ -23,7 +23,8 @@ class UniqueRuleCustumer extends Rule
         $table = $this->parameter('table');
         $column = $this->parameter('column');
         $model = new Model();
-        $result = $model->query("select * from $table where $column='$value'");
+//        $result = $model->query("select * from $table where $column='$value'");
+        $result = $model->select($table)->whereEqual($column, $value)->run();
         return ($result) ? false : true;
     }
 }

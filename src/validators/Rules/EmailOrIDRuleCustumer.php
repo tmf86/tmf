@@ -20,8 +20,10 @@ class EmailOrIDRuleCustumer extends Rule
         $user = new User();
         $account = new Account();
         $bool = false;
-        $user = $user->query(sprintf("select * from membre where email='%s'", $value));
-        $account = $account->query(sprintf("select * from compte where identifiant='%s'", $value));
+//        $user = $user->query(sprintf("select * from membre where email='%s'", $value));
+        $user = $user->select('membre')->whereEqual('email', $value)->run();
+//        $account = $account->query(sprintf("select * from compte where identifiant='%s'", $value));
+        $account = $account->select('compte')->whereEqual('identifiant', $value)->run();
         if ($account || $user) {
             $bool = true;
         }
