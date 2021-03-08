@@ -15,10 +15,6 @@
     <link rel="stylesheet" href="<?= buildpath('public/js/import/VenoBox-master/venobox/venobox.min.css') ?>">
     <?= suppl_tags($links ?? [], LINK) ?>
     <title><?= $title ?? "Title" ?></title>
-    <!-- Stylesheet   -->
-    <!-- Script-->
-    <script src="https://kit.fontawesome.com/bb2a11cf5b.js" defer crossorigin="anonymous"></script>
-    <!-- Script-->
 </head>
 <body>
 <!--<div class="waiting">-->
