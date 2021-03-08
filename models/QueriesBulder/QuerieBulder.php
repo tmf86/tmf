@@ -331,6 +331,110 @@ abstract class QuerieBulder extends RelationalShema
     }
 
     /**
+     * @param string $field
+     * @return $this
+     */
+    public function orderBy(string $field)
+    {
+        $this->queryBuilded .= sprintf(' order by %s', $field);
+        return $this;
+    }
+
+    /**
+     * @param string $field
+     * @return $this
+     */
+    public function orderByAsc(string $field)
+    {
+        $this->queryBuilded .= sprintf(' order by %s asc', $field);
+        return $this;
+    }
+
+    /**
+     * @param string $field
+     * @return $this
+     */
+    public function orderByDesc(string $field)
+    {
+        $this->queryBuilded .= sprintf(' order by %s desc', $field);
+        return $this;
+    }
+
+    /**
+     * @param string $field
+     * @return $this
+     */
+    public function groupBy(string $field)
+    {
+        $this->queryBuilded .= sprintf(' group by %s', $field);
+        return $this;
+    }
+
+    /**
+     * @param string $table
+     * @param string $avgfield
+     * @param string|array $field
+     * @param string $as
+     * @return $this
+     */
+    public function avg(string $table, string $avgfield, $field = '', $as = '')
+    {
+        if (is_array($field)) {
+            $field = implode(',', $field,);
+        }
+        (!empty($as)) ? $this->queryBuilded = sprintf('select %s avg(%s) as %s from %s', $field, $avgfield, $as, $table) :
+            $this->queryBuilded = sprintf('select %s avg(%s) from %s', $field, $avgfield, $table);
+        return $this;
+    }
+
+    /**
+     * @param string $table
+     * @param string|array $field
+     * @param string $as
+     * @return $this
+     */
+    public function count(string $table, string $countfield, $as = '')
+    {
+        (!empty($as)) ? $this->queryBuilded = sprintf('select count(%s) as %s from %s', $countfield, $as, $table) :
+            $this->queryBuilded = sprintf('select count(%s) from %s', $countfield, $table);
+        return $this;
+    }
+
+    /**
+     * @param string $table
+     * @param string $maxfield
+     * @param string|array $field
+     * @param string $as
+     * @return $this
+     */
+    public function max(string $table, string $maxfield, $field = '', $as = '')
+    {
+        if (is_array($field)) {
+            $field = implode(',', $field,);
+        }
+        (!empty($as)) ? $this->queryBuilded = sprintf('select %s max(%s) as %s from %s', $field, $maxfield, $as, $table) :
+            $this->queryBuilded = sprintf('select %s max(%s) from %s', $field, $maxfield, $table);
+        return $this;
+    }
+
+    /**
+     * @param string $table
+     * @param string $minfield
+     * @param string $field
+     * @param string $as
+     * @return $this
+     */
+    public function min(string $table, string $minfield, $field = '', $as = '')
+    {
+        if (is_array($field)) {
+            $field = implode(',', $field,);
+        }
+        (!empty($as)) ? $this->queryBuilded = sprintf('select %s min(%s) as %s from %s', $field, $minfield, $as, $table) :
+            $this->queryBuilded = sprintf('select %s avg(%s) from %s', $field, $minfield, $table);
+        return $this;
+    }
+
+    /**
      * @param bool $all
      * @return array|mixed
      * @throws \Exception
