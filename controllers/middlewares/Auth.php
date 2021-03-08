@@ -52,8 +52,8 @@ trait Auth
     public function generateToken()
     {
         return JWT::encode([
-            "iat" => JWT_START_VALIDATE,
-            'exp' => JWT_TIME_LIMIT],
+            "iat" => time() + 10,
+            'exp' => time() + 600],
             JWT_KEY);
     }
 
