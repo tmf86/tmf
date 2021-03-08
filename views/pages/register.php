@@ -1,5 +1,5 @@
-<div class="form-container mt-3 mb-5">
-    <form class="border border-light p-5 form-box" action="#" id="form-register">
+<div class="form-container mb-5">
+    <form class="card p-4 form-box  mt-5" action="#" id="form-register">
         <p class="text-center mb-4">
             <span class="title-custum text-uppercase">Inscription</span>
         </p>
