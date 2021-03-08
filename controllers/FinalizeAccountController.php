@@ -95,7 +95,8 @@ class FinalizeAccountController extends Controller
         $user = $user->query(sprintf("select * from membre where email='%s'", $email));
         $account = $account->query(sprintf("select * from compte where identifiant='%s'", $id));
         if ($user && !$account) {
-            $bool = buildUniqueID($user->mat_membre, $user->filiere, $user->contact, sprintf("%s%s", $user->nom, $user->prenom)) === $id;
+            $name_id = sprintf("%s%s", str_replace(" ", '', $user->nom), str_replace(" ", '', $user->prenom));
+            $bool = buildUniqueID($user->mat_membre, $user->filiere, $user->contact, $name_id) === $id;
         }
         return $bool;
     }

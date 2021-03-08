@@ -12,7 +12,6 @@
           rel="stylesheet">
     <link rel="stylesheet" href="<?= sprintf("%spublic/css/style.css", rootUrl()) ?>">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/gsap.min.js" defer></script>
-    <script src="https://kit.fontawesome.com/bb2a11cf5b.js" defer crossorigin="anonymous"></script>
     <title>Felicitation</title>
 </head>
 <body>
