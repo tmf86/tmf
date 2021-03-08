@@ -14,6 +14,9 @@ html, body {
 /*    font-weight: 700 !important;*/
 /*    text-align: start;*/
 /*}*/
+label {
+    font-weight: 100 !important;
+}
 
 a:hover {
     color: white;
@@ -159,7 +162,7 @@ a:hover {
     width: 100%;
 }
 
-i {
+i, label {
     transition: color 0.5s ease;
 }
 
@@ -170,7 +173,7 @@ i {
     transition: all 0.5s ease;
 }
 
-.icon.active {
+.icon.active, i.active {
     color: #33B5E5 !important;
 }
 
@@ -192,7 +195,7 @@ i {
     border-color: red !important;
 }
 
-label.error {
+label.error, i.error {
     color: red !important;
 }
 
@@ -388,6 +391,73 @@ label.error {
     color: #33B5E5 !important;
 }
 
+/*Login Loader*/
+.cipy-loader-container.active {
+    background-color: rgba(255, 255, 255, 0.8);
+    position: fixed;
+    z-index: 9999;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.cipy-loader-container.active .loader-center {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.loader-d-flex {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.cipy-loader-container.active .cipy-loader {
+    display: inline-block;
+    width: 3rem;
+    height: 3rem;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top-color: #33B5E5;
+    animation: spin 1s infinite;
+}
+
+.cipy-loader-container.active .round {
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 50%;
+    display: inline-block;
+    background: #33B5E5;
+    animation: sc 1s infinite ease-in-out both;
+}
+
+.cipy-loader-container.active .round.nb {
+    animation-delay: -0.30s;
+}
+
+.cipy-loader-container.active .round.nb-1 {
+    animation-delay: -0.15s;
+}
+
+@keyframes sc {
+    0%, 80%, 100% {
+        transform: scale(0);
+    }
+    40% {
+        transform: scale(1);
+    }
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
 /*Medi Queries*/
 @media (min-width: 320px ) and (max-width: 450px) {
     .card {
@@ -466,6 +536,18 @@ label.error {
     .email-resended {
         font-size: 2rem;
         color: green
+    }
+
+    .card {
+        padding: 0 !important;
+    }
+
+    .sm-m {
+        padding-top: 0.5rem;
+    }
+
+    .md-form {
+        width: 100% !important;
     }
 
 }
