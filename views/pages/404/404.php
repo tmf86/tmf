@@ -7,7 +7,6 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="icon" type="image/png" href="<?= buildpath("images/logo.png") ?>"/>
     <link href='<?= buildpath('public/css/404.css') ?>' rel='stylesheet'>
-    <script src="https://kit.fontawesome.com/bb2a11cf5b.js" defer crossorigin="anonymous"></script>
     <title>Not Found</title>
 </head>
 <body>
