@@ -6,15 +6,14 @@ namespace Model;
 
 class Sujet extends Model
 {
-    protected $primaryKeyStr = "id_sujet";
-    protected $foreignkey = "typ_sujet";
-    protected $foreignTable = "type_sujet";
-    protected $foreignTableKey = "id_typ_sujet";
     protected $table = "sujet";
+    protected $primaryKeyStr = "id_sujet";
+    protected $foreignkeys = ['type_sujet' => 'typ_sujet'];
+    protected $foreignTableKeys = ['type_sujet' => 'id_typ_sujet'];
 
     public function one_type()
     {
-        return $this->belongTo(TypeSujet::class);
+        return $this->setCurrentForeignTable('type_sujet')->belongTo(TypeSujet::class);
     }
 
     public function show_all()
@@ -27,7 +26,8 @@ class Sujet extends Model
     {
         //return $this->all('WHERE  nom_typ_sujet="bts"');
         $tp = new TypeSujet();
-        $tp = $tp->query("SELECT * FROM type_sujet WHERE nom_typ_sujet='bts'");
+//        $tp = $tp->query("SELECT * FROM type_sujet WHERE nom_typ_sujet='bts'");
+        $tp = $tp->select('type_sujet')->whereEqual('nom_typ_sujet', 'bts')->run();
         return $tp->recup_sujet();
     }
 
