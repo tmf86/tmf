@@ -16,6 +16,7 @@ class FormationController extends Controller
         $user_image = $this->getUserImage();
         $scripts =
             [
+                sprintf("<script src='%spublic/js/script.js'></script>", rootUrl()),
                 "<script  src='public/js/import/Venobox-master/venobox/venobox.min.js'></script>",
                 "<script  src='public/js/import/Venobox-master/venobox/venoboxActive.js'></script>"
             ];
