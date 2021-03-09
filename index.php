@@ -103,7 +103,10 @@ $dispatcher = FastRoute\simpleDispatcher(function (FastRoute\RouteCollector $r) 
         try {
             debug(true, $user
                 ->select('membre')
-                ->whereBetween('created_at', '2022-03-08', '2022-12-20')
+                ->whereEqual('age', 15)
+                ->andBetween('birthday', '2020-01-27', '2020-03-14')
+                ->OrEqual('email', 'jeames@gmail.com')
+                ->OrderBy('name')
                 ->getQueryBuilded()
             );
         } catch (Exception $e) {

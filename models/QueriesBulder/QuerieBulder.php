@@ -88,6 +88,102 @@ abstract class QuerieBulder extends RelationalShema
         return $rep;
     }
 
+
+    /**
+     * @param string $field
+     * @param string $clause
+     * @param string|int|float $value
+     * @throws \Exception
+     */
+    private function useStringIntAndFloatForComparison(string $symbol, string $clause, string $field, $value)
+    {
+        if (is_int($value)) {
+            $this->queryBuilded .= sprintf(" %s %s%s%d", $clause, $field, $symbol, $value);
+        } elseif (is_string($value)) {
+            $this->queryBuilded .= sprintf(" %s %s%s'%s'", $clause, $field, $symbol, $value);
+        } elseif (is_float($value)) {
+            $this->queryBuilded .= sprintf(" %s %s%s%f", $clause, $field, $symbol, $value);
+        } else {
+            throw new \Exception('The value type must be a string , int or float');
+        }
+    }
+
+    /**
+     * @param string $field
+     * @param string $clause
+     * @param int|float $value
+     * @throws \Exception
+     */
+    private function useIntAndFloatForComparison(string $symbol, string $clause, string $field, $value)
+    {
+        if (is_int($value)) {
+            $this->queryBuilded .= sprintf(" %s %s%s%d", $clause, $field, $symbol, $value);
+        } elseif (is_float($value)) {
+            $this->queryBuilded .= sprintf(" %s %s%s%f", $clause, $field, $symbol, $value);
+        } else {
+            throw new \Exception('The value type must be a  int or float');
+        }
+    }
+
+    /**
+     * @param string $symbol
+     * @param string $clause
+     * @param  $field
+     * @param string|int|float $value
+     * @return $this
+     * @throws \Exception
+     */
+    private function useOfComparison(string $symbol, string $clause, string $field, $value)
+    {
+        switch ($symbol) {
+            case '=':
+                $this->useStringIntAndFloatForComparison('=', $clause, $field, $value);
+                break;
+            case '>':
+                $this->useIntAndFloatForComparison('=', $clause, $field, $value);
+                break;
+            case '>=':
+                $this->useIntAndFloatForComparison('>=', $clause, $field, $value);
+                break;
+            case '<':
+                $this->useIntAndFloatForComparison('<', $clause, $field, $value);
+                break;
+            case '<=' :
+                $this->useIntAndFloatForComparison('<=', $clause, $field, $value);
+                break;
+        }
+        return $this;
+    }
+
+    /**
+     * @param string $clause
+     * @param $field
+     * @param string|int|float $value
+     * @return $this
+     * @throws \Exception
+     */
+    private function useBetween(string $clause, string $field, $first, $second)
+    {
+        $first_is_int = is_int($first);
+        $second_is_int = is_int($second);
+        $first_is_float = is_float($first);
+        $second_is_float = is_float($second);
+        if ($first_is_int && $second_is_int) {
+            $this->queryBuilded .= sprintf(" %s %s between %d and %d", $clause, $field, $first, $second);
+        } elseif ($first_is_int && $second_is_float) {
+            $this->queryBuilded .= sprintf(" %s %s between %d and %f", $clause, $field, $first, $second);
+        } elseif ($second_is_int && $first_is_float) {
+            $this->queryBuilded .= sprintf(" %s %s between %d and %f", $clause, $field, $second, $first);
+        } elseif (is_float($first) && is_float($second)) {
+            $this->queryBuilded .= sprintf(" %s %s between %f and %f", $clause, $field, $first, $second);
+        } elseif (is_string($first) && is_string($second)) {
+            $this->queryBuilded .= sprintf(" %s %s between '%s' and '%s'", $clause, $field, $first, $second);
+        } else {
+            throw new \Exception('The value type must be a string , int or float');
+        }
+        return $this;
+    }
+
     /**
      * @param string $table
      * @param string|array $field
@@ -105,53 +201,34 @@ abstract class QuerieBulder extends RelationalShema
     /**
      * @param string $field
      * @param string|int|float $value
+     * @return $this
+     * @throws \Exception
      */
     public function whereEqual(string $field, $value)
     {
-        if (is_int($value)) {
-            $this->queryBuilded .= sprintf(" where %s=%d", $field, $value);
-        } elseif (is_string($value)) {
-            $this->queryBuilded .= sprintf(" where %s='%s'", $field, $value);
-        } elseif (is_float($value)) {
-            $this->queryBuilded .= sprintf(" where %s=%f", $field, $value);
-        } else {
-            throw new \Exception('The value type must be a string , int or float');
-        }
-        return $this;
+        return $this->useOfComparison('=', 'where', $field, $value);
     }
 
     /**
      * @param string $field
      * @param int|float $value
+     * @return $this
      * @throws \Exception
      */
     public function whereBiggerThan(string $field, $value)
     {
-        if (is_int($value)) {
-            $this->queryBuilded .= sprintf(" where %s>%d", $field, $value);
-        } elseif (is_float($value)) {
-            $this->queryBuilded .= sprintf(" where %s>%f", $field, $value);
-        } else {
-            throw new \Exception('The value type must be a  int or float');
-        }
-        return $this;
+        return $this->useOfComparison('>', 'where', $field, $value);
     }
 
     /**
      * @param string $field
      * @param int|float $value
+     * @return $this
      * @throws \Exception
      */
     public function whereGreaterOrEqual(string $field, $value)
     {
-        if (is_int($value)) {
-            $this->queryBuilded .= sprintf(" where %s>=%d", $field, $value);
-        } elseif (is_float($value)) {
-            $this->queryBuilded .= sprintf(" where %s>=%f", $field, $value);
-        } else {
-            throw new \Exception('The value type must be a  int or float');
-        }
-        return $this;
+        return $this->useOfComparison('>=', 'where', $field, $value);
     }
 
     /**
@@ -161,180 +238,188 @@ abstract class QuerieBulder extends RelationalShema
      */
     public function whereSmallerThan(string $field, $value)
     {
-        if (is_int($value)) {
-            $this->queryBuilded .= sprintf(" where %s<%d", $field, $value);
-        } elseif (is_float($value)) {
-            $this->queryBuilded .= sprintf(" where %s<%f", $field, $value);
-        } else {
-            throw new \Exception('The value type must be a  int or float');
-        }
-        return $this;
+        return $this->useOfComparison('<', 'where', $field, $value);
     }
 
     /**
      * @param string $field
      * @param int|float $value
+     * @return $this
      * @throws \Exception
      */
     public function whereSmallerOrequal(string $field, $value)
     {
-        if (is_int($value)) {
-            $this->queryBuilded .= sprintf(" where %s<=%d", $field, $value);
-        } elseif (is_float($value)) {
-            $this->queryBuilded .= sprintf(" where %s<=%f", $field, $value);
-        } else {
-            throw new \Exception('The value type must be a  int or float');
-        }
-        return $this;
+        return $this->useOfComparison('<=', 'where', $field, $value);
     }
 
     /**
      * @param string $field
      * @param int|float|string $first
      * @param int|float $second
+     * @return $this
      * @throws \Exception
      */
     public function whereBetween(string $field, $first, $second)
     {
-        $first_is_int = is_int($first);
-        $second_is_int = is_int($second);
-        $first_is_float = is_float($first);
-        $second_is_float = is_float($second);
-        if ($first_is_int && $second_is_int) {
-            $this->queryBuilded .= sprintf(" where %s between %d and %d", $field, $first, $second);
-        } elseif ($first_is_int && $second_is_float) {
-            $this->queryBuilded .= sprintf(" where %s between %d and %f", $field, $first, $second);
-        } elseif ($second_is_int && $first_is_float) {
-            $this->queryBuilded .= sprintf(" where %s between %d and %f", $field, $second, $first);
-        } elseif (is_float($first) && is_float($second)) {
-            $this->queryBuilded .= sprintf(" where %s between %f and %f", $field, $first, $second);
-        } elseif (is_string($first) && is_string($second)) {
-            $this->queryBuilded .= sprintf(" where %s between '%s' and '%s'", $field, $first, $second);
-        } else {
-            throw new \Exception('The value type must be a string , int or float');
-        }
-        return $this;
+        return $this->useBetween('where', $field, $first, $second);
+    }
+
+//    /**
+//     * @return $this
+//     */
+//    public function And()
+//    {
+//        $this->queryBuilded .= ' and ';
+//        return $this;
+//    }
+
+    /**
+     * @param string $field
+     * @return $this
+     * @throws \Exception
+     */
+    public function andEqual(string $field, $value)
+    {
+        return $this->useOfComparison('=', 'and', $field, $value);
     }
 
     /**
      * @param string $field
      * @param string|int|float $value
-     */
-    public function andEqual(string $field, $value)
-    {
-        if (is_int($value)) {
-            $this->queryBuilded .= sprintf(" and %s=%d", $field, $value);
-        } elseif (is_string($value)) {
-            $this->queryBuilded .= sprintf(" and %s='%s'", $field, $value);
-        } elseif (is_float($value)) {
-            $this->queryBuilded .= sprintf(" and %s=%f", $field, $value);
-        } else {
-            throw new \Exception('The value type must be a string , int or float');
-        }
-        return $this;
-    }
-
-    /**
-     * @param string $field
-     * @param int|float $value
+     * @return $this
      * @throws \Exception
      */
     public function andBiggerThan(string $field, $value)
     {
-        if (is_int($value)) {
-            $this->queryBuilded .= sprintf(" and %s>%d", $field, $value);
-        } elseif (is_float($value)) {
-            $this->queryBuilded .= sprintf(" and %s>%f", $field, $value);
-        } else {
-            throw new \Exception('The value type must be a  int or float');
-        }
-        return $this;
+        return $this->useOfComparison('>', 'and', $field, $value);
     }
 
     /**
      * @param string $field
-     * @param int|float $value
+     * @param string|int|float $value
+     * @return $this
      * @throws \Exception
      */
     public function andGreaterOrEqual(string $field, $value)
     {
-        if (is_int($value)) {
-            $this->queryBuilded .= sprintf(" and %s>=%d", $field, $value);
-        } elseif (is_float($value)) {
-            $this->queryBuilded .= sprintf(" and %s>=%f", $field, $value);
-        } else {
-            throw new \Exception('The value type must be a  int or float');
-        }
-        return $this;
+        return $this->useOfComparison('>=', 'and', $field, $value);
     }
 
     /**
      * @param string $field
-     * @param int|float $value
+     * @param string|int|float $value
+     * @return $this
      * @throws \Exception
      */
     public function andSmallerThan(string $field, $value)
     {
-        if (is_int($value)) {
-            $this->queryBuilded .= sprintf(" and %s<%d", $field, $value);
-        } elseif (is_float($value)) {
-            $this->queryBuilded .= sprintf(" and %s<%f", $field, $value);
-        } else {
-            throw new \Exception('The value type must be a  int or float');
-        }
-        return $this;
+        return $this->useOfComparison('<', 'and', $field, $value);
     }
 
     /**
      * @param string $field
-     * @param int|float $value
+     * @param string|int|float $value
+     * @return $this
      * @throws \Exception
      */
     public function andSmallerOrequal(string $field, $value)
     {
-        if (is_int($value)) {
-            $this->queryBuilded .= sprintf(" and %s<=%d", $field, $value);
-        } elseif (is_float($value)) {
-            $this->queryBuilded .= sprintf(" and %s<=%f", $field, $value);
-        } else {
-            throw new \Exception('The value type must be a  int or float');
-        }
-        return $this;
+        return $this->useOfComparison('<=', 'and', $field, $value);
     }
 
     /**
      * @param string $field
      * @param int|float|string $first
      * @param int|float $second
+     * @return $this
      * @throws \Exception
      */
     public function andBetween(string $field, $first, $second)
     {
-        $first_is_int = is_int($first);
-        $second_is_int = is_int($second);
-        $first_is_float = is_float($first);
-        $second_is_float = is_float($second);
-        if ($first_is_int && $second_is_int) {
-            $this->queryBuilded .= sprintf(" and %s between %d and %d", $field, $first, $second);
-        } elseif ($first_is_int && $second_is_float) {
-            $this->queryBuilded .= sprintf(" and %s between %d and %f", $field, $first, $second);
-        } elseif ($second_is_int && $first_is_float) {
-            $this->queryBuilded .= sprintf(" and %s between %d and %f", $field, $second, $first);
-        } elseif (is_float($first) && is_float($second)) {
-            $this->queryBuilded .= sprintf(" and %s between %f and %f", $field, $first, $second);
-        } elseif (is_string($first) && is_string($second)) {
-            $this->queryBuilded .= sprintf(" and %s between '%s' and '%s'", $field, $first, $second);
-        } else {
-            throw new \Exception('The value type must be a string , int or float');
-        }
-        return $this;
+        return $this->useBetween('and', $field, $first, $second);
+    }
+
+//    /**
+//     * @return $this
+//     */
+//    public function Or()
+//    {
+//        $this->queryBuilded .= ' or ';
+//        return $this;
+//    }
+
+    /**
+     * @param string $field
+     * @param int|string|float $value
+     * @return $this
+     * @throws \Exception
+     */
+    public function OrBiggerThan(string $field, $value)
+    {
+        return $this->useOfComparison('>', 'or', $field, $value);
+    }
+
+    /**
+     * @param string $field
+     * @param string|int|float $value
+     * @return $this
+     * @throws \Exception
+     */
+    public function OrGreaterOrEqual(string $field, $value)
+    {
+        return $this->useOfComparison('>=', 'or', $field, $value);
+    }
+
+    /**
+     * @param string $field
+     * @param int|string|float $value
+     * @return $this
+     * @throws \Exception
+     */
+    public function OrEqual(string $field, $value)
+    {
+        return $this->useOfComparison('=', 'or', $field, $value);
+    }
+
+    /**
+     * @param string $field
+     * @param string|int|float $value
+     * @return $this
+     * @throws \Exception
+     */
+    public function OrSmallerOrequal(string $field, $value)
+    {
+        return $this->useOfComparison('<=', 'or', $field, $value);
+    }
+
+    /**
+     * @param string $field
+     * @param string|int|float $value
+     * @return $this
+     * @throws \Exception
+     */
+    public function OrSmallerThan(string $field, $value)
+    {
+        return $this->useOfComparison('<', 'or', $field, $value);
+    }
+
+    /**
+     * @param string $field
+     * @param int|float|string $first
+     * @param int|float $second
+     * @return $this
+     * @throws \Exception
+     */
+    public function OrBetween(string $field, $first, $second)
+    {
+        return $this->useBetween('or', $field, $first, $second);
     }
 
     /**
      * @param string $field
      * @return $this
      */
-    public function orderBy(string $field)
+    public function OrderBy(string $field)
     {
         $this->queryBuilded .= sprintf(' order by %s', $field);
         return $this;
@@ -344,7 +429,7 @@ abstract class QuerieBulder extends RelationalShema
      * @param string $field
      * @return $this
      */
-    public function orderByAsc(string $field)
+    public function OrderByAsc(string $field)
     {
         $this->queryBuilded .= sprintf(' order by %s asc', $field);
         return $this;
@@ -354,7 +439,7 @@ abstract class QuerieBulder extends RelationalShema
      * @param string $field
      * @return $this
      */
-    public function orderByDesc(string $field)
+    public function OrderByDesc(string $field)
     {
         $this->queryBuilded .= sprintf(' order by %s desc', $field);
         return $this;
@@ -447,6 +532,10 @@ abstract class QuerieBulder extends RelationalShema
         throw  new \Exception('Query can\'t be executed because the statement is empty');
     }
 
+    /**
+     * @param int $value
+     * @return $this
+     */
     public function limit(int $value)
     {
         $this->queryBuilded .= sprintf(' limit %d', $value);
