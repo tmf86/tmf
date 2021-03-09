@@ -15,8 +15,8 @@ class RegisterValidator extends ValidatorCustumer
         'min' => ':attribute invalide',
         'phone' => ':attribute invalide.',
         "name" => ":attribute invalide.",
-        "unique" => ":attribute deja utilisé.",
-        "emailApi" => "l :attribute est invalide."
+        "unique" => ":attribute est deja utilisé.",
+        "emailApi" => "l' :attribute est invalide."
     ];
     /**
      * @var string[]
