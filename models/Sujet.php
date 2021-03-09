@@ -34,7 +34,12 @@ class Sujet extends Model
     public function show_all_other()
     {
         $other = new TypeSujet();
-        $other = $other->query("SELECT * FROM type_sujet WHERE nom_typ_sujet='examen' OR nom_typ_sujet='devoir'");
+//        $other = $other->query("SELECT * FROM type_sujet WHERE nom_typ_sujet='examen' OR nom_typ_sujet='devoir'");
+        $other = $other
+            ->select('type_sujet')
+            ->whereEqual('nom_typ_sujet', 'examen')
+            ->OrEqual('nom_typ_sujet', 'devoir')
+            ->run();
         return $other->recup_sujet();
 
     }
@@ -42,7 +47,7 @@ class Sujet extends Model
     public function show_all_projet()
     {
         $other = new TypeSujet();
-        $other = $other->query("SELECT * FROM type_sujet WHERE nom_typ_sujet='projet' ");
+        $other = $other->select('type_sujet')->whereEqual('nom_typ_sujet', 'bts')->run();
         return $other->recup_sujet();
 
     }
