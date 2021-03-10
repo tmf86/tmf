@@ -104,8 +104,6 @@ $(function () {
     day.change(function () {
         Leap()
     })
-//    Venobox
-    $('.venobox').venobox();
 //  Annimation des inputs de type password
     $(".password-eye").click(function () {
         let class_name = '';

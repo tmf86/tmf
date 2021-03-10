@@ -6,6 +6,9 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="icon" type="image/png" href="<?= buildpath("images/logo.png") ?>"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700&display=swap"
+          rel="stylesheet"/>
     <link href='<?= buildpath('public/css/404.css') ?>' rel='stylesheet'>
     <title>Not Found</title>
 </head>
@@ -18,7 +21,7 @@
     </div>
     <div class="msg">
         Peut-être que cette page a été déplacée ? Ou a été supprimée !
-        Retournez a l' <a href="<?= buildpath('acceuil') ?>">acceuil</a> et essayez à partir de là.
+        Retournez a l' <a href="<?= buildpath('home') ?>">acceuil</a> et essayez à partir de là.
     </div>
 </div>
 </body>

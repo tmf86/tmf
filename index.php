@@ -84,6 +84,11 @@ $dispatcher = FastRoute\simpleDispatcher(function (FastRoute\RouteCollector $r) 
             'class' => FormationController::class,
             'method' => 'index'
         ]);
+    $r->addRoute('GET', '/Cpy-Mvc/videos_formation/{id:\d+}',
+        function () {
+            echo 'Hello !';
+        }
+    );
     $r->addRoute('GET', '/Cpy-Mvc/about-us', function () {
         $title = 'A propos';
         return new View\View('pages.apropos', compact('title'));
