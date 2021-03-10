@@ -142,44 +142,4 @@
     </div>
 </div>
 
-<style>
-    .pb-video-container {
-        padding-top: 20px;
-    }
-
-    .abstract {
-        /*border: 2px solid rgba(0, 0, 0, 0.5);*/
-        padding: 1rem;
-    }
-
-    .text-underline {
-        text-decoration: underline;
-    }
-
-    .pb-video {
-        padding: 5px;
-    }
-
-    .preview-container {
-        position: relative;
-    }
-
-    .fa.fa-play {
-        position: absolute;
-        color: rgba(0, 0, 0, 0.3);
-        z-index: 999;
-        font-size: 5rem;
-        top: 38%;
-        left: 41%;
-    }
-
-    /*.pb-video:hover {*/
-    /*    background: #2c3e50;*/
-    /*}*/
-
-    .pb-row {
-        margin-bottom: 10px;
-    }
-</style>
-
 <!-- Video Gallery - END -->
