@@ -1,6 +1,6 @@
 <div class="form-container mt-5 p-2">
     <div class="col-md-6 card-custumer p-5 fm-login">
-        <form id="form-login" class="p-3 w-100">
+        <form id="form-login" class="p-3 w-100" action="#" method="post">
             <p class="text-center mb-4">
                 <span class="title-custum text-uppercase">connexion</span>
             </p>
