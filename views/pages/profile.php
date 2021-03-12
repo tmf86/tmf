@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="icon" type="image/png" href="<?= buildpath("images/logo.png") ?>"/>
     <!-- Stylesheet   -->
-    <link rel="stylesheet" href='<?= buildpath("public/css/bootstrap-mdb.css") ?>'>
+    <link rel="stylesheet" href='<?= buildpath("public/css/import/bootstrap-mdb.css") ?>'>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700&display=swap"
           rel="stylesheet">

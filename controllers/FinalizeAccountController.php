@@ -15,6 +15,12 @@ class FinalizeAccountController extends Controller
 {
     use Auth;
 
+    /**
+     * @param string $id
+     * @param string $email
+     * @return View
+     * @throws \Exception
+     */
     public function index(string $id, string $email): View
     {
         if (!$this->urlValidate($id, $email)) {

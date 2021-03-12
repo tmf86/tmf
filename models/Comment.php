@@ -11,6 +11,9 @@ class Comment extends Model
     protected $foreignkeys = ['membre' => 'cible'];
     protected $foreignTableKeys = ['membre' => 'mat_membre'];
 
+    /**
+     * @return mixed
+     */
     public function user()
     {
         return $this->setCurrentForeignTable('membre')->belongTo(User::class);

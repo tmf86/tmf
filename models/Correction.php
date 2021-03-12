@@ -7,9 +7,9 @@ namespace Model;
 class Correction extends Model
 {
     protected $table = "correction";
-    protected $foreignTable = "sujet";
+    protected $foreignTable = 'sujet';
     protected $primaryKeyStr = "id_correct";
-    protected $foreignTableKey = "id_sujet";
+    protected $foreignTableKey = 'id_sujet';
 
     public function find_correction($id)
     {

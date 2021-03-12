@@ -6,11 +6,15 @@ namespace Contoller;
 
 use Contoller\Http\Request;
 use Repositories\Mailer;
+use View\View;
 
 class RegisterSuccess extends Controller
 {
 
-
+    /**
+     * @return Request|View
+     * @throws \Exception
+     */
     public function index()
     {
         if ($this->request->hasGetKey('resend')) {
@@ -26,8 +30,11 @@ class RegisterSuccess extends Controller
         return $this->request;
     }
 
-
-    private function resendEmail()
+    /**
+     * @return View
+     * @throws \Exception
+     */
+    private function resendEmail(): View
     {
         if ($this->request->resend === 'true' && ($this->request->hasSession('name') && $this->request->hasSession('email') && $this->request->hasSession('url'))) {
             try {

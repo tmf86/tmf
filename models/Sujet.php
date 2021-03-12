@@ -11,17 +11,27 @@ class Sujet extends Model
     protected $foreignkeys = ['type_sujet' => 'typ_sujet'];
     protected $foreignTableKeys = ['type_sujet' => 'id_typ_sujet'];
 
+    /**
+     * @return mixed
+     */
     public function one_type()
     {
         return $this->setCurrentForeignTable('type_sujet')->belongTo(TypeSujet::class);
     }
 
+    /**
+     * @return array
+     */
     public function show_all()
     {
         return $this->all();
 
     }
 
+    /**
+     * @return mixed
+     * @throws \Exception
+     */
     public function show_all_bts()
     {
         //return $this->all('WHERE  nom_typ_sujet="bts"');
@@ -31,6 +41,10 @@ class Sujet extends Model
         return $tp->recup_sujet();
     }
 
+    /**
+     * @return mixed
+     * @throws \Exception
+     */
     public function show_all_other()
     {
         $other = new TypeSujet();
@@ -44,6 +58,10 @@ class Sujet extends Model
 
     }
 
+    /**
+     * @return mixed
+     * @throws \Exception
+     */
     public function show_all_projet()
     {
         $other = new TypeSujet();

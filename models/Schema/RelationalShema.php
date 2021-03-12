@@ -13,6 +13,14 @@ abstract class RelationalShema
     private $relationQuery = '';
     /*** @var string */
     private $currentForeignTable = '';
+
+    /**
+     * @return string
+     */
+    public function getCurrentForeignTable(): string
+    {
+        return $this->currentForeignTable;
+    }
     /*** @var string */
     protected $primaryKeyStr = "id";
 

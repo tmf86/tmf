@@ -9,6 +9,9 @@ use Model\Videos;
 
 class FormationController extends Controller
 {
+    /**
+     * @throws \Exception
+     */
     public function index()
     {
         $fm = new Formation();

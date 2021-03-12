@@ -11,6 +11,9 @@ class TypeSujet extends Model
     protected $foreignTableKeys = ['sujet' => 'id_sujet'];
     protected $foreignkeys = ['sujet' => 'typ_sujet'];
 
+    /**
+     * @return mixed
+     */
     public function recup_sujet()
     {
         return $this->setCurrentForeignTable('sujet')->hasMany(Sujet::class);
