@@ -248,3 +248,15 @@ function current_route()
     $url .= $_SERVER['REQUEST_URI'];
     return $url;
 }
+
+/**
+ * @param string $format
+ * @param string $subject
+ * @param $value
+ * @return string|string[]
+ * remplace un format bien precis dans une chaine par une valeur;
+ */
+function sprintf_custuming(string $format, string $subject, $value)
+{
+    return str_replace($format, $value, $subject);
+}

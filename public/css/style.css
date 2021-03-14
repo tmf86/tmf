@@ -16,9 +16,8 @@ html, body {
 /*    font-weight: 700 !important;*/
 /*    text-align: start;*/
 /*}*/
-
-a:hover {
-    color: white;
+.header {
+    font-size: 1.1rem !important;
 }
 
 .bg {
