@@ -13,7 +13,6 @@ require "vendor/autoload.php";
 require 'config/app.php';
 require 'config/database.php';
 require 'config/email.php';
-require 'config/email_api.php';
 require 'config/jwt.php';
 require "helpers/helper.php";
 session_start();
