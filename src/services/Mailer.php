@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Repositories;
+namespace Service;
 
 use Contoller\Http\Request;
 use PHPMailer\PHPMailer\Exception;

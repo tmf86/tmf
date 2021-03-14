@@ -9,7 +9,7 @@ return array(
     'View\\' => array($baseDir . '/views'),
     'Validator\\Rules\\' => array($baseDir . '/src/Validators/Rules'),
     'Validator\\' => array($baseDir . '/src/Validators'),
-    'Repositories\\' => array($baseDir . '/src/Repositories'),
+    'Service\\' => array($baseDir . '/src/services'),
     'Rakit\\Validation\\' => array($vendorDir . '/rakit/validation/src'),
     'PHPMailer\\PHPMailer\\' => array($vendorDir . '/phpmailer/phpmailer/src'),
     'Model\\Shema\\' => array($baseDir . '/models/Schema'),

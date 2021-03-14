@@ -5,7 +5,7 @@ namespace Contoller;
 
 
 use Contoller\Http\Request;
-use Repositories\Mailer;
+use Service\Mailer;
 use View\View;
 
 class RegisterSuccess extends Controller

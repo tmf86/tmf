@@ -6,7 +6,7 @@
     'aliases' => 
     array (
     ),
-    'reference' => 'e7e3c49c2157a1145a6bbadab222693abce5bd89',
+    'reference' => '538617ccf99935d966ab7ac18f803e7f30e73d77',
     'name' => 'samy/cpy-mvc',
   ),
   'versions' => 
@@ -31,12 +31,12 @@
     ),
     'phpmailer/phpmailer' => 
     array (
-      'pretty_version' => 'v6.2.0',
-      'version' => '6.2.0.0',
+      'pretty_version' => 'v6.3.0',
+      'version' => '6.3.0.0',
       'aliases' => 
       array (
       ),
-      'reference' => 'e38888a75c070304ca5514197d4847a59a5c853f',
+      'reference' => '4a08cf4cdd2c38d12ee2b9fa69e5d235f37a6dcb',
     ),
     'rakit/validation' => 
     array (
@@ -47,6 +47,15 @@
       ),
       'reference' => 'ff003a35cdf5030a5f2482299f4c93f344a35b29',
     ),
+    'roave/security-advisories' => 
+    array (
+      'pretty_version' => 'dev-master',
+      'version' => 'dev-master',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '43a315341710475e88006a0e55864b348d3d781c',
+    ),
     'samy/cpy-mvc' => 
     array (
       'pretty_version' => 'dev-main',
@@ -54,7 +63,7 @@
       'aliases' => 
       array (
       ),
-      'reference' => 'e7e3c49c2157a1145a6bbadab222693abce5bd89',
+      'reference' => '538617ccf99935d966ab7ac18f803e7f30e73d77',
     ),
   ),
 );

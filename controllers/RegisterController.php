@@ -5,7 +5,7 @@ namespace Contoller;
 use Contoller\Http\Request;
 use Contoller\middleware\Auth;
 use Model\User;
-use Repositories\Mailer;
+use Service\Mailer;
 use Validator\RegisterValidator;
 use View\View;
 

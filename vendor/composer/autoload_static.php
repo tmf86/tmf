@@ -17,9 +17,12 @@ class ComposerStaticInit6264916c20b8cdaf967ae3749af8fbef
             'Validator\\Rules\\' => 16,
             'Validator\\' => 10,
         ),
+        'S' => 
+        array (
+            'Service\\' => 8,
+        ),
         'R' => 
         array (
-            'Repositories\\' => 13,
             'Rakit\\Validation\\' => 17,
         ),
         'P' => 
@@ -59,9 +62,9 @@ class ComposerStaticInit6264916c20b8cdaf967ae3749af8fbef
         array (
             0 => __DIR__ . '/../..' . '/src/Validators',
         ),
-        'Repositories\\' => 
+        'Service\\' => 
         array (
-            0 => __DIR__ . '/../..' . '/src/Repositories',
+            0 => __DIR__ . '/../..' . '/src/services',
         ),
         'Rakit\\Validation\\' => 
         array (
