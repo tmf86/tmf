@@ -20,7 +20,6 @@ class RegisterSuccess extends Controller
         if ($this->request->hasGetKey('resend')) {
             $this->resendEmail();
         } else {
-            debug($_SESSION);
             if ($this->request->hasSession('name') && $this->request->hasSession('email') && $this->request->hasSession('url')) {
                 $request = $this->request;
                 return $this->load_views('pages.register_success', compact('request'), false);
