@@ -74,6 +74,10 @@ $dispatcher = FastRoute\simpleDispatcher(function (FastRoute\RouteCollector $r) 
             'class' => SujetController::class,
             'method' => 'index'
         ]);
+    $r->addRoute('GET','/Cpy-Mvc/parrainage',[
+        'class' => \Contoller\ParrainageController::class,
+        'method' => 'index'
+    ]);
     $r->addRoute('GET', '/Cpy-Mvc/cours',
         [
             'class' => FormationController::class,
