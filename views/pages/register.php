@@ -1,5 +1,5 @@
 <div class="form-container mb-5">
-    <form class="card-custumer p-4 form-box mt-5 fm-register" action="#" id="form-register">
+    <form class="card-custumer p-4 form-box mt-5 fm-register" action="#" method='post' id="form-register">
         <p class="text-center mb-4">
             <span class="title-custum text-uppercase">Inscription</span>
         </p>
@@ -34,26 +34,34 @@
         <div class="fm-inline">
             <div class="fm-item mt-2">
                 <label for="ville">Ville <span class="icon"><i class="fas fa-building"></i></span></label>
-                <select class="select" name="ville" id="ville">
+                <span class="custom-dropdown">
+                    <select class="select" name="ville" id="ville">
                     <option value="Abidjan">Abidjan</option>
                     <option value="Yamoussoukro">Yamoussoukro</option>
                 </select>
+                </span>
             </div>
             <div class="fm-item space mt-2">
                 <label for="jour">Date de Naissance <span class="icon"><i
                                 class="fas fa-birthday-cake"></i></span></label>
                 <div class="date">
                     <div class="date-item">
-                        <select class="select" name="jour" id="jour"><?= selectBirthDay(31) ?>
+                       <span class="custom-dropdown">
+                            <select class="select" name="jour" id="jour"><?= selectBirthDay(31) ?>
                         </select>
+                       </span>
                     </div>
                     <div class="date-item space">
-                        <select class="select" name="mois" id="mois"><?= selectBirthDay(12) ?>
-                        </select>
+                        <span class="custom-dropdown">
+                            <select class="select" name="mois" id="mois"><?= selectBirthDay(12) ?>
+                            </select>
+                        </span>
                     </div>
                     <div class="date-item space">
-                        <select class="select" name="annee" id="annee"><?= selectBirthDay(1921, true) ?>
-                        </select>
+                       <span class="custom-dropdown">
+                            <select class="select" name="annee" id="annee"><?= selectBirthDay(1921, true) ?>
+                            </select>
+                       </span>
                     </div>
                 </div>
             </div>
@@ -62,12 +70,14 @@
             <div class="fm-item">
                 <label for='filiere'>Niveau <span class="icon"><i class="fa fa-level-up"
                                                                   aria-hidden="true"></i></span></label>
-                <select name="filiere" class="select" id="filiere">
+                <span class="custom-dropdown">
+                    <select name="filiere" class="select" id="filiere">
                     <option value="RGL1A">Reseaux Genie Logiciel 1ère Année</option>
                     <option value="RGL2A">Reseaux Genie Logiciel 2ème Année</option>
                     <option value="CF1A">Comptabilité Financière 1ère Année</option>
                     <option value="CF2A">Comptabilité Financière 2ème Année</option>
                 </select>
+                </span>
             </div>
         </div>
         <div class="fm-inline mt-2">
@@ -84,10 +94,12 @@
             </div>
             <div class="fm-item space mt-2">
                 <label for="status">Status <span class="icon"><i class="fas fa-people-carry"></i></span></label>
-                <select name="status" class="select" id="status">
+                <span class="custom-dropdown">
+                     <select name="status" class="select" id="status">
                     <option value="filleul">Filleul(le)</option>
                     <option value="parrain">Parrain(ne)</option>
                 </select>
+                </span>
             </div>
         </div>
         <div class="fm-btn-container ">
