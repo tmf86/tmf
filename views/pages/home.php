@@ -122,7 +122,7 @@
                         Organiser vos parrainnage en clique
                     </p>
                     <div class="card-footer">
-                        <a href="" class="btn btn-warning">Acceder au parrainnage</a>
+                        <a href="parrainage" class="btn btn-warning">Acceder au parrainnage</a>
                     </div>
                 </div>
             </div>
