@@ -5,7 +5,7 @@ namespace Contoller;
 
 
 use Contoller\Http\Request;
-use Service\Mailer;
+use Service\FinalizeAccountMailer;
 use View\View;
 
 class RegisterSuccess extends Controller
@@ -20,6 +20,7 @@ class RegisterSuccess extends Controller
         if ($this->request->hasGetKey('resend')) {
             $this->resendEmail();
         } else {
+            debug($_SESSION);
             if ($this->request->hasSession('name') && $this->request->hasSession('email') && $this->request->hasSession('url')) {
                 $request = $this->request;
                 return $this->load_views('pages.register_success', compact('request'), false);
@@ -38,11 +39,11 @@ class RegisterSuccess extends Controller
     {
         if ($this->request->resend === 'true' && ($this->request->hasSession('name') && $this->request->hasSession('email') && $this->request->hasSession('url'))) {
             try {
-                $mailer = new Mailer($this->request->session('name'), $this->request->session('email'), $this->request->session('url'));
+                $mailer = new FinalizeAccountMailer($this->request->session('name'), $this->request->session('email'), $this->request->session('url'));
             } catch (\Exception $e) {
                 debug(true, $e->getMessage());
             }
-            $mailer->mail($this->request, false);
+            $mailer->push();
             $this->request->session('resended', true);
             return redirect('registration-success', true);
             exit();

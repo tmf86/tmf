@@ -84,17 +84,13 @@ function secureData(string $var)
  * @param $vars
  * @param bool $die
  */
-function debug(bool $die = true, ...$vars)
+function debug(...$vars)
 {
-    if ($die) {
-        echo '<pre>';
-        var_dump($vars);
-        echo '</pre>';
-        die();
-    }
+
     echo '<pre>';
     var_dump($vars);
     echo '</pre>';
+    die();
 }
 
 /**

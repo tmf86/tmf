@@ -5,7 +5,7 @@ namespace Contoller;
 use Contoller\Http\Request;
 use Contoller\middleware\Auth;
 use Model\User;
-use Service\Mailer;
+use Service\FinalizeAccountMailer;
 use Validator\RegisterValidator;
 use View\View;
 
@@ -56,8 +56,8 @@ class RegisterController extends Controller
                 $name = sprintf("%s %s", $this->request->nom, $this->request->prenom);
                 $name_id = sprintf("%s%s", str_replace(" ", '', $this->request->nom), str_replace(" ", '', $this->request->prenom));
                 $url = buildpath(sprintf('finalize_account_creation/%s/%s', buildUniqueID($user->mat_membre, $user->filiere, $user->contact, $name_id), $this->request->email));
-                $maller = new Mailer($name, $this->request->email, $url);
-                $maller->mail($this->request);
+                $maller = new FinalizeAccountMailer($name, $this->request->email, $url);
+                $maller->push();
                 $this->request->session('name', $name);
                 $this->request->session('email', $this->request->email);
                 $this->request->session('url', $url);

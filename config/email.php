@@ -1,5 +1,14 @@
 <?php
-
+/**
+ * Configuration du service d'envoie de mail
+ */
+define('MAIL_HOST', 'smtp.gmail.com');
+define('MAIL_USERNAME', 'cpypigier@gmail.com');
+define('MAIL_PASSWORD', 'cpy@2020');
+define('MAIL_SENDER', 'CIPY');
+/**
+ * Template des mails a envoyé
+ */
 define('FINALIZE_ACCOUNT_CREATION_EMAIL_CUSTUMER', <<<EMAIL
     <!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional //EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
     <html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
@@ -148,7 +157,7 @@ define('FINALIZE_ACCOUNT_CREATION_EMAIL_CUSTUMER', <<<EMAIL
           <td style="overflow-wrap:break-word;word-break:break-word;padding:0.5rem;font-family:'Cabin',sans-serif;" align="left"> 
       <div style="color: #000000; line-height: 170%; text-align: justify; word-wrap: break-word;">
         <p style="font-size: 14px; line-height: 170%;"><span style="font-family: Cabin, sans-serif; font-size: 18px; line-height: 30.6px;">Chez etudiant <strong>%NAME%</strong>  nous vous avons
-          envoyé ce mail pour finaliser la creation de  votre compte , il ne vous reste plus que cette etape
+          envoyé ce mail pour finaliser la creation de  votre compte , il ne vous reste plus que cette etape pour
           activer votre compte . Merci de bien vouloir appuyer sur le bouton ci-dessous.</span></p>
       </div>
           </td>

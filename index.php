@@ -12,6 +12,7 @@ use Contoller\SujetController;
 require "vendor/autoload.php";
 require 'config/app.php';
 require 'config/database.php';
+require 'config/email.php';
 require 'config/email_api.php';
 require 'config/jwt.php';
 require "helpers/helper.php";
@@ -77,15 +78,15 @@ $dispatcher = FastRoute\simpleDispatcher(function (FastRoute\RouteCollector $r) 
             'class' => SujetController::class,
             'method' => 'index'
         ]);
-    $r->addRoute('GET','/Cpy-Mvc/parrainage',[
+    $r->addRoute('GET', '/Cpy-Mvc/parrainage', [
         'class' => \Contoller\ParrainageController::class,
         'method' => 'index'
     ]);
-    $r->addRoute('GET','/Cpy-Mvc/demande',[
+    $r->addRoute('GET', '/Cpy-Mvc/demande', [
         'class' => \Contoller\ParrainageController::class,
         'method' => 'demande'
     ]);
-    $r->addRoute('GET','/Cpy-Mvc/tabl',[
+    $r->addRoute('GET', '/Cpy-Mvc/tabl', [
         'class' => \Contoller\ParrainageController::class,
         'method' => 'tableau_de_bord'
     ]);
@@ -119,19 +120,8 @@ $dispatcher = FastRoute\simpleDispatcher(function (FastRoute\RouteCollector $r) 
         ]);
     $r->addRoute('GET', '/Cpy-Mvc/test', function () {
 
-        $user = new Model\User();
-        try {
-            debug(true, $user
-                ->select('membre')
-                ->whereEqual('age', 15)
-                ->andBetween('birthday', '2020-01-27', '2020-03-14')
-                ->OrEqual('email', 'jeames@gmail.com')
-                ->OrderBy('name')
-                ->getQueryBuilded()
-            );
-        } catch (Exception $e) {
-            debug(true, $e->getMessage());
-        }
+//       $mailer = new \Service\FinalizeAccountMailer('fake','encore','url');
+//       $mailer->mail(new Request(),false);
 
     });
 });

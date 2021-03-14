@@ -81,8 +81,8 @@ abstract class QuerieBulder extends RelationalShema
             $values = implode(',', $values);
             $action = sprintf('insert into %s (%s) values (%s)', secureData($this->table), secureData($fields), secureData($values));
             if ($this->pdo->exec($action)) {
-                $user = $this->query("select count(*) as id from $this->table", false);
-                $rep = $this->query("select * from $this->table where $this->primaryKeyStr= $user->id");
+                $user = $this->select($this->table)->OrderByDesc('mat_membre')->limit(1)->run();
+                $rep = $this->select($this->table)->whereEqual($this->primaryKeyStr, $user->mat_membre)->limit(1)->run();
             }
         }
         return $rep;
