@@ -10,7 +10,10 @@ use Contoller\RegisterSuccess;
 use Contoller\SujetController;
 
 require "vendor/autoload.php";
-require 'config/config.php';
+require 'config/app.php';
+require 'config/database.php';
+require 'config/email_api.php';
+require 'config/jwt.php';
 require "helpers/helper.php";
 session_start();
 
