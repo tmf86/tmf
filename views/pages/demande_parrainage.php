@@ -1,5 +1,7 @@
 <?php
 ?>
+<?php
+?>
 <!-- Main Content -->
 <style>
     body{
@@ -20,7 +22,7 @@
         box-shadow: 0 5px 5px rgba(0,0,0,.4);
         margin: 5em auto;
         display: flex;
-       /* height: 15rem;*/
+        /* height: 15rem;*/
     }
     .company__info{
         background-image:url("images/CIPY.png");
@@ -32,8 +34,8 @@
         -moz-background-size: cover;
         -o-background-size: cover;
         background-size: cover;
-       height: 30rem;
-    border-top-left-radius: 20px;
+        height: 40rem;
+        border-top-left-radius: 20px;
         border-bottom-left-radius: 20px;
         display: flex;
         flex-direction: column;
@@ -109,9 +111,9 @@
         color:#fff;
     }
     .bouton{
-       height: 0.4rem;
+        height: 0.4rem;
 
-       /* padding: 0.7rem;*/
+        /* padding: 0.7rem;*/
     }
 </style>
 <div class="container-fluid">
@@ -123,28 +125,46 @@
         <div class="col-md-8 col-xs-12 col-sm-12 login_form ">
             <div class="container-fluid">
                 <div class="row">
-                    <h2 style="font-family: 'Cairo';font-style: italic;">PARRAINAGE</h2>
+                    <h2 style="font-family: 'Cairo';font-style: italic;">DEMENDE PARRAINAGE</h2>
                 </div>
                 <div class="row">
                     <form control="" class="form-group">
                         <div class="row">
-                            <input type="text" name="username" id="username" class="form__input" placeholder="Utilisateur">
+                            <label for="date_par">Date</label>
+                            <input type="date" name="date_par" id="date_par" class="form__input" >
                         </div>
                         <div class="row">
                             <!-- <span class="fa fa-lock"></span> -->
-                            <input type="password" name="password" id="password" class="form__input" placeholder="Mot de passe">
-                        </div>
-                        <div class="row px-4">
-                            <input type="checkbox" name="remember_me" id="remember_me" class="">
-                            <label for="remember_me">Se souvernir de moi!</label>
+                            <label for="lieu_par">Lieu</label>
+                            <input type="text" name="lieu_par" id="lieu_par" class="form__input">
                         </div>
                         <div class="row">
-                            <input type="submit" value="Connexion" class="btn">
+                            <!-- <span class="fa fa-lock"></span> -->
+                            <label for="filier_par">Fili&egrave;re</label>
+                           <select name="filiere" class=" form-control custom-select" id="filier_par">
+                               <option value="RGL">RGL</option>
+                               <option value="AD">AD</option>
+                               <option value="CDM">CDM</option>
+                               <option value="MA">MA</option>
+                           </select>
+                        </div>
+                        <div class="row">
+                            <!-- <span class="fa fa-lock"></span> -->
+                            <label for="qualite">Qualit&eacute;</label>
+                            <select name="qualite_par" class="form-control custom-select" id="qualite_par">
+                                <option value="RGL">DELEGUE</option>
+                                <option value="AD">1er ADJOINT</option>
+                                <option value="CDM">2eme ADJOINT</option>
+                            </select>
+                        </div>
+                        <div class="row">
+                            <input type="submit" value="Demander" class="btn">
                         </div>
                     </form>
                 </div>
                 <div class="row">
-                    <p>Faire une demande <a href="demande"><button class="btn btn-sm" ><span style="text-align: center;padding-bottom: 4px;">ICI</span></button> </a></p>
+                    <p>Se connecter <a href="parrainage"><button class="btn btn-sm" ><span style="text-align: center;padding-bottom: 4px;">ICI</span></button> </a></p>
+                    <a href="tabl">Dashbord</a>
                 </div>
             </div>
         </div>
@@ -154,3 +174,4 @@
 <!--div class="container-fluid text-center footer">
     Coded with &hearts; by <a href="https://bit.ly/yinkaenoch">Yinka.</a></p>
 </div-->
+
