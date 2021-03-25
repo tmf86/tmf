@@ -71,7 +71,7 @@ abstract class QuerieBulder extends RelationalShema
      */
     public function create(array $data)
     {
-        $rep = [];
+        $recentRecording = [];
         if (!empty($data)) {
             foreach ($data as $key => $value):
                 $fields[] = replaceQuotion($key);
@@ -81,11 +81,10 @@ abstract class QuerieBulder extends RelationalShema
             $values = implode(',', $values);
             $action = sprintf('insert into %s (%s) values (%s)', secureData($this->table), secureData($fields), secureData($values));
             if ($this->pdo->exec($action)) {
-                $user = $this->select($this->table)->OrderByDesc('mat_membre')->limit(1)->run();
-                $rep = $this->select($this->table)->whereEqual($this->primaryKeyStr, $user->mat_membre)->limit(1)->run();
+                $recentRecording = $this->select($this->table)->OrderByDesc($this->primaryKeyStr)->limit(1)->run();
             }
         }
-        return $rep;
+        return $recentRecording;
     }
 
 
