@@ -25,81 +25,23 @@ session_start();
 */
 
 $dispatcher = FastRoute\simpleDispatcher(function (FastRoute\RouteCollector $route) {
-    $route->get('/Cpy-Mvc/',
-        [
-            'class' => HomeController::class,
-            'method' => 'index'
-        ]);
-    $route->get('/Cpy-Mvc/login',
-        [
-            'class' => LoginController::class,
-            'method' => 'index'
-        ]);
-    $route->post('/Cpy-Mvc/post-login',
-        [
-            'class' => LoginController::class,
-            'method' => 'postLogin'
-        ]);
-    $route->get('/Cpy-Mvc/home',
-        [
-            'class' => HomeController::class,
-            'method' => 'index'
-        ]);
-    $route->get('/Cpy-Mvc/register',
-        [
-            'class' => RegisterController::class,
-            'method' => 'index'
-        ]);
-    $route->post('/Cpy-Mvc/registerstore',
-        [
-            'class' => RegisterController::class,
-            'method' => 'registerStore'
-        ]);
+    $route->get('/Cpy-Mvc/', ['class' => HomeController::class, 'method' => 'index']);
+    $route->get('/Cpy-Mvc/login', ['class' => LoginController::class, 'method' => 'index']);
+    $route->post('/Cpy-Mvc/post-login', ['class' => LoginController::class, 'method' => 'postLogin']);
+    $route->get('/Cpy-Mvc/home', ['class' => HomeController::class, 'method' => 'index']);
+    $route->get('/Cpy-Mvc/register', ['class' => RegisterController::class, 'method' => 'index']);
+    $route->post('/Cpy-Mvc/registerstore', ['class' => RegisterController::class, 'method' => 'registerStore']);
     $route->addGroup('/Cpy-Mvc/finalize_account_creation/', function (FastRoute\RouteCollector $route) {
-
-        $route->get('{id:[A-Z0-9\-]+}/{email:[A-Za-z0-9.@]+}',
-            [
-                'class' => FinalizeAccountController::class,
-                'method' => 'index',
-                'gets' => true
-
-            ]);
-        $route->post('{id:[A-Z0-9\-]+}/{email:[A-Za-z0-9@.]+}',
-            [
-                'class' => FinalizeAccountController::class,
-                'method' => 'accountStore',
-                'gets' => true
-
-            ]);
-
+        $route->get('{id:[A-Z0-9\-]+}/{email:[A-Za-z0-9.@]+}', ['class' => FinalizeAccountController::class, 'method' => 'index', 'gets' => true]);
+        $route->post('{id:[A-Z0-9\-]+}/{email:[A-Za-z0-9@.]+}', ['class' => FinalizeAccountController::class, 'method' => 'accountStore', 'gets' => true]);
     });
-    $route->get('/Cpy-Mvc/sujets',
-        [
-            'class' => SujetController::class,
-            'method' => 'index'
-        ]);
-    $route->get('/Cpy-Mvc/parrainage', [
-        'class' => ParrainageController::class,
-        'method' => 'index'
-    ]);
-    $route->get('/Cpy-Mvc/demande', [
-        'class' => ParrainageController::class,
-        'method' => 'demande'
-    ]);
-    $route->get('/Cpy-Mvc/tabl', [
-        'class' => ParrainageController::class,
-        'method' => 'tableau_de_bord'
-    ]);
-    $route->get('/Cpy-Mvc/cours',
-        [
-            'class' => FormationController::class,
-            'method' => 'index'
-        ]);
-    $route->get('/Cpy-Mvc/videos_formation',
-        [
-            'class' => FormationController::class,
-            'method' => 'index'
-        ]);
+    $route->get('/Cpy-Mvc/sujets', ['class' => SujetController::class, 'method' => 'index']);
+    $route->get('/Cpy-Mvc/parrainage', ['class' => ParrainageController::class, 'method' => 'index']);
+    $route->get('/Cpy-Mvc/demande', ['class' => ParrainageController::class, 'method' => 'demande']);
+    $route->get('/Cpy-Mvc/tabl', ['class' => ParrainageController::class, 'method' => 'tableau_de_bord']);
+    $route->get('/Cpy-Mvc/cours', ['class' => FormationController::class, 'method' => 'index']);
+    $route->get('/Cpy-Mvc/videos_formation', ['class' => FormationController::class, 'method' => 'index']);
+    $route->get('/Cpy-Mvc/registration-success', ['class' => RegisterSuccess::class, 'method' => 'index']);
     $route->get('/Cpy-Mvc/videos_formation/{id:\d+}',
         function () {
             echo 'Hello !';
@@ -113,11 +55,6 @@ $dispatcher = FastRoute\simpleDispatcher(function (FastRoute\RouteCollector $rou
         $title = 'Profile';
         return new View\View('pages.profile', compact('title'), false);
     });
-    $route->get('/Cpy-Mvc/registration-success',
-        [
-            'class' => RegisterSuccess::class,
-            'method' => 'index'
-        ]);
     $route->get('/Cpy-Mvc/test', function () {
 //
 //       $mailer = new \Service\FinalizeAccountMailer('fake','encore','url');
