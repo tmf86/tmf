@@ -4,7 +4,7 @@
 namespace Contoller;
 
 
-use Contoller\middleware\Auth;
+use Contoller\Middleware\Auth;
 use Model\Annonce;
 use Model\User;
 use View\View;

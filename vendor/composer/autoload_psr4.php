@@ -9,7 +9,7 @@ return array(
     'View\\' => array($baseDir . '/views'),
     'Validator\\Rules\\' => array($baseDir . '/src/Validators/Rules'),
     'Validator\\' => array($baseDir . '/src/Validators'),
-    'Service\\' => array($baseDir . '/src/services'),
+    'Service\\Mailer\\' => array($baseDir . '/src/services/mailer'),
     'Rakit\\Validation\\' => array($vendorDir . '/rakit/validation/src'),
     'PHPMailer\\PHPMailer\\' => array($vendorDir . '/phpmailer/phpmailer/src'),
     'Model\\Shema\\' => array($baseDir . '/models/Schema'),
@@ -18,7 +18,7 @@ return array(
     'Model\\' => array($baseDir . '/models'),
     'Firebase\\JWT\\' => array($vendorDir . '/firebase/php-jwt/src'),
     'FastRoute\\' => array($vendorDir . '/nikic/fast-route/src'),
-    'Contoller\\middleware\\' => array($baseDir . '/controllers/middlewares'),
+    'Contoller\\Middleware\\' => array($baseDir . '/controllers/Middleware'),
     'Contoller\\Http\\' => array($baseDir . '/controllers/Http'),
     'Contoller\\' => array($baseDir . '/controllers'),
 );

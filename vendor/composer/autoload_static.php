@@ -19,7 +19,7 @@ class ComposerStaticInit6264916c20b8cdaf967ae3749af8fbef
         ),
         'S' => 
         array (
-            'Service\\' => 8,
+            'Service\\Mailer\\' => 15,
         ),
         'R' => 
         array (
@@ -43,7 +43,7 @@ class ComposerStaticInit6264916c20b8cdaf967ae3749af8fbef
         ),
         'C' => 
         array (
-            'Contoller\\middleware\\' => 21,
+            'Contoller\\Middleware\\' => 21,
             'Contoller\\Http\\' => 15,
             'Contoller\\' => 10,
         ),
@@ -62,9 +62,9 @@ class ComposerStaticInit6264916c20b8cdaf967ae3749af8fbef
         array (
             0 => __DIR__ . '/../..' . '/src/Validators',
         ),
-        'Service\\' => 
+        'Service\\Mailer\\' => 
         array (
-            0 => __DIR__ . '/../..' . '/src/services',
+            0 => __DIR__ . '/../..' . '/src/services/mailer',
         ),
         'Rakit\\Validation\\' => 
         array (
@@ -98,9 +98,9 @@ class ComposerStaticInit6264916c20b8cdaf967ae3749af8fbef
         array (
             0 => __DIR__ . '/..' . '/nikic/fast-route/src',
         ),
-        'Contoller\\middleware\\' => 
+        'Contoller\\Middleware\\' => 
         array (
-            0 => __DIR__ . '/../..' . '/controllers/middlewares',
+            0 => __DIR__ . '/../..' . '/controllers/Middleware',
         ),
         'Contoller\\Http\\' => 
         array (

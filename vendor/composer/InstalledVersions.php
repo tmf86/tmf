@@ -19,7 +19,7 @@ private static $installed = array (
     'aliases' => 
     array (
     ),
-    'reference' => '538617ccf99935d966ab7ac18f803e7f30e73d77',
+    'reference' => '8aeb22ff9778ecf3ca983a0dee1af58a839e2445',
     'name' => 'samy/cpy-mvc',
   ),
   'versions' => 
@@ -67,7 +67,7 @@ private static $installed = array (
       'aliases' => 
       array (
       ),
-      'reference' => '43a315341710475e88006a0e55864b348d3d781c',
+      'reference' => '3dfe1d2b81a55b9c51dc87ce89f1ee2beaaf1093',
     ),
     'samy/cpy-mvc' => 
     array (
@@ -76,7 +76,7 @@ private static $installed = array (
       'aliases' => 
       array (
       ),
-      'reference' => '538617ccf99935d966ab7ac18f803e7f30e73d77',
+      'reference' => '8aeb22ff9778ecf3ca983a0dee1af58a839e2445',
     ),
   ),
 );

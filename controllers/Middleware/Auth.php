@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Contoller\middleware;
+namespace Contoller\Middleware;
 
 
 use Firebase\JWT\ExpiredException;

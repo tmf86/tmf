@@ -2,7 +2,7 @@
 
 namespace Contoller;
 
-use Contoller\middleware\Auth;
+use Contoller\Middleware\Auth;
 use Model\Account;
 use Model\Comment;
 use Model\User;

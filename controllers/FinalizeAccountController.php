@@ -5,7 +5,7 @@ namespace Contoller;
 
 
 use Contoller\Http\Request;
-use Contoller\middleware\Auth;
+use Contoller\Middleware\Auth;
 use Model\Account;
 use Model\User;
 use Validator\FinalizeAccountValidator;

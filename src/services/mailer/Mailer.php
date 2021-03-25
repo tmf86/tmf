@@ -1,10 +1,10 @@
 <?php
 
 
-namespace Service;
+namespace Service\Mailer;
 
 
-interface SendMail
+interface Mailer
 {
     /*** @return string */
     public function emailBodyBulder(): string;

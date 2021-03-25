@@ -10,8 +10,8 @@
     "psr-4": {
       "Contoller\\": "controllers",
       "Contoller\\Http\\": "controllers/Http",
-      "Contoller\\middleware\\": "controllers/middlewares",
-      "Service\\": "src/services",
+      "Contoller\\Middleware\\": "controllers/Middleware",
+      "Service\\Mailer\\": "src/services/mailer",
       "Validator\\": "src/Validators",
       "Validator\\Rules\\": "src/Validators/Rules",
       "View\\": "views",

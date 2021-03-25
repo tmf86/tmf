@@ -7,8 +7,9 @@ use Contoller\Http\Request;
 use PHPMailer\PHPMailer\Exception;
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
+use Service\Mailer\Mailer;
 
-class FinalizeAccountMailer extends PHPMailer implements SendMail
+class FinalizeAccountMailer extends PHPMailer implements Mailer
 {
     /*** @var string */
     private $name;
