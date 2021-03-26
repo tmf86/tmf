@@ -1,6 +1,6 @@
 <?php
 /**
- * Configuration des dossiers et URL
+ * Configuration des dossiers et URL Root
  */
 
 define("VIEW_DIRECTORY", "views/");

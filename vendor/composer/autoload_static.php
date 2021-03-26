@@ -64,7 +64,7 @@ class ComposerStaticInit6264916c20b8cdaf967ae3749af8fbef
         ),
         'Service\\Mailer\\' => 
         array (
-            0 => __DIR__ . '/../..' . '/src/services/mailer',
+            0 => __DIR__ . '/../..' . '/src/Services/Mailer',
         ),
         'Rakit\\Validation\\' => 
         array (

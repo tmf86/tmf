@@ -19,7 +19,7 @@ class EmailRuleCustumer extends Rule
      */
     private function curl(string $val, Request $request)
     {
-        $url = sprintf(API_CALL, API_KEY, $val, API_SMTP, API_FORMAT);
+        $url = sprintf(API_CALL, API_KEY, $val);
         $curl = curl_init($url);
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
         $data = curl_exec($curl);
