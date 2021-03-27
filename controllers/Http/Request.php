@@ -69,7 +69,6 @@ class Request
             case 404 :
                 http_response_code(404);
                 return new View('pages.404.404', [], false);
-                die();
                 break;
         }
         return true;
@@ -85,7 +84,6 @@ class Request
         http_response_code($code);
         echo json_encode($data);
         return $this;
-        exit();
     }
 
     /**
