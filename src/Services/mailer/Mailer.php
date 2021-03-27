@@ -87,10 +87,17 @@ abstract class  Mailer extends PHPMailer
         return $this;
     }
 
-    protected function view(string $name, $data = [], $use_template = false)
+    /**
+     * @param string $name
+     * @param array $data
+     * @param bool $use_template
+     * @param bool $die
+     * @return $this
+     */
+    protected function view(string $name, array $data = [], bool $use_template = false, bool $die = false)
     {
         ob_start();
-        view($name, $data, $use_template);
+        view($name, $data, $use_template, $die);
         $view = ob_get_clean();
         $this->mail->Body = $view;
         return $this;

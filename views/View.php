@@ -20,17 +20,22 @@ class View
      * @var false
      */
     private bool $is_email_view;
+    /**
+     * @var bool
+     */
+    private bool $break;
 
     /**
      * View constructor.
      * @param string $view_name
      * @param array $vars
      */
-    public function __construct(string $view_name, array $vars = [], bool $use_templating = true)
+    public function __construct(string $view_name, array $vars = [], bool $use_templating = true, bool $die = true)
     {
         $this->view_name = $this->makePath($view_name);
         $this->vars = $vars;
         $this->use_templating = $use_templating;
+        $this->break = $die;
         $this->view();
     }
 
@@ -49,6 +54,9 @@ class View
             }
         } else {
             $this->requireTemplate(VIEW_DIRECTORY, $this->view_name);
+        }
+        if ($this->break) {
+            die();
         }
     }
 

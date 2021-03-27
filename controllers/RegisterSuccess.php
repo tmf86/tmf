@@ -5,7 +5,7 @@ namespace Contoller;
 
 
 use Contoller\Http\Request;
-use Service\FinalizeAccountMailer;
+use Service\Mailer\FinalizeAccountMailer;
 use View\View;
 
 class RegisterSuccess extends Controller
@@ -38,14 +38,13 @@ class RegisterSuccess extends Controller
     {
         if ($this->request->resend === 'true' && ($this->request->hasSession('name') && $this->request->hasSession('email') && $this->request->hasSession('url'))) {
             try {
-                $mailer = new FinalizeAccountMailer($this->request->session('name'), $this->request->session('email'), $this->request->session('url'));
+                $mailer = new FinalizeAccountMailer(['name' => $this->request->session('name'), 'url' => $this->request->session('url')]);
             } catch (\Exception $e) {
                 debug(true, $e->getMessage());
             }
-            $mailer->push();
+            $mailer->to($this->request->session('email'), $this->request->session('name'))->forward();
             $this->request->session('resended', true);
             return redirect('registration-success', true);
-            exit();
         }
         Request::abort(404);
         exit();

@@ -214,7 +214,7 @@ function associative_array(array $initial_array)
  * @param bool $use_templating
  * @return View
  */
-function redirect(string $adresse, bool $location = false, int $code = 301, array $vars = [], bool $use_templating = true)
+function redirect(string $adresse, bool $location = false, int $code = 301, array $vars = [], bool $use_templating = true, bool $die = true)
 {
     if ($location) {
         header("Status: 301 Moved Permanently", false, $code);
@@ -222,8 +222,7 @@ function redirect(string $adresse, bool $location = false, int $code = 301, arra
         exit();
     }
     header("Status: 301 Moved Permanently", false, $code);
-    return new View($adresse, $vars, $use_templating);
-    exit();
+    return new View($adresse, $vars, $use_templating, $die);
 }
 
 /**
@@ -261,10 +260,10 @@ function sprintf_custuming(string $format, string $subject, $value)
  * @param string $view_name
  * @param array $vars
  * @param bool $use_templating
- * @param false $is_email_view
+ * @param bool $die
  * @return View
  */
-function view(string $view_name, array $vars = [], bool $use_templating = true, $is_email_view = false)
+function view(string $view_name, array $vars = [], bool $use_templating = true, bool $die = true)
 {
-    return new View($view_name, $vars, $use_templating, $is_email_view);
+    return new View($view_name, $vars, $use_templating, $die);
 }
