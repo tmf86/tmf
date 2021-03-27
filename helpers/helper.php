@@ -256,3 +256,15 @@ function sprintf_custuming(string $format, string $subject, $value)
 {
     return str_replace($format, $value, $subject);
 }
+
+/**
+ * @param string $view_name
+ * @param array $vars
+ * @param bool $use_templating
+ * @param false $is_email_view
+ * @return View
+ */
+function view(string $view_name, array $vars = [], bool $use_templating = true, $is_email_view = false)
+{
+    return new View($view_name, $vars, $use_templating, $is_email_view);
+}

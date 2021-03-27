@@ -9,6 +9,7 @@ use Contoller\ParrainageController;
 use Contoller\RegisterController;
 use Contoller\RegisterSuccess;
 use Contoller\SujetController;
+use Service\Mailer\FinalizeAccountMailer;
 
 require "vendor/autoload.php";
 require 'config/app.php';
@@ -56,13 +57,11 @@ $dispatcher = FastRoute\simpleDispatcher(function (FastRoute\RouteCollector $rou
         return new View\View('pages.profile', compact('title'), false);
     });
     $route->get('/Cpy-Mvc/test', function () {
-//
-//       $mailer = new \Service\FinalizeAccountMailer('fake','encore','url');
-//       $mailer->mail(new Request(),false);
-//        $acount = new Model\User();
-//        $data = ['nom' => 'fake', 'prenom' => 'fake', 'date_naissance' => date('Y-M-D'), 'email' => 'fake'];
-//        debug($acount->create($data));
-
+////        $data = 15;
+////        ob_start();
+////        view('pages.home');
+////        $p = ob_get_clean();
+////        echo $p;
     });
 });
 

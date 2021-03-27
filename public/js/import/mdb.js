@@ -1314,7 +1314,7 @@
         var h = f.prototype = c.prototype;
         h.constructor = f;
         var p = h.toString,
-            g = "Symbol(test)" == String(c("test")),
+            g = "Symbol(tests)" == String(c("test")),
             v = /^Symbol\((.*)\)[^)]+$/;
         l(h, "description", {
             configurable: !0,

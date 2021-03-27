@@ -27,13 +27,14 @@
   },
   "require": {
     "nikic/fast-route": "^1.3",
-    "php": "^7.2",
+    "php": "^7.4",
     "ext-pdo": "*",
     "rakit/validation": "^1.4.0",
     "ext-json": "*",
     "phpmailer/phpmailer": "^6.2",
     "ext-curl": "*",
-    "firebase/php-jwt": "^5.2"
+    "firebase/php-jwt": "^5.2",
+    "ext-mbstring": "*"
   },
   "require-dev": {
     "roave/security-advisories": "dev-latest"
