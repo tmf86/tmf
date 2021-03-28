@@ -54,7 +54,7 @@ $dispatcher = FastRoute\simpleDispatcher(function (FastRoute\RouteCollector $rou
     });
     $route->get('/Cpy-Mvc/profile', function () {
         $title = 'Profile';
-        return new View\View('pages.profile', compact('title'), false);
+        return new View\View('dashbord.profile', compact('title'));
     });
     $route->get('/Cpy-Mvc/test', function () {
 ////        $data = 15;
