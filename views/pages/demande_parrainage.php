@@ -128,7 +128,7 @@
                     <h2 style="font-family: 'Cairo';font-style: italic;">DEMANDE PARRAINAGE</h2>
                 </div>
                 <div class="row">
-                    <form control="" class="form-group">
+                    <form control="" class="form-group" method="post">
                         <div class="row">
                             <label for="date_par">Date</label>
                             <input type="date" name="date_par" id="date_par" class="form__input" >

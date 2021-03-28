@@ -8,7 +8,7 @@ use Validator\Rules\LogParValidator;
 
 class LogParController extends Controller
 {
-    public function index(){
+    public function parrainage(){
         $title="Acceder au Parrainage";
         $this->load_views('pages.parrainage',compact("title"));
     }

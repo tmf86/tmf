@@ -13,10 +13,10 @@ use View\View;
 
 class ParrainageController extends Controller
 {
-    public function index(){
+    /*public function index(){
         $title="Acceder au Parrainage";
         $this->load_views('pages.parrainage',compact("title"));
-    }
+    }*/
     public function demande(){
         $title="Faire une Demande";
 
@@ -24,6 +24,7 @@ class ParrainageController extends Controller
         //return new View("pages.demande_parrainage",[]);
     }
     public function generatDemand(){
+        echo "ok";
             $valide_par= new DemandeValidator();
             $valide_par = $valide_par->validateCustermer($this->request->inputs());
             if($valide_par->fails()){
