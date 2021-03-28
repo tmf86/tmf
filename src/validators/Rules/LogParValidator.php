@@ -4,7 +4,9 @@
 namespace Validator\Rules;
 
 
-class LogParValidator extends \Validator\ValidatorCustumer
+use Validator\ValidatorCustumer;
+
+class LogParValidator extends ValidatorCustumer
 {
     protected $errorsMessages = [
         'required' => ':attribute obligatoire.',
@@ -13,6 +15,6 @@ class LogParValidator extends \Validator\ValidatorCustumer
     ];
     protected $rules = [
         'identifiant' => 'required|emailPar',
-        'password' => 'required|Password|PasswordPar'
+        'password' => 'required|password|PasswordPar'
     ];
 }
