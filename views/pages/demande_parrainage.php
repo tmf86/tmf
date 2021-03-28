@@ -125,10 +125,10 @@
         <div class="col-md-8 col-xs-12 col-sm-12 login_form ">
             <div class="container-fluid">
                 <div class="row">
-                    <h2 style="font-family: 'Cairo';font-style: italic;">DEMENDE PARRAINAGE</h2>
+                    <h2 style="font-family: 'Cairo';font-style: italic;">DEMANDE PARRAINAGE</h2>
                 </div>
                 <div class="row">
-                    <form control="" class="form-group">
+                    <form control="" class="form-group" method="post">
                         <div class="row">
                             <label for="date_par">Date</label>
                             <input type="date" name="date_par" id="date_par" class="form__input" >

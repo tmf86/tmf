@@ -126,9 +126,9 @@
                     <h2 style="font-family: 'Cairo';font-style: italic;">PARRAINAGE</h2>
                 </div>
                 <div class="row">
-                    <form control="" class="form-group">
+                    <form control="" class="form-group" method="post">
                         <div class="row">
-                            <input type="text" name="username" id="username" class="form__input" placeholder="Utilisateur">
+                            <input type="text" name="identifiant" id="username" class="form__input" placeholder="Identifiant">
                         </div>
                         <div class="row">
                             <!-- <span class="fa fa-lock"></span> -->
