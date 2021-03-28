@@ -128,7 +128,7 @@
                 <div class="row">
                     <form control="" class="form-group">
                         <div class="row">
-                            <input type="text" name="username" id="username" class="form__input" placeholder="Utilisateur">
+                            <input type="text" name="identifiant" id="username" class="form__input" placeholder="Identifiant">
                         </div>
                         <div class="row">
                             <!-- <span class="fa fa-lock"></span> -->
