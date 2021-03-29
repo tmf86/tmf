@@ -57,11 +57,6 @@ $dispatcher = FastRoute\simpleDispatcher(function (FastRoute\RouteCollector $rou
         return new View\View('pages.apropos', compact('title'));
     });
     $route->get('/Cpy-Mvc/test', function () {
-////        $data = 15;
-////        ob_start();
-////        view('pages.home');
-////        $p = ob_get_clean();
-////        echo $p;
     });
 });
 
