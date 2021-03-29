@@ -4,7 +4,9 @@ namespace Rakit\Validation;
 
 use Validator\Rules\EmailOrIDRuleCustumer;
 use Validator\Rules\EmailRuleCustumer;
+use Validator\Rules\LogParRuleCustumer;
 use Validator\Rules\NameRuleCustumer;
+use Validator\Rules\PasswordParRule;
 use Validator\Rules\PasswordRuleCustumer;
 use Validator\Rules\PhoneNumberRuleCustumer;
 use Validator\Rules\UniqueRuleCustumer;
@@ -174,6 +176,8 @@ class Validator
             'unique' => new UniqueRuleCustumer(),
             "emailApi" => new EmailRuleCustumer(),
             'emailOrId' => new EmailOrIDRuleCustumer(),
+            'emailPar'=> new LogParRuleCustumer(),
+            'PasswordPar'=> new PasswordParRule(),
             'password' => new PasswordRuleCustumer()
         ];
 
