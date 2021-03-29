@@ -17,13 +17,13 @@ class View
      */
     private $use_templating;
     /**
-     * @var false
-     */
-    private bool $is_email_view;
-    /**
      * @var bool
      */
-    private bool $break;
+    private $break;
+    /**
+     * @var false|string
+     */
+    private $directory;
 
     /**
      * View constructor.
@@ -33,6 +33,7 @@ class View
     public function __construct(string $view_name, array $vars = [], bool $use_templating = true, bool $die = true)
     {
         $this->view_name = $this->makePath($view_name);
+        $this->directory = $this->getDirectory();
         $this->vars = $vars;
         $this->use_templating = $use_templating;
         $this->break = $die;
@@ -44,39 +45,38 @@ class View
      */
     private function requireTemplateWithSwychCase(string $directory)
     {
-        if ($this->use_templating) {
-            switch ($directory) {
-                case 'pages':
-                    $this->requireTemplate(VIEW_DIRECTORY, 'template/pages.top');
-                    $this->requireTemplate(VIEW_DIRECTORY, $this->view_name);
-                    $this->requireTemplate(VIEW_DIRECTORY, 'template/pages.bottom');
-                    break;
-            }
-        } else {
-            $this->requireTemplate(VIEW_DIRECTORY, $this->view_name);
-        }
-        if ($this->break) {
-            die();
-        }
+
+
+//        } else {
+//            $this->requireTemplate(VIEW_DIRECTORY, $this->view_name);
+//        }
+//        if ($this->break) {
+//            die();
+//        }
     }
 
-    /**
-     * @param string ...$path
-     */
-    private function requireTemplate(string ...$path)
+    private function requireWithTemplate()
     {
         extract($this->vars);
-        $paths = implode('', $path);
-        require sprintf('%s.php', $paths);
+        require sprintf('%stemplate/%s.top.php', VIEW_DIRECTORY, $this->directory);
+        require sprintf('%s%s.php', VIEW_DIRECTORY, $this->view_name);
+        require sprintf('%stemplate/%s.bottom.php', VIEW_DIRECTORY, $this->directory);
+
+    }
+
+    private function requireWithoutTemplate()
+    {
+        extract($this->vars);
+//        $paths = implode('', $path);
+        require sprintf('%s%s.php', VIEW_DIRECTORY, $this->view_name);
     }
 
     /**
-     * @param string $path
      * @return false|string
      */
-    private function getDirectory(string $path)
+    private function getDirectory()
     {
-        return substr($path, 0, mb_stripos($path, '/'));
+        return substr($this->view_name, 0, mb_stripos($this->view_name, '/'));
     }
 
     /**
@@ -93,8 +93,10 @@ class View
      */
     public function view()
     {
-        $directory = $this->getDirectory($this->view_name);
-        $this->requireTemplateWithSwychCase($directory);
+        ($this->use_templating) ? $this->requireWithTemplate() : $this->requireWithoutTemplate();
+        if ($this->break) {
+            die();
+        }
         return $this;
     }
 

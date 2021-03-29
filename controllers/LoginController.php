@@ -2,6 +2,7 @@
 
 namespace Contoller;
 
+use Contoller\Http\Request;
 use Contoller\Middleware\Auth;
 use Model\Account;
 use Model\Comment;
@@ -12,6 +13,12 @@ use View\View;
 class LoginController extends Controller
 {
     use Auth;
+
+    public function __construct(Request $request)
+    {
+        parent::__construct($request);
+        $this->authenticated();
+    }
 
     /**
      * @return View

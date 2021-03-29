@@ -586,6 +586,7 @@ label.error, i.error {
     margin-bottom: 10px;
 }
 
+
 /*Medi Queries*/
 @media (min-width: 320px ) and (max-width: 450px) {
     .card {
