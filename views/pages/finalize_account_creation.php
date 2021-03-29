@@ -40,6 +40,6 @@
                        placeholder="Repeter le mot de passe" autocomplete="new-password">
             </div>
         </div>
-        <button class="btn btn-info btn-block fm-btn" type="submit">Suivant</button>
+        <button class="btn btn-info btn-block fm-btn" id='next' type="submit">Suivant</button>
     </form>
 </div>

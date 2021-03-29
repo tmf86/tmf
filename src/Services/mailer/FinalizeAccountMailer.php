@@ -6,21 +6,13 @@ namespace Service\Mailer;
 class FinalizeAccountMailer extends Mailer implements MailerSerice
 {
 
-    private array $data;
-
-    public function __construct(array $data = [], $exceptions = null)
-    {
-        parent::__construct($exceptions);
-        $this->data = $data;
-    }
-
     public function build(): Mailer
     {
         // TODO: Implement build() method.
         $this
             ->from(MAIL_USERNAME, MAIL_SENDER)
-            ->subject('Finalisation de la creation du compte ')
-            ->view('mailer.finalize-account', $this->data);
+            ->subject('Finalisation de la creation de votre  compte espace membre ')
+            ->view('mailer.finalize-account', $this->data, true);
         return $this;
     }
 

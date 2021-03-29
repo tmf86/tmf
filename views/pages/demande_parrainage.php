@@ -1,7 +1,3 @@
-<?php
-?>
-<?php
-?>
 <!-- Main Content -->
 <style>
     body{

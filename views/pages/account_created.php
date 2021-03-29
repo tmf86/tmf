@@ -24,11 +24,11 @@
     <div class="success-msg">
         <div>
             Felicitaion <strong><?= ucfirst($request->session('name')) ?? '' ?></strong>,<br>
-            Votre compte a été crée avec succes !
+            Votre compte a été crée avec succes , vous recevrez un mail contenant votre identifiant !
         </div>
     </div>
 </div>
-<script src="<?= buildpath('public/js/import/jquery.js') ?>"></script>
+<script src="<?= buildpath('public/js/import/jquery/jquery.js') ?>"></script>
 <script src="<?= buildpath('public/js/functions.js') ?>"></script>
 <script src="<?= sprintf("%spublic/js/register-success.js", rootUrl()) ?>"></script>
 </body>

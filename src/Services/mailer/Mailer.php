@@ -11,15 +11,17 @@ use PHPMailer\PHPMailer\SMTP;
 abstract class  Mailer extends PHPMailer
 {
     protected $mail;
+    protected $data;
 
     /**
      * Mailer constructor.
      * @param null $exceptions
      */
-    public function __construct($exceptions = null)
+    public function __construct(array $data, $exceptions = null)
     {
         parent::__construct($exceptions);
         $this->mail = $this->config();
+        $this->data = $data;
     }
 
     /**
