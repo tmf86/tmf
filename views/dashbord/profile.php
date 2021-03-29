@@ -22,18 +22,17 @@
                 <div>
                     <hr>
                 </div>
-                <div class="card-body"><small class="text-muted">Email address </small>
-                    <h6><?= $user->email ?></h6> <small class="text-muted p-t-30 db">Phone</small>
+                <div class="card-body"><small class="text-muted">Address Email</small>
+                    <h6><?= $user->email ?></h6> <small class="text-muted p-t-30 db">Telephone</small>
                     <h6>(+225) <?= $user->contact ?></h6>
-                    <small class="text-muted p-t-30 db">Status,filière</small>
-                    <h6><?= strtoupper($user->status . ',' . $user->filiere) ?></h6>
-                    <div class="map-box" style="padding: 4.5rem">
+                    <small class="text-muted p-t-30 db">Status</small>
+                    <h6><?= $user->status ?></h6>
+                    <small class="text-muted p-t-30 db">Filière</small>
+                    <h6><?= strtoupper($user->filiere) ?></h6>
+                    <small class="text-muted p-t-30 db">Filière</small>
+                    <h6><?= $user->ville ?></h6>
+                    <div class="map-box">
                     </div>
-                    <!--                    <small class="text-muted p-t-30 db">Social Profile</small>-->
-                    <!--                    <br/>-->
-                    <!--                    <button class="btn btn-circle btn-secondary"><i class="fab fa-facebook-f"></i></button>-->
-                    <!--                    <button class="btn btn-circle btn-secondary"><i class="fab fa-twitter"></i></button>-->
-                    <!--                    <button class="btn btn-circle btn-secondary"><i class="fab fa-youtube"></i></button>-->
                 </div>
             </div>
         </div>
@@ -44,16 +43,9 @@
                 <div class="card-body">
                     <form class="form-horizontal form-material mx-2">
                         <div class="form-group">
-                            <label class="col-md-12">Nom complet</label>
-                            <div class="col-md-12">
-                                <input type="text" placeholder="Koffi jean"
-                                       class="form-control form-control-line">
-                            </div>
-                        </div>
-                        <div class="form-group">
                             <label for="example-email" class="col-md-12">Email</label>
                             <div class="col-md-12">
-                                <input type="email" placeholder="example@email.com"
+                                <input type="email" placeholder=""
                                        class="form-control form-control-line" name="example-email"
                                        id="example-email">
                             </div>
@@ -61,14 +53,14 @@
                         <div class="form-group">
                             <label class="col-md-12">Mot de passe</label>
                             <div class="col-md-12">
-                                <input type="password" value="password"
+                                <input type="password" value=""
                                        class="form-control form-control-line">
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-md-12">Numero de Telephone</label>
                             <div class="col-md-12">
-                                <input type="text" placeholder="0596417856"
+                                <input type="text" placeholder=""
                                        class="form-control form-control-line">
                             </div>
                         </div>
@@ -78,13 +70,7 @@
                                 <textarea rows="5" class="form-control form-control-line"></textarea>
                             </div>
                         </div>
-                        <div class="form-group">
-                            <label class="col-sm-12">Votre ville</label>
-                            <div class="col-sm-12">
-                                <select class="form-select shadow-none form-control-line" disabled>
-                                    <option><?= $user->ville ?></option>
-                                </select>
-                            </div>
+                        <div class="map-box" style="padding: 3.3rem">
                         </div>
                         <div class="form-group">
                             <div class="col-sm-12">
