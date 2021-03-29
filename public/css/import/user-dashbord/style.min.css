@@ -13,41 +13,6 @@
     -moz-transform: rotate(45deg)
 }
 
-/*!
- * Bootstrap v5.0.0-beta1 (https://getbootstrap.com/)
- * Copyright 2011-2020 The Bootstrap Authors
- * Copyright 2011-2020 Twitter, Inc.
- * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
- */
-:root {
-    --bs-blue: #2962FF;
-    --bs-indigo: #6610f2;
-    --bs-purple: #7460ee;
-    --bs-pink: #e83e8c;
-    --bs-red: #f62d51;
-    --bs-orange: #fb8c00;
-    --bs-yellow: #ffbc34;
-    --bs-green: #36bea6;
-    --bs-teal: #20c997;
-    --bs-cyan: #4fc3f7;
-    --bs-white: #fff;
-    --bs-gray: #6c757d;
-    --bs-gray-dark: #343a40;
-    --bs-primary: #7460ee;
-    --bs-secondary: #6c757d;
-    --bs-success: #36bea6;
-    --bs-info: #2962FF;
-    --bs-warning: #ffbc34;
-    --bs-danger: #f62d51;
-    --bs-light: #f8f9fa;
-    --bs-dark: #343a40;
-    --bs-cyan: #4fc3f7;
-    --bs-orange: #fb8c00;
-    --bs-purple: #7460ee;
-    --bs-font-sans-serif: "Nunito Sans", sans-serif;
-    --bs-font-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-    --bs-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0))
-}
 
 *, :after, :before {
     -webkit-box-sizing: border-box;
@@ -62,7 +27,7 @@
 
 body {
     margin: 0;
-    font-family: var(--bs-font-sans-serif);
+    font-family: 'Lato', sans-serif;
     font-size: 0.875rem;
     font-weight: 400;
     line-height: 1.5;
@@ -2771,13 +2736,13 @@ textarea.form-control-lg {
     border-radius: 2px
 }
 
-.input-group-lg > .btn, .input-group-lg > .form-control, .input-group-lg > .form-select, .input-group-lg > .input-group-text {
+.input-group-lg >, .input-group-lg > .form-control, .input-group-lg > .form-select, .input-group-lg > .input-group-text {
     padding: 0.5rem 1rem;
     font-size: 1.09375rem;
     border-radius: 2px
 }
 
-.input-group-sm > .btn, .input-group-sm > .form-control, .input-group-sm > .form-select, .input-group-sm > .input-group-text {
+.input-group-sm >, .input-group-sm > .form-control, .input-group-sm > .form-select, .input-group-sm > .input-group-text {
     padding: 0.25rem 0.5rem;
     font-size: 0.765625rem;
     border-radius: 1px
@@ -2990,12 +2955,11 @@ textarea.form-control-lg {
     transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out
 }
 
-@media (prefers-reduced-motion: reduce) {
-    .btn {
-        -webkit-transition: none;
-        -o-transition: none;
-        transition: none
-    }
+@media (prefers-reduced-motion: reduce) { {
+    -webkit-transition: none;
+    -o-transition: none;
+    transition: none
+}
 }
 
 .btn:hover {

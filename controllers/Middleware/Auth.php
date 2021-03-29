@@ -6,6 +6,7 @@ namespace Contoller\Middleware;
 
 use Firebase\JWT\ExpiredException;
 use Firebase\JWT\JWT;
+use Model\User;
 use View\View;
 
 trait Auth
@@ -49,11 +50,11 @@ trait Auth
     /**
      * @return string
      */
-    public function generateToken()
+    public function generateToken(): string
     {
         return JWT::encode([
             "iat" => time() + 2,
-            'exp' => time() + 600],
+            'exp' => time() + 3600],
             JWT_KEY);
     }
 
@@ -64,10 +65,46 @@ trait Auth
     public function getToken(string $jwt)
     {
         try {
-            $jwt = JWT::decode($jwt, JWT_KEY, JWT_ALGORITHM);
+            $jwted = JWT::decode($jwt, JWT_KEY, JWT_ALGORITHM);
         } catch (ExpiredException $ex) {
-            $jwt = false;
+            $jwted = false;
         }
-        return $jwt;
+        return $jwted;
+    }
+
+    /**
+     * @return false|View
+     */
+    public function authenticated()
+    {
+        if (!$this->isAuth()) {
+            return false;
+        }
+        return redirect('profile', true);
+    }
+
+    /**
+     * @return User;
+     */
+    public function user(): User
+    {
+        $user_id = $this->request->session('user_id');
+        $user = new User();
+        $user = $user->find($user_id);
+        return $user;
+    }
+
+    /**
+     * @return View
+     */
+    public function logoutProcess()
+    {
+        $this->request->sessionUnset('user_id');
+        $this->request->sessionUnset('token');
+        $this->request->sessionUnset('name');
+        $this->request->sessionUnset('email');
+        $this->request->sessionUnset('url');
+        $this->request->sessionUnset('resended');
+        return redirect('home', true);
     }
 }

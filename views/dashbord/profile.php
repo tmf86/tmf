@@ -3,9 +3,9 @@
         <div class="col-lg-4 col-xlg-3 col-md-5">
             <div class="card">
                 <div class="card-body">
-                    <center class="m-t-30"><img src="images/users/5.jpg"
-                                                class="rounded-circle" width="150" alt="user-profile-img"/>
-                        <h4 class="card-title m-t-10">Hanna Gover</h4>
+                    <center class="m-t-30"><img src="<?= buildpath($user->image) ?>"
+                                                class="rounded-circle" width="150" height="150" alt="user-profile-img"/>
+                        <h4 class="card-title m-t-10"><?= $user->nom . ' ' . $user->prenom ?></h4>
                         <h6 class="card-subtitle">Accoubts Manager Amix corp</h6>
                         <div class="row text-center justify-content-md-center">
                             <div class="col-4"><a href="javascript:void(0)" class="link"><i
@@ -23,9 +23,10 @@
                     <hr>
                 </div>
                 <div class="card-body"><small class="text-muted">Email address </small>
-                    <h6>hannagover@gmail.com</h6> <small class="text-muted p-t-30 db">Phone</small>
-                    <h6>+91 654 784 547</h6> <small class="text-muted p-t-30 db">Address</small>
-                    <h6>71 Pilgrim Avenue Chevy Chase, MD 20815</h6>
+                    <h6><?= $user->email ?></h6> <small class="text-muted p-t-30 db">Phone</small>
+                    <h6>(+225) <?= $user->contact ?></h6>
+                    <small class="text-muted p-t-30 db">Status,filière</small>
+                    <h6><?= strtoupper($user->status . ',' . $user->filiere) ?></h6>
                     <div class="map-box" style="padding: 4.5rem">
                     </div>
                     <!--                    <small class="text-muted p-t-30 db">Social Profile</small>-->
@@ -81,17 +82,13 @@
                             <label class="col-sm-12">Votre ville</label>
                             <div class="col-sm-12">
                                 <select class="form-select shadow-none form-control-line" disabled>
-                                    <option>London</option>
-                                    <option>India</option>
-                                    <option>Usa</option>
-                                    <option>Canada</option>
-                                    <option>Thailand</option>
+                                    <option><?= $user->ville ?></option>
                                 </select>
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="col-sm-12">
-                                <button class="btn btn-success text-white">Update Profile</button>
+                                <button class="btn btn-success text-white">Mettre a jour</button>
                             </div>
                         </div>
                     </form>

@@ -5,7 +5,9 @@ use Contoller\FinalizeAccountController;
 use Contoller\FormationController;
 use Contoller\HomeController;
 use Contoller\Http\Request;
+use Contoller\Logout;
 use Contoller\ParrainageController;
+use Contoller\ProfileController;
 use Contoller\RegisterController;
 use Contoller\RegisterSuccess;
 use Contoller\SujetController;
@@ -32,10 +34,6 @@ $dispatcher = FastRoute\simpleDispatcher(function (FastRoute\RouteCollector $rou
     $route->get('/Cpy-Mvc/home', ['class' => HomeController::class, 'method' => 'index']);
     $route->get('/Cpy-Mvc/register', ['class' => RegisterController::class, 'method' => 'index']);
     $route->post('/Cpy-Mvc/registerstore', ['class' => RegisterController::class, 'method' => 'registerStore']);
-    $route->addGroup('/Cpy-Mvc/finalize_account_creation/', function (FastRoute\RouteCollector $route) {
-        $route->get('{id:[A-Z0-9\-]+}/{email:[A-Za-z0-9.@]+}', ['class' => FinalizeAccountController::class, 'method' => 'index', 'gets' => true]);
-        $route->post('{id:[A-Z0-9\-]+}/{email:[A-Za-z0-9@.]+}', ['class' => FinalizeAccountController::class, 'method' => 'accountStore', 'gets' => true]);
-    });
     $route->get('/Cpy-Mvc/sujets', ['class' => SujetController::class, 'method' => 'index']);
     $route->get('/Cpy-Mvc/parrainage', ['class' => ParrainageController::class, 'method' => 'index']);
     $route->get('/Cpy-Mvc/demande', ['class' => ParrainageController::class, 'method' => 'demande']);
@@ -43,6 +41,12 @@ $dispatcher = FastRoute\simpleDispatcher(function (FastRoute\RouteCollector $rou
     $route->get('/Cpy-Mvc/cours', ['class' => FormationController::class, 'method' => 'index']);
     $route->get('/Cpy-Mvc/videos_formation', ['class' => FormationController::class, 'method' => 'index']);
     $route->get('/Cpy-Mvc/registration-success', ['class' => RegisterSuccess::class, 'method' => 'index']);
+    $route->get('/Cpy-Mvc/profile', ['class' => ProfileController::class, 'method' => 'index']);
+    $route->get('/Cpy-Mvc/logout', ['class' => Logout::class, 'method' => 'logout']);
+    $route->addGroup('/Cpy-Mvc/finalize_account_creation/', function (FastRoute\RouteCollector $route) {
+        $route->get('{id:[A-Z0-9\-]+}/{email:[A-Za-z0-9.@]+}', ['class' => FinalizeAccountController::class, 'method' => 'index', 'gets' => true]);
+        $route->post('{id:[A-Z0-9\-]+}/{email:[A-Za-z0-9@.]+}', ['class' => FinalizeAccountController::class, 'method' => 'accountStore', 'gets' => true]);
+    });
     $route->get('/Cpy-Mvc/videos_formation/{id:\d+}',
         function () {
             echo 'Hello !';
@@ -51,10 +55,6 @@ $dispatcher = FastRoute\simpleDispatcher(function (FastRoute\RouteCollector $rou
     $route->get('/Cpy-Mvc/about-us', function () {
         $title = 'A propos';
         return new View\View('pages.apropos', compact('title'));
-    });
-    $route->get('/Cpy-Mvc/profile', function () {
-        $title = 'Profile';
-        return new View\View('dashbord.profile', compact('title'));
     });
     $route->get('/Cpy-Mvc/test', function () {
 ////        $data = 15;
