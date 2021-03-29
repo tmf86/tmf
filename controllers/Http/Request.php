@@ -68,7 +68,7 @@ class Request
         switch ($code) {
             case 404 :
                 http_response_code(404);
-                return new View('pages.404.404', [], false);
+                return redirect('pages.404.404', false, 404,[],false);
                 break;
         }
         return true;

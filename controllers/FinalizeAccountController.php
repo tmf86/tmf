@@ -8,6 +8,7 @@ use Contoller\Http\Request;
 use Contoller\Middleware\Auth;
 use Model\Account;
 use Model\User;
+use Service\Mailer\AccountCreatedMailer;
 use Validator\FinalizeAccountValidator;
 use View\View;
 
@@ -81,10 +82,18 @@ class FinalizeAccountController extends Controller
                 'mat_membre' => $user->mat_membre
             ];
         $account = new Account();
-        $account->create($account_data);
+        $account = $account->create($account_data);
         $this->request->session('user_id', $user->mat_membre);
         $this->request->session('token', $this->generateToken());
         $this->request->session('name', sprintf("%s %s", $user->nom, $user->prenom));
+        $data = [
+            'title' => 'Envoie d\'identifiant de connexion',
+            'name' => sprintf("%s %s", $user->nom, $user->prenom),
+            'email' => $email,
+            'id' => $id
+        ];
+        $mailer = new AccountCreatedMailer($data);
+        $mailer->to($email, $user->prenom)->forward();
         return redirect('pages.account_created', false, 301, compact('request'), false);
     }
 

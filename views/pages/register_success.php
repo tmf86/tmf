@@ -43,7 +43,7 @@
             confirmation </a>
     </div>
 </div>
-<script src="<?= buildpath('public/js/import/jquery.js') ?>"></script>
+<script src="<?= buildpath('public/js/import/jquery/jquery.js') ?>"></script>
 <script src="<?= sprintf("%spublic/js/register-success.js", rootUrl()) ?>"></script>
 </body>
 </html>
