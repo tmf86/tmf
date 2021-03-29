@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Validator\Rules;
+namespace Validator;
 
 
 use Validator\ValidatorCustumer;

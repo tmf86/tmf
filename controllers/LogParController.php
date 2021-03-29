@@ -4,7 +4,7 @@
 namespace Contoller;
 
 
-use Validator\Rules\LogParValidator;
+use Validator\LogParValidator;
 
 class LogParController extends Controller
 {

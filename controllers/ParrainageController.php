@@ -13,10 +13,6 @@ use View\View;
 
 class ParrainageController extends Controller
 {
-    /*public function index(){
-        $title="Acceder au Parrainage";
-        $this->load_views('pages.parrainage',compact("title"));
-    }*/
     public function demande(){
         $title="Faire une Demande";
 
