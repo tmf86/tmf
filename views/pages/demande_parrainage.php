@@ -127,16 +127,16 @@
                     <form control="" class="form-group" method="post">
                         <div class="row">
                             <label for="date_par">Date</label>
-                            <input type="date" name="date_par" id="date_par" class="form__input" >
+                            <input type="date" name="date" id="date_par" class="form__input" >
                         </div>
                         <div class="row">
                             <!-- <span class="fa fa-lock"></span> -->
-                            <label for="lieu_par">Lieu</label>
-                            <input type="text" name="lieu_par" id="lieu_par" class="form__input">
+                            <label for="lieu-par">Lieu</label>
+                            <input type="text" name="lieu" id="lieu_par" class="form__input">
                         </div>
                         <div class="row">
                             <!-- <span class="fa fa-lock"></span> -->
-                            <label for="filier_par">Fili&egrave;re</label>
+                            <label for="filiere_par">Fili&egrave;re</label>
                            <select name="filiere" class=" form-control custom-select" id="filier_par">
                                <option value="RGL">RGL</option>
                                <option value="AD">AD</option>
@@ -146,12 +146,13 @@
                         </div>
                         <div class="row">
                             <!-- <span class="fa fa-lock"></span> -->
-                            <label for="qualite">Qualit&eacute;</label>
-                            <select name="qualite_par" class="form-control custom-select" id="qualite_par">
+                            <label for="qualite_par">Qualit&eacute;</label>
+                            <select name="qualite" class="form-control custom-select" id="qualite_par">
                                 <option value="RGL">DELEGUE</option>
                                 <option value="AD">1er ADJOINT</option>
                                 <option value="CDM">2eme ADJOINT</option>
                             </select>
+                            <input type="hidden" value="2" name="id_menbre">
                         </div>
                         <div class="row">
                             <input type="submit" value="Demander" class="btn">

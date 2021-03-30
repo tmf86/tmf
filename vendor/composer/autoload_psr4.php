@@ -7,9 +7,9 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'View\\' => array($baseDir . '/views'),
-    'Validator\\Rules\\' => array($baseDir . '/src/Validators/Rules'),
-    'Validator\\' => array($baseDir . '/src/Validators'),
-    'Service\\Mailer\\' => array($baseDir . '/src/Services/Mailer'),
+    'Validator\\Rules\\' => array($baseDir . '/src/validators/Rules'),
+    'Validator\\' => array($baseDir . '/src/validators'),
+    'Service\\Mailer\\' => array($baseDir . '/src/Services/mailer'),
     'Rakit\\Validation\\' => array($vendorDir . '/rakit/validation/src'),
     'PHPMailer\\PHPMailer\\' => array($vendorDir . '/phpmailer/phpmailer/src'),
     'Model\\Shema\\' => array($baseDir . '/models/Schema'),

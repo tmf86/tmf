@@ -4,11 +4,11 @@
 namespace Contoller;
 
 
-use Contoller\Http\Request;
+//use Contoller\Http\Request;
 use Model\Demand_Acount;
 use Model\Demande;
 use Validator\DemandeValidator;
-use View\View;
+//use View\View;
 
 
 class ParrainageController extends Controller
@@ -41,6 +41,7 @@ class ParrainageController extends Controller
         $dt= $dt->format("Y");
         $userName = $this->request->filiere.$dt;
         $mdp = str_shuffle(substr($cmpt,0,8));
+        var_dump($mdp);
         $id_dmd = $dm->id_demad;
         return $tb_info = [
           "identifiant"=>$userName,
