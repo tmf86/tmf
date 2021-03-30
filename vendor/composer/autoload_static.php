@@ -56,15 +56,15 @@ class ComposerStaticInit6264916c20b8cdaf967ae3749af8fbef
         ),
         'Validator\\Rules\\' => 
         array (
-            0 => __DIR__ . '/../..' . '/src/Validators/Rules',
+            0 => __DIR__ . '/../..' . '/src/validators/Rules',
         ),
         'Validator\\' => 
         array (
-            0 => __DIR__ . '/../..' . '/src/Validators',
+            0 => __DIR__ . '/../..' . '/src/validators',
         ),
         'Service\\Mailer\\' => 
         array (
-            0 => __DIR__ . '/../..' . '/src/Services/Mailer',
+            0 => __DIR__ . '/../..' . '/src/Services/mailer',
         ),
         'Rakit\\Validation\\' => 
         array (

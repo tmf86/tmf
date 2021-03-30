@@ -36,10 +36,10 @@ $dispatcher = FastRoute\simpleDispatcher(function (FastRoute\RouteCollector $rou
     $route->get('/Cpy-Mvc/register', ['class' => RegisterController::class, 'method' => 'index']);
     $route->post('/Cpy-Mvc/registerstore', ['class' => RegisterController::class, 'method' => 'registerStore']);
     $route->get('/Cpy-Mvc/sujets', ['class' => SujetController::class, 'method' => 'index']);
-    $route->get('/Cpy-Mvc/parrainage', ['class' => ParrainageController::class, 'method' => 'demande']);
-    $route->post('/Cpy-Mvc/parrainage', ['class' => ParrainageController::class, 'method' => 'generatDemand']);
-    $route->post('/Cpy-Mvc/demande', ['class' => LogParController::class, 'method' => 'loging']);
-    $route->get('/Cpy-Mvc/demande', ['class' => LogParController::class, 'method' => 'parrainage']);
+    $route->get('/Cpy-Mvc/demande', ['class' => ParrainageController::class, 'method' => 'demande']);
+    $route->post('/Cpy-Mvc/demande', ['class' => ParrainageController::class, 'method' => 'generatDemand']);
+    $route->post('/Cpy-Mvc/parrainage', ['class' => LogParController::class, 'method' => 'loging']);
+    $route->get('/Cpy-Mvc/parrainage', ['class' => LogParController::class, 'method' => 'parrainage']);
     $route->get('/Cpy-Mvc/tabl', ['class' => ParrainageController::class, 'method' => 'tableau_de_bord']);
     $route->get('/Cpy-Mvc/cours', ['class' => FormationController::class, 'method' => 'index']);
     $route->get('/Cpy-Mvc/videos_formation', ['class' => FormationController::class, 'method' => 'index']);

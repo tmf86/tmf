@@ -12,6 +12,7 @@ class Demand_Acount extends Model
         $mac = $_SERVER["REMOTE_ADDR"];
         $dt = new \DateTime();
         $dt = $dt->format('s');
-        $u_code = md5($mac.$dt,true);
+        $u_code = md5($mac.$dt);
+        return $u_code;
     }
 }
