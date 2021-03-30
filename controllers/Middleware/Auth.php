@@ -88,9 +88,12 @@ trait Auth
      */
     public function user(): User
     {
-        $user_id = $this->request->session('user_id');
         $user = new User();
-        $user = $user->find($user_id);
+        if ($this->isAuth()) {
+            $user_id = $this->request->session('user_id');
+            $user = new User();
+            $user = $user->find($user_id);
+        }
         return $user;
     }
 
@@ -106,5 +109,13 @@ trait Auth
         $this->request->sessionUnset('url');
         $this->request->sessionUnset('resended');
         return redirect('home', true);
+    }
+
+    /**
+     * @return bool
+     */
+    public static function asUserAuthenticated()
+    {
+        return (session('user_id') && session('token'));
     }
 }

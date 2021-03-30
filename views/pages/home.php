@@ -94,7 +94,7 @@
                         Partager vos experiences , rencontrer vos mentors
                     </p>
                     <div class="card-footer">
-                        <a href="" class="btn btn-warning">Acceder au forum</a>
+                        <a href="<?= buildpath('forum') ?>" class="btn btn-warning">Acceder au forum</a>
                     </div>
                 </div>
             </div>

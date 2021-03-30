@@ -13365,11 +13365,19 @@ html body .waves-notransition {
     display: flex;
     -webkit-box-align: center;
     -ms-flex-align: center;
-    align-items: center
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+}
+.feed-widget .feed-body .feed-item:nth-child(2n){
+    background: rgba(236, 236, 236);
+}
+.feed-widget .feed-body .feed-item {
+    transition: all .3s ease-in-out;
 }
 
 .feed-widget .feed-body .feed-item:hover {
-    background: #f8f9fa
+    background: #f8f9fa;
 }
 
 .feed-widget .feed-body .feed-item > .feed-icon {
@@ -13380,7 +13388,7 @@ html body .waves-notransition {
     text-align: center;
     vertical-align: middle;
     border-radius: 100%;
-    color: #fff
+    /*color: #fff*/
 }
 
 .feed-widget .feed-body .feed-item > .feed-icon i {
@@ -13421,10 +13429,19 @@ html body .waves-notransition {
         -ms-flex-pack: end;
         justify-content: flex-end
     }
+
 }
 
 @media (max-width: 767.98px) {
     .do-block {
         display: block !important
+    }
+
+    .forum-name {
+        display: none !important; /*Ajutement de la colonne contenant le nom du forum en mode responsive*/
+    }
+
+    .feed-icon {
+        display: none !important;
     }
 }

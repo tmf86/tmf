@@ -267,3 +267,12 @@ function view(string $view_name, array $vars = [], bool $use_templating = true, 
 {
     return new View($view_name, $vars, $use_templating, $die);
 }
+
+/**
+ * @param string $index
+ * @return false|mixed
+ */
+function session(string $index)
+{
+    return $_SESSION[$index] ?? '';
+}

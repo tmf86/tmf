@@ -1,5 +1,6 @@
 <?php
 
+use Contoller\ForumController;
 use Contoller\LoginController;
 use Contoller\FinalizeAccountController;
 use Contoller\FormationController;
@@ -45,6 +46,8 @@ $dispatcher = FastRoute\simpleDispatcher(function (FastRoute\RouteCollector $rou
     $route->get('/Cpy-Mvc/videos_formation', ['class' => FormationController::class, 'method' => 'index']);
     $route->get('/Cpy-Mvc/registration-success', ['class' => RegisterSuccess::class, 'method' => 'index']);
     $route->get('/Cpy-Mvc/profile', ['class' => ProfileController::class, 'method' => 'index']);
+    $route->get('/Cpy-Mvc/forum', ['class' => ForumController::class, 'method' => 'index']);
+    $route->get('/Cpy-Mvc/forum{slug:[A-Za-z\-]+}', ['class' => ForumController::class, 'method' => 'detail', 'gets' => true]);
     $route->get('/Cpy-Mvc/logout', ['class' => Logout::class, 'method' => 'logout']);
     $route->addGroup('/Cpy-Mvc/finalize_account_creation/', function (FastRoute\RouteCollector $route) {
         $route->get('{id:[A-Z0-9\-]+}/{email:[A-Za-z0-9.@]+}', ['class' => FinalizeAccountController::class, 'method' => 'index', 'gets' => true]);
@@ -60,6 +63,7 @@ $dispatcher = FastRoute\simpleDispatcher(function (FastRoute\RouteCollector $rou
         return new View\View('pages.apropos', compact('title'));
     });
     $route->get('/Cpy-Mvc/test', function () {
+        debug(strripos(current_route(), '/'));
     });
 });
 
