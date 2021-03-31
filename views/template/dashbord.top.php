@@ -3,40 +3,38 @@
 use Contoller\Middleware\Auth;
 
 ?>
-    <!DOCTYPE html>
-    <html dir="ltr" lang="fr">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <!-- Tell the browser to be responsive to screen width -->
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="robots" content="noindex,nofollow">
-        <title><?= $title ?? '' ?></title>
-        <!-- Favicon icon -->
-        <link rel="icon" type="image/png" sizes="16x16" href="<?= buildpath("images/logo.png") ?>">
-        <!-- Custom CSS -->
-        <link href="<?= buildpath('public/css/import/chartist/dist/chartist.min.css') ?>" rel="stylesheet">
-        <!-- Custom CSS -->
-        <link rel="preconnect" href="https://fonts.gstatic.com">
-        <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700&display=swap"
-              rel="stylesheet">
-        <link href="<?= buildpath("public/css/import/user-dashbord/style.min.css") ?>" rel="stylesheet">
-        <link rel="stylesheet" href='<?= buildpath("public/css/dashbord.css") ?>'>
-        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-        <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-        <![endif]-->
-    </head>
+<!DOCTYPE html>
+<html dir="ltr" lang="fr">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex,nofollow">
+    <title><?= $title ?? '' ?></title>
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="<?= buildpath("images/logo.png") ?>">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700&display=swap"
+          rel="stylesheet">
+    <link href="<?= buildpath("public/css/import/user-dashbord/style.min.css") ?>" rel="stylesheet">
+    <link rel="stylesheet" href='<?= buildpath("public/css/dashbord.css") ?>'>
+    <?= suppl_tags($links ?? [], LINK) ?>
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
 
-<body>
-    <div class="preloader">
-        <div class="lds-ripple">
-            <div class="lds-pos"></div>
-            <div class="lds-pos"></div>
-        </div>
+<body <?php if (!Auth::asUserAuthenticated()): ?> style="background: #eef5f9;" <?php endif; ?> >
+<div class="preloader">
+    <div class="lds-ripple">
+        <div class="lds-pos"></div>
+        <div class="lds-pos"></div>
     </div>
+</div>
 <div id="main-wrapper" data-layout="vertical" data-navbarbg="skin5" data-sidebartype="full"
      data-sidebar-position="absolute" data-header-position="absolute" data-boxed-layout="full">
     <header class="topbar" data-navbarbg="skin5">
@@ -88,7 +86,7 @@ use Contoller\Middleware\Auth;
             </div>
         </nav>
     </header>
-<?php if (Auth::asUserAuthenticated()): ?>
+    <?php if (Auth::asUserAuthenticated()): ?>
     <aside class="left-sidebar" data-sidebarbg="skin6">
         <div class="scroll-sidebar">
             <nav class="sidebar-nav">
@@ -135,6 +133,7 @@ use Contoller\Middleware\Auth;
         </div>
     </aside>
     <div class="page-wrapper">
+        <?php endif; ?>
         <div class="page-breadcrumb">
             <div class="row align-items-center">
                 <div class="col-5">
@@ -150,10 +149,11 @@ use Contoller\Middleware\Auth;
                 </div>
                 <div class="col-7">
                     <div class="text-end upgrade-btn">
-                        <a href="" class="btn btn-danger text-white"
-                           target="">Supprimer le compte</a>
+                        <?php if (Auth::asUserAuthenticated()): ?>
+                            <a href="" class="btn btn-danger text-white"
+                               target="">Supprimer le compte</a>
+                        <?php endif; ?>
                     </div>
                 </div>
             </div>
         </div>
-<?php endif; ?>

@@ -2,78 +2,59 @@
     <div class="row">
         <!-- column -->
         <div class="col-12">
-            <div class="card">
-                <div class="card-body">
-                    <!-- title -->
-                    <div class="d-md-flex">
-                        <div>
-                            <h4 class="card-title">Listes des differents forums</h4>
-                            <h5 class="card-subtitle">Cette listes comporte les 3 forums ayant plus de membre</h5>
-                        </div>
-                        <!--                        <div class="ms-auto">-->
-                        <!--                            <div class="dl">-->
-                        <!--                                <select class="form-select shadow-none">-->
-                        <!--                                    <option value="0" selected>Monthly</option>-->
-                        <!--                                    <option value="1">Daily</option>-->
-                        <!--                                    <option value="2">Weekly</option>-->
-                        <!--                                    <option value="3">Yearly</option>-->
-                        <!--                                </select>-->
-                        <!--                            </div>-->
-                        <!--                        </div>-->
-                    </div>
-                    <!-- title -->
-                </div>
-                <div class="table-responsive">
-                    <table class="table v-middle">
-                        <thead>
-                        <tr class="bg-light">
-                            <th class="border-top-0 text-start">Forum</th>
-                            <th class="border-top-0 text-center">Description</th>
-                            <th class="border-top-0 text-end">Action</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <td>
-                                <div class="d-flex align-items-center">
-                                    <div class="m-r-10"><a
-                                                class="btn btn-circle d-flex btn-info text-white">IN</a>
-                                    </div>
-                                    <div class="forum-name">
-                                        <h4 class="m-b-0 font-16">INFORMATIQUE</h4>
-                                    </div>
+            <div class="card-body">
+                <h4>Forums</h4>
+            </div>
+            <div class="table-responsive">
+                <table class="table v-middle">
+                    <thead>
+                    <tr class="bg-light">
+                        <th class="border-top-0 text-start">Forum</th>
+                        <th class="border-top-0 text-center">Description</th>
+                        <th class="border-top-0 text-end">Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>
+                            <div class="d-flex align-items-center">
+                                <div class="m-r-10"><a
+                                            class="btn btn-circle d-flex btn-info text-white">IN</a>
                                 </div>
-                            </td>
-                            <td class="text-center"> Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                Accusantium dolor esse illum iure nobis saepe sed similique veritatis? Aliquam cumque
-                                dolore eaque earum eum ipsum magnam nihil porro, quisquam voluptatum.
-                            </td>
-                            <td class="text-end">
-                                <label class="label label-danger">Quitter</label>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="d-flex align-items-center">
-                                    <div class="m-r-10"><a
-                                                class="btn btn-circle d-flex btn-info text-white">CO</a>
-                                    </div>
-                                    <div class="forum-name">
-                                        <h4 class="m-b-0 font-16">COMPTABILITE</h4>
-                                    </div>
+                                <div class="forum-name">
+                                    <h4 class="m-b-0 font-16">INFORMATIQUE</h4>
                                 </div>
-                            </td>
-                            <td class="text-center">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut quae,
-                                quaerat. Aliquam dolore doloribus esse et, explicabo illum itaque magni maxime modi non
-                                obcaecati placeat provident, quaerat, reiciendis sequi sunt.
-                            </td>
-                            <td class="text-end">
-                                <label class="label label-success">Adherer</label>
-                            </td>
-                        </tr>
-                        </tbody>
-                    </table>
-                </div>
+                            </div>
+                        </td>
+                        <td class="text-center"> Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                            Accusantium dolor esse illum iure nobis saepe sed similique veritatis? Aliquam cumque
+                            dolore eaque earum eum ipsum magnam nihil porro, quisquam voluptatum.
+                        </td>
+                        <td class="text-end">
+                            <label class="label label-danger">Quitter</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="d-flex align-items-center">
+                                <div class="m-r-10"><a
+                                            class="btn btn-circle d-flex btn-info text-white">CO</a>
+                                </div>
+                                <div class="forum-name">
+                                    <h4 class="m-b-0 font-16">COMPTABILITE</h4>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="text-center">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut quae,
+                            quaerat. Aliquam dolore doloribus esse et, explicabo illum itaque magni maxime modi non
+                            obcaecati placeat provident, quaerat, reiciendis sequi sunt.
+                        </td>
+                        <td class="text-end">
+                            <label class="label label-success">Adherer</label>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
@@ -81,7 +62,7 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title">Recent Sujet</h4>
+                    <h4 class="card-title">Sujets recents</h4>
                 </div>
                 <div class="comment-widgets scrollable">
                     <!-- Comment Row -->

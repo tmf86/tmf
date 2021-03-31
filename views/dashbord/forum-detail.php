@@ -1,12 +1,66 @@
 <div class="container-fluid">
     <div class="row">
-        <div class="col-lg-2"></div>
-        <div class="col-lg-8">
-            <div class="card">
+        <div class="col-lg-12">
+            <div class="">
                 <div class="card-body">
-                    <h4 class="card-title mb-2">Informatique</h4>
                     <div class="feed-widget mt-4">
+                        <div class="col-sm-12n text-end mb-4">
+                            <button class="btn btn-success text-white" data-toggle="modal"
+                                    data-target="#forum-add">Creer un sujet
+                            </button>
+                        </div>
                         <ul class="list-style-none feed-body m-0 p-b-20">
+                            <li class="feed-item p-3">
+                                <div class="feed-icon">
+                                    <img src="images/users/1.jpg" alt="user" width="40"
+                                         class="rounded-circle">
+                                </div>
+                                <div class="p-2">
+                                    Comment afficher du text a la console en python ... <br>
+                                    <span style="opacity: 0.8; font-size: 13px; font-style: italic"> Par JulienFeraux1 27 mars 2021 à 22:58:16</span>
+                                </div>
+                                <div class="p-2">
+                                    <span class="">20 messages</span>
+                                </div>
+                                <div class="px-2">
+                                     <span class="">Dernier message  <br> par <strong>NadfriJS</strong>
+                                    Il y a environ 5 heures</span>
+                                </div>
+                            </li>
+                            <li class="feed-item p-3">
+                                <div class="feed-icon">
+                                    <img src="images/users/1.jpg" alt="user" width="40"
+                                         class="rounded-circle">
+                                </div>
+                                <div class="p-2">
+                                    Comment afficher du text a la console en python ... <br>
+                                    <span style="opacity: 0.5; font-size: 13px; font-style: italic"> Par JulienFeraux1 27 mars 2021 à 22:58:16</span>
+                                </div>
+                                <div class="p-2">
+                                    <span class="">20 messages</span>
+                                </div>
+                                <div class="px-2">
+                                     <span class="">Dernier message  <br> par <strong>NadfriJS</strong>
+                                    Il y a environ 5 heures</span>
+                                </div>
+                            </li>
+                            <li class="feed-item p-3">
+                                <div class="feed-icon">
+                                    <img src="images/users/1.jpg" alt="user" width="40"
+                                         class="rounded-circle">
+                                </div>
+                                <div class="p-2">
+                                    Comment afficher du text a la console en python ... <br>
+                                    <span style="opacity: 0.5; font-size: 13px; font-style: italic"> Par JulienFeraux1 27 mars 2021 à 22:58:16</span>
+                                </div>
+                                <div class="p-2">
+                                    <span class="">20 messages</span>
+                                </div>
+                                <div class="px-2">
+                                     <span class="">Dernier message  <br> par <strong>NadfriJS</strong>
+                                    Il y a environ 5 heures</span>
+                                </div>
+                            </li>
                             <li class="feed-item p-3">
                                 <div class="feed-icon">
                                     <img src="images/users/1.jpg" alt="user" width="40"
@@ -80,17 +134,19 @@
                 </div>
             </div>
         </div>
-        <div class="col-lg-2"></div>
     </div>
-    <div class="row">
-        <div class="col-lg-2"></div>
-        <div class="col-lg-8">
-            <div class="text-end">
-                <div class="col-sm-12">
-                    <button class="btn btn-success text-white">Creer un sujet</button>
-                </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="forum-add" tabindex="-1" role="dialog" aria-labelledby="Forum Add"
+     aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header" style="border-bottom: none !important;">
+                <h5 class="modal-title" id="exampleModalLongTitle">Ajoutez un nouveau sujet de discussion</h5>
+                <span aria-hidden="true" class="ti-close close" data-dismiss="modal" aria-label="Close"
+                      style="cursor: pointer"></span>
             </div>
-            <div class="card">
+            <div class="modal-body">
                 <div class="card-body">
                     <form class="form-horizontal form-material mx-2">
                         <div class="form-group">
@@ -117,13 +173,12 @@
                         </div>
                         <div class="form-group">
                             <div class="col-sm-12">
-                                <button class="btn btn-success text-white">Mettre a jour</button>
+                                <button class="btn btn-success text-white px-5">soumettre</button>
                             </div>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
-        <div class="col-lg-2"></div>
     </div>
 </div>
