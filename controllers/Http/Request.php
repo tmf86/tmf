@@ -17,7 +17,7 @@ class Request
     /*** @var array */
     private $sessions;
     /*** @var array */
-    private $errors = [];
+    private static $errors = [];
 
     /**
      * Request constructor.
@@ -68,7 +68,7 @@ class Request
         switch ($code) {
             case 404 :
                 http_response_code(404);
-                return redirect('pages.404.404', false, 404,[],false);
+                return redirect('pages.404.404', false, 404, [], false);
                 break;
         }
         return true;
@@ -133,20 +133,20 @@ class Request
      * @return array|mixed|string
      * @throws \Exception
      */
-    public function error(string $key = "", string $value = "")
+    public static function error(string $key = "", string $value = "")
     {
         if (!empty($key) && empty($value)) {
-            if (array_key_exists($key, $this->errors)) {
-                return $this->errors["$key"];
+            if (array_key_exists($key, self::$errors)) {
+                return self::$errors["$key"];
             }
             throw  new  \Exception("The key ask  doesn't exist.");
         }
         if (!empty($key) && !empty($value)) {
-            $this->errors["$key"] = $value;
-            return $this->errors["$key"];
+            self::$errors["$key"] = $value;
+            return self::$errors["$key"];
         }
 
-        return $this->errors;
+        return self::$errors;
     }
 
     /**
@@ -154,9 +154,9 @@ class Request
      * @return bool
      * verifie si cette clé d'erreur existe
      */
-    public function hasError(string $key)
+    public static function hasError(string $key)
     {
-        return (isset($this->errors[$key]));
+        return (isset(self::$errors[$key]));
     }
 
     /**
@@ -178,6 +178,15 @@ class Request
     {
         return (isset($this->post[$key]));
     }
+
+    /**
+     * @param array $errors
+     */
+    public static function setErrors(array $errors): void
+    {
+        self::$errors = $errors;
+    }
+
 
     /**
      * @param $name
@@ -207,12 +216,5 @@ class Request
         // TODO: Implement __isset() method.
     }
 
-    /**
-     * @param array $errors
-     */
-    public function setErrors(array $errors): void
-    {
-        $this->errors = $errors;
-    }
 
 }

@@ -57,19 +57,17 @@ class FinalizeAccountController extends Controller
         $request = $this->request;
         if ($validation->fails()) {
             $errors = $validation->errors()->firstOfAll();
-            foreach ($errors as $key => $value) {
-                $this->request->error($key, $value);
-            }
+            Request::setErrors($errors);
             $title = 'Finalisation de creation de compte';
             $scripts =
                 [
                     sprintf("<script src='%spublic/js/functions.js'></script>", rootUrl()),
                     sprintf("<script src='%spublic/js/script.js'></script>", rootUrl())
                 ];
-            if (($this->request->hasError('mot_pass') && $this->request->hasError('password_verify')) && $this->request->error('mot_pass') === $this->request->error('password_verify')) {
-                $this->request->setErrors(['mot_pass' => $this->request->error('mot_pass'), 'password_verify' => '']);
+            if ((Request::hasError('mot_pass') && Request::hasError('password_verify')) && Request::error('mot_pass') === Request::error('password_verify')) {
+                Request::setErrors(['mot_pass' => Request::error('mot_pass'), 'password_verify' => '']);
             }
-            return redirect('pages.finalize_account_creation', false, 301, compact('request', 'scripts', 'title'));
+            return redirect('pages.finalize_account_creation', false, 301, compact('scripts', 'title'));
         }
 
         $user = new User();

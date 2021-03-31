@@ -63,7 +63,10 @@ $dispatcher = FastRoute\simpleDispatcher(function (FastRoute\RouteCollector $rou
         return new View\View('pages.apropos', compact('title'));
     });
     $route->get('/Cpy-Mvc/test', function () {
-        debug(strripos(current_route(), '/'));
+        $test = new Request();
+        Request::$test = ['test'];
+//        debug(Request::test());
+        debug($test::$test);
     });
 });
 

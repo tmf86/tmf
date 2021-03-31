@@ -8,18 +8,20 @@
             <div class="underline"></div>
         </div>
         <div class="mt-5">
-            <?php if ($request->hasError('mot_pass')): ?>
+            <?php use Contoller\Http\Request;
+
+            if (Request::hasError('mot_pass')): ?>
                 <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                    <strong><?= $request->error('mot_pass') ?></strong>
+                    <strong><?= Request::error('mot_pass') ?></strong>
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
             <?php endif; ?>
-            <?php if ($request->hasError('password_verify')): ?>
-                <div class="alert alert-danger alert-dismissible fade show<?php if (empty($request->error('password_verify'))): ?>d-none <?php endif; ?>"
+            <?php if (Request::hasError('password_verify')): ?>
+                <div class="alert alert-danger alert-dismissible fade show<?php if (empty(Request::error('password_verify'))): ?>d-none <?php endif; ?>"
                      role="alert">
-                    <strong><?= $request->error('password_verify') ?></strong>
+                    <strong><?= Request::error('password_verify') ?></strong>
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -28,14 +30,14 @@
             <div class="position-relative">
                 <span class="password-eye first eye-hide"><i class="fas fa-eye-slash"></i></i></span>
                 <input type="password" id="password"
-                       class="form-control mb-4 fm-p  <?php if ($request->hasError('mot_pass')): ?>error<?php endif; ?>"
+                       class="form-control mb-4 fm-p  <?php if (Request::hasError('mot_pass')): ?>error<?php endif; ?>"
                        name="mot_pass"
                        placeholder="Mot de passe" autocomplete="new-password">
             </div>
             <div class="position-relative">
                 <span class="password-eye second eye-hide"><i class="fas fa-eye-slash"></i></i></span>
                 <input type="password" id="password_verify"
-                       class="form-control mb-4 fm-p <?php if ($request->hasError('password_verify')): ?>error <?php endif; ?>"
+                       class="form-control mb-4 fm-p <?php if (Request::hasError('password_verify')): ?>error <?php endif; ?>"
                        name="password_verify"
                        placeholder="Repeter le mot de passe" autocomplete="new-password">
             </div>
