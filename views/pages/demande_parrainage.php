@@ -1,4 +1,5 @@
 <!-- Main Content -->
+
 <style>
     body{
         background-image: url("images/pigeryakro.jpeg") ;
@@ -126,11 +127,20 @@
                 <div class="row">
                     <form control="" class="form-group" method="post">
                         <div class="row">
+                            <?php
+                            //var_dump($rq);
+                            if(@$rq->hasError("date")){?>
+                            <span class="alert-danger"><?= $rq->error("date");?></span>
+                            <?php }?>
                             <label for="date_par">Date</label>
                             <input type="date" name="date" id="date_par" class="form__input" >
                         </div>
                         <div class="row">
                             <!-- <span class="fa fa-lock"></span> -->
+                            <?php if(@$rq->hasError("lieu")){
+                                ?>
+                                <span class="alert-danger"><?= $rq->error("lieu");?></span>
+                            <?php }?>
                             <label for="lieu-par">Lieu</label>
                             <input type="text" name="lieu" id="lieu_par" class="form__input">
                         </div>

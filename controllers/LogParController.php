@@ -21,8 +21,10 @@ class LogParController extends Controller
             foreach ($erreurs as $key => $value){
                 $this->request->error($key,$value);
             }
+        }else{
+            $title="Tableau de Bord";
+            $this->load_views('pages.dashbord_par',compact("title"));
         }
-        $title="Tableau de Bord";
-        $this->load_views('pages.dashbord_par',compact("title"));
+
     }
 }

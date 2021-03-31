@@ -14,9 +14,9 @@ use Validator\DemandeValidator;
 class ParrainageController extends Controller
 {
     public function demande(){
+        $rq = $this->request;
         $title="Faire une Demande";
-
-       $this->load_views('pages.demande_parrainage',compact("title"));
+       $this->load_views('pages.demande_parrainage',compact("title","rq"));
         //return new View("pages.demande_parrainage",[]);
     }
     public function generatDemand(){
@@ -25,14 +25,30 @@ class ParrainageController extends Controller
             $valide_par = $valide_par->validateCustermer($this->request->inputs());
             if($valide_par->fails()){
                 $erreurs = $valide_par->errors()->firstOfAll();
+                //var_dump($erreurs);
                 foreach ($erreurs as $key => $value){
-                    $this->request->error($key,$value);
+                    try {
+                        $this->request->error($key, $value);
+                    } catch (\Exception $e) {
+                    }
                 }
+                $rq = $this->request;
+                $title="Faire une Demande";
+                $scripts =
+                    [
+                        sprintf("<script src='%spublic/js/congrat_demand.js'></script>", rootUrl())
+                    ];
+                return redirect("pages.demande_parrainage",false,301,compact("rq","title","scripts"));
+
+            }else{
+                $title="Faire une Demande";
+                $dm = new Demande();
+                $dm=  $dm->create($this->request->inputs());
+                $cmpt_dmd= new Demand_Acount();
+                $cmpt_dmd = $cmpt_dmd->create($this->demand_cmpt_info($dm));
+                return redirect("pages.demande_congrate",false,200,compact("title"));
+
             }
-        $dm = new Demande();
-           $dm=  $dm->create($this->request->inputs());
-           $cmpt_dmd= new Demand_Acount();
-           $cmpt_dmd = $cmpt_dmd->create($this->demand_cmpt_info($dm));
     }
     private function demand_cmpt_info($dm){
         $cmpt= new Demand_Acount();
