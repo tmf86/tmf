@@ -1,9 +1,10 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-lg-12">
-            <div class="">
-                <div class="card-body">
-                    <div class="feed-widget mt-4">
+            <div class="mt-2">
+                <div class="p-2">
+                    <div class="feed-widget">
+                        <h4 class="page-title">Informatique</h4>
                         <div class="col-sm-12n text-end mb-4">
                             <button class="btn btn-success text-white" data-toggle="modal"
                                     data-target="#forum-add">Creer un sujet

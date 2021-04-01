@@ -1,7 +1,6 @@
 <div class="container-fluid">
     <div class="row">
-        <!-- column -->
-        <div class="col-12">
+        <div class="col-lg-12 p-0">
             <div class="card-body">
                 <h4>Forums</h4>
             </div>

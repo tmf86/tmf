@@ -137,19 +137,37 @@ use Contoller\Middleware\Auth;
         <div class="page-breadcrumb">
             <div class="row align-items-center">
                 <div class="col-5">
-                    <h4 class="page-title">Profile Page</h4>
-                    <div class="d-flex align-items-center">
+                    <?php if (current_route() === buildpath('profile')) : ?>
+                        <h4 class="page-title">Profile</h4>
+                    <?php endif; ?>
+                    <?php $current_route = current_route();
+                    if ($current_route === buildpath('forum') || $current_route === buildpath('forum-detail')) :?>
+                        <h4 class="page-title">Forum</h4>
+                    <?php endif; ?>
+                    <div class="d-flex align-items-center mt-3">
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">Library</li>
+                                <li class="breadcrumb-item"><a href="<?= buildpath('home') ?>">Acceuil</a></li>
+                                <?php $current_route = current_route();
+                                if ($current_route === buildpath('forum') || $current_route === buildpath('forum-detail')) :?>
+                                    <li class="breadcrumb-item active" aria-current="page"><a
+                                                href="<?= buildpath('forum') ?>">Forum</a></li>
+                                    <?php if (current_route() === buildpath('forum-detail')): ?>
+                                        <li class="breadcrumb-item active" aria-current="page"><a
+                                                    href="<?= buildpath('forum-detail') ?>">Informatique</a></li>
+                                    <?php endif ?>
+                                <?php endif; ?>
+                                <?php if (current_route() === buildpath('profile')) : ?>
+                                    <li class="breadcrumb-item active" aria-current="page">Paramètres</li>
+                                <?php endif; ?>
+
                             </ol>
                         </nav>
                     </div>
                 </div>
                 <div class="col-7">
                     <div class="text-end upgrade-btn">
-                        <?php if (Auth::asUserAuthenticated()): ?>
+                        <?php if (Auth::asUserAuthenticated() && current_route() === buildpath('profile')): ?>
                             <a href="" class="btn btn-danger text-white"
                                target="">Supprimer le compte</a>
                         <?php endif; ?>
