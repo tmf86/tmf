@@ -4,7 +4,7 @@
  */
 
 define("VIEW_DIRECTORY", "views/");
-define("APP_URL", "http://localhost/Cpy-Mvc/");
+define("APP_URL", "");
 
 /**
  * Constantes Globale

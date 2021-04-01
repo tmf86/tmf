@@ -17,8 +17,9 @@
                     <tr>
                         <td>
                             <div class="d-flex align-items-center">
-                                <div class="m-r-10"><a
-                                            class="btn btn-circle d-flex btn-info text-white">IN</a>
+                                <div class="m-r-10">
+                                    <a href="<?= buildpath('forum/category/informatique') ?>"
+                                       class="btn btn-circle d-flex btn-info text-white">IN</a>
                                 </div>
                                 <div class="forum-name">
                                     <h4 class="m-b-0 font-16">INFORMATIQUE</h4>
@@ -36,20 +37,81 @@
                     <tr>
                         <td>
                             <div class="d-flex align-items-center">
-                                <div class="m-r-10"><a
-                                            class="btn btn-circle d-flex btn-info text-white">CO</a>
+                                <div class="m-r-10">
+                                    <a href="<?= buildpath('forum/category/informatique') ?>"
+                                       class="btn btn-circle d-flex btn-info text-white">IN</a>
                                 </div>
                                 <div class="forum-name">
-                                    <h4 class="m-b-0 font-16">COMPTABILITE</h4>
+                                    <h4 class="m-b-0 font-16">INFORMATIQUE</h4>
                                 </div>
                             </div>
                         </td>
-                        <td class="text-center">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut quae,
-                            quaerat. Aliquam dolore doloribus esse et, explicabo illum itaque magni maxime modi non
-                            obcaecati placeat provident, quaerat, reiciendis sequi sunt.
+                        <td class="text-center"> Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                            Accusantium dolor esse illum iure nobis saepe sed similique veritatis? Aliquam cumque
+                            dolore eaque earum eum ipsum magnam nihil porro, quisquam voluptatum.
                         </td>
                         <td class="text-end">
-                            <label class="label label-success">Adherer</label>
+                            <label class="label label-danger">Quitter</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="d-flex align-items-center">
+                                <div class="m-r-10">
+                                    <a href="<?= buildpath('forum/category/informatique') ?>"
+                                       class="btn btn-circle d-flex btn-info text-white">IN</a>
+                                </div>
+                                <div class="forum-name">
+                                    <h4 class="m-b-0 font-16">INFORMATIQUE</h4>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="text-center"> Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                            Accusantium dolor esse illum iure nobis saepe sed similique veritatis? Aliquam cumque
+                            dolore eaque earum eum ipsum magnam nihil porro, quisquam voluptatum.
+                        </td>
+                        <td class="text-end">
+                            <label class="label label-danger">Quitter</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="d-flex align-items-center">
+                                <div class="m-r-10">
+                                    <a href="<?= buildpath('forum/category/informatique') ?>"
+                                       class="btn btn-circle d-flex btn-info text-white">IN</a>
+                                </div>
+                                <div class="forum-name">
+                                    <h4 class="m-b-0 font-16">INFORMATIQUE</h4>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="text-center"> Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                            Accusantium dolor esse illum iure nobis saepe sed similique veritatis? Aliquam cumque
+                            dolore eaque earum eum ipsum magnam nihil porro, quisquam voluptatum.
+                        </td>
+                        <td class="text-end">
+                            <label class="label label-danger">Quitter</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="d-flex align-items-center">
+                                <div class="m-r-10">
+                                    <a href="<?= buildpath('forum/category/informatique') ?>"
+                                       class="btn btn-circle d-flex btn-info text-white">IN</a>
+                                </div>
+                                <div class="forum-name">
+                                    <h4 class="m-b-0 font-16">INFORMATIQUE</h4>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="text-center"> Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                            Accusantium dolor esse illum iure nobis saepe sed similique veritatis? Aliquam cumque
+                            dolore eaque earum eum ipsum magnam nihil porro, quisquam voluptatum.
+                        </td>
+                        <td class="text-end">
+                            <label class="label label-danger">Quitter</label>
                         </td>
                     </tr>
                     </tbody>

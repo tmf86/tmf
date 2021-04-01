@@ -5,15 +5,20 @@
                 <div class="p-2">
                     <div class="feed-widget">
                         <h4 class="page-title">Informatique</h4>
-                        <div class="col-sm-12n text-end mb-4">
-                            <button class="btn btn-success text-white" data-toggle="modal"
-                                    data-target="#forum-add">Creer un sujet
-                            </button>
+                        <div class="col-sm-12 d-flex mb-4 justfy-content-space-between">
+                            <div class="forum-msg w-75">
+                                Les sujets les plus recents de la categorie <?= $category ?>
+                            </div>
+                            <div>
+                                <button class="btn btn-success text-white" data-toggle="modal"
+                                        data-target="#forum-add">creer
+                                </button>
+                            </div>
                         </div>
                         <ul class="list-style-none feed-body m-0 p-b-20">
                             <li class="feed-item p-3">
                                 <div class="feed-icon">
-                                    <img src="<?=buildpath('images/users/1.jpg') ?>" alt="user" width="40"
+                                    <img src="<?= buildpath('images/users/1.jpg') ?>" alt="user" width="40"
                                          class="rounded-circle">
                                 </div>
                                 <div class="p-2">
@@ -30,12 +35,12 @@
                             </li>
                             <li class="feed-item p-3">
                                 <div class="feed-icon">
-                                    <img src="images/users/1.jpg" alt="user" width="40"
+                                    <img src="<?= buildpath('images/users/1.jpg') ?>" alt="user" width="40"
                                          class="rounded-circle">
                                 </div>
                                 <div class="p-2">
                                     Comment afficher du text a la console en python ... <br>
-                                    <span style="opacity: 0.5; font-size: 13px; font-style: italic"> Par JulienFeraux1 27 mars 2021 à 22:58:16</span>
+                                    <span style="opacity: 0.8; font-size: 13px; font-weight: 700 ; fp"> Par JulienFeraux1 27 mars 2021 à 22:58:16</span>
                                 </div>
                                 <div class="p-2">
                                     <span class="">20 messages</span>
@@ -47,12 +52,12 @@
                             </li>
                             <li class="feed-item p-3">
                                 <div class="feed-icon">
-                                    <img src="images/users/1.jpg" alt="user" width="40"
+                                    <img src="<?= buildpath('images/users/1.jpg') ?>" alt="user" width="40"
                                          class="rounded-circle">
                                 </div>
                                 <div class="p-2">
                                     Comment afficher du text a la console en python ... <br>
-                                    <span style="opacity: 0.5; font-size: 13px; font-style: italic"> Par JulienFeraux1 27 mars 2021 à 22:58:16</span>
+                                    <span style="opacity: 0.8; font-size: 13px; font-weight: 700 ; fp"> Par JulienFeraux1 27 mars 2021 à 22:58:16</span>
                                 </div>
                                 <div class="p-2">
                                     <span class="">20 messages</span>
@@ -64,63 +69,12 @@
                             </li>
                             <li class="feed-item p-3">
                                 <div class="feed-icon">
-                                    <img src="images/users/1.jpg" alt="user" width="40"
+                                    <img src="<?= buildpath('images/users/1.jpg') ?>" alt="user" width="40"
                                          class="rounded-circle">
                                 </div>
                                 <div class="p-2">
                                     Comment afficher du text a la console en python ... <br>
-                                    <span style="opacity: 0.5; font-size: 13px; font-style: italic"> Par JulienFeraux1 27 mars 2021 à 22:58:16</span>
-                                </div>
-                                <div class="p-2">
-                                    <span class="">20 messages</span>
-                                </div>
-                                <div class="px-2">
-                                     <span class="">Dernier message  <br> par <strong>NadfriJS</strong>
-                                    Il y a environ 5 heures</span>
-                                </div>
-                            </li>
-                            <li class="feed-item p-3">
-                                <div class="feed-icon">
-                                    <img src="images/users/1.jpg" alt="user" width="40"
-                                         class="rounded-circle">
-                                </div>
-                                <div class="p-2">
-                                    Comment afficher du text a la console en python ... <br>
-                                    <span style="opacity: 0.5; font-size: 13px; font-style: italic"> Par JulienFeraux1 27 mars 2021 à 22:58:16</span>
-                                </div>
-                                <div class="p-2">
-                                    <span class="">20 messages</span>
-                                </div>
-                                <div class="px-2">
-                                     <span class="">Dernier message  <br> par <strong>NadfriJS</strong>
-                                    Il y a environ 5 heures</span>
-                                </div>
-                            </li>
-                            <li class="feed-item p-3">
-                                <div class="feed-icon">
-                                    <img src="images/users/1.jpg" alt="user" width="40"
-                                         class="rounded-circle">
-                                </div>
-                                <div class="p-2">
-                                    Comment afficher du text a la console en python ... <br>
-                                    <span style="opacity: 0.5; font-size: 13px; font-style: italic"> Par JulienFeraux1 27 mars 2021 à 22:58:16</span>
-                                </div>
-                                <div class="p-2">
-                                    <span class="">20 messages</span>
-                                </div>
-                                <div class="px-2">
-                                     <span class="">Dernier message  <br> par <strong>NadfriJS</strong>
-                                    Il y a environ 5 heures</span>
-                                </div>
-                            </li>
-                            <li class="feed-item p-3">
-                                <div class="feed-icon">
-                                    <img src="images/users/1.jpg" alt="user" width="40"
-                                         class="rounded-circle">
-                                </div>
-                                <div class="p-2">
-                                    Comment afficher du text a la console en python ... <br>
-                                    <span style="opacity: 0.5; font-size: 13px; font-style: italic"> Par JulienFeraux1 27 mars 2021 à 22:58:16</span>
+                                    <span style="opacity: 0.8; font-size: 13px; font-weight: 700 ; fp"> Par JulienFeraux1 27 mars 2021 à 22:58:16</span>
                                 </div>
                                 <div class="p-2">
                                     <span class="">20 messages</span>

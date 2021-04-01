@@ -15,7 +15,8 @@ use Contoller\Middleware\Auth;
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="<?= buildpath("images/logo.png") ?>">
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,700;1,300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300&display=swap"
+          rel="stylesheet">
     <link href="<?= buildpath("public/css/import/user-dashbord/style.min.css") ?>" rel="stylesheet">
     <link rel="stylesheet" href='<?= buildpath("public/css/dashbord.css") ?>'>
     <?= suppl_tags($links ?? [], LINK) ?>
@@ -41,12 +42,13 @@ use Contoller\Middleware\Auth;
             <div class="navbar-header" data-logobg="skin5">
                 <a class="navbar-brand" href="index.html">
                     <b class="logo-icon">
-                        <img src="images/logo-icon.png" alt="homepage" class="dark-logo"/>
-                        <img src="images/logo-light-icon.png" alt="homepage" class="light-logo"/>
+                        <img src="<?= buildpath('images/logo-icon.png') ?>" alt="homepage" class="dark-logo"/>
+                        <img src="<?= buildpath('images/logo-light-icon.png') ?>" alt="homepage" class="light-logo"/>
                     </b>
                     <span class="logo-text">
-                            <img src="images/logo-text.png" alt="homepage" class="dark-logo"/>
-                            <img src="images/logo-light-text.png" class="light-logo" alt="homepage"/>
+                            <img src="<?= buildpath('images/logo-text.png') ?>" alt="homepage" class="dark-logo"/>
+                            <img src="<?= buildpath('images/logo-light-text.png') ?>" class="light-logo"
+                                 alt="homepage"/>
                         </span>
                 </a>
                 <?php if (Auth::asUserAuthenticated()): ?>
@@ -72,10 +74,11 @@ use Contoller\Middleware\Auth;
                                  class="rounded-circle" width="31">
                         </a>
                         <?php if (Auth::asUserAuthenticated()): ?>
-                            <ul class="dropdown-menu dropdown-menu-end user-dd animated"
+                            <ul class="dropdown-menu dropdown-menu-end user-dd animated p-0"
                                 aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="javascript:void(0)"><i class="ti-user m-r-5 m-l-5"></i>
-                                    Mon profile</a>
+                                <a class="dropdown-item <?php if (current_route() === buildpath('profile')) : ?> active <?php endif; ?>"
+                                   href="<?= buildpath('profile') ?>"><i
+                                            class="ti-user m-r-5 m-l-5"></i> Mon profile</a>
                                 <a class="dropdown-item" href="javascript:void(0)"><i class="ti-email m-r-5 m-l-5"></i>
                                     Inbox</a>
                             </ul>
@@ -101,8 +104,9 @@ use Contoller\Middleware\Auth;
                                         <i class="fa fa-angle-down"></i></h5>
                                     <span class="op-5 user-email"><?= $user->email ?></span>
                                 </a>
-                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="Userdd">
-                                    <a class="dropdown-item" href="javascript:void(0)"><i
+                                <div class="dropdown-menu dropdown-menu-end p-0" aria-labelledby="Userdd">
+                                    <a class="dropdown-item <?php if (current_route() === buildpath('profile')) : ?> active <?php endif; ?>"
+                                       href="<?= buildpath('profile') ?>"><i
                                                 class="ti-user m-r-5 m-l-5"></i> Mon profile</a>
                                     <a class="dropdown-item" href="javascript:void(0)"><i
                                                 class="ti-email m-r-5 m-l-5"></i> Inbox</a>
@@ -140,24 +144,27 @@ use Contoller\Middleware\Auth;
                         <h4 class="page-title">Profile</h4>
                     <?php endif; ?>
                     <?php $current_route = current_route();
-                    if ($current_route === buildpath('forum') || $current_route === buildpath('forum-detail')) :?>
+                    if ($current_route === buildpath('forum') || $current_route === buildpath(sprintf('forum/category/%s', $category ?? ''))) :?>
                         <h4 class="page-title">Forum</h4>
                     <?php endif; ?>
                     <div class="d-flex align-items-center mt-3">
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="<?= buildpath('home') ?>">Acceuil</a></li>
-                                <?php $current_route = current_route();
-                                if ($current_route === buildpath('forum') || $current_route === buildpath('forum-detail')) :?>
+                                <?php if (current_route() === buildpath('forum')) : ?>
                                     <li class="breadcrumb-item active" aria-current="page"><a
                                                 href="<?= buildpath('forum') ?>">Forum</a></li>
-                                    <?php if (current_route() === buildpath('forum-detail')): ?>
-                                        <li class="breadcrumb-item active" aria-current="page"><a
-                                                    href="<?= buildpath('forum-detail') ?>">Informatique</a></li>
-                                    <?php endif ?>
+                                <?php endif ?>
+                                <?php if (current_route() === buildpath(sprintf('forum/category/%s', $category ?? ''))): ?>
+                                    <li class="breadcrumb-item" aria-current="page"><a
+                                                href="<?= buildpath('forum') ?>">Forum</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page"><a
+                                                href="<?= buildpath(sprintf('forum/category/%s', $category ?? '')) ?>"><?= $category ?></a>
+                                    </li>
                                 <?php endif; ?>
                                 <?php if (current_route() === buildpath('profile')) : ?>
-                                    <li class="breadcrumb-item active" aria-current="page">Paramètres</li>
+                                    <li class="breadcrumb-item active" aria-current="page"><a
+                                                href="<?= buildpath('profile') ?>">Paramètres</a></li>
                                 <?php endif; ?>
 
                             </ol>

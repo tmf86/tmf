@@ -1,6 +1,6 @@
 <footer class="footer text-center">
-<!--    All Rights Reserved by Xtreme Admin. Designed and Developed by <a-->
-<!--            href="https://www.wrappixel.com">WrapPixel</a>.-->
+    <!--    All Rights Reserved by Xtreme Admin. Designed and Developed by <a-->
+    <!--            href="https://www.wrappixel.com">WrapPixel</a>.-->
 </footer>
 </div>
 </div>
@@ -16,8 +16,6 @@
 <script src="<?= buildpath('public/js/import/user-dashbord/sidebarmenu.js') ?>"></script>
 <!--Custom JavaScript -->
 <script src="<?= buildpath('public/js/import/user-dashbord/custom.js') ?>"></script>
-<!--This page JavaScript -->
-<script src="<?= buildpath('public/js/import/user-dashbord/dashboard.js') ?>"></script>
 <?= suppl_tags($scripts ?? [], SCRIPT) ?>
 </body>
 </html>

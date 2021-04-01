@@ -3,3 +3,40 @@
     outline: 0;
     box-shadow: none !important;
 }
+
+/*Forum Css*/
+.breadcrumb-item > a {
+    color: #414755;
+    font-weight: 400;
+}
+
+.breadcrumb-item.active > a {
+    color: #4FC3F7;
+}
+
+a.freinds {
+    color: #4FC3F7;
+}
+
+a.subject {
+    color: #54C8B3;
+}
+
+a.stars {
+    color: #F1C40F;
+}
+
+.justfy-content-space-between {
+    justify-content: space-between !important;
+}
+
+.forum-msg {
+    font-size: 1rem;
+    font-weight: 400;
+}
+
+@media (max-width: 767.98px) {
+    a.subject, a.freinds, a.stars {
+        font-size: 0.78rem;
+    }
+}

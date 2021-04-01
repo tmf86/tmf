@@ -34,12 +34,13 @@ class ForumController extends Controller
     }
 
     /**
+     * @param string $category
      * @return View
      */
-    public function detail()
+    public function category(string $category)
     {
-        $title = 'Forum';
+        $title = 'Forum | ' . ucfirst($category);
         $user = $this->user;
-        return $this->load_views('dashbord.forum-detail', compact('title', 'user'));
+        return $this->load_views('dashbord.forum-category', compact('title', 'user', 'category'));
     }
 }
