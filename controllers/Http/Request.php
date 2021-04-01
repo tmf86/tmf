@@ -17,6 +17,8 @@ class Request
     /*** @var array */
     private $sessions;
     /*** @var array */
+    /*** @var array */
+    private $files;
     private static $errors = [];
 
     /**
@@ -28,7 +30,6 @@ class Request
         $this->cookies = &$_COOKIE;
         $this->sessions = &$_SESSION;
         $this->inputs = &$_POST;
-//        var_dump('okl');
     }
 
     /**
@@ -186,7 +187,6 @@ class Request
     {
         self::$errors = $errors;
     }
-
 
     /**
      * @param $name

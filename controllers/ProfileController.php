@@ -39,6 +39,7 @@ class ProfileController extends Controller
 
     public function profileUpdate()
     {
+        debug($_FILES);
 
     }
 }

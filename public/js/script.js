@@ -260,6 +260,21 @@ $(function () {
         console.log(isvalid)
     })
     $('#form-update-profile').submit(function (e) {
-        e.prevent
+        e.preventDefault()
+        $.ajax({
+            url: buildUrl('profile-update'),
+            type: 'post',
+            dataType: 'html',
+            cache: false,
+            contentType: false,
+            processData: false,
+            data: new FormData(this),
+            success: function (data) {
+                $('#debug').html(data)
+            },
+            error: function (xhr) {
+                $('#debug').html(xhr.responseText)
+            }
+        })
     })
 })
