@@ -55,7 +55,7 @@ INSERT INTO `demande` (`id_demad`, `date`, `lieu`, `filiere`, `qualite`, `id_men
 --
 ALTER TABLE `demande`
   ADD PRIMARY KEY (`id_demad`),
-  ADD KEY `id_menbre` (`id_menbre`);
+  ADD KEY `id_menbre` (`id_membre`);
 
 --
 -- AUTO_INCREMENT pour les tables déchargées
@@ -75,7 +75,7 @@ ALTER TABLE `demande`
 -- Contraintes pour la table `demande`
 --
 ALTER TABLE `demande`
-  ADD CONSTRAINT `demande_ibfk_1` FOREIGN KEY (`id_menbre`) REFERENCES `membre` (`mat_menbre`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `demande_ibfk_1` FOREIGN KEY (`id_membre`) REFERENCES `membre` (`mat_membre`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
