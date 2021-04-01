@@ -84,9 +84,9 @@ trait Auth
     }
 
     /**
-     * @return User;
+     * @return User|bool;
      */
-    public function user(): User
+    public function user()
     {
         $user = new User();
         if ($this->isAuth()) {

@@ -1,17 +1,4 @@
 $(function () {
-    //alert("ok");
-    /*$('#acces_sujet').click(function (e){
-         e.preventDefault();
-         $('#dialog').css('display','block');
-     });
-     $('.close_dialog').click(function (){
-         $('#dialog').css('display','none');
-     });
-     $(window).click(function (event){
-         if (event.target ===$('#dialog')){
-             $('#dialog').css('display','none');
-         }
-     });*/
     $(".annonce_click").click(function () {
         //alert("ok");
         if ($(".annonce_content").css("display") === "block") {
@@ -22,17 +9,7 @@ $(function () {
             $(this).html("MOINS");
         }
     });
-    /* lecteur();
-     function lecteur(){
-         $("#current_moovie").src = $("#moovie_list iframe")[2];
-         $("#current_moovie").play();
-         $("#moovie_list iframe").click(function (e){
-             e.preventDefault();
-             $("current_moovie").src = this;
-             $("#current_moovie").play();
-         });
-     }*/
-    //Annimation des fa icon a coté des inputs et aussi des labels lorsqu'il y a une erreur
+//Annimation des fa icon a coté des inputs et aussi des labels lorsqu'il y a une erreur
     const input = $("input")
     input.focus(function () {
         ($('#alert')) ? $('#alert').html('') : '';
@@ -49,7 +26,7 @@ $(function () {
     input.focusout(function () {
         $(`input[name="${this.name}"] ~ span.icon `).toggleClass("active")
     })
-    //Getion dynamique des select de la date de naissance
+//Getion dynamique des select de la date de naissance
     const [day, month, year] = [$("#jour"), $("#mois"), $("#annee")]
     const Leap = function () {
         // const yearVal = $(year).val();
@@ -192,7 +169,6 @@ $(function () {
             $("#point-loader").html($("#point-loader").html() + ".")
         }
     }, 1000)
-
 //Soumission du formulaire de connexion en Ajax
     $('#form-login').submit(function (e) {
         e.preventDefault()
@@ -282,5 +258,8 @@ $(function () {
             $(`label[for='${this.name}'] small`).html('desolé le fichier selectionné n\'est pas une image valide, veuillez en selectionner un autre .');
         }
         console.log(isvalid)
+    })
+    $('#form-update-profile').submit(function (e) {
+        e.prevent
     })
 })

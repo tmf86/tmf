@@ -49,7 +49,7 @@
         <div class="col-md-6">
             <div class="card">
                 <div class="card-body">
-                    <form class="form-horizontal form-material mx-2">
+                    <form class="form-horizontal form-material mx-2" id="form-update-profile">
                         <div class="form-group">
                             <label for="file" class="col-md-12">Image de profile <small class="small"></small></label>
                             <div class="col-md-12 d-flex justfy-content-space-between">
@@ -95,7 +95,8 @@
                         <div class="form-group">
                             <label class="col-md-12" for="about">A propos de vous</label>
                             <div class="col-md-12">
-                                <textarea rows="5" name="about" id="about" class="form-control form-control-line"></textarea>
+                                <textarea rows="5" name="about" id="about"
+                                          class="form-control form-control-line"></textarea>
                             </div>
                         </div>
                         <div class="form-group">
