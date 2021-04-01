@@ -28,7 +28,12 @@ class ProfileController extends Controller
     public function index()
     {
         $title = 'Profile';
+        $scripts =
+            [
+                sprintf("<script  src='%spublic/js/functions.js'></script>", rootUrl()),
+                sprintf("<script  src='%spublic/js/script.js'></script>", rootUrl())
+            ];
         $user = $this->user();
-        return $this->load_views('dashbord.profile', compact('title', 'user'));
+        return $this->load_views('dashbord.profile', compact('title', 'user','scripts'));
     }
 }

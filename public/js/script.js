@@ -245,4 +245,42 @@ $(function () {
             }
         })
     })
+//Mise a jour du profile
+    $("#file").on("change", function () {
+        $(`label[for='${this.name}'] small`).html('')
+        $("#img-container").css("border", "none")
+        /*file.extensionValidate(false);
+            *pseudo code
+        1-dès la selection d'un nouveau fichier
+                - recuperer le fichier selectionner
+                - recuperer l'extension du fichier recupéré
+         2- se construir un tableau d'extension valide et une variable boolean
+           pour s'avoir si l'extension du fichier selectioné se trouve dans notre tableau ou non
+           par defaut cette variable sera a faux
+                 - verifier dans ce tableau si l'extension du fichier selectionné s'y trouve
+                 - si oui alors mettre la variable booleen  a vrai
+         3 - maintenant verifier la valeur  de la variable booleenne
+                 - si elle est a vrai alors on crée un chemin d'accès au fichier selectionné
+                 - on selectionne la balise image succeptible de recevoir notre fichier pour l'afficher et on le lui passe
+                 -  si non alors alors on remet l'image par defaut et on genère un message d' erreur de notification a l'utilisateur
+        */
+        const fileSelected = this.files[0]
+        const fileSelectedName = this.files[0].name
+        const fileSelectedExt = fileSelectedName.substring(fileSelectedName.indexOf("."))
+        const extValid = [".png", ".jpg", ".gif", ".jpeg"]
+        let isvalid = false
+        for (let i = 0; i < extValid.length; i++) {
+            if (extValid[i] === fileSelectedExt) {
+                isvalid = true;
+            }
+        }
+        if (isvalid) {
+            const filePath = window.URL.createObjectURL(fileSelected)
+            $("#img-container").attr("src", filePath)
+        } else {
+            $("#img-container").attr("src", "images/user-default.jpg").css("border", "1px solid #ff0000")
+            $(`label[for='${this.name}'] small`).html('desolé le fichier selectionné n\'est pas une image valide, veuillez en selectionner un autre .');
+        }
+        console.log(isvalid)
+    })
 })
