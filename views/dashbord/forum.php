@@ -2,13 +2,13 @@
     <div class="row">
         <div class="col-lg-12 p-0">
             <div class="card-body">
-                <h4>Forums</h4>
+                <h4>Liste des forums</h4>
             </div>
             <div class="table-responsive">
                 <table class="table v-middle">
                     <thead>
                     <tr class="bg-light">
-                        <th class="border-top-0 text-start">Forum</th>
+                        <th class="border-top-0 text-start">Categories</th>
                         <th class="border-top-0 text-center">Description</th>
                         <th class="border-top-0 text-end">Action</th>
                     </tr>

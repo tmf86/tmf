@@ -13,12 +13,12 @@
                         <ul class="list-style-none feed-body m-0 p-b-20">
                             <li class="feed-item p-3">
                                 <div class="feed-icon">
-                                    <img src="images/users/1.jpg" alt="user" width="40"
+                                    <img src="<?=buildpath('images/users/1.jpg') ?>" alt="user" width="40"
                                          class="rounded-circle">
                                 </div>
                                 <div class="p-2">
                                     Comment afficher du text a la console en python ... <br>
-                                    <span style="opacity: 0.8; font-size: 13px; font-style: italic"> Par JulienFeraux1 27 mars 2021 à 22:58:16</span>
+                                    <span style="opacity: 0.8; font-size: 13px; font-weight: 700 ; fp"> Par JulienFeraux1 27 mars 2021 à 22:58:16</span>
                                 </div>
                                 <div class="p-2">
                                     <span class="">20 messages</span>

@@ -1,21 +1,12 @@
 @import url('fontawersome/all.css');
 
 html, body {
-    font-family: 'Lato', sans-serif;
+    font-family: 'Ubuntu', sans-serif;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/*strong {*/
-/*    font-weight: 700 !important;*/
-/*}*/
-
-/*.fm-family {*/
-/*    font-family: 'Lato', sans-serif !important;*/
-/*    font-weight: 700 !important;*/
-/*    text-align: start;*/
-/*}*/
 .header {
     font-size: 1.1rem !important;
 }

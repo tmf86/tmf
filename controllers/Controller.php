@@ -12,6 +12,8 @@ use View\View;
 abstract class Controller
 {
 
+    use Auth;
+
     /**
      * @var Request
      */

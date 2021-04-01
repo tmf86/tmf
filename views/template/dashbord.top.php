@@ -15,8 +15,7 @@ use Contoller\Middleware\Auth;
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="<?= buildpath("images/logo.png") ?>">
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700&display=swap"
-          rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,700;1,300&display=swap" rel="stylesheet">
     <link href="<?= buildpath("public/css/import/user-dashbord/style.min.css") ?>" rel="stylesheet">
     <link rel="stylesheet" href='<?= buildpath("public/css/dashbord.css") ?>'>
     <?= suppl_tags($links ?? [], LINK) ?>
