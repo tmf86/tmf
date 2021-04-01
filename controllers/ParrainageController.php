@@ -9,6 +9,7 @@ use Contoller\Http\Request;
 use Model\Demand_Acount;
 use Model\Demande;
 use Validator\DemandeValidator;
+use View\View;
 
 //use View\View;
 
@@ -19,28 +20,29 @@ class ParrainageController extends Controller
     {
         $rq = $this->request;
         $title = "Faire une Demande";
-        $this->load_views('pages.demande_parrainage', compact("title"));
+        $this->load_views('pages.demande_parrainage', compact("title"),false);
     }
 
     public function generatDemand()
     {
-        echo "ok";
+        //echo "ok";
         $valide_par = new DemandeValidator();
         $valide_par = $valide_par->validateCustermer($this->request->inputs());
         if ($valide_par->fails()) {
             $erreurs = $valide_par->errors()->firstOfAll();
             Request::setErrors($erreurs);
             $title = "Faire une Demande";
-            $scripts = [sprintf("<script src='%spublic/js/congrat_demand.js'></script>", rootUrl())];
-            return redirect("pages.demande_parrainage", false, 301, compact("title", "scripts"));
+            $scripts = [sprintf("<script src='%spublic/js/congrate_demand.js'></script>", rootUrl())];
+            return new View("pages.demande_parrainage", compact("title",), false);
 
+        } else {
+            $title = "Faire une Demande";
+            $dm = new Demande();
+            $dm = $dm->create($this->request->inputs());
+            $cmpt_dmd = new Demand_Acount();
+            $cmpt_dmd = $cmpt_dmd->create($this->demand_cmpt_info($dm));
+            return new View("pages.demande_congrate", compact("title"), false);
         }
-        $title = "Faire une Demande";
-        $dm = new Demande();
-        $dm = $dm->create($this->request->inputs());
-        $cmpt_dmd = new Demand_Acount();
-        $cmpt_dmd = $cmpt_dmd->create($this->demand_cmpt_info($dm));
-        return redirect("pages.demande_congrate", false, 200, compact("title"));
     }
 
     private function demand_cmpt_info($dm)

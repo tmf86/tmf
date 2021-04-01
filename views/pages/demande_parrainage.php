@@ -1,5 +1,14 @@
 <!-- Main Content -->
-
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href='<?= buildpath("public/css/import/bootstrap/bootstrap-mdb.css") ?>'>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href='<?= buildpath("public/css/style.css") ?>'>
 <style>
     body {
         background-image: url("images/pigeryakro.jpeg");
@@ -15,7 +24,7 @@
     }
 
     .main-content {
-        width: 70%;
+        width: 80%;
         border-radius: 20px;
         box-shadow: 0 5px 5px rgba(0, 0, 0, .4);
         margin: 5em auto;
@@ -132,6 +141,8 @@
         /* padding: 0.7rem;*/
     }
 </style>
+</head>
+<body>
 <div class="container-fluid">
     <div class="row main-content bg-success text-center">
         <div class="col-md-4 text-center company__info">
@@ -202,6 +213,14 @@
         </div>
     </div>
 </div>
+<script src="<?= buildpath('public/js/import/jquery/jquery.js') ?>"></script>
+<script src="<?= buildpath('public/js/import/boostrap/bootstrap.js') ?>"></script>
+<script src="<?= buildpath('public/js/import/boostrap/popper.js') ?>"></script>
+<script src="<?= buildpath('public/js/import/mdb/mdb.js') ?>"></script>
+<?= suppl_tags($scripts ?? [], SCRIPT) ?>
+</body>
+</html>
+
 <!-- Footer -->
 <!--div class="container-fluid text-center footer">
     Coded with &hearts; by <a href="https://bit.ly/yinkaenoch">Yinka.</a></p>

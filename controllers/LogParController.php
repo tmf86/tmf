@@ -10,7 +10,7 @@ class LogParController extends Controller
 {
     public function parrainage(){
         $title="Acceder au Parrainage";
-        $this->load_views('pages.parrainage',compact("title"));
+        $this->load_views('pages.parrainage',compact("title"),false);
     }
 
     public function loging(){

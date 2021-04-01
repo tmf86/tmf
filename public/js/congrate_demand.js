@@ -1,5 +1,5 @@
 $(document).ready(function (){
-
+alert("ok");
   /*  $("#btn_simul").click();
     var bouton = document.getElementById("btn_simul");
     /* setInterval(
