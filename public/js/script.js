@@ -222,7 +222,7 @@ $(function () {
         })
     })
 //Mise a jour du profile
-    $("#file").on("change", function () {
+    $("#user-pic").on("change", function () {
         $(`label[for='${this.name}'] small`).html('')
         $("#img-container").css("border", "none")
         /*file.extensionValidate(false);

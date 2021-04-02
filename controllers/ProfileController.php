@@ -6,6 +6,8 @@ namespace Contoller;
 
 use Contoller\Http\Request;
 use Contoller\Middleware\Auth;
+use Service\File\Files;
+use Service\File\FilesUpload;
 use View\View;
 
 class ProfileController extends Controller
@@ -37,7 +39,7 @@ class ProfileController extends Controller
 
     public function profileUpdate()
     {
-        debug($_FILES);
-
+        $fileManager = new Files();
+        debug($fileManager->file('user-pic')->save());
     }
 }

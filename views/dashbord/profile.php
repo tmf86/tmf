@@ -51,20 +51,21 @@
                 <div class="card-body">
                     <form class="form-horizontal form-material mx-2" id="form-update-profile">
                         <div class="form-group">
-                            <label for="file" class="col-md-12">Image de profile <small class="small"></small></label>
+                            <label for="user-pic" class="col-md-12">Image de profile <small
+                                        class="small"></small></label>
                             <div class="col-md-12 d-flex justfy-content-space-between">
                                 <div>
-                                    <label for="file" class="cursor-pointer">
+                                    <label for="user-pic" class="cursor-pointer">
                                         <img src="<?= buildpath($user->image) ?>"
                                              class="rounded-circle" width="90" height="90"
                                              alt="user-profile-img"
                                              id="img-container"
                                         />
                                     </label>
-                                    <input type="file" id="file" class="d-none" name="file">
+                                    <input type="file" id="user-pic" class="d-none" name="user-pic">
                                 </div>
                                 <div class="pt-5">
-                                    <label for="file">
+                                    <label for="user-pic">
                                         <span class="btn btn-success text-white">choisir</span>
                                     </label>
                                 </div>

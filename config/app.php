@@ -5,6 +5,7 @@
 
 define("VIEW_DIRECTORY", "views/");
 define("APP_URL", "http://localhost/Cpy-Mvc/");
+define("ROOT_DIRECTORY", str_replace('config', '', __DIR__));
 
 /**
  * Constantes Globale
