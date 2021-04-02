@@ -16,6 +16,7 @@
       "Contoller\\Http\\": "controllers/Http",
       "Contoller\\Middleware\\": "controllers/Middleware",
       "Service\\Mailer\\": "src/Services/mailer",
+      "Service\\File\\": "src/Services/File",
       "Validator\\": "src/validators",
       "Validator\\Rules\\": "src/validators/Rules",
       "View\\": "views",

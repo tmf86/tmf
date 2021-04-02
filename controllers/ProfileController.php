@@ -10,8 +10,6 @@ use View\View;
 
 class ProfileController extends Controller
 {
-    use Auth;
-
     /**
      * ProfileController constructor.
      * @param Request $request

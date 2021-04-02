@@ -12,7 +12,6 @@ use View\View;
 
 class LoginController extends Controller
 {
-    use Auth;
 
     public function __construct(Request $request)
     {
