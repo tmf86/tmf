@@ -6,6 +6,7 @@ namespace Contoller\Middleware;
 
 use Firebase\JWT\ExpiredException;
 use Firebase\JWT\JWT;
+use Model\Account;
 use Model\User;
 use View\View;
 
@@ -84,7 +85,7 @@ trait Auth
     }
 
     /**
-     * @return User|bool;
+     * @return Account|bool;
      */
     public function user()
     {

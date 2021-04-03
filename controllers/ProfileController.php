@@ -13,12 +13,18 @@ use View\View;
 class ProfileController extends Controller
 {
     /**
+     * @var bool|\Model\Account|\Model\User
+     */
+    private $user;
+
+    /**
      * ProfileController constructor.
      * @param Request $request
      */
     public function __construct(Request $request)
     {
         parent::__construct($request);
+        $this->user = $this->user();
         $this->useAuth();
     }
 
@@ -33,13 +39,13 @@ class ProfileController extends Controller
                 sprintf("<script  src='%spublic/js/functions.js'></script>", rootUrl()),
                 sprintf("<script  src='%spublic/js/script.js'></script>", rootUrl())
             ];
-        $user = $this->user();
+        $user = $this->user;
         return $this->load_views('dashbord.profile', compact('title', 'user', 'scripts'));
     }
 
     public function profileUpdate()
     {
         $fileManager = new Files();
-//        debug($fileManager->file('user-pic')->save('',$this->user()->id);
+        debug($fileManager->file('user-pic')->save('', $this->user->identifiant));
     }
 }
