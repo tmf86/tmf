@@ -40,6 +40,6 @@ class ProfileController extends Controller
     public function profileUpdate()
     {
         $fileManager = new Files();
-        debug($fileManager->file('user-pic')->save());
+//        debug($fileManager->file('user-pic')->save('',$this->user()->id);
     }
 }

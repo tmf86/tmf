@@ -92,7 +92,7 @@ trait Auth
         if ($this->isAuth()) {
             $user_id = $this->request->session('user_id');
             $user = new User();
-            $user = $user->find($user_id);
+            $user = $user->find($user_id)->account();
         }
         return $user;
     }
