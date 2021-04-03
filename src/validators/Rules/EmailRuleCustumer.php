@@ -44,6 +44,9 @@ class EmailRuleCustumer extends Rule
     public function check($value): bool
     {
         // TODO: Implement check() method.
+        if (empty($value)) {
+            return true;
+        }
         return $this->curl($value, new Request());
     }
 }

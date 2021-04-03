@@ -14,7 +14,7 @@
                                 </a></div>
                             <div class="col-4"><a href="javascript:void(0)" class="link subject"><i
                                             class="icon-people"></i>
-                                    <font class="font-medium"><i class="fas fa-pen-square"></i> Sujets(0)</font>
+                                    <font class="font-medium"><i class="fas fa-pen-square"></i>Sujets(0)</font>
                                 </a></div>
                             <div class="col-4"><a href="javascript:void(0)" class="link stars"><i
                                             class="icon-picture"></i>
@@ -39,7 +39,7 @@
                     <div class="map-box">
                     </div>
                 </div>
-                <div style="padding: 1.2rem">
+                <div style="padding: 3.2rem">
 
                 </div>
             </div>
@@ -80,7 +80,7 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="password" class="col-md-12">Mot de passe</label>
+                            <label for="password" class="col-md-12">Mot de passe <small class="small"></small></label>
                             <div class="col-md-12">
                                 <input type="password" name="password" id="password"
                                        class="form-control form-control-line">
@@ -104,6 +104,9 @@
                             <div class="col-sm-12">
                                 <button class="btn btn-success text-white">Mettre a jour</button>
                             </div>
+                        </div>
+                        <div style="padding:2rem">
+
                         </div>
                     </form>
                 </div>

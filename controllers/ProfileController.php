@@ -8,6 +8,7 @@ use Contoller\Http\Request;
 use Contoller\Middleware\Auth;
 use Service\File\Files;
 use Service\File\FilesUpload;
+use Validator\ProfileUpdateValidator;
 use View\View;
 
 class ProfileController extends Controller
@@ -45,7 +46,11 @@ class ProfileController extends Controller
 
     public function profileUpdate()
     {
-        $fileManager = new Files();
-        debug($fileManager->file('user-pic')->save('', $this->user->identifiant));
+        $profileUpdateValidator = new ProfileUpdateValidator();
+        $validator = $profileUpdateValidator->validateCustermer($this->request->inputs());
+        if ($validator->fails()) {
+            $errors = $validator->errors()->firstOfAll();
+            debug($errors);
+        }
     }
 }
