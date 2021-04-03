@@ -72,7 +72,8 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="email" class="col-md-12">Email <small class="small"></small></label>
+                            <label for="email" class="col-md-12">Email <small
+                                        class="small not-required"></small></label>
                             <div class="col-md-12">
                                 <input type="email" placeholder=""
                                        class="form-control form-control-line" name="email"
@@ -80,16 +81,18 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="password" class="col-md-12">Mot de passe <small class="small"></small></label>
+                            <label for="password" class="col-md-12">Mot de passe <small
+                                        class="small not-required"></small></label>
                             <div class="col-md-12">
                                 <input type="password" name="password" id="password"
                                        class="form-control form-control-line">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-md-12" for="contact">Numero de Telephone</label>
+                            <label class="col-md-12" for="contact">Numero de Telephone <small
+                                        class="small not-required"></small></label>
                             <div class="col-md-12">
-                                <input type="text" placeholder="" id="contact"
+                                <input type="text" placeholder="" id="contact" name="contact"
                                        class="form-control form-control-line">
                             </div>
                         </div>
@@ -105,9 +108,7 @@
                                 <button class="btn btn-success text-white">Mettre a jour</button>
                             </div>
                         </div>
-                        <div style="padding:2rem">
-
-                        </div>
+                        <div id='fix-update-box' style="padding:2rem"></div>
                     </form>
                 </div>
             </div>

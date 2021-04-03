@@ -53,6 +53,10 @@ a.stars {
     padding-left: 0.3rem;
 }
 
+.form-control.error {
+    border-color: red !important;
+}
+
 @media (max-width: 767.98px) {
     a.subject, a.freinds, a.stars {
         font-size: 0.78rem;

@@ -17,10 +17,13 @@ $(function () {
 
         if ($(`input[name="${this.name}"]`).hasClass("error")) {
             $(`label[for='${this.name}'] small`).html('*')
+            $(`label[for='${this.name}'] small.not-required`).html('')
             $(`label[for='${this.name}']`).removeClass("error")
             $(`input[name="${this.name}"] ~ span.icon `).removeClass("error")
             $(`i[data-name='${this.name}']`).removeClass('error')
             $(`input[name="${this.name}"]`).removeClass("error")
+            $('#fix-update-box').css({padding: '2rem'});
+
         }
     })
     input.focusout(function () {
@@ -264,7 +267,7 @@ $(function () {
         $.ajax({
             url: buildUrl('profile-update'),
             type: 'post',
-            dataType: 'html',
+            dataType: 'json',
             cache: false,
             contentType: false,
             processData: false,
@@ -274,6 +277,26 @@ $(function () {
             },
             error: function (xhr) {
                 $('#debug').html(xhr.responseText)
+                const errors = xhr.responseJSON
+                if (xhr.status === 400) {
+                    switch (errors.input_error) {
+                        case true :
+                            for (const property in errors) {
+                                $(`label[for='${property}'] small`).html(errors[property])
+                                $(`input[name="${property}"]`).addClass("error")
+                                console.log(`${property}: ${errors[property]}`);
+                            }
+                            $('#fix-update-box').css({padding: 0});
+                            break;
+                        case false :
+                            alert("Oops ...\0Veuillez Réessayer !")
+                            break;
+                    }
+                } else if (xhr.status === 500) {
+                    alert("Oops ...\nVeuillez Réessayer !")
+                } else if (xhr.status === 409) {
+                    alert("Oops...\nVeuillez verifier l'etat de votre connexion internet et Réesayer !")
+                }
             }
         })
     })

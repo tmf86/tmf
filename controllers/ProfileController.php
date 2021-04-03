@@ -50,7 +50,9 @@ class ProfileController extends Controller
         $validator = $profileUpdateValidator->validateCustermer($this->request->inputs());
         if ($validator->fails()) {
             $errors = $validator->errors()->firstOfAll();
-            debug($errors);
+            $errors['input_error'] = true;
+            return $this->request->ajax($errors, 400);
         }
+        return true;
     }
 }
