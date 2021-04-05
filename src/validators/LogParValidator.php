@@ -15,6 +15,6 @@ class LogParValidator extends ValidatorCustumer
     ];
     protected $rules = [
         'identifiant' => 'required|emailPar',
-        'password' => 'required|password|PasswordPar'
+        'mot_de_passe' => 'required|PasswordPar|password'
     ];
 }

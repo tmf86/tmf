@@ -4,7 +4,7 @@
 namespace Service\Mailer;
 
 
-class AccountCreatedMailer extends Mailer implements MailerSerice
+class DemandMailer extends Mailer implements MailerSerice
 {
     /*** @return Mailer */
 
@@ -14,7 +14,7 @@ class AccountCreatedMailer extends Mailer implements MailerSerice
         $this
             ->from(MAIL_USERNAME, MAIL_SENDER)
             ->subject('Vos identifiants de connexion')
-            ->view('mailer.id', $this->data, true);
+            ->view('mailer.demand', $this->data, true);
         return $this;
     }
 

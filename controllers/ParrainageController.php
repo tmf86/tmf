@@ -8,6 +8,8 @@ namespace Contoller;
 use Contoller\Http\Request;
 use Model\Demand_Acount;
 use Model\Demande;
+use Service\Mailer\AccountCreatedMailer;
+use Service\Mailer\DemandMailer;
 use Validator\DemandeValidator;
 use View\View;
 
@@ -16,11 +18,18 @@ use View\View;
 
 class ParrainageController extends Controller
 {
+    public function __construct(Request $request)
+    {
+        parent::__construct($request);
+        $this->useAuth();
+    }
     public function demande()
     {
+        //$this->isAuth();
+        $user = $this->user();
         $rq = $this->request;
         $title = "Faire une Demande";
-        $this->load_views('pages.demande_parrainage', compact("title"),false);
+        $this->load_views('pages.demande_parrainage', compact("title","user"),false);
     }
 
     public function generatDemand()
@@ -38,8 +47,11 @@ class ParrainageController extends Controller
         } else {
             $title = "Faire une Demande";
             $dm = new Demande();
+            $usr = $this->user();
             $dm = $dm->create($this->request->inputs());
             $cmpt_dmd = new Demand_Acount();
+            $mailer = new DemandMailer($this->demand_cmpt_info($dm));
+            $mailer->to($usr->email,$usr->nom." ".$usr->prenom)->forward();
             $cmpt_dmd = $cmpt_dmd->create($this->demand_cmpt_info($dm));
             return new View("pages.demande_congrate", compact("title"), false);
         }

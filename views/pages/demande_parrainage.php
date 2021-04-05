@@ -195,7 +195,7 @@
                                 <option value="AD">1er ADJOINT</option>
                                 <option value="CDM">2eme ADJOINT</option>
                             </select>
-                            <input type="hidden" value="2" name="id_menbre">
+                            <input type="hidden" value="<?=$user->mat_membre;?>" name="id_menbre">
                         </div>
                         <div class="row">
                             <input type="submit" value="Demander" class="btn">

@@ -141,11 +141,25 @@
                 <div class="row">
                     <form control="" class="form-group" method="post">
                         <div class="row">
+                            <?php
+                            use Contoller\Http\Request;
+
+                            if (Request::hasError("identifiant")) {
+                                ?>
+                                <span class="alert-danger"><?= Request::error("identifiant"); ?></span>
+                            <?php } ?>
                             <input type="text" name="identifiant" id="username" class="form__input" placeholder="Identifiant">
                         </div>
                         <div class="row">
                             <!-- <span class="fa fa-lock"></span> -->
-                            <input type="password" name="password" id="password" class="form__input" placeholder="Mot de passe">
+                            <?php
+
+
+                            if (Request::hasError("mot_de_passe")) {
+                                ?>
+                                <span class="alert-danger"><?= Request::error("mot_de_passe"); ?></span>
+                            <?php } ?>
+                            <input type="password" name="mot_de_passe" id="password" class="form__input" placeholder="Mot de passe">
                         </div>
                         <div class="row px-4">
                             <input type="checkbox" name="remember_me" id="remember_me" class="">
