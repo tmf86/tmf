@@ -20,6 +20,7 @@ class ComposerStaticInit6264916c20b8cdaf967ae3749af8fbef
         'S' => 
         array (
             'Service\\Mailer\\' => 15,
+            'Service\\File\\' => 13,
         ),
         'R' => 
         array (
@@ -65,6 +66,10 @@ class ComposerStaticInit6264916c20b8cdaf967ae3749af8fbef
         'Service\\Mailer\\' => 
         array (
             0 => __DIR__ . '/../..' . '/src/Services/mailer',
+        ),
+        'Service\\File\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/src/Services/File',
         ),
         'Rakit\\Validation\\' => 
         array (
@@ -112,11 +117,16 @@ class ComposerStaticInit6264916c20b8cdaf967ae3749af8fbef
         ),
     );
 
+    public static $classMap = array (
+        'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
+    );
+
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
             $loader->prefixLengthsPsr4 = ComposerStaticInit6264916c20b8cdaf967ae3749af8fbef::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInit6264916c20b8cdaf967ae3749af8fbef::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit6264916c20b8cdaf967ae3749af8fbef::$classMap;
 
         }, null, ClassLoader::class);
     }

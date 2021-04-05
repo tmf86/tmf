@@ -6,6 +6,7 @@ namespace Contoller\Middleware;
 
 use Firebase\JWT\ExpiredException;
 use Firebase\JWT\JWT;
+use Model\Account;
 use Model\User;
 use View\View;
 
@@ -84,15 +85,15 @@ trait Auth
     }
 
     /**
-     * @return User;
+     * @return Account|bool;
      */
-    public function user(): User
+    public function user()
     {
         $user = new User();
         if ($this->isAuth()) {
             $user_id = $this->request->session('user_id');
             $user = new User();
-            $user = $user->find($user_id);
+            $user = $user->find($user_id)->account();
         }
         return $user;
     }

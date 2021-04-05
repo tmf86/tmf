@@ -57,7 +57,7 @@ use Contoller\Middleware\Auth;
                 <?php endif; ?>
             </div>
             <div class="navbar-collapse collapse" id="navbarSupportedContent" data-navbarbg="skin5">
-                <ul class="navbar-nav float-start me-auto">
+                <ul class="navbar-nav float-start me-auto" style="visibility: hidden">
                     <li class="nav-item search-box"><a class="nav-link waves-effect waves-dark"
                                                        href="javascript:void(0)"><i class="ti-search"></i></a>
                         <form class="app-search position-absolute">
@@ -66,7 +66,7 @@ use Contoller\Middleware\Auth;
                         </form>
                     </li>
                 </ul>
-                <ul class="navbar-nav float-end">
+                <ul class="navbar-nav float-left">
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark pro-pic" href="#"
                            id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -125,7 +125,7 @@ use Contoller\Middleware\Auth;
                             <span class="hide-menu">Profile</span></a>
                     </li>
                     <li class="sidebar-item">
-                        <a class="sidebar-link waves-effect waves-dark sidebar-link"
+                        <a class="sidebar-link waves-effect waves-dark sidebar-link <?php if (current_route() == buildpath(sprintf('forum/category/%s', $category ?? ''))): ?>active<?php endif; ?>"
                            href="<?= buildpath('forum') ?>" aria-expanded="false">
                             <i class="ti-comment-alt m-r-5 m-l-5"></i>
                             <span class="hide-menu">Forum</span></a>

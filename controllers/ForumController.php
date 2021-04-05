@@ -10,7 +10,6 @@ use View\View;
 
 class ForumController extends Controller
 {
-    use Auth;
 
     /**
      * @var \Model\User

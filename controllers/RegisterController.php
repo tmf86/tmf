@@ -11,7 +11,6 @@ use View\View;
 
 class RegisterController extends Controller
 {
-    use Auth;
 
     public function __construct(Request $request)
     {

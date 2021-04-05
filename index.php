@@ -46,6 +46,7 @@ $dispatcher = FastRoute\simpleDispatcher(function (FastRoute\RouteCollector $rou
     $route->get('/Cpy-Mvc/videos_formation', ['class' => FormationController::class, 'method' => 'index']);
     $route->get('/Cpy-Mvc/registration-success', ['class' => RegisterSuccess::class, 'method' => 'index']);
     $route->get('/Cpy-Mvc/profile', ['class' => ProfileController::class, 'method' => 'index']);
+    $route->post('/Cpy-Mvc/profile-update', ['class' => ProfileController::class, 'method' => 'profileUpdate']);
     $route->get('/Cpy-Mvc/forum', ['class' => ForumController::class, 'method' => 'index']);
     $route->get('/Cpy-Mvc/forum/category/{slug:[A-Za-z\-]+}', ['class' => ForumController::class, 'method' => 'category', 'gets' => true]);
     $route->get('/Cpy-Mvc/logout', ['class' => Logout::class, 'method' => 'logout']);

@@ -35,6 +35,28 @@ a.stars {
     font-weight: 400;
 }
 
+.form-control:focus, .select:focus {
+    outline: 0;
+    border-color: rgb(51, 181, 229);
+    box-shadow: 0 0 0 1px rgba(51, 181, 229, .3);
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.small {
+    color: red;
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 300;
+    font-size: 0.9rem;
+    padding-left: 0.3rem;
+}
+
+.form-control.error {
+    border-color: red !important;
+}
+
 @media (max-width: 767.98px) {
     a.subject, a.freinds, a.stars {
         font-size: 0.78rem;

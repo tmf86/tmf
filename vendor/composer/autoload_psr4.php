@@ -10,6 +10,7 @@ return array(
     'Validator\\Rules\\' => array($baseDir . '/src/validators/Rules'),
     'Validator\\' => array($baseDir . '/src/validators'),
     'Service\\Mailer\\' => array($baseDir . '/src/Services/mailer'),
+    'Service\\File\\' => array($baseDir . '/src/Services/File'),
     'Rakit\\Validation\\' => array($vendorDir . '/rakit/validation/src'),
     'PHPMailer\\PHPMailer\\' => array($vendorDir . '/phpmailer/phpmailer/src'),
     'Model\\Shema\\' => array($baseDir . '/models/Schema'),

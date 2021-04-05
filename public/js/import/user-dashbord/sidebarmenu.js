@@ -2,7 +2,7 @@
 Template Name: Admin Template
 Author: Wrappixel
 
-File: js
+Files: js
 */
 // ============================================================== 
 // Auto select left navbar

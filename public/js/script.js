@@ -1,17 +1,4 @@
 $(function () {
-    //alert("ok");
-    /*$('#acces_sujet').click(function (e){
-         e.preventDefault();
-         $('#dialog').css('display','block');
-     });
-     $('.close_dialog').click(function (){
-         $('#dialog').css('display','none');
-     });
-     $(window).click(function (event){
-         if (event.target ===$('#dialog')){
-             $('#dialog').css('display','none');
-         }
-     });*/
     $(".annonce_click").click(function () {
         //alert("ok");
         if ($(".annonce_content").css("display") === "block") {
@@ -22,17 +9,7 @@ $(function () {
             $(this).html("MOINS");
         }
     });
-    /* lecteur();
-     function lecteur(){
-         $("#current_moovie").src = $("#moovie_list iframe")[2];
-         $("#current_moovie").play();
-         $("#moovie_list iframe").click(function (e){
-             e.preventDefault();
-             $("current_moovie").src = this;
-             $("#current_moovie").play();
-         });
-     }*/
-    //Annimation des fa icon a coté des inputs et aussi des labels lorsqu'il y a une erreur
+//Annimation des fa icon a coté des inputs et aussi des labels lorsqu'il y a une erreur
     const input = $("input")
     input.focus(function () {
         ($('#alert')) ? $('#alert').html('') : '';
@@ -40,16 +17,19 @@ $(function () {
 
         if ($(`input[name="${this.name}"]`).hasClass("error")) {
             $(`label[for='${this.name}'] small`).html('*')
+            $(`label[for='${this.name}'] small.not-required`).html('')
             $(`label[for='${this.name}']`).removeClass("error")
             $(`input[name="${this.name}"] ~ span.icon `).removeClass("error")
             $(`i[data-name='${this.name}']`).removeClass('error')
             $(`input[name="${this.name}"]`).removeClass("error")
+            $('#fix-update-box').css({padding: '2rem'});
+
         }
     })
     input.focusout(function () {
         $(`input[name="${this.name}"] ~ span.icon `).toggleClass("active")
     })
-    //Getion dynamique des select de la date de naissance
+//Getion dynamique des select de la date de naissance
     const [day, month, year] = [$("#jour"), $("#mois"), $("#annee")]
     const Leap = function () {
         // const yearVal = $(year).val();
@@ -192,7 +172,6 @@ $(function () {
             $("#point-loader").html($("#point-loader").html() + ".")
         }
     }, 1000)
-
 //Soumission du formulaire de connexion en Ajax
     $('#form-login').submit(function (e) {
         e.preventDefault()
@@ -241,6 +220,82 @@ $(function () {
                                  <span aria-hidden="true">&times;</span>
                             </button>
                         </div>`)
+                }
+            }
+        })
+    })
+//Mise a jour du profile
+    $("#user-pic").on("change", function () {
+        $(`label[for='${this.name}'] small`).html('')
+        $("#img-container").css("border", "none")
+        /*file.extensionValidate(false);
+            *pseudo code
+        1-dès la selection d'un nouveau fichier
+                - recuperer le fichier selectionner
+                - recuperer l'extension du fichier recupéré
+         2- se construir un tableau d'extension valide et une variable boolean
+           pour s'avoir si l'extension du fichier selectioné se trouve dans notre tableau ou non
+           par defaut cette variable sera a faux
+                 - verifier dans ce tableau si l'extension du fichier selectionné s'y trouve
+                 - si oui alors mettre la variable booleen  a vrai
+         3 - maintenant verifier la valeur  de la variable booleenne
+                 - si elle est a vrai alors on crée un chemin d'accès au fichier selectionné
+                 - on selectionne la balise image succeptible de recevoir notre fichier pour l'afficher et on le lui passe
+                 -  si non alors alors on remet l'image par defaut et on genère un message d' erreur de notification a l'utilisateur
+        */
+        const fileSelected = this.files[0]
+        const fileSelectedName = this.files[0].name
+        const fileSelectedExt = fileSelectedName.substring(fileSelectedName.indexOf("."))
+        const extValid = [".png", ".jpg", ".gif", ".jpeg"]
+        let isvalid = false
+        for (let i = 0; i < extValid.length; i++) {
+            if (extValid[i] === fileSelectedExt) {
+                isvalid = true;
+            }
+        }
+        if (isvalid) {
+            const filePath = window.URL.createObjectURL(fileSelected)
+            $("#img-container").attr("src", filePath)
+        } else {
+            $("#img-container").attr("src", "images/user-default.jpg").css("border", "1px solid #ff0000")
+            $(`label[for='${this.name}'] small`).html('desolé le fichier selectionné n\'est pas une image valide, veuillez en selectionner un autre .');
+        }
+        console.log(isvalid)
+    })
+    $('#form-update-profile').submit(function (e) {
+        e.preventDefault()
+        $.ajax({
+            url: buildUrl('profile-update'),
+            type: 'post',
+            dataType: 'json',
+            cache: false,
+            contentType: false,
+            processData: false,
+            data: new FormData(this),
+            success: function (data) {
+                $('#debug').html(data)
+            },
+            error: function (xhr) {
+                $('#debug').html(xhr.responseText)
+                const errors = xhr.responseJSON
+                if (xhr.status === 400) {
+                    switch (errors.input_error) {
+                        case true :
+                            for (const property in errors) {
+                                $(`label[for='${property}'] small`).html(errors[property])
+                                $(`input[name="${property}"]`).addClass("error")
+                                console.log(`${property}: ${errors[property]}`);
+                            }
+                            $('#fix-update-box').css({padding: 0});
+                            break;
+                        case false :
+                            alert("Oops ...\0Veuillez Réessayer !")
+                            break;
+                    }
+                } else if (xhr.status === 500) {
+                    alert("Oops ...\nVeuillez Réessayer !")
+                } else if (xhr.status === 409) {
+                    alert("Oops...\nVeuillez verifier l'etat de votre connexion internet et Réesayer !")
                 }
             }
         })
