@@ -6,6 +6,7 @@ namespace Validator;
 
 class LoginValidator extends ValidatorCustumer
 {
+
     /**
      * @var string[]
      */

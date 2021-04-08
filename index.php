@@ -15,6 +15,7 @@ use Contoller\RegisterSuccess;
 use Contoller\SujetController;
 use Service\Mailer\FinalizeAccountMailer;
 use Validator\LoginValidator;
+use Validator\RegisterValidator;
 
 require "vendor/autoload.php";
 require 'config/app.php';
@@ -32,10 +33,12 @@ session_start();
 $dispatcher = FastRoute\simpleDispatcher(function (FastRoute\RouteCollector $route) {
     $route->get('/Cpy-Mvc/', ['class' => HomeController::class, 'method' => 'index']);
     $route->get('/Cpy-Mvc/login', ['class' => LoginController::class, 'method' => 'index']);
-    $route->post('/Cpy-Mvc/login', ['class' => LoginController::class, 'method' => 'postLogin', 'vars' => [new LoginValidator()]]);
+    $route->post('/Cpy-Mvc/login', ['class' => LoginController::class, 'method' => 'postLogin',
+        'vars' => [new LoginValidator()]]);
     $route->get('/Cpy-Mvc/home', ['class' => HomeController::class, 'method' => 'index']);
     $route->get('/Cpy-Mvc/register', ['class' => RegisterController::class, 'method' => 'index']);
-    $route->post('/Cpy-Mvc/registerstore', ['class' => RegisterController::class, 'method' => 'registerStore']);
+    $route->post('/Cpy-Mvc/registerstore', ['class' => RegisterController::class, 'method' => 'registerStore',
+        'vars' => [new RegisterValidator()]]);
     $route->get('/Cpy-Mvc/sujets', ['class' => SujetController::class, 'method' => 'index']);
     $route->get('/Cpy-Mvc/demande', ['class' => ParrainageController::class, 'method' => 'demande']);
     $route->post('/Cpy-Mvc/demande', ['class' => ParrainageController::class, 'method' => 'generatDemand']);

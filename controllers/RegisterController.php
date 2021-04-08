@@ -33,40 +33,32 @@ class RegisterController extends Controller
     }
 
     /**
-     * @return $this|Request
+     * @param RegisterValidator $registerValidator
+     * @return bool|View
      * @throws \Exception
      */
-    public function registerStore()
+    public function registerStore(RegisterValidator $registerValidator)
     {
-        if ($this->request->isAjax()) {
-            $validator = new RegisterValidator();
+        if (Request::isAjax()) {
             $this->processInputsData();
-            $validation = $validator->validateCustermer($this->request->inputs());
-            if ($validation->fails()) {
-                $errors = $validation->errors()->firstOfAll();
-                $validator->custumErrorMessages($errors);
-                $errors['input_error'] = true;
-                return $this->request->ajax($errors, 400);
-            }
-
+            $registerValidator->makeValidate();
             $user = new User();
             $user = $user->create($this->request->inputs());
             if ($user) {
                 $name = sprintf("%s %s", $this->request->nom, $this->request->prenom);
                 $name_id = sprintf("%s%s", str_replace(" ", '', $this->request->nom), str_replace(" ", '', $this->request->prenom));
-                $url = makeRootOrFileUrl(sprintf('finalize_account_creation/%s/%s', buildUniqueID($user->mat_membre, $user->filiere, $user->contact, $name_id), $this->request->email));
+                $url = makeRootOrFileUrl(sprintf('finalize_account_creation/%s/%s',
+                    buildUniqueID($user->mat_membre, $user->filiere, $user->contact, $name_id), $this->request->email));
+                $this->setSessions($name, $url);
+//                Envoie du mail de finalisation de la creation de compte
                 $mailer = new FinalizeAccountMailer(['name' => $name, 'url' => $url]);
                 $mailer->to($this->request->email, $name)->forward();
-                $this->request->session('name', $name);
-                $this->request->session('email', $this->request->email);
-                $this->request->session('url', $url);
-                return $this->request->ajax(["success" => true, 'redirectTo' => makeRootOrFileUrl('registration-success')], 200);
+                Request::ajax(["success" => true, 'redirectTo' => makeRootOrFileUrl('registration-success')], 200);
             }
-            return $this->request->ajax(["input_error" => false], 400);
+            Request::ajax(["inputs" => false], 400);
 
         }
-        Request::abort(404);
-        return $this;
+        return Request::abort(404);
     }
 
     /**
@@ -79,5 +71,18 @@ class RegisterController extends Controller
             unset($_POST["jour"], $_POST["annee"], $_POST["mois"]);
         }
     }
+
+    /**
+     * @param string $name
+     * @param string $url
+     * @throws \Exception
+     */
+    private function setSessions(string $name, string $url)
+    {
+        $this->request->session('name', $name);
+        $this->request->session('email', $this->request->email);
+        $this->request->session('url', $url);
+    }
+
 
 }

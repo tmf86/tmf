@@ -145,10 +145,12 @@ $(function () {
                         case true :
                             $("#alerterror").modal("show")
                             for (const property in errors) {
-                                $(`label[for='${property}'] small`).html(errors[property])
-                                $(`input[name="${property}"]`).addClass("error")
-                                $(`input[name="${property}"] ~ span.icon `).addClass("error")
-                                console.log(`${property}: ${errors[property]}`);
+                                if (property !== 'inputs') {
+                                    $(`label[for='${property}'] small`).html(errors[property])
+                                    $(`input[name="${property}"]`).addClass("error")
+                                    $(`input[name="${property}"] ~ span.icon `).addClass("error")
+                                    console.log(`${property}: ${errors[property]}`);
+                                }
                             }
                             break;
                         case false :
@@ -281,7 +283,7 @@ $(function () {
                 $('#debug').html(xhr.responseText)
                 const errors = xhr.responseJSON
                 if (xhr.status === 400) {
-                    switch (errors.input_error) {
+                    switch (errors.inputs) {
                         case true :
                             for (const property in errors) {
                                 $(`label[for='${property}'] small`).html(errors[property])

@@ -19,7 +19,6 @@ abstract class ValidatorCustumer extends Validator
     public function __construct(array $messages = [])
     {
         parent::__construct($this->errorsMessages);
-        $this->makeValidate();
     }
 
     /**
@@ -53,9 +52,9 @@ abstract class ValidatorCustumer extends Validator
     }
 
     /**
-     * @return void
+     * @return  void
      */
-    private function makeValidate()
+    public function makeValidate()
     {
         Request::sleepRequest(1);
         $request = new Request();
@@ -66,7 +65,6 @@ abstract class ValidatorCustumer extends Validator
                 $errors = $validate->errors()->firstOfAll();
                 $errors['inputs'] = true;
                 (Request::isAjax()) ? Request::ajax($errors, 400) : Request::setErrors($errors);
-                exit();
             }
         }
     }
