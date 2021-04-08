@@ -3,7 +3,7 @@
         <div class="col-md-6">
             <div class="card">
                 <div class="card-body">
-                    <center class="m-t-30"><img src="<?= buildpath($user->image) ?>"
+                    <center class="m-t-30"><img src="<?= makeRootOrFileUrl($user->image) ?>"
                                                 class="rounded-circle" width="150" height="150" alt="user-profile-img"/>
                         <h4 class="card-title m-t-10"><?= $user->nom . ' ' . $user->prenom ?></h4>
                         <h6 class="card-subtitle">Donnez aux autres une bref decription de qui vous êtes ...</h6>
@@ -56,7 +56,7 @@
                             <div class="col-md-12 d-flex justfy-content-space-between">
                                 <div>
                                     <label for="user-pic" class="cursor-pointer">
-                                        <img src="<?= buildpath($user->image) ?>"
+                                        <img src="<?= makeRootOrFileUrl($user->image) ?>"
                                              class="rounded-circle" width="90" height="90"
                                              alt="user-profile-img"
                                              id="img-container"

@@ -143,18 +143,19 @@ function suppl_tags(array $paths = [], string $to_do = '')
 /**
  * @param $file
  * @return string
- * construit le chemin d'accès a un fichier en partan du domain root
+ * buildpath
+ *  construit le chemin d'accès a un fichier ou a une root en partant du domain principale
  */
-function buildpath($file)
+function makeRootOrFileUrl($rootOrFile)
 {
-    return sprintf("%s%s", APP_URL, $file);
+    return sprintf("%s%s", APP_URL, $rootOrFile);
 }
 
 /**
  * @param int $number
  * @param int $threshold
  * @return string
- * Modifie un nombre en completant des zeros a l'avant pour atteindre la longueur du $threshold
+ *  Modifie un nombre en completant des zeros a l'avant pour atteindre la longueur du $threshold (seuil )
  */
 function custum_number(int $number, int $threshold = 1000)
 {

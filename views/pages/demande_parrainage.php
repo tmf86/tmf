@@ -1,146 +1,148 @@
-<!-- Main Content -->
-<html>
+<!doctype html>
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href='<?= buildpath("public/css/import/bootstrap/bootstrap-mdb.css") ?>'>
+    <link rel="stylesheet" href='<?= makeRootOrFileUrl("public/css/import/bootstrap/bootstrap-mdb.css") ?>'>
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href='<?= buildpath("public/css/style.css") ?>'>
-<style>
-    body {
-        background-image: url("images/pigeryakro.jpeg");
-        background-repeat: no-repeat;
-        background-position-x: center;
-        background-position-y: center;
-        background-attachment: fixed;
-        -webkit-background-size: cover;
-        -moz-background-size: cover;
-        -o-background-size: cover;
-        background-size: cover;
-        height: 100%;
-    }
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300&display=swap"
+          rel="stylesheet">
+    <link rel="stylesheet" href='<?= makeRootOrFileUrl("public/css/style.css") ?>'>
+    <style>
+        body {
+            background-image: url("images/pigeryakro.jpeg");
+            background-repeat: no-repeat;
+            background-position-x: center;
+            background-position-y: center;
+            background-attachment: fixed;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+            height: 100%;
+        }
 
-    .main-content {
-        width: 80%;
-        border-radius: 20px;
-        box-shadow: 0 5px 5px rgba(0, 0, 0, .4);
-        margin: 5em auto;
-        display: flex;
-        /* height: 15rem;*/
-    }
-
-    .company__info {
-        background-image: url("images/CIPY.png");
-        background-repeat: no-repeat;
-        /*background-position-x: center ;
-        background-position-y:  center;*/
-        /*background-attachment: fixed;*/
-        -webkit-background-size: cover;
-        -moz-background-size: cover;
-        -o-background-size: cover;
-        background-size: cover;
-        height: 40rem;
-        border-top-left-radius: 20px;
-        border-bottom-left-radius: 20px;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        color: #fff;
-    }
-
-    .fa-android {
-        font-size: 3em;
-    }
-
-    @media screen and (max-width: 640px) {
         .main-content {
-            width: 90%;
+            width: 80%;
+            border-radius: 20px;
+            box-shadow: 0 5px 5px rgba(0, 0, 0, .4);
+            margin: 5em auto;
+            display: flex;
+            /* height: 15rem;*/
         }
 
         .company__info {
-            display: none;
+            background-image: url("images/CIPY.png");
+            background-repeat: no-repeat;
+            /*background-position-x: center ;
+            background-position-y:  center;*/
+            /*background-attachment: fixed;*/
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+            height: 40rem;
+            border-top-left-radius: 20px;
+            border-bottom-left-radius: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            color: #fff;
+        }
+
+        .fa-android {
+            font-size: 3em;
+        }
+
+        @media screen and (max-width: 640px) {
+            .main-content {
+                width: 90%;
+            }
+
+            .company__info {
+                display: none;
+            }
+
+            .login_form {
+                border-top-left-radius: 20px;
+                border-bottom-left-radius: 20px;
+            }
+        }
+
+        @media screen and (min-width: 642px) and (max-width: 800px) {
+            .main-content {
+                width: 70%;
+            }
+        }
+
+        .row > h2 {
+            color: #17202a;
+            font-weight: 1000;
         }
 
         .login_form {
-            border-top-left-radius: 20px;
-            border-bottom-left-radius: 20px;
+            /*background-color:  #515a5a;/*#fff;*/
+            background-image: url("images/pigierparrain.png");
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+            border-top-right-radius: 20px;
+            border-bottom-right-radius: 20px;
+            border-top: 1px solid #ccc;
+            border-right: 1px solid #ccc;
         }
-    }
 
-    @media screen and (min-width: 642px) and (max-width: 800px) {
-        .main-content {
-            width: 70%;
+        form {
+            padding: 0 2em;
         }
-    }
 
-    .row > h2 {
-        color: #17202a;
-        font-weight: 1000;
-    }
+        .form__input {
+            width: 100%;
+            border: 0px solid transparent;
+            border-radius: 5px;
+            border-bottom: 1px solid #aaa;
+            padding: 1em .5em .5em;
+            padding-left: 2em;
+            outline: none;
+            margin: 1.5em auto;
+            transition: all .5s ease;
+        }
 
-    .login_form {
-        /*background-color:  #515a5a;/*#fff;*/
-        background-image: url("images/pigierparrain.png");
-        -webkit-background-size: cover;
-        -moz-background-size: cover;
-        -o-background-size: cover;
-        background-size: cover;
-        border-top-right-radius: 20px;
-        border-bottom-right-radius: 20px;
-        border-top: 1px solid #ccc;
-        border-right: 1px solid #ccc;
-    }
+        .form__input:focus {
+            border-bottom-color: #008080;
+            box-shadow: 0 0 5px rgba(0, 80, 80, .4);
+            border-radius: 4px;
+        }
 
-    form {
-        padding: 0 2em;
-    }
+        .btn {
+            transition: all .5s ease;
+            /*width: 5rem;*/
+            height: 50%;
 
-    .form__input {
-        width: 100%;
-        border: 0px solid transparent;
-        border-radius: 5px;
-        border-bottom: 1px solid #aaa;
-        padding: 1em .5em .5em;
-        padding-left: 2em;
-        outline: none;
-        margin: 1.5em auto;
-        transition: all .5s ease;
-    }
+            border-radius: 30px;
+            color: #008080;
+            font-weight: 600;
+            background-color: #fff;
+            border: 1px solid #515a5a;
+            margin-top: 1.5em;
+            margin-bottom: 1em;
+        }
 
-    .form__input:focus {
-        border-bottom-color: #008080;
-        box-shadow: 0 0 5px rgba(0, 80, 80, .4);
-        border-radius: 4px;
-    }
+        .btn:hover, .btn:focus {
+            background-color: #515a5a; /* #008080;*/
+            color: #fff;
+        }
 
-    .btn {
-        transition: all .5s ease;
-        /*width: 5rem;*/
-        height: 50%;
+        .bouton {
+            height: 0.4rem;
 
-        border-radius: 30px;
-        color: #008080;
-        font-weight: 600;
-        background-color: #fff;
-        border: 1px solid #515a5a;
-        margin-top: 1.5em;
-        margin-bottom: 1em;
-    }
-
-    .btn:hover, .btn:focus {
-        background-color: #515a5a; /* #008080;*/
-        color: #fff;
-    }
-
-    .bouton {
-        height: 0.4rem;
-
-        /* padding: 0.7rem;*/
-    }
-</style>
+            /* padding: 0.7rem;*/
+        }
+    </style>
+    <title><?= $title ?? 'Title' ?></title>
 </head>
 <body>
 <div class="container-fluid">
@@ -195,7 +197,7 @@
                                 <option value="AD">1er ADJOINT</option>
                                 <option value="CDM">2eme ADJOINT</option>
                             </select>
-                            <input type="hidden" value="<?=$user->mat_membre;?>" name="id_menbre">
+                            <input type="hidden" value="<?= $user->mat_membre; ?>" name="id_menbre">
                         </div>
                         <div class="row">
                             <input type="submit" value="Demander" class="btn">
@@ -213,10 +215,10 @@
         </div>
     </div>
 </div>
-<script src="<?= buildpath('public/js/import/jquery/jquery.js') ?>"></script>
-<script src="<?= buildpath('public/js/import/boostrap/bootstrap.js') ?>"></script>
-<script src="<?= buildpath('public/js/import/boostrap/popper.js') ?>"></script>
-<script src="<?= buildpath('public/js/import/mdb/mdb.js') ?>"></script>
+<script src="<?= makeRootOrFileUrl('public/js/import/jquery/jquery.js') ?>"></script>
+<script src="<?= makeRootOrFileUrl('public/js/import/boostrap/bootstrap.js') ?>"></script>
+<script src="<?= makeRootOrFileUrl('public/js/import/boostrap/popper.js') ?>"></script>
+<script src="<?= makeRootOrFileUrl('public/js/import/mdb/mdb.js') ?>"></script>
 <?= suppl_tags($scripts ?? [], SCRIPT) ?>
 </body>
 </html>

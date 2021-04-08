@@ -8,9 +8,9 @@
     <meta name="robots" content="noindex,nofollow">
     <title>Not Found</title>
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" href="<?= buildpath("images/logo.png") ?>"/>
+    <link rel="icon" type="image/png" href="<?= makeRootOrFileUrl("images/logo.png") ?>"/>
     <!-- Custom CSS -->
-    <link href="<?= buildpath("public/css/import/user-dashbord/style.min.css") ?>" rel="stylesheet">
+    <link href="<?= makeRootOrFileUrl("public/css/import/user-dashbord/style.min.css") ?>" rel="stylesheet">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -33,7 +33,7 @@
             <h1 class="error-title">404</h1>
             <h3 class="text-uppercase error-subtitle">PAGE NON TROUVÉE !</h3>
             <p class="text-muted m-t-30 m-b-30">VOUS SEMBLEZ ESSAYER DE TROUVER VOTRE CHEMIN</p>
-            <a href="<?= buildpath('home') ?>" style="background: #37474f"
+            <a href="<?= makeRootOrFileUrl('home') ?>" style="background: #37474f"
                class="btn btn-rounded waves-effect waves-light m-b-40 text-white">Retourner à la page
                 d'acceuil</a>
         </div>

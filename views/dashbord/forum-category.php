@@ -18,7 +18,7 @@
                         <ul class="list-style-none feed-body m-0 p-b-20">
                             <li class="feed-item p-3">
                                 <div class="feed-icon">
-                                    <img src="<?= buildpath('images/users/1.jpg') ?>" alt="user" width="40"
+                                    <img src="<?= makeRootOrFileUrl('images/users/1.jpg') ?>" alt="user" width="40"
                                          class="rounded-circle">
                                 </div>
                                 <div class="p-2">
@@ -35,7 +35,7 @@
                             </li>
                             <li class="feed-item p-3">
                                 <div class="feed-icon">
-                                    <img src="<?= buildpath('images/users/1.jpg') ?>" alt="user" width="40"
+                                    <img src="<?= makeRootOrFileUrl('images/users/1.jpg') ?>" alt="user" width="40"
                                          class="rounded-circle">
                                 </div>
                                 <div class="p-2">
@@ -52,7 +52,7 @@
                             </li>
                             <li class="feed-item p-3">
                                 <div class="feed-icon">
-                                    <img src="<?= buildpath('images/users/1.jpg') ?>" alt="user" width="40"
+                                    <img src="<?= makeRootOrFileUrl('images/users/1.jpg') ?>" alt="user" width="40"
                                          class="rounded-circle">
                                 </div>
                                 <div class="p-2">
@@ -69,7 +69,7 @@
                             </li>
                             <li class="feed-item p-3">
                                 <div class="feed-icon">
-                                    <img src="<?= buildpath('images/users/1.jpg') ?>" alt="user" width="40"
+                                    <img src="<?= makeRootOrFileUrl('images/users/1.jpg') ?>" alt="user" width="40"
                                          class="rounded-circle">
                                 </div>
                                 <div class="p-2">

@@ -13,12 +13,12 @@ use Contoller\Middleware\Auth;
     <meta name="robots" content="noindex,nofollow">
     <title><?= $title ?? '' ?></title>
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="<?= buildpath("images/logo.png") ?>">
+    <link rel="icon" type="image/png" sizes="16x16" href="<?= makeRootOrFileUrl("images/logo.png") ?>">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300&display=swap"
           rel="stylesheet">
-    <link href="<?= buildpath("public/css/import/user-dashbord/style.min.css") ?>" rel="stylesheet">
-    <link rel="stylesheet" href='<?= buildpath("public/css/dashbord.css") ?>'>
+    <link href="<?= makeRootOrFileUrl("public/css/import/user-dashbord/style.min.css") ?>" rel="stylesheet">
+    <link rel="stylesheet" href='<?= makeRootOrFileUrl("public/css/dashbord.css") ?>'>
     <?= suppl_tags($links ?? [], LINK) ?>
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -42,12 +42,12 @@ use Contoller\Middleware\Auth;
             <div class="navbar-header" data-logobg="skin5">
                 <a class="navbar-brand" href="index.html">
                     <b class="logo-icon">
-                        <img src="<?= buildpath('images/logo-icon.png') ?>" alt="homepage" class="dark-logo"/>
-                        <img src="<?= buildpath('images/logo-light-icon.png') ?>" alt="homepage" class="light-logo"/>
+                        <img src="<?= makeRootOrFileUrl('images/logo-icon.png') ?>" alt="homepage" class="dark-logo"/>
+                        <img src="<?= makeRootOrFileUrl('images/logo-light-icon.png') ?>" alt="homepage" class="light-logo"/>
                     </b>
                     <span class="logo-text">
-                            <img src="<?= buildpath('images/logo-text.png') ?>" alt="homepage" class="dark-logo"/>
-                            <img src="<?= buildpath('images/logo-light-text.png') ?>" class="light-logo"
+                            <img src="<?= makeRootOrFileUrl('images/logo-text.png') ?>" alt="homepage" class="dark-logo"/>
+                            <img src="<?= makeRootOrFileUrl('images/logo-light-text.png') ?>" class="light-logo"
                                  alt="homepage"/>
                         </span>
                 </a>
@@ -70,14 +70,14 @@ use Contoller\Middleware\Auth;
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark pro-pic" href="#"
                            id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <img src="<?= buildpath($user->image ?? 'images/user-default.jpg') ?>" alt="user"
+                            <img src="<?= makeRootOrFileUrl($user->image ?? 'images/user-default.jpg') ?>" alt="user"
                                  class="rounded-circle" width="31">
                         </a>
                         <?php if (Auth::asUserAuthenticated()): ?>
                             <ul class="dropdown-menu dropdown-menu-end user-dd animated p-0"
                                 aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item <?php if (current_route() === buildpath('profile')) : ?> active <?php endif; ?>"
-                                   href="<?= buildpath('profile') ?>"><i
+                                <a class="dropdown-item <?php if (current_route() === makeRootOrFileUrl('profile')) : ?> active <?php endif; ?>"
+                                   href="<?= makeRootOrFileUrl('profile') ?>"><i
                                             class="ti-user m-r-5 m-l-5"></i> Mon profile</a>
                                 <a class="dropdown-item" href="javascript:void(0)"><i class="ti-email m-r-5 m-l-5"></i>
                                     Inbox</a>
@@ -95,7 +95,7 @@ use Contoller\Middleware\Auth;
                 <ul id="sidebarnav">
                     <li>
                         <div class="user-profile d-flex no-block dropdown m-t-20">
-                            <div class="user-pic"><img src="<?= buildpath($user->image) ?>" alt="users"
+                            <div class="user-pic"><img src="<?= makeRootOrFileUrl($user->image) ?>" alt="users"
                                                        class="rounded-circle" width="40"/></div>
                             <div class="user-content hide-menu m-l-10">
                                 <a href="#" class="" id="Userdd" role="button"
@@ -105,12 +105,12 @@ use Contoller\Middleware\Auth;
                                     <span class="op-5 user-email"><?= $user->email ?></span>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-end p-0" aria-labelledby="Userdd">
-                                    <a class="dropdown-item <?php if (current_route() === buildpath('profile')) : ?> active <?php endif; ?>"
-                                       href="<?= buildpath('profile') ?>"><i
+                                    <a class="dropdown-item <?php if (current_route() === makeRootOrFileUrl('profile')) : ?> active <?php endif; ?>"
+                                       href="<?= makeRootOrFileUrl('profile') ?>"><i
                                                 class="ti-user m-r-5 m-l-5"></i> Mon profile</a>
                                     <a class="dropdown-item" href="javascript:void(0)"><i
                                                 class="ti-email m-r-5 m-l-5"></i> Inbox</a>
-                                    <a class="dropdown-item" href="<?= buildpath('logout') ?>"><i
+                                    <a class="dropdown-item" href="<?= makeRootOrFileUrl('logout') ?>"><i
                                                 class="fa fa-power-off m-r-5 m-l-5"></i>Se deconnecter</a>
                                 </div>
                             </div>
@@ -120,13 +120,13 @@ use Contoller\Middleware\Auth;
                     <!-- User Profile-->
                     <li class="sidebar-item">
                         <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                           href="<?= buildpath('profile') ?>" aria-expanded="false">
+                           href="<?= makeRootOrFileUrl('profile') ?>" aria-expanded="false">
                             <i class="ti-user m-r-5 m-l-5"></i>
                             <span class="hide-menu">Profile</span></a>
                     </li>
                     <li class="sidebar-item">
-                        <a class="sidebar-link waves-effect waves-dark sidebar-link <?php if (current_route() == buildpath(sprintf('forum/category/%s', $category ?? ''))): ?>active<?php endif; ?>"
-                           href="<?= buildpath('forum') ?>" aria-expanded="false">
+                        <a class="sidebar-link waves-effect waves-dark sidebar-link <?php if (current_route() == makeRootOrFileUrl(sprintf('forum/category/%s', $category ?? ''))): ?>active<?php endif; ?>"
+                           href="<?= makeRootOrFileUrl('forum') ?>" aria-expanded="false">
                             <i class="ti-comment-alt m-r-5 m-l-5"></i>
                             <span class="hide-menu">Forum</span></a>
                     </li>
@@ -140,31 +140,31 @@ use Contoller\Middleware\Auth;
         <div class="page-breadcrumb">
             <div class="row align-items-center">
                 <div class="col-5">
-                    <?php if (current_route() === buildpath('profile')) : ?>
+                    <?php if (current_route() === makeRootOrFileUrl('profile')) : ?>
                         <h4 class="page-title">Profile</h4>
                     <?php endif; ?>
                     <?php $current_route = current_route();
-                    if ($current_route === buildpath('forum') || $current_route === buildpath(sprintf('forum/category/%s', $category ?? ''))) :?>
+                    if ($current_route === makeRootOrFileUrl('forum') || $current_route === makeRootOrFileUrl(sprintf('forum/category/%s', $category ?? ''))) :?>
                         <h4 class="page-title">Forum</h4>
                     <?php endif; ?>
                     <div class="d-flex align-items-center mt-3">
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="<?= buildpath('home') ?>">Acceuil</a></li>
-                                <?php if (current_route() === buildpath('forum')) : ?>
+                                <li class="breadcrumb-item"><a href="<?= makeRootOrFileUrl('home') ?>">Acceuil</a></li>
+                                <?php if (current_route() === makeRootOrFileUrl('forum')) : ?>
                                     <li class="breadcrumb-item active" aria-current="page"><a
-                                                href="<?= buildpath('forum') ?>">Forum</a></li>
+                                                href="<?= makeRootOrFileUrl('forum') ?>">Forum</a></li>
                                 <?php endif ?>
-                                <?php if (current_route() === buildpath(sprintf('forum/category/%s', $category ?? ''))): ?>
+                                <?php if (current_route() === makeRootOrFileUrl(sprintf('forum/category/%s', $category ?? ''))): ?>
                                     <li class="breadcrumb-item" aria-current="page"><a
-                                                href="<?= buildpath('forum') ?>">Forum</a></li>
+                                                href="<?= makeRootOrFileUrl('forum') ?>">Forum</a></li>
                                     <li class="breadcrumb-item active" aria-current="page"><a
-                                                href="<?= buildpath(sprintf('forum/category/%s', $category ?? '')) ?>"><?= $category ?></a>
+                                                href="<?= makeRootOrFileUrl(sprintf('forum/category/%s', $category ?? '')) ?>"><?= $category ?></a>
                                     </li>
                                 <?php endif; ?>
-                                <?php if (current_route() === buildpath('profile')) : ?>
+                                <?php if (current_route() === makeRootOrFileUrl('profile')) : ?>
                                     <li class="breadcrumb-item active" aria-current="page"><a
-                                                href="<?= buildpath('profile') ?>">Paramètres</a></li>
+                                                href="<?= makeRootOrFileUrl('profile') ?>">Paramètres</a></li>
                                 <?php endif; ?>
 
                             </ol>
@@ -173,7 +173,7 @@ use Contoller\Middleware\Auth;
                 </div>
                 <div class="col-7">
                     <div class="text-end upgrade-btn">
-                        <?php if (Auth::asUserAuthenticated() && current_route() === buildpath('profile')): ?>
+                        <?php if (Auth::asUserAuthenticated() && current_route() === makeRootOrFileUrl('profile')): ?>
                             <a href="" class="btn btn-danger text-white"
                                target="">Supprimer le compte</a>
                         <?php endif; ?>

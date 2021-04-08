@@ -47,19 +47,15 @@ class LoginController extends Controller
         switch ($is_email_adresse) {
             case $this->request->email_ou_identifiant:
                 $user = new User();
-//                $user = $user->query(sprintf("select * from membre where email='%s'", $this->request->email_ou_identifiant));
                 $user = $user
                     ->select('membre')
                     ->whereEqual('email', $this->request->email_ou_identifiant)
                     ->limit('1')
                     ->run();
-                $this->request->session('user_id', $user->mat_membre);
-                $this->request->session('token', $this->generateToken());
-                $sucess_data = ['success' => true, 'redirectTo' => buildpath('profile'), 'username' => $user->prenom];
+                $sucess_data = ['success' => true, 'redirectTo' => $this->redirectTo(), 'username' => $user->prenom];
                 break;
             case false :
                 $account = new Account();
-//                $account = $account->query(sprintf("select * from compte where identifiant='%s'", $this->request->email_ou_identifiant));
                 $account = $account
                     ->select('compte')
                     ->whereEqual('identifiant', $this->request->email_ou_identifiant)
@@ -68,9 +64,28 @@ class LoginController extends Controller
                 $user = $account->user();
                 $this->request->session('user_id', $user->mat_membre);
                 $this->request->session('token', $this->generateToken());
-                $sucess_data = ['success' => true, 'redirectTo' => buildpath('profile'), 'username' => $user->prenom];
+                $sucess_data = ['success' => true, 'redirectTo' => $this->redirectTo(), 'username' => $user->prenom];
 
         }
         return $this->request->ajax($sucess_data, 200);
+    }
+
+    private function redirectTo()
+    {
+        if ($this->request->hasGetKey('origin')) {
+            return makeRootOrFileUrl($this->request->origin);
+        }
+        return makeRootOrFileUrl('profile');
+    }
+
+    /**
+     * @param User $user
+     * @return void
+     * @throws \Exception
+     */
+    private function setSession(User $user)
+    {
+        $this->request->session('user_id', $user->mat_membre);
+        $this->request->session('token', $this->generateToken());
     }
 }

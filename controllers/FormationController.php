@@ -17,9 +17,9 @@ class FormationController extends Controller
         $fm = new Formation();
         $vd = new Videos();
         $user_image = $this->getUserImage();
-        $links = [sprintf('<link rel="stylesheet" href="%s" type="text/css" media="screen"/>', buildpath('public/css/import/venobox/venobox.min.css'))];
+        $links = [sprintf('<link rel="stylesheet" href="%s" type="text/css" media="screen"/>', makeRootOrFileUrl('public/css/import/venobox/venobox.min.css'))];
         $scripts = [
-            sprintf('<script type="text/javascript" src="%s"></script>', buildpath('public/js/import/venobox/venobox.min.js')),
+            sprintf('<script type="text/javascript" src="%s"></script>', makeRootOrFileUrl('public/js/import/venobox/venobox.min.js')),
             "<script>
                 $(function(){ 
                     $('.venobox').venobox(

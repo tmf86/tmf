@@ -177,7 +177,7 @@ $(function () {
         e.preventDefault()
         $('.cipy-loader-container').toggleClass('active')
         $.ajax({
-            url: buildUrl('post-login'),
+            url: buildUrl(),
             type: 'post',
             dataType: 'json',
             data: $(this).serialize(),
@@ -186,7 +186,7 @@ $(function () {
                 if (data.success === true) {
                     $("#alert").html(`
                         <div class="alert alert-success alert-dismissible fade show" role="alert">
-                            Bienvenu <strong>${data.username}</strong> patientez un instant le temps d'être redirigé vers votre page de profile
+                            Bienvenu <strong>${data.username}</strong> .
                             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                  <span aria-hidden="true">&times;</span>
                             </button>

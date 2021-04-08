@@ -54,13 +54,13 @@ class RegisterController extends Controller
             if ($user) {
                 $name = sprintf("%s %s", $this->request->nom, $this->request->prenom);
                 $name_id = sprintf("%s%s", str_replace(" ", '', $this->request->nom), str_replace(" ", '', $this->request->prenom));
-                $url = buildpath(sprintf('finalize_account_creation/%s/%s', buildUniqueID($user->mat_membre, $user->filiere, $user->contact, $name_id), $this->request->email));
+                $url = makeRootOrFileUrl(sprintf('finalize_account_creation/%s/%s', buildUniqueID($user->mat_membre, $user->filiere, $user->contact, $name_id), $this->request->email));
                 $mailer = new FinalizeAccountMailer(['name' => $name, 'url' => $url]);
                 $mailer->to($this->request->email, $name)->forward();
                 $this->request->session('name', $name);
                 $this->request->session('email', $this->request->email);
                 $this->request->session('url', $url);
-                return $this->request->ajax(["success" => true, 'redirectTo' => buildpath('registration-success')], 200);
+                return $this->request->ajax(["success" => true, 'redirectTo' => makeRootOrFileUrl('registration-success')], 200);
             }
             return $this->request->ajax(["input_error" => false], 400);
 

@@ -6,7 +6,10 @@ const sprintf = (str, format, ...args) => {
  * @param value
  * @return {*}
  */
-const buildUrl = (value) => {
+const buildUrl = (value = 'defaut') => {
+    if (value === 'defaut') {
+        return window.location.href
+    }
     const slashPos = window.location.href.lastIndexOf('/');
     const bashPath = window.location.href.substr(0, slashPos)
     return sprintf("%/%", '%', bashPath, value)

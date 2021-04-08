@@ -18,7 +18,7 @@
                         <td>
                             <div class="d-flex align-items-center">
                                 <div class="m-r-10">
-                                    <a href="<?= buildpath('forum/category/informatique') ?>"
+                                    <a href="<?= makeRootOrFileUrl('forum/category/informatique') ?>"
                                        class="btn btn-circle d-flex btn-info text-white">IN</a>
                                 </div>
                                 <div class="forum-name">
@@ -38,7 +38,7 @@
                         <td>
                             <div class="d-flex align-items-center">
                                 <div class="m-r-10">
-                                    <a href="<?= buildpath('forum/category/informatique') ?>"
+                                    <a href="<?= makeRootOrFileUrl('forum/category/informatique') ?>"
                                        class="btn btn-circle d-flex btn-info text-white">IN</a>
                                 </div>
                                 <div class="forum-name">
@@ -58,7 +58,7 @@
                         <td>
                             <div class="d-flex align-items-center">
                                 <div class="m-r-10">
-                                    <a href="<?= buildpath('forum/category/informatique') ?>"
+                                    <a href="<?= makeRootOrFileUrl('forum/category/informatique') ?>"
                                        class="btn btn-circle d-flex btn-info text-white">IN</a>
                                 </div>
                                 <div class="forum-name">
@@ -78,7 +78,7 @@
                         <td>
                             <div class="d-flex align-items-center">
                                 <div class="m-r-10">
-                                    <a href="<?= buildpath('forum/category/informatique') ?>"
+                                    <a href="<?= makeRootOrFileUrl('forum/category/informatique') ?>"
                                        class="btn btn-circle d-flex btn-info text-white">IN</a>
                                 </div>
                                 <div class="forum-name">
@@ -98,7 +98,7 @@
                         <td>
                             <div class="d-flex align-items-center">
                                 <div class="m-r-10">
-                                    <a href="<?= buildpath('forum/category/informatique') ?>"
+                                    <a href="<?= makeRootOrFileUrl('forum/category/informatique') ?>"
                                        class="btn btn-circle d-flex btn-info text-white">IN</a>
                                 </div>
                                 <div class="forum-name">
