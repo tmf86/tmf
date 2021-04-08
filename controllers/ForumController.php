@@ -6,10 +6,13 @@ namespace Contoller;
 
 use Contoller\Http\Request;
 use Contoller\Middleware\Auth;
+use Contoller\Middleware\RedirectUsers;
 use View\View;
 
 class ForumController extends Controller
 {
+
+    use RedirectUsers;
 
     /**
      * @var \Model\User

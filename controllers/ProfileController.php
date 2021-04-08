@@ -6,6 +6,7 @@ namespace Contoller;
 
 use Contoller\Http\Request;
 use Contoller\Middleware\Auth;
+use Contoller\Middleware\RedirectUsers;
 use Service\File\Files;
 use Service\File\FilesUpload;
 use Validator\ProfileUpdateValidator;
@@ -13,6 +14,8 @@ use View\View;
 
 class ProfileController extends Controller
 {
+    use RedirectUsers;
+
     /**
      * @var bool|\Model\Account|\Model\User
      */
@@ -26,6 +29,7 @@ class ProfileController extends Controller
     {
         parent::__construct($request);
         $this->user = $this->user();
+        $this->setRedirectToURL(current_route());
         $this->useAuth();
     }
 

@@ -4,6 +4,7 @@ namespace Contoller;
 
 use Contoller\Http\Request;
 use Contoller\Middleware\Auth;
+use Contoller\Middleware\RedirectUsers;
 use Model\Account;
 use Model\Comment;
 use Model\User;
@@ -12,6 +13,8 @@ use View\View;
 
 class LoginController extends Controller
 {
+
+    use RedirectUsers;
 
     public function __construct(Request $request)
     {
@@ -35,7 +38,7 @@ class LoginController extends Controller
 
     public function postLogin()
     {
-        $this->request->sleepRequest(2);
+        $this->request->sleepRequest(1);
         $validator = new LoginValidator();
         $validation = $validator->validateCustermer($this->request->inputs());
         if ($validation->fails()) {
@@ -52,6 +55,7 @@ class LoginController extends Controller
                     ->whereEqual('email', $this->request->email_ou_identifiant)
                     ->limit('1')
                     ->run();
+                $this->setSession($user);
                 $sucess_data = ['success' => true, 'redirectTo' => $this->redirectTo(), 'username' => $user->prenom];
                 break;
             case false :
@@ -62,20 +66,11 @@ class LoginController extends Controller
                     ->limit('1')
                     ->run();
                 $user = $account->user();
-                $this->request->session('user_id', $user->mat_membre);
-                $this->request->session('token', $this->generateToken());
+                $this->setSession($user);
                 $sucess_data = ['success' => true, 'redirectTo' => $this->redirectTo(), 'username' => $user->prenom];
 
         }
         return $this->request->ajax($sucess_data, 200);
-    }
-
-    private function redirectTo()
-    {
-        if ($this->request->hasGetKey('origin')) {
-            return makeRootOrFileUrl($this->request->origin);
-        }
-        return makeRootOrFileUrl('profile');
     }
 
     /**

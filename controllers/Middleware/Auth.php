@@ -14,9 +14,10 @@ trait Auth
 {
 
     /**
+     * @param bool $useRedirectURL
      * @return bool|View
      */
-    public function useAuth(string $origin = '')
+    public function useAuth()
     {
         if ($this->isAuth()) {
             return true;
@@ -27,9 +28,6 @@ trait Auth
         $this->request->sessionUnset('email');
         $this->request->sessionUnset('url');
         $this->request->sessionUnset('resended');
-        if (!empty($origin)) {
-            return redirect("login?origin=$origin", true);
-        }
         return redirect('login', true);
     }
 
@@ -112,6 +110,7 @@ trait Auth
         $this->request->sessionUnset('email');
         $this->request->sessionUnset('url');
         $this->request->sessionUnset('resended');
+        $this->request->sessionUnset('redirectTo');
         return redirect('home', true);
     }
 

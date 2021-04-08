@@ -28,7 +28,6 @@ session_start();
  *  dans la requête de  GET et aussi de variable passé depuis la route voici l'ordre dans la quelle les paramettres de
     Cette methode du controller doivent - être definis : --->($variables_envoyé_depuis_la_route,$variales_envoyé_depuis,la_methode_get)
 */
-
 $dispatcher = FastRoute\simpleDispatcher(function (FastRoute\RouteCollector $route) {
     $route->get('/Cpy-Mvc/', ['class' => HomeController::class, 'method' => 'index']);
     $route->get('/Cpy-Mvc/login', ['class' => LoginController::class, 'method' => 'index']);

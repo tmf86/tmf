@@ -143,7 +143,6 @@ function suppl_tags(array $paths = [], string $to_do = '')
 /**
  * @param $file
  * @return string
- * buildpath
  *  construit le chemin d'accès a un fichier ou a une root en partant du domain principale
  */
 function makeRootOrFileUrl($rootOrFile)
@@ -273,7 +272,11 @@ function view(string $view_name, array $vars = [], bool $use_templating = true, 
  * @param string $index
  * @return false|mixed
  */
-function session(string $index)
+function session(string $index, $value = '')
 {
-    return $_SESSION[$index] ?? '';
+    if (empty($value)) {
+        return $_SESSION[$index] ?? '';
+    }
+    $_SESSION[$index] = $value;
+    return $_SESSION[$index];
 }

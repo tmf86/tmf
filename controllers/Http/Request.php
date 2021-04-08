@@ -18,8 +18,8 @@ class Request
     /*** @var array */
     private $sessions;
     /*** @var array */
-    /*** @var array */
     private $files;
+    /*** @var array */
     private static $errors = [];
 
     /**
