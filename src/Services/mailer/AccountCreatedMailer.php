@@ -14,7 +14,7 @@ class AccountCreatedMailer extends Mailer implements MailerSerice
         $this
             ->from(MAIL_USERNAME, MAIL_SENDER)
             ->subject('Vos identifiants de connexion')
-            ->view('mailer.id', $this->data, true);
+            ->view('mailer.identifiantsMailerView', $this->data, true);
         return $this;
     }
 

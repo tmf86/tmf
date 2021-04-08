@@ -12,7 +12,7 @@ class FinalizeAccountMailer extends Mailer implements MailerSerice
         $this
             ->from(MAIL_USERNAME, MAIL_SENDER)
             ->subject('Finalisation de la creation de votre  compte espace membre ')
-            ->view('mailer.finalize-account', $this->data, true);
+            ->view('mailer.finalize-accountMailerView', $this->data, true);
         return $this;
     }
 

@@ -48,15 +48,12 @@ class ProfileController extends Controller
         return $this->load_views('dashbord.profile', compact('title', 'user', 'scripts'));
     }
 
-    public function profileUpdate()
+    public function profileUpdate(ProfileUpdateValidator $profileUpdateValidator)
     {
-        $profileUpdateValidator = new ProfileUpdateValidator();
-        $validator = $profileUpdateValidator->validateCustermer($this->request->inputs());
-        if ($validator->fails()) {
-            $errors = $validator->errors()->firstOfAll();
-            $errors['input_error'] = true;
-            return $this->request->ajax($errors, 400);
+        if (Request::isAjax()) {
+            $profileUpdateValidator->makeValidate();
+
         }
-        return true;
+        return Request::abort(404);
     }
 }

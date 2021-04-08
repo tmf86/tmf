@@ -145,12 +145,10 @@ $(function () {
                         case true :
                             $("#alerterror").modal("show")
                             for (const property in errors) {
-                                if (property !== 'inputs') {
-                                    $(`label[for='${property}'] small`).html(errors[property])
-                                    $(`input[name="${property}"]`).addClass("error")
-                                    $(`input[name="${property}"] ~ span.icon `).addClass("error")
-                                    console.log(`${property}: ${errors[property]}`);
-                                }
+                                $(`label[for='${property}'] small`).html(errors[property])
+                                $(`input[name="${property}"]`).addClass("error")
+                                $(`input[name="${property}"] ~ span.icon `).addClass("error")
+                                console.log(`${property}: ${errors[property]}`);
                             }
                             break;
                         case false :
