@@ -129,7 +129,7 @@ html, body {
 /*Form register Css*/
 .form-control {
     border-radius: 0;
-   font-family: 'Ubuntu', sans-serif;
+    font-family: 'Ubuntu', sans-serif;
     font-weight: 100;
     transition: all 0.5s ease;
 }
@@ -170,18 +170,22 @@ html, body {
     height: calc(1.5em + 0.75rem + 2px);
     width: 100%;
     color: #495057;
-   font-family: 'Ubuntu', sans-serif;
+    font-family: 'Ubuntu', sans-serif;
     font-weight: 100;
     border: 1px solid #ced4da;
     transition: all 0.5s ease;
 }
 
+input[type='password'] {
+    font-size: 1.5rem;
+}
+
 .select::-ms-value {
-   font-family: 'Ubuntu', sans-serif;
+    font-family: 'Ubuntu', sans-serif;
 }
 
 .form-control::placeholder, option, .btn {
-   font-family: 'Ubuntu', sans-serif;
+    font-family: 'Ubuntu', sans-serif;
     font-weight: 100;
 }
 
@@ -290,7 +294,7 @@ label.error, i.error {
 
 .small {
     color: red;
-   font-family: 'Ubuntu', sans-serif;
+    font-family: 'Ubuntu', sans-serif;
     font-weight: 300;
     font-size: 0.9rem;
     padding-left: 0.3rem;

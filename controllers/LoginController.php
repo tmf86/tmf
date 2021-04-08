@@ -36,41 +36,18 @@ class LoginController extends Controller
         return $this->load_views("pages.login", compact("title", 'scripts', 'user_image'));
     }
 
-    public function postLogin()
+    /**
+     * @param LoginValidator $loginValidator
+     * @return bool|Request|View
+     */
+    public function postLogin(LoginValidator $loginValidator)
     {
-        $this->request->sleepRequest(1);
-        $validator = new LoginValidator();
-        $validation = $validator->validateCustermer($this->request->inputs());
-        if ($validation->fails()) {
-            $errors = $validation->errors->firstOfAll();
-            return $this->request->ajax($errors, 400);
+        if (Request::isAjax()) {
+            $logWihEmailAdressOrID = filter_var($this->request->email_ou_identifiant, FILTER_VALIDATE_EMAIL);
+            $data = $this->proceedToLogin($logWihEmailAdressOrID);
+            return Request::ajax($data, 200);
         }
-        $is_email_adresse = filter_var($this->request->email_ou_identifiant, FILTER_VALIDATE_EMAIL);
-        $sucess_data = [];
-        switch ($is_email_adresse) {
-            case $this->request->email_ou_identifiant:
-                $user = new User();
-                $user = $user
-                    ->select('membre')
-                    ->whereEqual('email', $this->request->email_ou_identifiant)
-                    ->limit('1')
-                    ->run();
-                $this->setSession($user);
-                $sucess_data = ['success' => true, 'redirectTo' => $this->redirectTo(), 'username' => $user->prenom];
-                break;
-            case false :
-                $account = new Account();
-                $account = $account
-                    ->select('compte')
-                    ->whereEqual('identifiant', $this->request->email_ou_identifiant)
-                    ->limit('1')
-                    ->run();
-                $user = $account->user();
-                $this->setSession($user);
-                $sucess_data = ['success' => true, 'redirectTo' => $this->redirectTo(), 'username' => $user->prenom];
-
-        }
-        return $this->request->ajax($sucess_data, 200);
+        return Request::abort(404);
     }
 
     /**
@@ -82,5 +59,71 @@ class LoginController extends Controller
     {
         $this->request->session('user_id', $user->mat_membre);
         $this->request->session('token', $this->generateToken());
+    }
+
+    /**
+     * @param $class
+     * @return User|Account
+     */
+    private function getUserOrAccount($class)
+    {
+        $response = '';
+        switch ($class) {
+            case 'User':
+                $response = $this->runStatement('membre', User::class, 'email');
+                break;
+            case 'Account':
+                $response = $this->runStatement('compte', Account::class, 'identifiant');
+                break;
+        }
+        return $response;
+
+    }
+
+    /**
+     * @param string $table
+     * @param string $class
+     * @param string $field
+     * @return mixed
+     */
+    private function runStatement(string $table, string $class, string $field)
+    {
+        $class = new $class();
+        return $class
+            ->select($table)
+            ->whereEqual($field, $this->request->email_ou_identifiant)
+            ->limit('1')
+            ->run();
+    }
+
+    private function LogUser(User $user)
+    {
+        $this->setSession($user);
+        return $data = ['success' => true, 'redirectTo' => $this->redirectTo(), 'username' => $user->prenom];
+    }
+
+    private function proceedToLogin($check)
+    {
+        $response = [];
+        switch ($check) {
+            case $this->request->email_ou_identifiant:
+                $response = $this->LogUser($this->getUser());
+                break;
+            case false :
+                $response = $this->LogUser($this->getAccount()->user());
+                break;
+        }
+        return $response;
+    }
+
+    /**
+     * @param $name
+     * @param $arguments
+     * @return Account|User|string
+     */
+    public function __call($name, $arguments)
+    {
+        // TODO: Implement __call() method.
+        return $this->getUserOrAccount(str_replace('get', '', $name));
     }
 }

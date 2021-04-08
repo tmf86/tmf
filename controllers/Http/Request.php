@@ -45,7 +45,7 @@ class Request
     /**
      * @return bool
      */
-    public function isAjax()
+    public static function isAjax()
     {
         return (isset($_SERVER['HTTP_X_REQUESTED_WITH']) &&
             (strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) === 'xmlhttprequest'));
@@ -80,20 +80,20 @@ class Request
     /**
      * @param array $data
      * @param $code
-     * @return $this
+     * @return Request
      */
-    public function ajax(array $data, $code)
+    public static function ajax(array $data, $code)
     {
         http_response_code($code);
         echo json_encode($data);
-        return $this;
+        return new Request();
     }
 
     /**
      * @param int $value
      * @return void
      */
-    public function sleepRequest(int $value)
+    public static function sleepRequest(int $value)
     {
         sleep($value);
     }
@@ -184,10 +184,12 @@ class Request
 
     /**
      * @param array $errors
+     * @return array
      */
-    public static function setErrors(array $errors): void
+    public static function setErrors(array $errors)
     {
         self::$errors = $errors;
+        return self::$errors;
     }
 
     /**

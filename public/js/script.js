@@ -141,7 +141,7 @@ $(function () {
                 $("#debug").html(xhr.responseText)
                 console.log(errors)
                 if (xhr.status === 400) {
-                    switch (errors.input_error) {
+                    switch (errors.inputs) {
                         case true :
                             $("#alerterror").modal("show")
                             for (const property in errors) {
@@ -206,7 +206,9 @@ $(function () {
                 const errors = xhr.responseJSON
                 let message = ''
                 for (const errorsKey in errors) {
-                    message += errors[errorsKey] + '<br>';
+                    if (errorsKey !== 'inputs') {
+                        message += errors[errorsKey] + '<br>';
+                    }
                     $(`label[for='${errorsKey}']`).addClass('error')
                     $(`input[name="${errorsKey}"]`).addClass("error")
                     $(`i[data-name='${errorsKey}']`).addClass('error')
