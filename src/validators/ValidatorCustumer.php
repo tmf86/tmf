@@ -2,6 +2,7 @@
 
 namespace Validator;
 
+use Contoller\Http\Request;
 use Rakit\Validation\Validator;
 
 abstract class ValidatorCustumer extends Validator
@@ -18,6 +19,7 @@ abstract class ValidatorCustumer extends Validator
     public function __construct(array $messages = [])
     {
         parent::__construct($this->errorsMessages);
+        $this->makeValidate();
     }
 
     /**
@@ -48,5 +50,24 @@ abstract class ValidatorCustumer extends Validator
     public function validateCustermer(array $inputs)
     {
         return parent::validate($inputs, $this->rules, $this->messages);
+    }
+
+    /**
+     * @return void
+     */
+    private function makeValidate()
+    {
+        Request::sleepRequest(1);
+        $request = new Request();
+        $inputs = $request->inputs();
+        if (!empty($request->inputs())) {
+            $validate = $this->validateCustermer($inputs);
+            if ($validate->fails()) {
+                $errors = $validate->errors()->firstOfAll();
+                $errors['inputs'] = true;
+                (Request::isAjax()) ? Request::ajax($errors, 400) : Request::setErrors($errors);
+                exit();
+            }
+        }
     }
 }
