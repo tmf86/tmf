@@ -69,8 +69,10 @@ $dispatcher = FastRoute\simpleDispatcher(function (FastRoute\RouteCollector $rou
         return new View\View('pages.apropos', compact('title'));
     });
     $route->get('/Cpy-Mvc/test', function () {
-        $new = new LoginController(new Request());
-        debug($new->getUser());
+        $func = function ($a) {
+            echo $${$a};
+        };
+        $func('m');
     });
 });
 

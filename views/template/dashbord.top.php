@@ -72,7 +72,7 @@ use Contoller\Middleware\Auth;
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark pro-pic" href="#"
                            id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <img src="<?= makeRootOrFileUrl('storage/' . $user->image ?? 'images/user-default.jpg') ?>"
+                            <img src="<?= makeRootOrFileUrl($user->image ?? 'images/user-default.jpg') ?>"
                                  alt="user"
                                  class="rounded-circle" width="31" height="31">
                         </a>
@@ -98,7 +98,7 @@ use Contoller\Middleware\Auth;
                 <ul id="sidebarnav">
                     <li>
                         <div class="user-profile d-flex no-block dropdown m-t-20">
-                            <div class="user-pic"><img src="<?= makeRootOrFileUrl('storage/' . $user->image) ?>"
+                            <div class="user-pic"><img src="<?= makeRootOrFileUrl($user->image) ?>"
                                                        alt="users"
                                                        style="border-radius: 50%" width="40" height="40"/></div>
                             <div class="user-content hide-menu m-l-10">

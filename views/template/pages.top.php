@@ -8,11 +8,12 @@
     <link rel="icon" type="image/png" href="<?= makeRootOrFileUrl("images/logo.png") ?>"/>
     <!-- Stylesheet   -->
     <link rel="stylesheet" href='<?= makeRootOrFileUrl("public/css/import/bootstrap/bootstrap-mdb.css") ?>'>
-<!--    <link rel="preconnect" href="https://fonts.gstatic.com">-->
-<!--    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700&display=swap"-->
-<!--          rel="stylesheet">-->
+    <!--    <link rel="preconnect" href="https://fonts.gstatic.com">-->
+    <!--    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700&display=swap"-->
+    <!--          rel="stylesheet">-->
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300&display=swap"
+          rel="stylesheet">
     <link rel="stylesheet" href='<?= makeRootOrFileUrl("public/css/style.css") ?>'>
     <?= suppl_tags($links ?? [], LINK) ?>
     <!-- Stylesheet   -->
@@ -42,7 +43,8 @@
                     </a>
                 </li>
                 <li class="nav-item <?php if (current_route() == makeRootOrFileUrl('login')): ?>active<?php endif; ?>">
-                    <a class="nav-link" href="<?= makeRootOrFileUrl('login') ?>"><i class="fas fa-user"></i>Connexion</a>
+                    <a class="nav-link" href="<?= makeRootOrFileUrl('login') ?>"><i
+                                class="fas fa-user"></i>Connexion</a>
                 </li>
                 <li class="nav-item <?php if (current_route() == makeRootOrFileUrl('register')): ?>active<?php endif; ?>">
                     <a class="nav-link" href="<?= makeRootOrFileUrl('register') ?>"><i class="fas fa-sign-in-alt"></i>Inscriprtion</a>
@@ -53,7 +55,7 @@
                     <i class="nav-link p-0">
                         <img src="<?= makeRootOrFileUrl($user_image ?? 'images/user-default.jpg') ?>"
                              class="rounded-circle z-depth-0"
-                             alt="avatar image" height="35px">
+                             alt="avatar image" height="35px" width="35px">
                     </i>
                 </li>
             </ul>
