@@ -178,8 +178,8 @@ use Contoller\Middleware\Auth;
                 <div class="col-7">
                     <div class="text-end upgrade-btn">
                         <?php if (Auth::asUserAuthenticated() && current_route() === makeRootOrFileUrl('profile')): ?>
-                            <a href="" class="btn btn-danger text-white"
-                               target="">Supprimer le compte</a>
+<!--                            <a href="" class="btn btn-danger text-white"-->
+<!--                               target="">Supprimer le compte</a>-->
                         <?php endif; ?>
                     </div>
                 </div>

@@ -83,7 +83,7 @@
                         Collection de Sujets de 2010-2020 .
                     </p>
                     <div class="text-center">
-                        <a href="sujets" class="btn btn-warning" id="acces_sujet">Acceder aux sujets</a>
+                        <a href="<?= makeRootOrFileUrl('sujets') ?>" class="btn btn-warning" id="acces_sujet">Acceder aux sujets</a>
                     </div>
                 </div>
             </div>
@@ -99,7 +99,7 @@
                         Debuter en programmation .
                     </p>
                     <div class="text-center">
-                        <a href="cours" class="btn btn-warning">Acceder aux cours </a>
+                        <a href="<?= makeRootOrFileUrl('cours') ?>" class="btn btn-warning">Acceder aux cours </a>
                     </div>
                 </div>
             </div>
@@ -115,7 +115,7 @@
                         Organiser vos parrainnage en un clique .
                     </p>
                     <div class="text-center">
-                        <a href="parrainage" class="btn btn-warning">Acceder au parrainnage</a>
+                        <a href="<?= makeRootOrFileUrl('parrainage') ?>" class="btn btn-warning">Acceder au parrainnage</a>
                     </div>
                 </div>
             </div>

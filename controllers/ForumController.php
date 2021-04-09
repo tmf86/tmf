@@ -22,7 +22,6 @@ class ForumController extends Controller
     public function __construct(Request $request)
     {
         parent::__construct($request);
-        $this->useAuth();
         $this->user = $this->user();
     }
 
