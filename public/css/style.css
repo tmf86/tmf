@@ -176,10 +176,6 @@ html, body {
     transition: all 0.5s ease;
 }
 
-input[type='password'] {
-    font-size: 1.5rem;
-}
-
 .select::-ms-value {
     font-family: 'Ubuntu', sans-serif;
 }
