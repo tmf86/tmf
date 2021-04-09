@@ -60,58 +60,6 @@ class Files implements FilesUpload
             return $this->uploadFileWhithoutEmptyParameters($path, $fileName);
         }
         return $this->uploadFileWhithOneParameterEmpty($path, $fileName);
-//        $pathIsNotEmpty = !empty($path);
-//        $fileNameIsNotEmpty = !empty($fileName);
-//        $fileNameIsEmpty = empty($fileName);
-//        $pathIsEmpty = empty($path);
-//        if ($pathIsNotEmpty && $fileNameIsNotEmpty) {
-//            if (file_exists(sprintf('%s/%s', ROOT_DIRECTORY, $path))) {
-//                $fileName = ($this->getExtension($fileName) === $fileName) ? $fileName . $this->getUserExtension() : $fileName;
-//                if (file_exists(ROOT_DIRECTORY . $path . $fileName)) {
-//                    unlink(ROOT_DIRECTORY . $path . $fileName);
-//                }
-//                move_uploaded_file($this->temporaryName(), ROOT_DIRECTORY . $path . $fileName);
-//                return $path . $fileName;
-//            }
-//            if (mkdir($path, 0777, true)) {
-//                $fileName = ($this->getExtension($fileName) === $fileName) ? $fileName . $this->getUserExtension() : $fileName;
-//                if (file_exists(ROOT_DIRECTORY . $path . $fileName)) {
-//                    unlink(ROOT_DIRECTORY . $path . $fileName);
-//                }
-//                move_uploaded_file($this->temporaryName(), ROOT_DIRECTORY . $path . $fileName);
-//                return $path . $fileName;
-//            }
-//            return '';
-//
-//        }
-//        if ($pathIsNotEmpty && $fileNameIsEmpty) {
-//            if (file_exists(sprintf('%s/%s', ROOT_DIRECTORY, $path))) {
-//                $fileName = date("Y-H-i-s") . $this->getUserExtension();
-//                move_uploaded_file($this->temporaryName(), ROOT_DIRECTORY . $path . date("Y-H-i-s") . $this->getUserExtension());
-//                return $path . $fileName;
-//            }
-//            if (mkdir($path, 0777, true)) {
-//                $fileName = date("Y-H-i-s") . $this->getUserExtension();
-//                move_uploaded_file($this->temporaryName(), ROOT_DIRECTORY . $path . date("Y-H-i-s") . $this->getUserExtension());
-//                return $path . $fileName;
-//            }
-//            return '';
-//        }
-//        if ($pathIsEmpty && $fileNameIsNotEmpty) {
-//            $fileName = ($this->getExtension($fileName) === $fileName) ? $fileName . $this->getUserExtension() : $fileName;
-//            if (file_exists(ROOT_DIRECTORY . $path . $fileName)) {
-//                unlink(ROOT_DIRECTORY . $path . $fileName);
-//            }
-//            move_uploaded_file($this->temporaryName(), ROOT_DIRECTORY . '/storage/' . $fileName);
-//            return $fileName;
-//        }
-//        if ($pathIsEmpty && $fileNameIsEmpty) {
-//            $fileName = date("Y-H-i-s") . $this->getUserExtension();
-//            move_uploaded_file($this->temporaryName(), ROOT_DIRECTORY . '/storage/' . date("Y-H-i-s") . $this->getUserExtension());
-//            return $fileName;
-//        }
-//        return '';
-
     }
 
     /**
@@ -155,8 +103,7 @@ class Files implements FilesUpload
     {
         switch ($this->getEmptyParameter($path, $fileName)) {
             case 1:
-                $fileName = $this->getFileWithExtension($fileName);
-                $this->deteFileIfExist($this->defaultPath, $fileName);
+                $this->deteFileIfExist($this->defaultPath, $this->getFileWithExtension($fileName));
                 return $this->moveUploadedFile($this->defaultPath, $fileName);
             case 2:
                 $fileName = $this->generateUnknownFileName();
@@ -176,7 +123,7 @@ class Files implements FilesUpload
     {
         $this->createFileIfNotExist($path);
         $this->deteFileIfExist($path, $this->getFileWithExtension($fileName));
-        return $this->moveUploadedFile($path, $fileName);
+        return $this->moveUploadedFile($path, $this->getFileWithExtension($fileName));
     }
 
     private function fileExist(...$path)
@@ -215,7 +162,7 @@ class Files implements FilesUpload
 
     private function getFileWithExtension(string $fileName)
     {
-        return ($this->getExtension($fileName) === $fileName) ? $fileName . $this->getUserExtension() : $fileName;
+        return ($this->getExtension($fileName) === $fileName) ? $fileName . $this->getClientExtension() : $fileName;
     }
 
     public function createFileIfNotExist(...$path)
@@ -259,9 +206,12 @@ class Files implements FilesUpload
     }
 
     /*** @return string */
-    public function getUserExtension(): string
+    public function getClientExtension(): string
     {
-        // TODO: Implement getUserExtension() method.
-        return $this->getExtension($this->origineName());
+        $lastPointPos = strripos($this->origineName(), '.');
+        if ($lastPointPos !== 0) {
+            return substr($this->origineName(), $lastPointPos);
+        }
+        return '';
     }
 }

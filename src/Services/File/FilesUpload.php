@@ -24,7 +24,7 @@ interface FilesUpload
     public function asError(): bool;
 
     /*** @return string */
-    public function getUserExtension(): string;
+    public function getClientExtension(): string;
 
     /*** @return int */
     public function size(): int;

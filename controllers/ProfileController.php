@@ -62,7 +62,7 @@ class ProfileController extends Controller
     {
         $user = new User();
         $image = (!$this->request->file('user-pic')->asError()) ?
-            $this->request->file('user-pic')->save('', $this->user->identifiant) : '';
+            $this->request->file('user-pic')->save('storage/users/', $this->user->identifiant) : '';
         $user->update([
             'image' => $image,
             'contact' => $this->request->contact,
