@@ -701,3 +701,9 @@ label.error, i.error {
         top: 4.5rem;
     }
 }
+
+@media (max-width: 450px) {
+    .card {
+        align-items: normal;
+    }
+}

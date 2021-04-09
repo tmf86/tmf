@@ -55,77 +55,71 @@
 </div>
 <!--End Carousel-->
 <!--content body---->
-<div class="container-fluid bg jumbotron mt-4">
-    <div class="row center-block">
-        <div class="col-md">
-            <div id="dialog" style="display: none;">
-                <div class="dialog_content">
-                    <span class="close_dialog">&times;</span>
-                    <p>Veullez vous connecter pour acceder a cette option
 
-                    </p>
-                    <p>
-                        <button class="btn btn-primary">Se Connecter</button>
-                    </p>
-                    <p>
-                        <button class="btn btn-primary">S'Inscrire</button>
-                    </p>
-                </div>
-            </div>
-            <div class="card  mt-4" style="width: 16rem">
-                <img src="images/img-card2.png" alt="" class="card-img-top">
-                <div class="card-body">
-                    <h5 class="card-title">Sujet</h5>
-                    <p class="card-text">
-                        Collection de Sujets de <br> 2010-2020
-                    </p>
-                    <div class="card-footer">
-                        <a href="sujets" class="btn btn-warning" id="acces_sujet">Acceder aux sujets</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md  mt-4">
-            <div class="card" style="width: 16rem">
-                <img src="images/img-forum1.png" alt="" class="card-img-top">
+<div class="container-fluid mt-5">
+    <div class="row row-cols-1 row-cols-lg-4 row-cols-sm-2 ">
+        <div class="col mb-4">
+            <!-- Card -->
+            <div class="card">
+                <img src="images/img-forum1.png" alt="" height="300" class="card-img-top">
                 <div class="card-body">
                     <h5 class="card-title">Forum</h5>
                     <p class="card-text">
-                        Partager vos experiences , rencontrer vos mentors
+                        Partager vos experiences , rencontrer vos mentors .
                     </p>
-                    <div class="card-footer">
+                    <div class="d-flex justify-content-center">
                         <a href="<?= makeRootOrFileUrl('forum') ?>" class="btn btn-warning">Acceder au forum</a>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="col-md">
-            <div class="card mt-4" style="width: 16rem">
-                <img src="images/img-algo1.png" height="270" alt="" class="card-img-top">
+        <div class="col mb-4">
+            <!-- Card -->
+            <div class="card">
+                <img src="images/img-card2.png" alt="" height="320" class="card-img-top">
+                <div class="card-body">
+                    <h5 class="card-title">Sujet</h5>
+                    <p class="card-text">
+                        Collection de Sujets de 2010-2020 .
+                    </p>
+                    <div class="text-center">
+                        <a href="sujets" class="btn btn-warning" id="acces_sujet">Acceder aux sujets</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Card -->
+        </div>
+        <div class="col mb-4">
+            <!-- Card -->
+            <div class="card">
+                <img src="images/img-algo1.png" alt="" height="320" class="card-img-top">
                 <div class="card-body">
                     <h5 class="card-title">Cours </h5>
                     <p class="card-text">
-                        Debuter en<br> programmation
+                        Debuter en programmation .
                     </p>
-                    <div class="card-footer">
+                    <div class="text-center">
                         <a href="cours" class="btn btn-warning">Acceder aux cours </a>
                     </div>
                 </div>
             </div>
+            <!-- Card -->
         </div>
-        <div class="col-md">
-            <div class="card mt-4" style="width: 16rem">
-                <img src="images/img-bino2.png" height="270" alt="" class="card-img-top">
+        <div class="col mb-4">
+            <!-- Card -->
+            <div class="card">
+                <img src="images/img-bino2.png" alt="" height="320" class="card-img-top">
                 <div class="card-body">
                     <h5 class="card-title">Parrainnage</h5>
                     <p class="card-text">
-                        Organiser vos parrainnage en clique
+                        Organiser vos parrainnage en un clique .
                     </p>
-                    <div class="card-footer">
+                    <div class="text-center">
                         <a href="parrainage" class="btn btn-warning">Acceder au parrainnage</a>
                     </div>
                 </div>
             </div>
+            <!-- Card -->
         </div>
     </div>
 </div>
