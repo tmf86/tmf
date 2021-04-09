@@ -19,16 +19,7 @@ trait Auth
      */
     public function useAuth()
     {
-        if ($this->isAuth()) {
-            return true;
-        }
-        $this->request->sessionUnset('user_id');
-        $this->request->sessionUnset('token');
-        $this->request->sessionUnset('name');
-        $this->request->sessionUnset('email');
-        $this->request->sessionUnset('url');
-        $this->request->sessionUnset('resended');
-        return redirect('login', true);
+        return (!$this->isAuth()) ? redirect('login', true) : true;
     }
 
     /**
@@ -36,17 +27,13 @@ trait Auth
      */
     public function isAuth()
     {
-        $isAuth = ($this->request->hasSession('user_id') && $this->getToken($this->request->session('token')));
-        if ($isAuth) {
-            return true;
+        $isAuth = ($this->request->hasSession('user_id') && $this->getToken($this->request->session('token')) && $this->user());
+        if (!$isAuth) {
+            $this->UnsetUserSession();
+            return false;
         }
-        $this->request->sessionUnset('user_id');
-        $this->request->sessionUnset('token');
-        $this->request->sessionUnset('name');
-        $this->request->sessionUnset('email');
-        $this->request->sessionUnset('url');
-        $this->request->sessionUnset('resended');
-        return false;
+        return true;
+
     }
 
     /**
@@ -86,23 +73,26 @@ trait Auth
     }
 
     /**
-     * @return Account|bool;
+     * @return array|false|mixed
      */
     public function user()
     {
-        $user = new User();
-        if ($this->isAuth()) {
-            $user_id = $this->request->session('user_id');
-            $user = new User();
-            $user = $user->find($user_id)->account();
-        }
-        return $user;
+        return (self::asUser()) ? self::asUser()->account() : false;
     }
 
     /**
      * @return View
      */
-    public function logoutProcess()
+    public function makelogout(bool $completedLogout = false)
+    {
+        $this->UnsetUserSession();
+        if ($completedLogout) {
+            $this->request->sessionUnset('redirectTo');
+        }
+        return redirect('home', true);
+    }
+
+    private function UnsetUserSession()
     {
         $this->request->sessionUnset('user_id');
         $this->request->sessionUnset('token');
@@ -110,8 +100,6 @@ trait Auth
         $this->request->sessionUnset('email');
         $this->request->sessionUnset('url');
         $this->request->sessionUnset('resended');
-        $this->request->sessionUnset('redirectTo');
-        return redirect('home', true);
     }
 
     /**
@@ -119,6 +107,18 @@ trait Auth
      */
     public static function asUserAuthenticated()
     {
-        return (session('user_id') && session('token'));
+        return (session('user_id') && session('token') && self::asUser());
+    }
+
+    /**
+     * @return User|bool
+     */
+    public static function asUser()
+    {
+        $user = new User();
+        if (session('user_id')) {
+            return $user->find(session('user_id'));
+        }
+        return false;
     }
 }

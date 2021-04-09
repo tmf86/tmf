@@ -7,6 +7,7 @@ namespace Contoller;
 use Contoller\Http\Request;
 use Contoller\Middleware\Auth;
 use Contoller\Middleware\RedirectUsers;
+use Model\Account;
 use Model\User;
 use Service\File\Files;
 use Service\File\FilesUpload;
@@ -53,20 +54,35 @@ class ProfileController extends Controller
     {
         if (Request::isAjax()) {
             $profileUpdateValidator->makeValidate();
-            $this->updateUserPersonaLInfo();
+            if (!empty(($this->request->password))) {
+                return $this->updateUserAcountInfo();
+            }
+            return $this->updateUserPersonaLInfo();
+
         }
         return Request::abort(404);
     }
 
-    private function updateUserPersonaLInfo()
+    private
+    function updateUserPersonaLInfo()
     {
         $user = new User();
         $image = (!$this->request->file('user-pic')->asError()) ?
             $this->request->file('user-pic')->save('storage/users/', $this->user->identifiant) : '';
-        $user->update([
+        return $user->update([
             'image' => $image,
             'contact' => $this->request->contact,
-            'email' => $this->request->email
+            'email' => $this->request->email,
+            'last_update' => date('Y-m-d H:i:s')
         ], (int)$this->user->mat_membre);
+    }
+
+    private function updateUserAcountInfo()
+    {
+        $account = new Account();
+        return $account->update([
+            'mot_pass' => password_hash($this->request->password, PASSWORD_BCRYPT, ['cost' => 12]),
+            'last_update' => date('Y-m-d H:i:s')
+        ], (int)$this->user->id_compte);
     }
 }

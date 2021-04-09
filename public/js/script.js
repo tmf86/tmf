@@ -282,8 +282,7 @@ $(function () {
         formData = new FormData(this)
         let formAsEmpty = true;
         for (var pair of formData.entries()) {
-            console.log(pair[0], pair[1])
-            if (pair[1] !== '' && pair[0] !== 'user-pic') {
+            if (pair[1] !== '' && pair[0] !== 'user-pic' || formData.get('user-pic').name !== '') {
                 formAsEmpty = false;
                 break;
             }

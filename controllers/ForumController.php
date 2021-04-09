@@ -12,7 +12,7 @@ use View\View;
 class ForumController extends Controller
 {
 
-    use RedirectUsers;
+    use RedirectUsers, Auth;
 
     /**
      * @var \Model\User
@@ -22,6 +22,7 @@ class ForumController extends Controller
     public function __construct(Request $request)
     {
         parent::__construct($request);
+        $this->useAuth();
         $this->user = $this->user();
     }
 

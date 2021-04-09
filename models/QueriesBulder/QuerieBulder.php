@@ -556,7 +556,11 @@ abstract class QuerieBulder extends RelationalShema
             endforeach;
             $fieldsAndValues = implode(',', $fieldsAndValues);
             $statement = sprintf('update %s set %s where %s=%d', $this->table, $fieldsAndValues, $this->primaryKeyStr, $id);
-            return $this->pdo->exec($statement);
+            $result = $this->pdo->exec($statement);
+            if ($result) {
+                return $this->find($id);
+            }
+            return false;
         }
         return false;
     }

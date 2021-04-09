@@ -40,7 +40,6 @@ class RegisterController extends Controller
     public function registerStore(RegisterValidator $registerValidator)
     {
         if (Request::isAjax()) {
-            $this->processInputsData();
             $registerValidator->makeValidate();
             $user = new User();
             $user = $user->create($this->request->inputs());
@@ -61,16 +60,6 @@ class RegisterController extends Controller
         return Request::abort(404);
     }
 
-    /**
-     * @return void
-     */
-    private function processInputsData()
-    {
-        if (isset($_POST["annee"], $_POST["mois"], $_POST["jour"])) {
-            $_POST["date_naissance"] = sprintf("%s-%s-%s", $_POST["annee"], $_POST["mois"], $_POST["jour"]);
-            unset($_POST["jour"], $_POST["annee"], $_POST["mois"]);
-        }
-    }
 
     /**
      * @param string $name

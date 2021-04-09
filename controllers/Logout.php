@@ -17,6 +17,6 @@ class Logout extends Controller
      */
     public function logout(): View
     {
-        return $this->logoutProcess();
+        return $this->makelogout(true);
     }
 }
