@@ -60,58 +60,6 @@ class Files implements FilesUpload
             return $this->uploadFileWhithoutEmptyParameters($path, $fileName);
         }
         return $this->uploadFileWhithOneParameterEmpty($path, $fileName);
-//        $pathIsNotEmpty = !empty($path);
-//        $fileNameIsNotEmpty = !empty($fileName);
-//        $fileNameIsEmpty = empty($fileName);
-//        $pathIsEmpty = empty($path);
-//        if ($pathIsNotEmpty && $fileNameIsNotEmpty) {
-//            if (file_exists(sprintf('%s/%s', ROOT_DIRECTORY, $path))) {
-//                $fileName = ($this->getExtension($fileName) === $fileName) ? $fileName . $this->getUserExtension() : $fileName;
-//                if (file_exists(ROOT_DIRECTORY . $path . $fileName)) {
-//                    unlink(ROOT_DIRECTORY . $path . $fileName);
-//                }
-//                move_uploaded_file($this->temporaryName(), ROOT_DIRECTORY . $path . $fileName);
-//                return $path . $fileName;
-//            }
-//            if (mkdir($path, 0777, true)) {
-//                $fileName = ($this->getExtension($fileName) === $fileName) ? $fileName . $this->getUserExtension() : $fileName;
-//                if (file_exists(ROOT_DIRECTORY . $path . $fileName)) {
-//                    unlink(ROOT_DIRECTORY . $path . $fileName);
-//                }
-//                move_uploaded_file($this->temporaryName(), ROOT_DIRECTORY . $path . $fileName);
-//                return $path . $fileName;
-//            }
-//            return '';
-//
-//        }
-//        if ($pathIsNotEmpty && $fileNameIsEmpty) {
-//            if (file_exists(sprintf('%s/%s', ROOT_DIRECTORY, $path))) {
-//                $fileName = date("Y-H-i-s") . $this->getUserExtension();
-//                move_uploaded_file($this->temporaryName(), ROOT_DIRECTORY . $path . date("Y-H-i-s") . $this->getUserExtension());
-//                return $path . $fileName;
-//            }
-//            if (mkdir($path, 0777, true)) {
-//                $fileName = date("Y-H-i-s") . $this->getUserExtension();
-//                move_uploaded_file($this->temporaryName(), ROOT_DIRECTORY . $path . date("Y-H-i-s") . $this->getUserExtension());
-//                return $path . $fileName;
-//            }
-//            return '';
-//        }
-//        if ($pathIsEmpty && $fileNameIsNotEmpty) {
-//            $fileName = ($this->getExtension($fileName) === $fileName) ? $fileName . $this->getUserExtension() : $fileName;
-//            if (file_exists(ROOT_DIRECTORY . $path . $fileName)) {
-//                unlink(ROOT_DIRECTORY . $path . $fileName);
-//            }
-//            move_uploaded_file($this->temporaryName(), ROOT_DIRECTORY . '/storage/' . $fileName);
-//            return $fileName;
-//        }
-//        if ($pathIsEmpty && $fileNameIsEmpty) {
-//            $fileName = date("Y-H-i-s") . $this->getUserExtension();
-//            move_uploaded_file($this->temporaryName(), ROOT_DIRECTORY . '/storage/' . date("Y-H-i-s") . $this->getUserExtension());
-//            return $fileName;
-//        }
-//        return '';
-
     }
 
     /**
