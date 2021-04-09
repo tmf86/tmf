@@ -9,7 +9,7 @@ interface FilesUpload
      * @param string $fileName *
      * @return string
      */
-    public function save(string $path = '', string $fileName = '');
+    public function save(string $path = '', string $fileName = '', bool $emptyDir = false);
 
     /*** @return string */
     public function origineName(): string;

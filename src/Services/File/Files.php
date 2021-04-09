@@ -5,6 +5,7 @@ namespace Service\File;
 
 
 use Contoller\Middleware\Auth;
+use DirectoryIterator;
 
 class Files implements FilesUpload
 {
@@ -54,8 +55,11 @@ class Files implements FilesUpload
      * @param string $fileName
      * @return string
      */
-    public function save(string $path = '', string $fileName = '')
+    public function save(string $path = '', string $fileName = '', bool $emptyDir = false)
     {
+        if ($this->fileExist($path) && $emptyDir) {
+            $this->emptyDir($path);
+        }
         if (!empty($path) && !empty($fileName)) {
             return $this->uploadFileWhithoutEmptyParameters($path, $fileName);
         }
@@ -119,7 +123,7 @@ class Files implements FilesUpload
         return false;
     }
 
-    private function uploadFileWhithoutEmptyParameters(string $path, $fileName)
+    private function uploadFileWhithoutEmptyParameters(string $path, string $fileName)
     {
         $this->createFileIfNotExist($path);
         $this->deteFileIfExist($path, $this->getFileWithExtension($fileName));
@@ -150,9 +154,7 @@ class Files implements FilesUpload
 
     private function moveUploadedFile(...$path)
     {
-        if ($path[0][strlen($path[0]) - 1] !== '/' && $path[0][strlen($path[0]) - 1] !== '\\') {
-            $path[0] = $path[0] . '/';
-        }
+        $path[0] = $this->addLastSlashIfNotExit($path[0]);
 //        debug(preg_match('#^[a-z]+$#', $path[0]));
         if (move_uploaded_file($this->temporaryName(), ROOT_DIRECTORY . implode('', $path))) {
             return implode('', $path);
@@ -170,43 +172,73 @@ class Files implements FilesUpload
         return (!$this->fileExist(...$path)) ? $this->createDirectory(...$path) : false;
     }
 
+    /**
+     * @param string $path
+     */
+    private function emptyDir(string $path)
+    {
+        $path = $this->addLastSlashIfNotExit($path);
+        foreach (new DirectoryIterator(ROOT_DIRECTORY . $path) as $fileInfo) {
+            if ($fileInfo->isDot()) continue;
+            unlink(sprintf('%s%s%s', ROOT_DIRECTORY, $path, $fileInfo->getFilename()));
+        }
+    }
+
+    /**
+     * @param string $path
+     * @return string
+     */
+    private function addLastSlashIfNotExit(string $path)
+    {
+        if ($path[strlen($path) - 1] !== '/' && $path[strlen($path) - 1] !== '\\') {
+            $path = $path . '/';
+        }
+        return $path;
+    }
+
     /*** @return string */
-    public function origineName(): string
+    public
+    function origineName(): string
     {
         // TODO: Implement origineName() method.
         return $this->currentFile['name'];
     }
 
     /**@return string* */
-    public function type(): string
+    public
+    function type(): string
     {
         // TODO: Implement type() method.
         return $this->currentFile['type'];
     }
 
     /*** @return string */
-    public function temporaryName(): string
+    public
+    function temporaryName(): string
     {
         // TODO: Implement temporaryName() method.
         return $this->currentFile['tmp_name'];
     }
 
     /*** @return bool */
-    public function asError(): bool
+    public
+    function asError(): bool
     {
         // TODO: Implement asError() method.
         return $this->currentFile['error'];
     }
 
     /*** @return int */
-    public function size(): int
+    public
+    function size(): int
     {
         // TODO: Implement size() method.
         return $this->currentFile['size'];
     }
 
     /*** @return string */
-    public function getClientExtension(): string
+    public
+    function getClientExtension(): string
     {
         $lastPointPos = strripos($this->origineName(), '.');
         if ($lastPointPos !== 0) {

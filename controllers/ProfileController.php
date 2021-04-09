@@ -54,29 +54,47 @@ class ProfileController extends Controller
     {
         if (Request::isAjax()) {
             $profileUpdateValidator->makeValidate();
-            if (!empty(($this->request->password))) {
-                return $this->updateUserAcountInfo();
+            $account = false;
+            $password = $this->request->password;
+            if (!empty($password)) {
+                $account = $this->updateUserAcountInfo();
             }
-            return $this->updateUserPersonaLInfo();
+            $user = $this->updateUserPersonaLInfo();
+            debug($user, $account);
 
         }
         return Request::abort(404);
     }
 
-    private
-    function updateUserPersonaLInfo()
+    /**
+     * @return false|int
+     * @throws \Exception
+     */
+    private function updateUserPersonaLInfo()
     {
         $user = new User();
+        $path = sprintf('storage/users/%s/', $this->user->identifiant);
+        $fileName = $this->user->identifiant;
         $image = (!$this->request->file('user-pic')->asError()) ?
-            $this->request->file('user-pic')->save('storage/users/', $this->user->identifiant) : '';
+            $this->request->file('user-pic')->save($path, $fileName, true) : '';
+        $fields = ['contact', 'email'];
+        $last_update = '';
+        foreach ($fields as $field) {
+            if ($this->request->{$field} != '' || $image != '') {
+                $last_update = date('Y-m-d H:i:s');
+            }
+        }
         return $user->update([
             'image' => $image,
             'contact' => $this->request->contact,
             'email' => $this->request->email,
-            'last_update' => date('Y-m-d H:i:s')
+            'last_update' => $last_update
         ], (int)$this->user->mat_membre);
     }
 
+    /**
+     * @return false|int
+     */
     private function updateUserAcountInfo()
     {
         $account = new Account();
@@ -85,4 +103,5 @@ class ProfileController extends Controller
             'last_update' => date('Y-m-d H:i:s')
         ], (int)$this->user->id_compte);
     }
+
 }
