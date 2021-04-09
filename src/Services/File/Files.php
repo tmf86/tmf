@@ -50,9 +50,9 @@ class Files implements FilesUpload
     /**
      * @param string $path
      * @param string $fileName
-     * @return bool
+     * @return string
      */
-    public function save(string $path = '', string $fileName = ''): bool
+    public function save(string $path = '', string $fileName = '')
     {
         $pathIsNotEmpty = !empty($path);
         $fileNameIsNotEmpty = !empty($fileName);
@@ -64,38 +64,47 @@ class Files implements FilesUpload
                 if (file_exists(ROOT_DIRECTORY . $path . $fileName)) {
                     unlink(ROOT_DIRECTORY . $path . $fileName);
                 }
-                return move_uploaded_file($this->temporaryName(), ROOT_DIRECTORY . $path . $fileName);
+                move_uploaded_file($this->temporaryName(), ROOT_DIRECTORY . $path . $fileName);
+                return $fileName;
             }
             if (mkdir($path, 0777, true)) {
                 $fileName = ($this->getExtension($fileName) === $fileName) ? $fileName . $this->getUserExtension() : $fileName;
                 if (file_exists(ROOT_DIRECTORY . $path . $fileName)) {
                     unlink(ROOT_DIRECTORY . $path . $fileName);
                 }
-                return move_uploaded_file($this->temporaryName(), ROOT_DIRECTORY . $path . $fileName);
+                move_uploaded_file($this->temporaryName(), ROOT_DIRECTORY . $path . $fileName);
+                return $fileName;
             }
-            return false;
+            return '';
 
         }
         if ($pathIsNotEmpty && $fileNameIsEmpty) {
             if (file_exists(sprintf('%s/%s', ROOT_DIRECTORY, $path))) {
-                return move_uploaded_file($this->temporaryName(), ROOT_DIRECTORY . $path . date("Y-H-i-s") . $this->getUserExtension());
+                $fileName = date("Y-H-i-s") . $this->getUserExtension();
+                move_uploaded_file($this->temporaryName(), ROOT_DIRECTORY . $path . date("Y-H-i-s") . $this->getUserExtension());
+                return $fileName;
             }
             if (mkdir($path, 0777, true)) {
-                return move_uploaded_file($this->temporaryName(), ROOT_DIRECTORY . $path . date("Y-H-i-s") . $this->getUserExtension());
+                $fileName = date("Y-H-i-s") . $this->getUserExtension();
+                move_uploaded_file($this->temporaryName(), ROOT_DIRECTORY . $path . date("Y-H-i-s") . $this->getUserExtension());
+                return $fileName;
             }
-            return false;
+            return '';
         }
         if ($pathIsEmpty && $fileNameIsNotEmpty) {
             $fileName = ($this->getExtension($fileName) === $fileName) ? $fileName . $this->getUserExtension() : $fileName;
             if (file_exists(ROOT_DIRECTORY . $path . $fileName)) {
                 unlink(ROOT_DIRECTORY . $path . $fileName);
             }
-            return move_uploaded_file($this->temporaryName(), ROOT_DIRECTORY . '/storage/' . $fileName);
+            move_uploaded_file($this->temporaryName(), ROOT_DIRECTORY . '/storage/' . $fileName);
+            return $fileName;
         }
         if ($pathIsEmpty && $fileNameIsEmpty) {
-            return move_uploaded_file($this->temporaryName(), ROOT_DIRECTORY . '/storage/' . date("Y-H-i-s") . $this->getUserExtension());
+            $fileName = date("Y-H-i-s") . $this->getUserExtension();
+            move_uploaded_file($this->temporaryName(), ROOT_DIRECTORY . '/storage/' . date("Y-H-i-s") . $this->getUserExtension());
+            return $fileName;
         }
-        return false;
+        return '';
 
     }
 

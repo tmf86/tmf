@@ -7,6 +7,7 @@ namespace Contoller;
 use Contoller\Http\Request;
 use Contoller\Middleware\Auth;
 use Contoller\Middleware\RedirectUsers;
+use Model\User;
 use Service\File\Files;
 use Service\File\FilesUpload;
 use Validator\ProfileUpdateValidator;
@@ -52,8 +53,20 @@ class ProfileController extends Controller
     {
         if (Request::isAjax()) {
             $profileUpdateValidator->makeValidate();
-
+            $this->updateUserPersonaLInfo();
         }
         return Request::abort(404);
+    }
+
+    private function updateUserPersonaLInfo()
+    {
+        $user = new User();
+        $image = (!$this->request->file('user-pic')->asError()) ?
+            $this->request->file('user-pic')->save('', $this->user->identifiant) : '';
+        $user->update([
+            'image' => $image,
+            'contact' => $this->request->contact,
+            'email' => $this->request->email
+        ], (int)$this->user->mat_membre);
     }
 }

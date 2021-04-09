@@ -3,20 +3,20 @@
         <div class="col-md-6">
             <div class="card">
                 <div class="card-body">
-                    <center class="m-t-30"><img src="<?= makeRootOrFileUrl($user->image) ?>"
+                    <center class="m-t-30"><img src="<?= makeRootOrFileUrl('storage/'.$user->image) ?>"
                                                 class="rounded-circle" width="150" height="150" alt="user-profile-img"/>
                         <h4 class="card-title m-t-10"><?= $user->nom . ' ' . $user->prenom ?></h4>
                         <h6 class="card-subtitle">Donnez aux autres une bref decription de qui vous êtes ...</h6>
                         <div class="row text-center justify-content-md-center text-center">
-                            <div class="col-4"><a href="javascript:void(0)" class="link freinds"><i
+                            <div class="col-4"><a href="" class="link freinds"><i
                                             class="icon-people"></i>
                                     <font class="font-medium"><i class="fas fa-users"></i>Amis(0)</font>
                                 </a></div>
-                            <div class="col-4"><a href="javascript:void(0)" class="link subject"><i
+                            <div class="col-4"><a href="" class="link subject"><i
                                             class="icon-people"></i>
                                     <font class="font-medium"><i class="fas fa-pen-square"></i>Sujets(0)</font>
                                 </a></div>
-                            <div class="col-4"><a href="javascript:void(0)" class="link stars"><i
+                            <div class="col-4"><a href="" class="link stars"><i
                                             class="icon-picture"></i>
                                     <font class="font-medium"><i class="fa fa-star"
                                                                  aria-hidden="true"></i>Etoiles(0)</font>
@@ -56,7 +56,7 @@
                             <div class="col-md-12 d-flex justfy-content-space-between">
                                 <div>
                                     <label for="user-pic" class="cursor-pointer">
-                                        <img src="<?= makeRootOrFileUrl($user->image) ?>"
+                                        <img src="<?= makeRootOrFileUrl('storage/'.$user->image) ?>"
                                              class="rounded-circle" width="90" height="90"
                                              alt="user-profile-img"
                                              id="img-container"
@@ -66,7 +66,7 @@
                                 </div>
                                 <div class="pt-5">
                                     <label for="user-pic">
-                                        <span class="btn btn-success text-white">choisir</span>
+                                        <span class="btn text-white" style="background: grey">choisir</span>
                                     </label>
                                 </div>
                             </div>
@@ -103,14 +103,29 @@
                                           class="form-control form-control-line"></textarea>
                             </div>
                         </div>
-                        <div class="form-group">
-                            <div class="col-sm-12">
-                                <button class="btn btn-success text-white">Mettre a jour</button>
-                            </div>
+                        <div class="form-group w-100">
+                            <button class="btn btn-success text-white" id="update-btn" style="width: 10rem">Mettre a
+                                jour
+                            </button>
                         </div>
                         <div id='fix-update-box' style="padding:2rem"></div>
                     </form>
                 </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="notify" tabindex="-1" role="dialog" aria-labelledby="Notify"
+     aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header" style="border-bottom: none !important;">
+                <p style="font-size: .9rem;padding: 0.1rem" class="modal-title"><i class="fa fa-exclamation-triangle"
+                                                                                   style="color: red"></i> Veuillez au
+                    moins
+                    saisir un champs pour une eventuelle mise a jour</p>
+                <span aria-hidden="true" class="ti-close close"
+                      style="cursor: pointer"></span>
             </div>
         </div>
     </div>

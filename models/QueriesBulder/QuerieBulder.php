@@ -542,6 +542,26 @@ abstract class QuerieBulder extends RelationalShema
     }
 
     /**
+     * @param array $data
+     * @param int $id
+     * @return false|int
+     */
+    public function update(array $data, int $id)
+    {
+        if (!empty($data)) {
+            foreach ($data as $key => $value):
+                if (!empty($value)) {
+                    $fieldsAndValues[] = sprintf('%s=%s', replaceQuotion($key), "'$value'");
+                }
+            endforeach;
+            $fieldsAndValues = implode(',', $fieldsAndValues);
+            $statement = sprintf('update %s set %s where %s=%d', $this->table, $fieldsAndValues, $this->primaryKeyStr, $id);
+            return $this->pdo->exec($statement);
+        }
+        return false;
+    }
+
+    /**
      * @return string
      */
     public function getQueryBuilded(): string

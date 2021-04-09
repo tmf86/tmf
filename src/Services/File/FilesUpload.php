@@ -6,10 +6,10 @@ interface FilesUpload
 {
     /**
      * @param string $path
-     * @param string $fileName
-     * @return bool
+     * @param string $fileName *
+     * @return string
      */
-    public function save(string $path = '', string $fileName = ''): bool;
+    public function save(string $path = '', string $fileName = '');
 
     /*** @return string */
     public function origineName(): string;

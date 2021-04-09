@@ -43,10 +43,12 @@ use Contoller\Middleware\Auth;
                 <a class="navbar-brand" href="index.html">
                     <b class="logo-icon">
                         <img src="<?= makeRootOrFileUrl('images/logo-icon.png') ?>" alt="homepage" class="dark-logo"/>
-                        <img src="<?= makeRootOrFileUrl('images/logo-light-icon.png') ?>" alt="homepage" class="light-logo"/>
+                        <img src="<?= makeRootOrFileUrl('images/logo-light-icon.png') ?>" alt="homepage"
+                             class="light-logo"/>
                     </b>
                     <span class="logo-text">
-                            <img src="<?= makeRootOrFileUrl('images/logo-text.png') ?>" alt="homepage" class="dark-logo"/>
+                            <img src="<?= makeRootOrFileUrl('images/logo-text.png') ?>" alt="homepage"
+                                 class="dark-logo"/>
                             <img src="<?= makeRootOrFileUrl('images/logo-light-text.png') ?>" class="light-logo"
                                  alt="homepage"/>
                         </span>
@@ -70,8 +72,9 @@ use Contoller\Middleware\Auth;
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark pro-pic" href="#"
                            id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <img src="<?= makeRootOrFileUrl($user->image ?? 'images/user-default.jpg') ?>" alt="user"
-                                 class="rounded-circle" width="31">
+                            <img src="<?= makeRootOrFileUrl('storage/' . $user->image ?? 'images/user-default.jpg') ?>"
+                                 alt="user"
+                                 class="rounded-circle" width="31" height="31">
                         </a>
                         <?php if (Auth::asUserAuthenticated()): ?>
                             <ul class="dropdown-menu dropdown-menu-end user-dd animated p-0"
@@ -95,8 +98,9 @@ use Contoller\Middleware\Auth;
                 <ul id="sidebarnav">
                     <li>
                         <div class="user-profile d-flex no-block dropdown m-t-20">
-                            <div class="user-pic"><img src="<?= makeRootOrFileUrl($user->image) ?>" alt="users"
-                                                       class="rounded-circle" width="40"/></div>
+                            <div class="user-pic"><img src="<?= makeRootOrFileUrl('storage/' . $user->image) ?>"
+                                                       alt="users"
+                                                       style="border-radius: 50%" width="40" height="40"/></div>
                             <div class="user-content hide-menu m-l-10">
                                 <a href="#" class="" id="Userdd" role="button"
                                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

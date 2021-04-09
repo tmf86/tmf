@@ -264,42 +264,72 @@ $(function () {
         }
         console.log(isvalid)
     })
+    $('.close').click(function () {
+        $('#notify').modal('hide')
+    })
     $('#form-update-profile').submit(function (e) {
         e.preventDefault()
-        $.ajax({
-            url: buildUrl('profile-update'),
-            type: 'post',
-            dataType: 'json',
-            cache: false,
-            contentType: false,
-            processData: false,
-            data: new FormData(this),
-            success: function (data) {
-                $('#debug').html(data)
-            },
-            error: function (xhr) {
-                $('#debug').html(xhr.responseText)
-                const errors = xhr.responseJSON
-                if (xhr.status === 400) {
-                    switch (errors.inputs) {
-                        case true :
-                            for (const property in errors) {
-                                $(`label[for='${property}'] small`).html(errors[property])
-                                $(`input[name="${property}"]`).addClass("error")
-                                console.log(`${property}: ${errors[property]}`);
-                            }
-                            $('#fix-update-box').css({padding: 0});
-                            break;
-                        case false :
-                            alert("Oops ...\0Veuillez Réessayer !")
-                            break;
-                    }
-                } else if (xhr.status === 500) {
-                    alert("Oops ...\nVeuillez Réessayer !")
-                } else if (xhr.status === 409) {
-                    alert("Oops...\nVeuillez verifier l'etat de votre connexion internet et Réesayer !")
-                }
+        $('#update-btn').html(`
+        <div class="loader-center">
+            <div class="loader-d-flex">
+                <div>
+                    <div class="round nb"></div>
+                    <div class="round nb-1"></div>
+                    <div class="round nb-2"></div>
+                </div>
+            </div>
+        </div>`)
+        formData = new FormData(this)
+        let formAsEmpty = true;
+        for (var pair of formData.entries()) {
+            console.log(pair[0], pair[1])
+            if (pair[1] !== '' && pair[0] !== 'user-pic') {
+                formAsEmpty = false;
+                break;
             }
-        })
+        }
+        console.log(formAsEmpty)
+        if (!formAsEmpty) {
+            $.ajax({
+                url: buildUrl('profile-update'),
+                type: 'post',
+                dataType: 'json',
+                cache: false,
+                contentType: false,
+                processData: false,
+                data: new FormData(this),
+                success: function (data) {
+                    $('#update-btn').html(`Mettre a jour`);
+                    $('#debug').html(data)
+                },
+                error: function (xhr) {
+                    $('#update-btn').html(`Mettre a jour`);
+                    $('#debug').html(xhr.responseText)
+                    const errors = xhr.responseJSON
+                    if (xhr.status === 400) {
+                        switch (errors.inputs) {
+                            case true :
+                                for (const property in errors) {
+                                    $(`label[for='${property}'] small`).html(errors[property])
+                                    $(`input[name="${property}"]`).addClass("error")
+                                    console.log(`${property}: ${errors[property]}`);
+                                }
+                                $('#fix-update-box').css({padding: 0});
+                                break;
+                            case false :
+                                alert("Oops ...\0Veuillez Réessayer !")
+                                break;
+                        }
+                    } else if (xhr.status === 500) {
+                        alert("Oops ...\nVeuillez Réessayer !")
+                    } else if (xhr.status === 409) {
+                        alert("Oops...\nVeuillez verifier l'etat de votre connexion internet et Réesayer !")
+                    }
+                }
+            })
+        } else {
+            $('#update-btn').html(`Mettre a jour`);
+            $('#notify').modal('show')
+        }
     })
 })

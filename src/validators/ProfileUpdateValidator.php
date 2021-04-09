@@ -16,13 +16,14 @@ class ProfileUpdateValidator extends ValidatorCustumer
                     au moins une lettre majuscule,
                     au moins un chiffre,
                     au moins un de ces caractères spéciaux : (  $ @ % * + - _ ! )',
-        'phone' => 'contact invalide.'
+        'phone' => 'contact invalide.',
+        'unique' => 'email deja utilisé'
     ];
     /**
      * @var string[]
      */
     protected $rules = [
-        'email' => 'emailApi',
+        'email' => 'emailApi|unique:membre,email',
         'password' => 'regex:#^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[-+!*$@%_])([-+!*$@%_\w]{8,})$#',
         'contact' => 'phone'
     ];
