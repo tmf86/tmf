@@ -30,12 +30,12 @@ use Contoller\Middleware\Auth;
 </head>
 
 <body <?php if (!Auth::asUserAuthenticated()): ?> style="background: #eef5f9;" <?php endif; ?> >
-<div class="preloader">
-    <div class="lds-ripple">
-        <div class="lds-pos"></div>
-        <div class="lds-pos"></div>
-    </div>
-</div>
+<!--<div class="preloader">-->
+<!--    <div class="lds-ripple">-->
+<!--        <div class="lds-pos"></div>-->
+<!--        <div class="lds-pos"></div>-->
+<!--    </div>-->
+<!--</div>-->
 <div id="main-wrapper" data-layout="vertical" data-navbarbg="skin5" data-sidebartype="full"
      data-sidebar-position="absolute" data-header-position="absolute" data-boxed-layout="full">
     <header class="topbar" data-navbarbg="skin5">

@@ -28,7 +28,7 @@ class ProfileUpdateValidator extends ValidatorCustumer
         'email' => 'emailApi|unique:membre,email',
         'password' => 'regex:#^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[-+!*$@%_])([-+!*$@%_\w]{8,})$#',
         'contact' => 'phone',
-        'about' => 'max:500|min:40'
+        'about' => 'min:20'
     ];
 
 }

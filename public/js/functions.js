@@ -23,3 +23,27 @@ const buildUrl = (value = 'defaut') => {
 const btnTransform = (id, text, toggledisabled = true) => {
     (toggledisabled) ? $(id).html(text).toggleClass('disabled') : $(id).html(text)
 }
+/**
+ *
+ * @returns {boolean}
+ * @constructor
+ */
+const KeyBoardEmojiModalShowTask = function () {
+    $('.emoticon-container').addClass('active')
+    $('.emoji-fixed').addClass('active')
+    // $('input').attr('disabled', true)
+    // $('textarea').attr('disabled', true)
+    return false;
+}
+/**
+ *
+ * @returns {boolean}
+ * @constructor
+ */
+const KeyBoardEmojiModalHideTask = function () {
+    $('.emoticon-container').removeClass('active')
+    $('.emoji-fixed').removeClass('active')
+    // $('input').removeAttr('disabled')
+    // $('textarea').removeAttr('disabled')
+    return false;
+}

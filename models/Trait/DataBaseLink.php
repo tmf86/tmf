@@ -16,7 +16,7 @@ trait DataBaseLink
     public function __construct()
     {
         try {
-            $pdo = new PDO(sprintf("mysql:host=%s;dbname=%s;charset=utf8",
+            $pdo = new PDO(sprintf("mysql:host=%s;dbname=%s;charset=utf8mb4",
                 DB_HOST, DB_NAME), DB_USER, DB_PASSWORD);
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         } catch (\PDOException $e) {

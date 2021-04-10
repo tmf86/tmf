@@ -7,9 +7,8 @@
                                                 class="rounded-circle" width="150" height="150" alt="user-profile-img"/>
                         <h4 class="card-title m-t-10"><?= $user->nom . ' ' . $user->prenom ?></h4>
                         <h6 class="card-subtitle"><?= substr($user->about_me, 0, 39) ?> ...
-                            <label for="about"> <i class="fas fa-pencil-alt cursor-pointer"></i></label>
-                            &nbsp;&nbsp;<a href="#" class="see-more" data-toggle="modal" data-target="#about_me">
-                                Voir plus
+                            <label for="about">&nbsp;<i class="fas fa-pencil-alt cursor-pointer"></i></label>&nbsp;<a
+                                    href="#" data-toggle="modal" data-target="#about_me"><br><span class="see-more">Voir plus</span>
                             </a>
                         </h6>
                         <div class="row text-center justify-content-md-center text-center">
@@ -104,8 +103,15 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-md-12" for="about">A propos de vous<small
-                                        class="small not-required"></small></label>
+                            <div class="d-flex justify-content-between">
+                                <div>
+                                    <label class="col-md-12" for="about">A propos de vous<small
+                                                class="small not-required"></small></label>
+                                </div>
+                                <div>
+                                    <i class="fas fa-keyboard cursor-pointer" id="emojiKeyboard"></i>
+                                </div>
+                            </div>
                             <div class="col-md-12">
                                 <textarea rows="5" name="about" id="about"
                                           class="form-control form-control-line"></textarea>
@@ -116,7 +122,7 @@
                                 jour
                             </button>
                         </div>
-                        <div id='fix-update-box' style="padding:2.1rem"></div>
+                        <div id='fix-update-box' style="padding:2.5rem"></div>
                     </form>
                 </div>
             </div>
@@ -140,10 +146,7 @@
         </div>
     </div>
 </div>
-<!-- Button trigger modal -->
-
-<!-- Modal -->
-<div class="modal fade" id="about_me" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+<div class="modal fade" id="about_me" tabindex="-1" role="dialog" aria-labelledby="about_meModal"
      aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -157,6 +160,23 @@
             <div class="card-body">
                 <i class="fas fa-book-open twinkle">
                 </i>&nbsp;&nbsp;<?= $user->about_me ?>.
+            </div>
+        </div>
+    </div>
+</div>
+<div class="emoji-fixed">
+    <div class="emoticon-container" style="width: 18rem">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content slow-opacity" style="text-align: center !important;">
+                <div class="modal-header p-2" style="border-bottom: none !important;">
+                    <h5></h5>
+                    <span type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true" id='close-emoji-modal' class="ti-close close" style="cursor: pointer">
+                    </span>
+                </span>
+                </div>
+                <div class="p-2" style="padding-bottom: 1rem" id="emoticons">
+                </div>
             </div>
         </div>
     </div>

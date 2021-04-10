@@ -43,7 +43,7 @@ trait Auth
     {
         return JWT::encode([
             "iat" => time() + 2,
-            'exp' => time() + 3600],
+            'exp' => time() + 7200],
             JWT_KEY);
     }
 

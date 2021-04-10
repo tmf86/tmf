@@ -22,12 +22,18 @@ $(function () {
             $(`input[name="${this.name}"] ~ span.icon `).removeClass("error")
             $(`i[data-name='${this.name}']`).removeClass('error')
             $(`input[name="${this.name}"]`).removeClass("error")
-            $('#fix-update-box').css({padding: '2rem'});
+            $('#fix-update-box').css({padding: '2.5rem'});
 
         }
     })
     input.focusout(function () {
         $(`input[name="${this.name}"] ~ span.icon `).toggleClass("active")
+    })
+    $('textarea').focus(function () {
+        if ($(`textarea[name="${this.name}"]`).hasClass("error")) {
+            $(`label[for='${this.name}'] small.not-required`).html('')
+            $(`textarea[name="${this.name}"]`).removeClass("error")
+        }
     })
 //Getion dynamique des select de la date de naissance
     const [day, month, year] = [$("#jour"), $("#mois"), $("#annee")]
@@ -315,8 +321,10 @@ $(function () {
                                     $(`input[name="${property}"]`).addClass("error")
                                     $(`textarea[name="${property}"]`).addClass("error")
                                     console.log(`${property}: ${errors[property]}`);
+                                    if (property === 'password') {
+                                        $('#fix-update-box').css({padding: '0.6rem'});
+                                    }
                                 }
-                                $('#fix-update-box').css({padding: '0.1rem'});
                                 break;
                             case false :
                                 alert("Oops ...\0Veuillez Réessayer !")
@@ -335,5 +343,40 @@ $(function () {
         }
     })
 //Detail
+})
+const emoticonsStr =
+    '😀 😃 😄 😁 😆 😅 😂 🤣 😊 😇 🙃 😉 😌 😍 🥰 😘 😗 😙 😚 😋 😛 😝 😜 🤪 👩‍💻 💻 ' +
+    '🤨 🧐 🤓 😎 🤩 🥳 😏 😒 😞 😟 😕 🙁 ☹ 😣 😖 😫 😩 🥺 😢 😭 😤 😠 🐶 🐱 🐭 🐹 🐰 🦊 🐻 🐼 ' +
+    '🤬 🤯 😳 🥵 🥶 😱 😨 😰 😥 😓 🤗 🤔 🤭 🤫 🤥 😶 😐 😑 😬 🙄 😯 😦 😧 😮 😲 🍏 🍎 🍐 🍊 🍋 🍌 🍉 ' +
+    '😴 🤤 😪 😵 🤐 🥴 🤢 🤮 🤧 😷 🤒 🤕 🤑 🤠 😈 👿 👹 👺 🤡 💩 👻 💀 ☠ 👽 👾 ⚽ 🏀 🏈 🥎 🎾 🏐 🏉 🥏 🎱 🏓 🏸 🏒 ' +
+    '🤖 🎃 😺 😸 😹 😻 😼 😽 🙀 😿 😾 👋 🤚 🖐 ✋ 🖖 👌  ✌ 🤞 🤟 🤘 🤙 👈 👉 👆 🚗 🚕 🚙 🚌 🚎 🚓 🚑 🚒 🚐 ' +
+    '🖕 👇 ☝ 👍 👎 ✊ 👊 🤛 🤜 👏 🙌 👐 🤲 🤝 🙏 ✍ 💅 🤳 💪 🦵 🦶 👣 👂 ⌚ 📱 📲 💽 💾 💿 📀 ' +
+    '👃 🧠 🦷 🦴 👀 👅 👄 💋 👶 👩'
+const emoticons = emoticonsStr.split(' ')
+for (let i = 0; i < emoticons.length; i++) {
+    const content = $('#emoticons').html();
+    $('#emoticons').html(content + `<a href="#" class="emoji" data-emoji=${i} title="click sur l'emoticone pour le selectioner" >${emoticons[i]}</a>`)
+}
+$('#emojiKeyboard').click(function () {
+    if ($('.emoticon-container').hasClass('active')) {
+        KeyBoardEmojiModalHideTask()
+    }
+    KeyBoardEmojiModalShowTask()
+})
+$('.emoji').click(function (e) {
+    e.preventDefault()
+    const emoticonID = $(this).attr('data-emoji');
+    const textAreaLastContent = $(`textarea[name='about']`).val() + emoticons[emoticonID];
+    $(`textarea[name='about']`).val(textAreaLastContent)
+    console.log()
+})
+$(window).click(function (e) {
+    const is = $(e.target).is($('.emoji-fixed.active'))
+    if (is) {
+        KeyBoardEmojiModalHideTask()
+    }
+})
+$('#close-emoji-modal').click(function () {
+    KeyBoardEmojiModalHideTask();
 })
 //Fin du processus de  mise a jour du profile
