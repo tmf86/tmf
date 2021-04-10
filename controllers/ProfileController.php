@@ -5,12 +5,9 @@ namespace Contoller;
 
 
 use Contoller\Http\Request;
-use Contoller\Middleware\Auth;
 use Contoller\Middleware\RedirectUsers;
 use Model\Account;
 use Model\User;
-use Service\File\Files;
-use Service\File\FilesUpload;
 use Validator\ProfileUpdateValidator;
 use View\View;
 
@@ -50,17 +47,22 @@ class ProfileController extends Controller
         return $this->load_views('dashbord.profile', compact('title', 'user', 'scripts'));
     }
 
+    /**
+     * @param ProfileUpdateValidator $profileUpdateValidator
+     * @return bool|View
+     * @throws \Exception
+     */
     public function profileUpdate(ProfileUpdateValidator $profileUpdateValidator)
     {
         if (Request::isAjax()) {
             $profileUpdateValidator->makeValidate();
-            $account = false;
             $password = $this->request->password;
+            $accountUpdated = false;
             if (!empty($password)) {
-                $account = $this->updateUserAcountInfo();
+                $accountUpdated = $this->doUpdate('updateUserAcountInfo');
             }
-            $user = $this->updateUserPersonaLInfo();
-            debug($user, $account);
+            $userInfoUpdated = $this->doUpdate('updateUserPersonaLInfo');
+            ($userInfoUpdated || $accountUpdated) ? Request::ajax(['success' => true], 200) : Request::ajax(['success' => false], 200);
 
         }
         return Request::abort(404);
@@ -103,6 +105,18 @@ class ProfileController extends Controller
             'mot_pass' => password_hash($this->request->password, PASSWORD_BCRYPT, ['cost' => 12]),
             'last_update' => date('Y-m-d H:i:s')
         ], (int)$this->user->id_compte);
+    }
+
+    /**
+     * @param string $todo
+     * @return false
+     */
+    private function doUpdate(string $todo)
+    {
+        if (method_exists($this, $todo)) {
+            return $this->$todo();
+        }
+        return false;
     }
 
 }

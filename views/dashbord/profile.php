@@ -129,6 +129,7 @@
         </div>
     </div>
 </div>
+<!--Modal de notification de l'utilisateur en cas de non remplissage de champs-->
 <div class="modal fade" id="notif" tabindex="-1" role="dialog" aria-labelledby="Notify"
      aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
@@ -146,6 +147,26 @@
         </div>
     </div>
 </div>
+<!--Modal d'affche des message d'erreur ou succès après une mise a jour-->
+<div class="modal fade" id="updated" tabindex="-1" role="dialog" aria-labelledby="UpdatedModal"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header" style="border-bottom: none !important;">
+                <h5 class="modal-title"></h5>
+                <span type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true" class="ti-close close" style="cursor: pointer">
+                    </span>
+                </span>
+            </div>
+            <div class="card-body text-center">
+                <img src="" width="150" id="updated-icon" alt="icon-success">
+                <div id="updated-msg" class="mt-2"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--Modal Pour montrer en integralité le texte qui decris l'utilisateur -->
 <div class="modal fade" id="about_me" tabindex="-1" role="dialog" aria-labelledby="about_meModal"
      aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -164,6 +185,7 @@
         </div>
     </div>
 </div>
+<!--Modal Du clavier a emoticone-->
 <div class="emoji-fixed">
     <div class="emoticon-container" style="width: 18rem">
         <div class="modal-dialog" role="document">

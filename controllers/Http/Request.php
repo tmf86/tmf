@@ -81,11 +81,13 @@ class Request
      * @param array $data
      * @param $code
      */
-    public static function ajax(array $data, $code)
+    public static function ajax(array $data, int $code, bool $break = true)
     {
         http_response_code($code);
         echo json_encode($data);
-        exit();
+        if ($break) {
+            exit();
+        }
     }
 
     /**

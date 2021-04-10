@@ -273,6 +273,7 @@ $(function () {
 //Fix Modal de notification de l'utilisateur en cas de non saisie de champs
     $('.close').click(function () {
         $('#notif').modal('hide')
+        $('#updated').modal('hide')
     })
 //Envoie des donnée pour la mise a jour du profile avec Ajax
     $('#form-update-profile').submit(function (e) {
@@ -306,8 +307,28 @@ $(function () {
                 processData: false,
                 data: new FormData(this),
                 success: function (data) {
+                    console.log('ok')
+                    console.log(data)
                     $('#update-btn').html(`Mettre a jour`);
                     $('#debug').html(data)
+                    if (data.success === true) {
+                        $('#form-update-profile').trigger('reset')
+                        $('#updated').modal('show')
+                        $('#updated-icon').attr('src', 'images/success.png')
+                        $('#updated-msg').html(
+                            `Vos modifications ont été effectuées , pour quelles soient prisent en compte actualisez la page !<br>
+                            <i class="fa fa-exclamation-triangle" style="color: red"></i>&nbsp;
+                            <span style="color: red ; background: yellow" class="twinkle">
+                                 Cependant concernant les mises a jour d'images de profile les nouvelles images peuvent 
+                                 prendrent quelques temps avant de s'actualiser veuillez vider vos caches de navigation 
+                                 si vous souhaitez que la mise a jour de l'image prenne effet immediate .
+                            </span>
+                         `)
+                    } else {
+                        $('#updated').modal('show')
+                        $('#updated-icon').attr('src', 'images/wrong.png')
+                        $('#updated-msg').html(`<strong style="font-weight: 700">Ooops ! Désolé une erreur c'est produite , veuillez réeseigner voir ...</strong>`)
+                    }
                 },
                 error: function (xhr) {
                     $('#update-btn').html(`Mettre a jour`);
@@ -342,7 +363,7 @@ $(function () {
             $('#notif').modal('show')
         }
     })
-//Detail
+//Proccessus de cration d'un clavier a emoticonnes
 })
 const emoticonsStr =
     '😀 😃 😄 😁 😆 😅 😂 🤣 😊 😇 🙃 😉 😌 😍 🥰 😘 😗 😙 😚 😋 😛 😝 😜 🤪 👩‍💻 💻 ' +
