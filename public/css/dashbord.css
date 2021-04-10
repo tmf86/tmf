@@ -114,6 +114,27 @@ a.stars {
     animation-delay: -0.15s;
 }
 
+.our-color {
+    background: #414755;
+}
+
+.see-more {
+    background: #414755;
+    color: #fff;
+    padding: 0.5rem;
+    border-radius: 2rem;
+    font-size: 0.6rem;
+}
+
+.see-more:hover {
+    color: #fff;
+}
+
+.twinkle {
+    color: #54C8B3;
+    animation: twinkle 1s linear 2s infinite alternate;
+}
+
 /*Animation @Keyframes*/
 @keyframes sc {
     0%, 80%, 100% {
@@ -130,6 +151,15 @@ a.stars {
     }
 }
 
+@keyframes twinkle {
+    to {
+        opacity: 0;
+    }
+    from {
+        opacity: 1;
+    }
+
+}
 
 @media (max-width: 767.98px) {
     a.subject, a.freinds, a.stars {

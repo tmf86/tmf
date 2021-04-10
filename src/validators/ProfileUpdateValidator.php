@@ -17,7 +17,9 @@ class ProfileUpdateValidator extends ValidatorCustumer
                     au moins un chiffre,
                     au moins un de ces caractères spéciaux : (  $ @ % * + - _ ! )',
         'phone' => 'contact invalide.',
-        'unique' => 'email deja utilisé'
+        'unique' => 'email deja utilisé',
+        'max' => 'votre texte est trop long.',
+        'min' => 'le texte est trop court'
     ];
     /**
      * @var string[]
@@ -25,7 +27,8 @@ class ProfileUpdateValidator extends ValidatorCustumer
     protected $rules = [
         'email' => 'emailApi|unique:membre,email',
         'password' => 'regex:#^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[-+!*$@%_])([-+!*$@%_\w]{8,})$#',
-        'contact' => 'phone'
+        'contact' => 'phone',
+        'about' => 'max:500|min:40'
     ];
 
 }

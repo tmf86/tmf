@@ -226,7 +226,7 @@ $(function () {
             }
         })
     })
-//Mise a jour du profile
+//Commencement du processus de  mise a jour du profile
     $("#user-pic").on("change", function () {
         $(`label[for='${this.name}'] small`).html('')
         $("#img-container").css("border", "none")
@@ -264,9 +264,11 @@ $(function () {
         }
         console.log(isvalid)
     })
+//Fix Modal de notification de l'utilisateur en cas de non saisie de champs
     $('.close').click(function () {
-        $('#notify').modal('hide')
+        $('#notif').modal('hide')
     })
+//Envoie des donnée pour la mise a jour du profile avec Ajax
     $('#form-update-profile').submit(function (e) {
         e.preventDefault()
         $('#update-btn').html(`
@@ -311,9 +313,10 @@ $(function () {
                                 for (const property in errors) {
                                     $(`label[for='${property}'] small`).html(errors[property])
                                     $(`input[name="${property}"]`).addClass("error")
+                                    $(`textarea[name="${property}"]`).addClass("error")
                                     console.log(`${property}: ${errors[property]}`);
                                 }
-                                $('#fix-update-box').css({padding: 0});
+                                $('#fix-update-box').css({padding: '0.1rem'});
                                 break;
                             case false :
                                 alert("Oops ...\0Veuillez Réessayer !")
@@ -328,7 +331,9 @@ $(function () {
             })
         } else {
             $('#update-btn').html(`Mettre a jour`);
-            $('#notify').modal('show')
+            $('#notif').modal('show')
         }
     })
+//Detail
 })
+//Fin du processus de  mise a jour du profile

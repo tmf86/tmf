@@ -26,6 +26,7 @@ use Contoller\Middleware\Auth;
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <script src="https://kit.fontawesome.com/37da887623.js" crossorigin="anonymous"></script>
 </head>
 
 <body <?php if (!Auth::asUserAuthenticated()): ?> style="background: #eef5f9;" <?php endif; ?> >
@@ -178,8 +179,8 @@ use Contoller\Middleware\Auth;
                 <div class="col-7">
                     <div class="text-end upgrade-btn">
                         <?php if (Auth::asUserAuthenticated() && current_route() === makeRootOrFileUrl('profile')): ?>
-<!--                            <a href="" class="btn btn-danger text-white"-->
-<!--                               target="">Supprimer le compte</a>-->
+                            <!--                            <a href="" class="btn btn-danger text-white"-->
+                            <!--                               target="">Supprimer le compte</a>-->
                         <?php endif; ?>
                     </div>
                 </div>
