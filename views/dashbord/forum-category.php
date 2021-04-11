@@ -66,32 +66,38 @@
             </div>
             <div class="modal-body">
                 <div class="card-body">
-                    <form class="form-horizontal form-material mx-2">
+                    <form class="form-horizontal form-material mx-2" method="post" id="subject-form">
                         <div class="form-group">
-                            <label for="example-email" class="col-md-12">Titre du sujet</label>
+                            <label for="title" class="col-md-12">Titre du <small
+                                        class="small">*</small></label>
                             <div class="col-md-12">
-                                <input type="email" placeholder=""
-                                       class="form-control form-control-line" name="example-email"
-                                       id="example-email">
+                                <input type="text" placeholder=""
+                                       class="form-control form-control-line" name="title"
+                                       id="title">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="example-email" class="col-md-12">Sous-titre</label>
+                            <label for="subtitle" class="col-md-12">Sous-titre <small
+                                        class="small">*</small></label>
                             <div class="col-md-12">
-                                <input type="email" placeholder=""
-                                       class="form-control form-control-line" name="example-email"
-                                       id="example-email">
+                                <input type="text" placeholder=""
+                                       class="form-control form-control-line" name="subtitle"
+                                       id="subtitle">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-md-12">Votre message</label>
+                            <label for='message' class="col-md-12">Votre message <small
+                                        class="small">*</small></label>
                             <div class="col-md-12">
-                                <textarea rows="5" class="form-control form-control-line"></textarea>
+                                <textarea rows="5" id='message' class="form-control form-control-line"
+                                          name="message"></textarea>
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="col-sm-12">
-                                <button class="btn btn-success text-white px-5">soumettre</button>
+                                <button class="btn btn-success text-white px-5" id="subject-btn" style="width: 10rem">
+                                    soumettre
+                                </button>
                             </div>
                         </div>
                     </form>
@@ -100,3 +106,4 @@
         </div>
     </div>
 </div>
+<div id="debug"></div>

@@ -15,6 +15,7 @@ use Contoller\RegisterController;
 use Contoller\RegisterSuccess;
 use Contoller\SujetController;
 use Service\Mailer\FinalizeAccountMailer;
+use Validator\ForumAddSubjectValidator;
 use Validator\LoginValidator;
 use Validator\ProfileUpdateValidator;
 use Validator\RegisterValidator;
@@ -56,6 +57,11 @@ $dispatcher = FastRoute\simpleDispatcher(function (FastRoute\RouteCollector $rou
     $route->get('/Cpy-Mvc/forum', ['class' => ForumController::class, 'method' => 'index']);
     $route->get('/Cpy-Mvc/forum/categorie/{slug:[A-Za-z\-]+}', ['class' => ForumController::class,
         'method' => 'category', 'gets' => true, 'vars' => [new ValidateForumCategoryRequest()]]);
+    $route->post('/Cpy-Mvc/forum/categorie/{slug:[A-Za-z\-]+}', ['class' => ForumController::class,
+        'method' => 'addNewSubject', 'gets' => true, 'vars' => [
+            new ForumAddSubjectValidator(),
+            new ValidateForumCategoryRequest()
+        ]]);
     $route->get('/Cpy-Mvc/logout', ['class' => Logout::class, 'method' => 'logout']);
     $route->addGroup('/Cpy-Mvc/finalize_account_creation/', function (FastRoute\RouteCollector $route) {
         $route->get('{id:[A-Z0-9\-]+}/{email:[A-Za-z0-9.@]+}', ['class' => FinalizeAccountController::class, 'method' => 'index', 'gets' => true]);

@@ -31,6 +31,7 @@ $(function () {
     })
     $('textarea').focus(function () {
         if ($(`textarea[name="${this.name}"]`).hasClass("error")) {
+            $(`label[for='${this.name}'] small`).html('*')
             $(`label[for='${this.name}'] small.not-required`).html('')
             $(`textarea[name="${this.name}"]`).removeClass("error")
         }
@@ -401,3 +402,51 @@ $('#close-emoji-modal').click(function () {
     KeyBoardEmojiModalHideTask();
 })
 //Fin du processus de  mise a jour du profile
+//Processus de creation d'un nouveau sujet de discussion
+//Envoie des donnée pour la creation du sujet  avec Ajax
+
+$('#subject-form').submit(function (e) {
+    e.preventDefault()
+    $('#subject-btn').html(`
+        <div class="loader-center">
+            <div class="loader-d-flex">
+                <div>
+                    <div class="round nb"></div>
+                    <div class="round nb-1"></div>
+                    <div class="round nb-2"></div>
+                </div>
+            </div>
+        </div>`)
+    $.ajax({
+        url: window.location.href,
+        type: 'post',
+        dataType: 'json',
+        cache: false,
+        contentType: false,
+        processData: false,
+        data: new FormData(this),
+        success: function (data) {
+            console.log(data)
+            $('#subject-btn').html(`soumettre`);
+            $('#debug').html(data)
+        },
+        error: function (xhr) {
+            $('#subject-btn').html(`soumettre`);
+            $('#debug').html(xhr.responseText)
+            const errors = xhr.responseJSON
+            if (xhr.status === 400) {
+                switch (errors.inputs) {
+                    case true :
+                        for (const property in errors) {
+                            $(`label[for='${property}'] small`).html(errors[property])
+                            $(`input[name="${property}"]`).addClass("error")
+                            $(`textarea[name="${property}"]`).addClass("error")
+                            console.log(`${property}: ${errors[property]}`);
+                        }
+                        break;
+                }
+            }
+        }
+    })
+
+})

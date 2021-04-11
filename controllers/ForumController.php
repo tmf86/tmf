@@ -9,6 +9,7 @@ use Contoller\Middleware\AuthMiddleware;
 use Contoller\Middleware\RedirectUsersMiddleware;
 use Contoller\Middleware\TaskBeforeRequest\ValidateForumCategoryRequest;
 use Model\Forum;
+use Validator\ForumAddSubjectValidator;
 use View\View;
 
 class ForumController extends Controller
@@ -49,8 +50,18 @@ class ForumController extends Controller
         $subject = $this->checkIfHasSubject($forum);
         $forumName = ucfirst($forum->name);
         $title = 'Forum | ' . $forumName;
+        $scripts =
+            [
+                sprintf("<script  src='%spublic/js/functions.js'></script>", rootUrl()),
+                sprintf("<script  src='%spublic/js/script.js'></script>", rootUrl())
+            ];
         $user = $this->user;
-        return $this->load_views('dashbord.forum-category', compact('title', 'user', 'forumName', 'slug', 'forum', 'subject'));
+        return $this->load_views('dashbord.forum-category', compact('title', 'user', 'forumName', 'slug', 'forum', 'subject', 'scripts'));
+    }
+
+    public function addNewSubject(ForumAddSubjectValidator $addSubjectValidator, ValidateForumCategoryRequest $validateForumCategoryRequest, string $slug)
+    {
+        $addSubjectValidator->makeValidate();
     }
 
     /**
