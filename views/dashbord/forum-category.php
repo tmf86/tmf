@@ -7,8 +7,8 @@
                         <div class="page-title d-flex  justfy-content-space-between">
                             <h4 class="underline"><i class="fa fa-tasks"></i>&nbsp;<?= strtoupper($forumName) ?></h4>
                             <div>
-                                <button class="btn btn-success text-white" data-toggle="modal"
-                                        data-target="#forum-add">creer
+                                <button class="btn btn-success text-white" id="showAddSubjectForm">
+                                    creer
                                 </button>
                             </div>
                         </div>
@@ -102,6 +102,24 @@
                         </div>
                     </form>
                 </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="session-alert" tabindex="-1" role="dialog" aria-labelledby="Forum Alert"
+     aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header" style="border-bottom: none !important;">
+                <h5 class="modal-title" id="exampleModalLongTitle"></h5>
+                <span aria-hidden="true" class="ti-close close" data-dismiss="modal" aria-label="Close"
+                      style="cursor: pointer"></span>
+            </div>
+            <div class="modal-body">
+                Vous devez être authentifié pour pouvoir ajouter un nouveau sujet .
+                Votre sujet a été sauvegardé mais ne sera pris en compte qu'une fois authentifié.
+                Si vous n'avez pas encore de compte veuillez en créer un <a
+                        href="<?= makeRootOrFileUrl('register') ?>">ici</a>.
             </div>
         </div>
     </div>

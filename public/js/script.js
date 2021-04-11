@@ -403,8 +403,11 @@ $('#close-emoji-modal').click(function () {
 })
 //Fin du processus de  mise a jour du profile
 //Processus de creation d'un nouveau sujet de discussion
+//Afficahge du formulaire d'ajout de sujets au clic du boutton ayant l'ID showAddSubjectForm
+$('#showAddSubjectForm').click(function () {
+    $('#forum-add').modal('show')
+})
 //Envoie des donnée pour la creation du sujet  avec Ajax
-
 $('#subject-form').submit(function (e) {
     e.preventDefault()
     $('#subject-btn').html(`
@@ -442,6 +445,12 @@ $('#subject-form').submit(function (e) {
                             $(`input[name="${property}"]`).addClass("error")
                             $(`textarea[name="${property}"]`).addClass("error")
                             console.log(`${property}: ${errors[property]}`);
+                        }
+                        break;
+                    case false :
+                        if (errors.setsession === true) {
+                            $('#forum-add').modal('hide')
+                            $('#session-alert').modal('show')
                         }
                         break;
                 }

@@ -9,6 +9,7 @@ use Contoller\Middleware\AuthMiddleware;
 use Contoller\Middleware\RedirectUsersMiddleware;
 use Contoller\Middleware\TaskBeforeRequest\ValidateForumCategoryRequest;
 use Model\Forum;
+use Model\ForumSubject;
 use Validator\ForumAddSubjectValidator;
 use View\View;
 
@@ -61,7 +62,13 @@ class ForumController extends Controller
 
     public function addNewSubject(ForumAddSubjectValidator $addSubjectValidator, ValidateForumCategoryRequest $validateForumCategoryRequest, string $slug)
     {
+        $forum = $validateForumCategoryRequest->doTask($slug);
         $addSubjectValidator->makeValidate();
+        if (AuthMiddleware::asUserAuthenticated()) {
+            $this->addSubject($forum);
+        }
+        Request::ajax(['inputs' => false, 'setsession' => true], 400);
+
     }
 
     /**
@@ -69,7 +76,7 @@ class ForumController extends Controller
      * @return array|false|mixed
      * @throws \Exception
      */
-    public function checkIfHasSubject(Forum $forum)
+    private function checkIfHasSubject(Forum $forum)
     {
         if ($forum->subjects) {
             return $forum->select('forum_subject')
@@ -78,5 +85,18 @@ class ForumController extends Controller
                 ->limit(5)->run(true);
         }
         return false;
+    }
+
+    private function addSubject(Forum $forum)
+    {
+        $forumSubject = new ForumSubject();
+        debug($forumSubject->create(
+            [
+                'title' => $this->request->title,
+                'subtitle' => $this->request->subtitle,
+                'message' => $this->request->message,
+                'forum_id' => $forum->id
+            ]
+        ));
     }
 }
