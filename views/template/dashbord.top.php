@@ -1,6 +1,6 @@
 <?php
 
-use Contoller\Middleware\Auth;
+use Contoller\Middleware\AuthMiddleware;
 
 ?>
 <!DOCTYPE html>
@@ -29,7 +29,7 @@ use Contoller\Middleware\Auth;
     <script src="https://kit.fontawesome.com/37da887623.js" crossorigin="anonymous"></script>
 </head>
 
-<body <?php if (!Auth::asUserAuthenticated()): ?> style="background: #eef5f9;" <?php endif; ?> >
+<body <?php if (!AuthMiddleware::asUserAuthenticated()): ?> style="background: #eef5f9;" <?php endif; ?> >
 <!--<div class="preloader">-->
 <!--    <div class="lds-ripple">-->
 <!--        <div class="lds-pos"></div>-->
@@ -54,7 +54,7 @@ use Contoller\Middleware\Auth;
                                  alt="homepage"/>
                         </span>
                 </a>
-                <?php if (Auth::asUserAuthenticated()): ?>
+                <?php if (AuthMiddleware::asUserAuthenticated()): ?>
                     <a class="nav-toggler waves-effect waves-light d-block d-md-none" href="javascript:void(0)"><i
                                 class="ti-menu ti-close"></i></a>
                 <?php endif; ?>
@@ -77,7 +77,7 @@ use Contoller\Middleware\Auth;
                                  alt="user"
                                  class="rounded-circle" width="31" height="31">
                         </a>
-                        <?php if (Auth::asUserAuthenticated()): ?>
+                        <?php if (AuthMiddleware::asUserAuthenticated()): ?>
                             <ul class="dropdown-menu dropdown-menu-end user-dd animated p-0"
                                 aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item <?php if (current_route() === makeRootOrFileUrl('profile')) : ?> active <?php endif; ?>"
@@ -92,7 +92,7 @@ use Contoller\Middleware\Auth;
             </div>
         </nav>
     </header>
-    <?php if (Auth::asUserAuthenticated()): ?>
+    <?php if (AuthMiddleware::asUserAuthenticated()): ?>
     <aside class="left-sidebar" data-sidebarbg="skin6">
         <div class="scroll-sidebar">
             <nav class="sidebar-nav">
@@ -130,9 +130,9 @@ use Contoller\Middleware\Auth;
                             <span class="hide-menu">Profile</span></a>
                     </li>
                     <li class="sidebar-item">
-                        <a class="sidebar-link waves-effect waves-dark sidebar-link <?php if (current_route() == makeRootOrFileUrl(sprintf('forum/category/%s', $category ?? ''))): ?>active<?php endif; ?>"
+                        <a class="sidebar-link waves-effect waves-dark sidebar-link <?php if (current_route() == makeRootOrFileUrl(sprintf('forum/categorie/%s', $slug ?? ''))): ?>active<?php endif; ?>"
                            href="<?= makeRootOrFileUrl('forum') ?>" aria-expanded="false">
-                            <i class="ti-comment-alt m-r-5 m-l-5"></i>
+                            <i class="ti-comments m-r-5 m-l-5"></i>
                             <span class="hide-menu">Forum</span></a>
                     </li>
                 </ul>
@@ -144,27 +144,33 @@ use Contoller\Middleware\Auth;
         <?php endif; ?>
         <div class="page-breadcrumb">
             <div class="row align-items-center">
-                <div class="col-5">
+                <div class="col-12">
                     <?php if (current_route() === makeRootOrFileUrl('profile')) : ?>
-                        <h4 class="page-title">Profile</h4>
+                        <h4 class="page-title" style="font-size: 1rem !important;">Profile</h4>
                     <?php endif; ?>
                     <?php $current_route = current_route();
-                    if ($current_route === makeRootOrFileUrl('forum') || $current_route === makeRootOrFileUrl(sprintf('forum/category/%s', $category ?? ''))) :?>
-                        <h4 class="page-title">Forum</h4>
+                    if ($current_route === makeRootOrFileUrl('forum') || $current_route === makeRootOrFileUrl(sprintf('forum/categorie/%s', $slug ?? ''))) :?>
+                        <h4 class="page-title" style="font-size: 1rem !important;"><i
+                                    class="ti-comments m-r-5 m-l-5"></i>&nbsp;Forum</h4>
                     <?php endif; ?>
                     <div class="d-flex align-items-center mt-3">
                         <nav aria-label="breadcrumb">
-                            <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="<?= makeRootOrFileUrl('home') ?>">Acceuil</a></li>
+                            <ol class="breadcrumb" style="font-size: 0.9rem !important;">
+                                <li class="breadcrumb-item"><a href="<?= makeRootOrFileUrl('home') ?>"><i
+                                                class="ti-share m-r-5 m-l-5"></i>&nbsp;Acceuil</a></li>
                                 <?php if (current_route() === makeRootOrFileUrl('forum')) : ?>
                                     <li class="breadcrumb-item active" aria-current="page"><a
-                                                href="<?= makeRootOrFileUrl('forum') ?>">Forum</a></li>
+                                                href="<?= makeRootOrFileUrl('forum') ?>"><i
+                                                    class="ti-comments m-r-5 m-l-5"></i>&nbsp;Forum</a></li>
                                 <?php endif ?>
-                                <?php if (current_route() === makeRootOrFileUrl(sprintf('forum/category/%s', $category ?? ''))): ?>
+                                <?php if (current_route() === makeRootOrFileUrl(sprintf('forum/categorie/%s', $slug ?? ''))): ?>
                                     <li class="breadcrumb-item" aria-current="page"><a
-                                                href="<?= makeRootOrFileUrl('forum') ?>">Forum</a></li>
+                                                href="<?= makeRootOrFileUrl('forum') ?>"><i
+                                                    class="ti-comments m-r-5 m-l-5"></i>&nbsp;Forum</a></li>
                                     <li class="breadcrumb-item active" aria-current="page"><a
-                                                href="<?= makeRootOrFileUrl(sprintf('forum/category/%s', $category ?? '')) ?>"><?= $category ?></a>
+                                                href="<?= makeRootOrFileUrl(sprintf('forum/categorie/%s', $slug ?? '')) ?>"><i
+                                                    class="ti-comments-smiley m-r-5 m-l-5"></i><?= $forumName ?>
+                                        </a>
                                     </li>
                                 <?php endif; ?>
                                 <?php if (current_route() === makeRootOrFileUrl('profile')) : ?>
@@ -178,7 +184,7 @@ use Contoller\Middleware\Auth;
                 </div>
                 <div class="col-7">
                     <div class="text-end upgrade-btn">
-                        <?php if (Auth::asUserAuthenticated() && current_route() === makeRootOrFileUrl('profile')): ?>
+                        <?php if (AuthMiddleware::asUserAuthenticated() && current_route() === makeRootOrFileUrl('profile')): ?>
                             <!--                            <a href="" class="btn btn-danger text-white"-->
                             <!--                               target="">Supprimer le compte</a>-->
                         <?php endif; ?>

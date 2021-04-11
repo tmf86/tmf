@@ -3,7 +3,7 @@
 namespace Contoller;
 
 use Contoller\Http\Request;
-use Contoller\Middleware\Auth;
+use Contoller\Middleware\AuthMiddleware;
 use Model\User;
 use Service\Mailer\FinalizeAccountMailer;
 use Validator\RegisterValidator;

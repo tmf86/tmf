@@ -4,13 +4,13 @@
 namespace Contoller;
 
 
-use Contoller\Middleware\Auth;
+use Contoller\Middleware\AuthMiddleware;
 use Model\Annonce;
 use View\View;
 
 class HomeController extends Controller
 {
-    use Auth;
+    use AuthMiddleware;
 
     /**
      * @return View

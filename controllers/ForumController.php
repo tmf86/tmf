@@ -5,14 +5,16 @@ namespace Contoller;
 
 
 use Contoller\Http\Request;
-use Contoller\Middleware\Auth;
-use Contoller\Middleware\RedirectUsers;
+use Contoller\Middleware\AuthMiddleware;
+use Contoller\Middleware\RedirectUsersMiddleware;
+use Contoller\Middleware\TaskBeforeRequest\ValidateForumCategoryRequest;
+use Model\Forum;
 use View\View;
 
 class ForumController extends Controller
 {
 
-    use RedirectUsers, Auth;
+    use RedirectUsersMiddleware, AuthMiddleware;
 
     /**
      * @var \Model\User
@@ -32,17 +34,38 @@ class ForumController extends Controller
     {
         $title = 'Forum';
         $user = $this->user;
-        return $this->load_views('dashbord.forum', compact('title', 'user'));
+        $forums = new Forum();
+        $forums = $forums->all();
+        return $this->load_views('dashbord.forum', compact('title', 'user', 'forums'));
     }
 
     /**
      * @param string $category
      * @return View
      */
-    public function category(string $category)
+    public function category(ValidateForumCategoryRequest $validateForumCategoryRequest, string $slug)
     {
-        $title = 'Forum | ' . ucfirst($category);
+        $forum = $validateForumCategoryRequest->doTask($slug);
+        $subject = $this->checkIfHasSubject($forum);
+        $forumName = ucfirst($forum->name);
+        $title = 'Forum | ' . $forumName;
         $user = $this->user;
-        return $this->load_views('dashbord.forum-category', compact('title', 'user', 'category'));
+        return $this->load_views('dashbord.forum-category', compact('title', 'user', 'forumName', 'slug', 'forum', 'subject'));
+    }
+
+    /**
+     * @param Forum $forum
+     * @return array|false|mixed
+     * @throws \Exception
+     */
+    public function checkIfHasSubject(Forum $forum)
+    {
+        if ($forum->subjects) {
+            return $forum->select('forum_subject')
+                ->whereEqual('forum_id', $forum->id)
+                ->OrderByDesc('created_at')
+                ->limit(5)->run(true);
+        }
+        return false;
     }
 }

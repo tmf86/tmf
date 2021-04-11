@@ -8,112 +8,38 @@
                 <table class="table v-middle">
                     <thead>
                     <tr class="bg-light">
-                        <th class="border-top-0 text-start">Categories</th>
+                        <th class="border-top-0 text-start">Nom</th>
                         <th class="border-top-0 text-center">Description</th>
                         <th class="border-top-0 text-end">Action</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <td>
-                            <div class="d-flex align-items-center">
-                                <div class="m-r-10">
-                                    <a href="<?= makeRootOrFileUrl('forum/category/informatique') ?>"
-                                       class="btn btn-circle d-flex btn-info text-white">IN</a>
+                    <?php foreach ($forums as $forum): ?>
+                        <tr>
+                            <td>
+                                <div class="d-flex align-items-center">
+                                    <div class="m-r-10">
+                                        <a href="<?= makeRootOrFileUrl(sprintf('forum/categorie/%s', $forum->categorie->slug)) ?>">
+                                            <img src="<?= makeRootOrFileUrl($forum->icon) ?>" alt="user" width="50"
+                                                 height="50"
+                                                 class="rounded-circle img-cover">
+                                        </a>
+                                    </div>
+                                    <div class="forum-name">
+                                        <a href="<?= makeRootOrFileUrl(sprintf('forum/categorie/%s', $forum->categorie->slug)) ?>">
+                                            <h4 class="m-b-0 font-16"><?= strtoupper($forum->name) ?></h4>
+                                        </a>
+                                    </div>
                                 </div>
-                                <div class="forum-name">
-                                    <h4 class="m-b-0 font-16">INFORMATIQUE</h4>
-                                </div>
-                            </div>
-                        </td>
-                        <td class="text-center"> Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                            Accusantium dolor esse illum iure nobis saepe sed similique veritatis? Aliquam cumque
-                            dolore eaque earum eum ipsum magnam nihil porro, quisquam voluptatum.
-                        </td>
-                        <td class="text-end">
-                            <label class="label label-danger">Quitter</label>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="d-flex align-items-center">
-                                <div class="m-r-10">
-                                    <a href="<?= makeRootOrFileUrl('forum/category/informatique') ?>"
-                                       class="btn btn-circle d-flex btn-info text-white">IN</a>
-                                </div>
-                                <div class="forum-name">
-                                    <h4 class="m-b-0 font-16">INFORMATIQUE</h4>
-                                </div>
-                            </div>
-                        </td>
-                        <td class="text-center"> Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                            Accusantium dolor esse illum iure nobis saepe sed similique veritatis? Aliquam cumque
-                            dolore eaque earum eum ipsum magnam nihil porro, quisquam voluptatum.
-                        </td>
-                        <td class="text-end">
-                            <label class="label label-danger">Quitter</label>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="d-flex align-items-center">
-                                <div class="m-r-10">
-                                    <a href="<?= makeRootOrFileUrl('forum/category/informatique') ?>"
-                                       class="btn btn-circle d-flex btn-info text-white">IN</a>
-                                </div>
-                                <div class="forum-name">
-                                    <h4 class="m-b-0 font-16">INFORMATIQUE</h4>
-                                </div>
-                            </div>
-                        </td>
-                        <td class="text-center"> Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                            Accusantium dolor esse illum iure nobis saepe sed similique veritatis? Aliquam cumque
-                            dolore eaque earum eum ipsum magnam nihil porro, quisquam voluptatum.
-                        </td>
-                        <td class="text-end">
-                            <label class="label label-danger">Quitter</label>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="d-flex align-items-center">
-                                <div class="m-r-10">
-                                    <a href="<?= makeRootOrFileUrl('forum/category/informatique') ?>"
-                                       class="btn btn-circle d-flex btn-info text-white">IN</a>
-                                </div>
-                                <div class="forum-name">
-                                    <h4 class="m-b-0 font-16">INFORMATIQUE</h4>
-                                </div>
-                            </div>
-                        </td>
-                        <td class="text-center"> Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                            Accusantium dolor esse illum iure nobis saepe sed similique veritatis? Aliquam cumque
-                            dolore eaque earum eum ipsum magnam nihil porro, quisquam voluptatum.
-                        </td>
-                        <td class="text-end">
-                            <label class="label label-danger">Quitter</label>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="d-flex align-items-center">
-                                <div class="m-r-10">
-                                    <a href="<?= makeRootOrFileUrl('forum/category/informatique') ?>"
-                                       class="btn btn-circle d-flex btn-info text-white">IN</a>
-                                </div>
-                                <div class="forum-name">
-                                    <h4 class="m-b-0 font-16">INFORMATIQUE</h4>
-                                </div>
-                            </div>
-                        </td>
-                        <td class="text-center"> Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                            Accusantium dolor esse illum iure nobis saepe sed similique veritatis? Aliquam cumque
-                            dolore eaque earum eum ipsum magnam nihil porro, quisquam voluptatum.
-                        </td>
-                        <td class="text-end">
-                            <label class="label label-danger">Quitter</label>
-                        </td>
-                    </tr>
+                            </td>
+                            <td class="text-justify">
+                                <?= makeStrong($forum->description) ?>
+                            </td>
+                            <td class="text-end">
+                                <label class="label label-danger">Quitter</label>
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
                     </tbody>
                 </table>
             </div>

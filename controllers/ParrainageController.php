@@ -6,7 +6,7 @@ namespace Contoller;
 
 //use Contoller\Http\Request;
 use Contoller\Http\Request;
-use Contoller\Middleware\RedirectUsers;
+use Contoller\Middleware\RedirectUsersMiddleware;
 use Model\Demand_Acount;
 use Model\Demande;
 use Service\Mailer\AccountCreatedMailer;
@@ -19,7 +19,7 @@ use View\View;
 
 class ParrainageController extends Controller
 {
-    use RedirectUsers;
+    use RedirectUsersMiddleware;
 
     public function __construct(Request $request)
     {

@@ -10,7 +10,7 @@ use Model\Account;
 use Model\User;
 use View\View;
 
-trait Auth
+trait AuthMiddleware
 {
 
     /**

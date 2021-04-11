@@ -5,14 +5,14 @@ namespace Contoller;
 
 
 use Contoller\Http\Request;
-use Contoller\Middleware\Auth;
+use Contoller\Middleware\AuthMiddleware;
 use Model\User;
 use View\View;
 
 abstract class Controller
 {
 
-    use Auth;
+    use AuthMiddleware;
 
     /**
      * @var Request

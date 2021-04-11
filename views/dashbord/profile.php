@@ -6,7 +6,8 @@
                     <center class="m-t-30"><img src="<?= makeRootOrFileUrl($user->image) ?>"
                                                 class="rounded-circle" width="150" height="150" alt="user-profile-img"/>
                         <h4 class="card-title m-t-10"><?= $user->nom . ' ' . $user->prenom ?></h4>
-                        <h6 class="card-subtitle"><?= substr($user->about_me, 0, 39) ?> ...
+                        <h6 class="card-subtitle"><?= ($user->about_me) ? substr($user->about_me, 0, 39) : 'Donnez aux autres une bref decription de qui vous êtes ..' ?>
+                            ...
                             <label for="about">&nbsp;<i class="fas fa-pencil-alt cursor-pointer"></i></label>&nbsp;<a
                                     href="#" data-toggle="modal" data-target="#about_me"><br><span class="see-more">Voir plus</span>
                             </a>
@@ -180,7 +181,7 @@
             </div>
             <div class="card-body">
                 <i class="fas fa-book-open twinkle">
-                </i>&nbsp;&nbsp;<?= $user->about_me ?>.
+                </i>&nbsp;&nbsp;<?= ($user->about_me) ?? 'Donnez aux autres une bref decription de qui vous êtes ..' ?>.
             </div>
         </div>
     </div>

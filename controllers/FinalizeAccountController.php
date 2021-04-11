@@ -5,7 +5,7 @@ namespace Contoller;
 
 
 use Contoller\Http\Request;
-use Contoller\Middleware\Auth;
+use Contoller\Middleware\AuthMiddleware;
 use Model\Account;
 use Model\User;
 use Service\Mailer\AccountCreatedMailer;
@@ -14,7 +14,7 @@ use View\View;
 
 class FinalizeAccountController extends Controller
 {
-    use Auth;
+    use AuthMiddleware;
 
     /**
      * @param string $id

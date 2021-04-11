@@ -4,12 +4,12 @@
 namespace Service\File;
 
 
-use Contoller\Middleware\Auth;
+use Contoller\Middleware\AuthMiddleware;
 use DirectoryIterator;
 
 class Files implements FilesUpload
 {
-    use Auth;
+    use AuthMiddleware;
 
     /*** @var array */
     private $files;

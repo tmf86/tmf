@@ -4,87 +4,50 @@
             <div class="mt-2">
                 <div class="p-2">
                     <div class="feed-widget">
-                        <h4 class="page-title">Informatique</h4>
-                        <div class="col-sm-12 d-flex mb-4 justfy-content-space-between">
-                            <div class="forum-msg w-75">
-                                Les sujets les plus recents de la categorie <?= $category ?>
-                            </div>
+                        <div class="page-title d-flex  justfy-content-space-between">
+                            <h4 class="underline"><i class="fa fa-tasks"></i>&nbsp;<?= strtoupper($forumName) ?></h4>
                             <div>
                                 <button class="btn btn-success text-white" data-toggle="modal"
                                         data-target="#forum-add">creer
                                 </button>
                             </div>
                         </div>
-                        <ul class="list-style-none feed-body m-0 p-b-20">
-                            <li class="feed-item p-3">
-                                <div class="feed-icon">
-                                    <img src="<?= makeRootOrFileUrl('images/users/1.jpg') ?>" alt="user" width="40"
-                                         class="rounded-circle">
-                                </div>
-                                <div class="p-2">
-                                    Comment afficher du text a la console en python ... <br>
-                                    <span style="opacity: 0.8; font-size: 13px; font-weight: 700 ; fp"> Par JulienFeraux1 27 mars 2021 à 22:58:16</span>
-                                </div>
-                                <div class="p-2">
-                                    <span class="">20 messages</span>
-                                </div>
-                                <div class="px-2">
+                        <div class="col-sm-12 d-flex mb-4 justfy-content-space-between">
+                            <div class="forum-msg w-75">
+                                <?php if ($subject): ?>
+                                    Les sujets les plus recents du forum <i><strong><?= $forumName ?></strong></i>
+                                <?php endif; ?>
+                            </div>
+                        </div>
+                        <?php if ($subject): ?>
+                            <ul class="list-style-none feed-body m-0 p-b-20">
+                                <li class="feed-item p-3">
+                                    <div class="feed-icon">
+                                        <img src="<?= makeRootOrFileUrl('images/users/1.jpg') ?>" alt="user" width="40"
+                                             class="rounded-circle">
+                                    </div>
+                                    <div class="p-2">
+                                        Comment afficher du text a la console en python ... <br>
+                                        <span style="opacity: 0.8; font-size: 13px; font-weight: 700 ; fp"> Par JulienFeraux1 27 mars 2021 à 22:58:16</span>
+                                    </div>
+                                    <div class="p-2">
+                                        <span class="">20 messages</span>
+                                    </div>
+                                    <div class="px-2">
                                      <span class="">Dernier message  <br> par <strong>NadfriJS</strong>
                                     Il y a environ 5 heures</span>
+                                    </div>
+                                </li>
+                            </ul>
+                        <?php else: ?>
+                            <div class="text-center">
+                                <img src="<?= makeRootOrFileUrl('images/not.png') ?>" alt="not-subject">
+                                <div class="not-subject">
+                                    Oops ... pas de sujet dans cette categorie pour le moment . <br>
+                                    Vous pouvez en creer un en cliquant sur le bouton créer ci-dessus .🙄
                                 </div>
-                            </li>
-                            <li class="feed-item p-3">
-                                <div class="feed-icon">
-                                    <img src="<?= makeRootOrFileUrl('images/users/1.jpg') ?>" alt="user" width="40"
-                                         class="rounded-circle">
-                                </div>
-                                <div class="p-2">
-                                    Comment afficher du text a la console en python ... <br>
-                                    <span style="opacity: 0.8; font-size: 13px; font-weight: 700 ; fp"> Par JulienFeraux1 27 mars 2021 à 22:58:16</span>
-                                </div>
-                                <div class="p-2">
-                                    <span class="">20 messages</span>
-                                </div>
-                                <div class="px-2">
-                                     <span class="">Dernier message  <br> par <strong>NadfriJS</strong>
-                                    Il y a environ 5 heures</span>
-                                </div>
-                            </li>
-                            <li class="feed-item p-3">
-                                <div class="feed-icon">
-                                    <img src="<?= makeRootOrFileUrl('images/users/1.jpg') ?>" alt="user" width="40"
-                                         class="rounded-circle">
-                                </div>
-                                <div class="p-2">
-                                    Comment afficher du text a la console en python ... <br>
-                                    <span style="opacity: 0.8; font-size: 13px; font-weight: 700 ; fp"> Par JulienFeraux1 27 mars 2021 à 22:58:16</span>
-                                </div>
-                                <div class="p-2">
-                                    <span class="">20 messages</span>
-                                </div>
-                                <div class="px-2">
-                                     <span class="">Dernier message  <br> par <strong>NadfriJS</strong>
-                                    Il y a environ 5 heures</span>
-                                </div>
-                            </li>
-                            <li class="feed-item p-3">
-                                <div class="feed-icon">
-                                    <img src="<?= makeRootOrFileUrl('images/users/1.jpg') ?>" alt="user" width="40"
-                                         class="rounded-circle">
-                                </div>
-                                <div class="p-2">
-                                    Comment afficher du text a la console en python ... <br>
-                                    <span style="opacity: 0.8; font-size: 13px; font-weight: 700 ; fp"> Par JulienFeraux1 27 mars 2021 à 22:58:16</span>
-                                </div>
-                                <div class="p-2">
-                                    <span class="">20 messages</span>
-                                </div>
-                                <div class="px-2">
-                                     <span class="">Dernier message  <br> par <strong>NadfriJS</strong>
-                                    Il y a environ 5 heures</span>
-                                </div>
-                            </li>
-                        </ul>
+                            </div>
+                        <?php endif; ?>
                     </div>
                 </div>
             </div>

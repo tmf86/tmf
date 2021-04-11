@@ -10,8 +10,16 @@
     font-weight: 400;
 }
 
+.img-cover:hover {
+    transform: scale(1.2);
+}
+
 .breadcrumb-item.active > a {
     color: #4FC3F7;
+}
+
+.forum-name a {
+    color: black !important;
 }
 
 a.freinds {
@@ -55,6 +63,14 @@ a.stars {
 
 .form-control.error {
     border-color: red !important;
+}
+
+.not-subject {
+    font-size: 2rem;
+}
+
+.underline {
+    text-decoration: underline;
 }
 
 /*Update Profile Loader*/
@@ -168,6 +184,7 @@ a.stars {
 input:disabled, textarea:disabled {
     background: rgba(255, 255, 255, 0.5) !important;
 }
+
 
 /*Animation @Keyframes*/
 @keyframes sc {

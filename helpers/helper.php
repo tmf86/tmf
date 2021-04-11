@@ -280,3 +280,12 @@ function session(string $index, $value = '')
     $_SESSION[$index] = $value;
     return $_SESSION[$index];
 }
+
+/**
+ * @param string $string
+ * @return string|string[]
+ */
+function makeStrong(string $string)
+{
+    return str_replace(array('<*', '*>'), array('<strong>', '</strong>'), $string);
+}

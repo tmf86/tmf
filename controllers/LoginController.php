@@ -3,8 +3,8 @@
 namespace Contoller;
 
 use Contoller\Http\Request;
-use Contoller\Middleware\Auth;
-use Contoller\Middleware\RedirectUsers;
+use Contoller\Middleware\AuthMiddleware;
+use Contoller\Middleware\RedirectUsersMiddleware;
 use Model\Account;
 use Model\Comment;
 use Model\User;
@@ -14,7 +14,7 @@ use View\View;
 class LoginController extends Controller
 {
 
-    use RedirectUsers;
+    use RedirectUsersMiddleware;
 
     public function __construct(Request $request)
     {

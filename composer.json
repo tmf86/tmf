@@ -15,6 +15,7 @@
       "Contoller\\": "controllers",
       "Contoller\\Http\\": "controllers/Http",
       "Contoller\\Middleware\\": "controllers/Middleware",
+      "Contoller\\Middleware\\TaskBeforeRequest\\": "controllers/Middleware/TaskBeforeRequest",
       "Service\\Mailer\\": "src/Services/mailer",
       "Service\\File\\": "src/Services/File",
       "Validator\\": "src/validators",

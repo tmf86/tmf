@@ -4,7 +4,7 @@
 namespace Contoller\Middleware;
 
 
-trait RedirectUsers
+trait RedirectUsersMiddleware
 {
 
     /**

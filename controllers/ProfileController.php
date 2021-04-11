@@ -5,7 +5,7 @@ namespace Contoller;
 
 
 use Contoller\Http\Request;
-use Contoller\Middleware\RedirectUsers;
+use Contoller\Middleware\RedirectUsersMiddleware;
 use Model\Account;
 use Model\User;
 use Validator\ProfileUpdateValidator;
@@ -13,7 +13,7 @@ use View\View;
 
 class ProfileController extends Controller
 {
-    use RedirectUsers;
+    use RedirectUsersMiddleware;
 
     /**
      * @var bool|\Model\Account|\Model\User

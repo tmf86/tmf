@@ -5,12 +5,12 @@ namespace Contoller;
 
 
 use Contoller\Http\Request;
-use Contoller\Middleware\Auth;
+use Contoller\Middleware\AuthMiddleware;
 use View\View;
 
 class Logout extends Controller
 {
-    use Auth;
+    use AuthMiddleware;
 
     /**
      * @return View

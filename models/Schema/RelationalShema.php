@@ -21,6 +21,7 @@ abstract class RelationalShema
     {
         return $this->currentForeignTable;
     }
+
     /*** @var string */
     protected $primaryKeyStr = "id";
 
@@ -57,8 +58,7 @@ abstract class RelationalShema
      * @param int $id
      * @return $this
      */
-    private
-    function relationShipOneToOne(int $id)
+    private function relationShipOneToOne(int $id)
     {
         $foreignkey = $this->foreignkeys[$this->currentForeignTable];
         $foreignTableKey = $this->foreignTableKeys[$this->currentForeignTable];
@@ -71,32 +71,30 @@ abstract class RelationalShema
      * @param $table
      * @return mixed
      */
-    protected
-    function hasMany($table)
+    protected function hasMany($table)
     {
         $this->self = $table;
-        return $this->relationShipOneToMany($this->{$this->primaryKeyStr}, N)->query($this->relationQuery, true);
+        return $this->relationShipOneToMany((int)$this->{$this->primaryKeyStr}, N)->query($this->relationQuery, true);
     }
 
     /**
      * @param $table
      * @return mixed
      */
-    protected
-    function belongTo($table)
+    protected function belongTo($table)
     {
         $this->self = $table;
-        return $this->relationShipOneToMany($this->{$this->primaryKeyStr}, I)->query($this->relationQuery);
+        return $this->relationShipOneToMany((int)$this->{$this->primaryKeyStr}, I)->query($this->relationQuery);
     }
 
     /**
      * @param $table
      * @return array|mixed
      */
-    protected
-    function one($table)
+    protected function one($table)
     {
         $this->self = $table;
-        return $this->relationShipOneToOne($this->{$this->primaryKeyStr})->query($this->relationQuery);
+        return $this->relationShipOneToOne((int)$this->{$this->primaryKeyStr})->query($this->relationQuery);
     }
+
 }

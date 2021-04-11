@@ -8,6 +8,7 @@ use Contoller\HomeController;
 use Contoller\Http\Request;
 use Contoller\Logout;
 use Contoller\LogParController;
+use Contoller\Middleware\TaskBeforeRequest\ValidateForumCategoryRequest;
 use Contoller\ParrainageController;
 use Contoller\ProfileController;
 use Contoller\RegisterController;
@@ -28,8 +29,8 @@ session_start();
 
 /*
  *  NB : Si jamais il est question d'instancier un controller qui a besoin a la fois de variable qui sera un paramettre envoyé
- *  dans la requête de  GET et aussi de variable passé depuis la route voici l'ordre dans la quelle les paramettres de
-    Cette methode du controller doivent - être definis : --->($variables_envoyé_depuis_la_route,$variales_envoyé_depuis,la_methode_get)
+ *  dans la requête et aussi de variable passé depuis la route voici l'ordre dans la quelle les paramettres de
+    Cette methode du controller doivent - être definis : --->($variables_envoyé_depuis_la_route,$variales_envoyé_depuis_la_requête)
 */
 $dispatcher = FastRoute\simpleDispatcher(function (FastRoute\RouteCollector $route) {
     $route->get('/Cpy-Mvc/', ['class' => HomeController::class, 'method' => 'index']);
@@ -53,7 +54,8 @@ $dispatcher = FastRoute\simpleDispatcher(function (FastRoute\RouteCollector $rou
     $route->post('/Cpy-Mvc/profile-update', ['class' => ProfileController::class, 'method' => 'profileUpdate',
         'vars' => [new ProfileUpdateValidator()]]);
     $route->get('/Cpy-Mvc/forum', ['class' => ForumController::class, 'method' => 'index']);
-    $route->get('/Cpy-Mvc/forum/category/{slug:[A-Za-z\-]+}', ['class' => ForumController::class, 'method' => 'category', 'gets' => true]);
+    $route->get('/Cpy-Mvc/forum/categorie/{slug:[A-Za-z\-]+}', ['class' => ForumController::class,
+        'method' => 'category', 'gets' => true, 'vars' => [new ValidateForumCategoryRequest()]]);
     $route->get('/Cpy-Mvc/logout', ['class' => Logout::class, 'method' => 'logout']);
     $route->addGroup('/Cpy-Mvc/finalize_account_creation/', function (FastRoute\RouteCollector $route) {
         $route->get('{id:[A-Z0-9\-]+}/{email:[A-Za-z0-9.@]+}', ['class' => FinalizeAccountController::class, 'method' => 'index', 'gets' => true]);
