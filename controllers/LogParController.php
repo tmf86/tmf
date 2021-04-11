@@ -4,36 +4,33 @@
 namespace Contoller;
 
 
-use Contoller\Http\Request;
 use Validator\LogParValidator;
 use View\View;
 
 class LogParController extends Controller
 {
-    /**
-     * @return View
-     */
-    public function parrainage()
-    {
-        $title = "Acceder au Parrainage";
-        return $this->load_views('pages.parrainage', compact("title"), false);
+    public function parrainage(){
+        $title="Acceder au Parrainage";
+        $this->load_views('pages.parrainage',compact("title"),false);
     }
 
-    /**
-     * @return View
-     */
-    public function loging()
-    {
+    public function loging(){
         $vld = new LogParValidator();
-        $title = "Acceder au Parrainage";
+        $rq = $this->request;
+        $title="Acceder au Parrainage";
         $vld = $vld->validateCustermer($this->request->inputs());
-        if ($vld->fails()) {
+        if ($vld->fails()){
             $erreurs = $vld->errors()->firstOfAll();
-            Request::setErrors($erreurs);
-            return new View("pages.parrainage", compact("title",), false);
+            foreach ($erreurs as $key => $value){
+                $this->request->error($key,$value);
+            }
+            return new View("pages.parrainage", compact("title","rq"), false);
+
+        }else{
+            $rq = $this->request;
+            $title="Tableau de Bord";
+            $this->load_views('parrainage.tableau_bord',compact("title","rq"));
         }
-        $title = "Tableau de Bord";
-        return $this->load_views('pages.dashbord_par', compact("title"));
 
     }
 }
