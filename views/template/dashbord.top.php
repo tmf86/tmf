@@ -182,12 +182,12 @@ use Contoller\Middleware\AuthMiddleware;
                         </nav>
                     </div>
                 </div>
-                <div class="col-7">
+                <div class="col-12">
                     <div class="text-end upgrade-btn">
-                        <?php if (AuthMiddleware::asUserAuthenticated() && current_route() === makeRootOrFileUrl('profile')): ?>
-                            <!--                            <a href="" class="btn btn-danger text-white"-->
-                            <!--                               target="">Supprimer le compte</a>-->
-                        <?php endif; ?>
+                        <!--                        --><?php //if (AuthMiddleware::asUserAuthenticated() && current_route() === makeRootOrFileUrl('profile')): ?>
+                        <a href="" class="btn btn-danger text-white"
+                           target="">Supprimer le compte</a>
+                        <!--                        --><?php //endif; ?>
                     </div>
                 </div>
             </div>

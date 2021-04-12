@@ -14,24 +14,26 @@
                         </div>
                         <div class="col-sm-12 d-flex mb-4 justfy-content-space-between">
                             <div class="forum-msg w-75">
-                                <?php if ($subject): ?>
+                                <?php if ($subjects): ?>
                                     Les sujets les plus recents du forum <i><strong><?= $forumName ?></strong></i>
                                 <?php endif; ?>
                             </div>
                         </div>
-                        <?php if ($subject): ?>
+                        <?php if ($subjects):foreach ($subjects as $subject): ?>
                             <ul class="list-style-none feed-body m-0 p-b-20">
                                 <li class="feed-item p-3">
                                     <div class="feed-icon">
-                                        <img src="<?= makeRootOrFileUrl('images/users/1.jpg') ?>" alt="user" width="40"
+                                        <img src="<?= makeRootOrFileUrl($subject->user->image) ?>" alt="user"
+                                             width="40" height="40"
                                              class="rounded-circle">
                                     </div>
                                     <div class="p-2">
-                                        Comment afficher du text a la console en python ... <br>
-                                        <span style="opacity: 0.8; font-size: 13px; font-weight: 700 ; fp"> Par JulienFeraux1 27 mars 2021 à 22:58:16</span>
+                                        <!--                                        Comment afficher du text a la console en python ... <br>-->
+                                        <!--                                        <span style="opacity: 0.8; font-size: 13px; font-weight: 700 ; fp"> Par JulienFeraux1 27 mars 2021 à 22:58:16</span>-->
+                                        <?= $subject->message ?><br>
                                     </div>
                                     <div class="p-2">
-                                        <span class="">20 messages</span>
+                                        <span class="">0 messages</span>
                                     </div>
                                     <div class="px-2">
                                      <span class="">Dernier message  <br> par <strong>NadfriJS</strong>
@@ -39,7 +41,7 @@
                                     </div>
                                 </li>
                             </ul>
-                        <?php else: ?>
+                        <?php endforeach; else: ?>
                             <div class="text-center">
                                 <img src="<?= makeRootOrFileUrl('images/not.png') ?>" alt="not-subject">
                                 <div class="not-subject">
@@ -68,7 +70,7 @@
                 <div class="card-body">
                     <form class="form-horizontal form-material mx-2" method="post" id="subject-form">
                         <div class="form-group">
-                            <label for="title" class="col-md-12">Titre du <small
+                            <label for="title" class="col-md-12">Titre<small
                                         class="small">*</small></label>
                             <div class="col-md-12">
                                 <input type="text" placeholder=""
@@ -111,14 +113,17 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header" style="border-bottom: none !important;">
-                <h5 class="modal-title" id="exampleModalLongTitle"></h5>
+                <h5 class="modal-title text-uppercase text-danger" id="exampleModalLongTitle">
+                    <i class="fa fa-exclamation-triangle" style="color: red">
+                    </i>&nbsp;Droit insuffisant</h5>
                 <span aria-hidden="true" class="ti-close close" data-dismiss="modal" aria-label="Close"
                       style="cursor: pointer"></span>
             </div>
             <div class="modal-body">
                 Vous devez être authentifié pour pouvoir ajouter un nouveau sujet .
                 Votre sujet a été sauvegardé mais ne sera pris en compte qu'une fois authentifié.
-                Si vous n'avez pas encore de compte veuillez en créer un <a
+                Veuillez alors vous authentifié <a href="<?= makeRootOrFileUrl('login') ?>">ici</a>
+                ou si vous n'avez pas encore de compte veuillez en créer un <a
                         href="<?= makeRootOrFileUrl('register') ?>">ici</a>.
             </div>
         </div>

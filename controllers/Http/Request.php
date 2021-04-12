@@ -88,6 +88,7 @@ class Request
         if ($break) {
             exit();
         }
+        return new Request();
     }
 
     /**
@@ -101,11 +102,11 @@ class Request
 
     /***
      * @param string $key
-     * @param string $value
+     * @param mixed $value
      * @return array|mixed|string
      * @throws \Exception
      */
-    public function session(string $key = "", string $value = "")
+    public function session(string $key = "", $value = '')
     {
         if (!empty($key) && empty($value)) {
             if (array_key_exists($key, $this->sessions)) {
@@ -119,6 +120,14 @@ class Request
         }
 
         return $this->sessions;
+    }
+
+    /**
+     * @return string
+     */
+    public function httpMethod()
+    {
+        return strtolower($_SERVER['REQUEST_METHOD']);
     }
 
     /**
@@ -201,6 +210,21 @@ class Request
     public function file($name)
     {
         return $this->files->file($name);
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getClientIp()
+    {
+        if (isset ($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+            $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
+        } elseif (isset ($_SERVER['HTTP_CLIENT_IP'])) {
+            $ip = $_SERVER['HTTP_CLIENT_IP'];
+        } else {
+            $ip = $_SERVER['REMOTE_ADDR'];
+        }
+        return $ip;
     }
 
     /**

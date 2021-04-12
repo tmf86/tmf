@@ -271,10 +271,12 @@ $(function () {
         }
         console.log(isvalid)
     })
-//Fix Modal de notification de l'utilisateur en cas de non saisie de champs
+//Hide Modal de notification de l'utilisateur
     $('.close').click(function () {
         $('#notif').modal('hide')
         $('#updated').modal('hide')
+        $('#session-alert').modal('hide')
+        $('#forum-add').modal('hide')
     })
 //Envoie des donnée pour la mise a jour du profile avec Ajax
     $('#form-update-profile').submit(function (e) {
