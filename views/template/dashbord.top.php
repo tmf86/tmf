@@ -155,7 +155,9 @@ use Contoller\Middleware\AuthMiddleware;
                         </h4>
                     <?php endif; ?>
                     <?php $current_route = current_route();
-                    if ($current_route === makeRootOrFileUrl('forum') || $current_route === makeRootOrFileUrl(sprintf('forum/categorie/%s', $slug ?? ''))) :?>
+                    if ($current_route === makeRootOrFileUrl('forum') ||
+                        $current_route === makeRootOrFileUrl(sprintf('forum/categorie/%s', $slug ?? '')) ||
+                        current_route() === makeRootOrFileUrl(sprintf('forum/subject/%s', $subject->subtitle ?? ''))) :?>
                         <h4 class="page-title text-uppercase text-center" style="font-size: 1.2rem !important;">
                             <img src="<?= makeRootOrFileUrl('images/forum.png') ?>" alt="user"
                                  width="50"
@@ -200,6 +202,24 @@ use Contoller\Middleware\AuthMiddleware;
                                             <img src="<?= makeRootOrFileUrl($forum->icon) ?>" alt="user" width="23"
                                                  height="23" class="rounded-circle img-cover">
                                             <?= $forumName ?>
+                                        </a>
+                                    </li>
+                                <?php endif; ?>
+                                <?php if (current_route() === makeRootOrFileUrl(sprintf('forum/subject/%s', $subject->subtitle ?? ''))): ?>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="<?= makeRootOrFileUrl('forum') ?>">
+                                            <img src="<?= makeRootOrFileUrl('images/forum.png') ?>" alt="user"
+                                                 width="25"
+                                                 height="25" class="rounded-circle img-cover">
+                                            Forum
+                                        </a>
+                                    </li>
+                                    <li class="nav-item active">
+                                        <a class="nav-link"
+                                           href="<?= makeRootOrFileUrl(sprintf('forum/categorie/%s', $forum->slug ?? '')) ?>">
+                                            <img src="<?= makeRootOrFileUrl($forum->icon) ?>" alt="user" width="23"
+                                                 height="23" class="rounded-circle img-cover">
+                                            <?= $forum->name ?>
                                         </a>
                                     </li>
                                 <?php endif; ?>

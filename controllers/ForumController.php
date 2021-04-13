@@ -8,6 +8,7 @@ use Contoller\Http\Request;
 use Contoller\Middleware\AuthMiddleware;
 use Contoller\Middleware\RedirectUsersMiddleware;
 use Contoller\Middleware\TaskBeforeRequest\ValidateForumCategoryRequest;
+use Contoller\Middleware\TaskBeforeRequest\ValidateSubjectRequest;
 use Model\Forum;
 use Model\ForumSubject;
 use Validator\ForumAddSubjectValidator;
@@ -61,6 +62,12 @@ class ForumController extends Controller
         return $this->load_views('dashbord.forum-category', compact('title', 'user', 'forumName', 'slug', 'forum', 'subjects', 'scripts', 'recentSubjects'));
     }
 
+    /**
+     * @param ForumAddSubjectValidator $addSubjectValidator
+     * @param ValidateForumCategoryRequest $validateForumCategoryRequest
+     * @param string $slug
+     * @throws \Exception
+     */
     public function addNewSubject(ForumAddSubjectValidator $addSubjectValidator, ValidateForumCategoryRequest $validateForumCategoryRequest, string $slug)
     {
         $forum = $validateForumCategoryRequest->doTask($slug);
@@ -70,6 +77,14 @@ class ForumController extends Controller
         $this->setSubjectSession();
         Request::ajax(['inputs' => false, 'setsession' => true], 400);
 
+    }
+
+    public function subjectView(ValidateSubjectRequest $validateSubjectRequest, string $subject)
+    {
+        $subject = $validateSubjectRequest->doTask($subject);
+        $forum = $subject->forum;
+        $user = $this->user;
+        return $this->load_views('dashbord.subject', compact('user', 'subject', 'forum'));
     }
 
     /**
@@ -127,6 +142,10 @@ class ForumController extends Controller
         );
     }
 
+    /**
+     * @return array|false|mixed|string
+     * @throws \Exception
+     */
     private function setSubjectSession()
     {
         $data = [
@@ -145,6 +164,11 @@ class ForumController extends Controller
         return $this->request->session($this->request->getClientIp(), [$data]);
     }
 
+    /**
+     * @param $data1
+     * @param $data2
+     * @return bool
+     */
     private function hasSameSubject($data1, $data2)
     {
         foreach ($data2 as $value) {

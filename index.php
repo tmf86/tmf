@@ -9,6 +9,7 @@ use Contoller\Http\Request;
 use Contoller\Logout;
 use Contoller\LogParController;
 use Contoller\Middleware\TaskBeforeRequest\ValidateForumCategoryRequest;
+use Contoller\Middleware\TaskBeforeRequest\ValidateSubjectRequest;
 use Contoller\ParrainageController;
 use Contoller\ProfileController;
 use Contoller\RegisterController;
@@ -55,12 +56,16 @@ $dispatcher = FastRoute\simpleDispatcher(function (FastRoute\RouteCollector $rou
     $route->post('/Cpy-Mvc/profile-update', ['class' => ProfileController::class, 'method' => 'profileUpdate',
         'vars' => [new ProfileUpdateValidator()]]);
     $route->get('/Cpy-Mvc/forum', ['class' => ForumController::class, 'method' => 'index']);
-    $route->get('/Cpy-Mvc/forum/categorie/{slug:[A-Za-z\-]+}', ['class' => ForumController::class,
+    $route->get('/Cpy-Mvc/forum/categorie/{forum:[A-Za-z\-]+}', ['class' => ForumController::class,
         'method' => 'category', 'gets' => true, 'vars' => [new ValidateForumCategoryRequest()]]);
-    $route->post('/Cpy-Mvc/forum/categorie/{slug:[A-Za-z\-]+}', ['class' => ForumController::class,
+    $route->post('/Cpy-Mvc/forum/categorie/{forum:[A-Za-z\-]+}', ['class' => ForumController::class,
         'method' => 'addNewSubject', 'gets' => true, 'vars' => [
             new ForumAddSubjectValidator(),
             new ValidateForumCategoryRequest()
+        ]]);
+    $route->get('/Cpy-Mvc/forum/subject/{subject:[A-Za-z\-]+}', ['class' => ForumController::class,
+        'method' => 'subjectView', 'gets' => true, 'vars' => [
+            new ValidateSubjectRequest()
         ]]);
     $route->get('/Cpy-Mvc/logout', ['class' => Logout::class, 'method' => 'logout']);
     $route->addGroup('/Cpy-Mvc/finalize_account_creation/', function (FastRoute\RouteCollector $route) {

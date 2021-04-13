@@ -24,7 +24,8 @@
                         </div>
                         <div class="container-fluid jumbotron card border mt-1 p-4">
                             <?php if ($subjects):foreach ($subjects as $subject): ?>
-                                <a href="" class="suject-link">
+                                <a href="<?= makeRootOrFileUrl(sprintf('forum/subject/%s', $subject->subtitle)) ?>"
+                                   class="suject-link">
                                     <div class="row  bg-gradient p-3 mb-5 rounded cursor-pointer subject-list">
                                         <div class="col-md-6">
                                             <div class="row">

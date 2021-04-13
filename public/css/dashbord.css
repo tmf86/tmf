@@ -85,6 +85,11 @@ a.stars {
     background-color: #BAC3CA;
 }
 
+.subject-title {
+    font-size: 1.3rem;
+    font-weight: 500;
+}
+
 a.suject-link {
     color: #3E5569 !important;
 }
