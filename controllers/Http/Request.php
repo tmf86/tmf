@@ -63,6 +63,17 @@ class Request
     }
 
     /**
+     * @param string $key
+     */
+    public static function staticSessionUnset(string $key): void
+    {
+
+        if (session($key)) {
+            unset($_SESSION[$key]);
+        }
+    }
+
+    /**
      * @param int $code
      * @return bool|View
      */

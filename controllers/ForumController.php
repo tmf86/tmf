@@ -100,25 +100,27 @@ class ForumController extends Controller
         if ($useSession) {
             $data = session($this->request->getClientIp());
             $subjects = [];
-            foreach ($data as $value) {
-                $subjects[] = $forumSubject->create(
-                    [
-                        'title' => $value['title'],
-                        'subtitle' => $value['subtitle'],
-                        'message' => $value['message'],
-                        'forum_id' => $forum->id,
-                        'user_id' => $this->user->mat_mmbre
-                    ]
-                );
+            if (is_array($data)) {
+                foreach ($data as $value) {
+                    $subjects[] = $forumSubject->create(
+                        [
+                            'title' => strtolower($value['title']),
+                            'subtitle' => str_replace(' ', '-', $value['subtitle']),
+                            'message' => strtolower($value['message']),
+                            'forum_id' => $forum->id,
+                            'user_id' => $this->user->mat_mmbre
+                        ]
+                    );
+                }
             }
             $this->request->sessionUnset($this->request->getClientIp());
             return $subjects;
         }
         return $forumSubject->create(
             [
-                'title' => $this->request->title,
-                'subtitle' => $this->request->subtitle,
-                'message' => $this->request->message,
+                'title' => strtolower($this->request->title),
+                'subtitle' => str_replace(' ', '-', $this->request->subtitle),
+                'message' => strtolower($this->request->message),
                 'forum_id' => $forum->id,
                 'user_id' => $this->user->mat_mmbre
             ]
@@ -166,13 +168,17 @@ class ForumController extends Controller
         if (AuthMiddleware::asUserAuthenticated() && $this->request->httpMethod() === 'post' && !session($this->request->getClientIp())) {
             if (Request::isAjax()) {
                 if ($this->addSubject($forum)) {
+                    session('subject', true);
                     return Request::ajax(['success' => true, 'refresh' => true], 200);
                 }
                 return Request::ajax(['success' => false, 'refresh' => false], 200);
             }
         }
         if (AuthMiddleware::asUserAuthenticated() && session($this->request->getClientIp())) {
-            return $this->addSubject($forum, true);
+            if ($this->addSubject($forum, true)) {
+                session('subject', true);
+                return $this->addSubject($forum, true);
+            }
         }
         return [];
     }

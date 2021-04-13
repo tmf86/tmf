@@ -47,7 +47,6 @@
                     </div>
                 </div>
                 <div style="padding:2.5rem">
-
                 </div>
             </div>
         </div>
@@ -127,8 +126,7 @@
                     </form>
                 </div>
             </div>
-        </div><i class="fa fa-exclamation-triangle" style="color: red">
-        </i>
+        </div>
     </div>
 </div>
 <!--Modal de notification de l'utilisateur en cas de non remplissage de champs-->
@@ -138,7 +136,8 @@
         <div class="modal-content">
             <div class="modal-header" style="border-bottom: none !important;">
                 <p style="font-size: .9rem;padding: 0.1rem" class="modal-title">
-
+                    <i class="fa fa-exclamation-triangle" style="color: red">
+                    </i>
                     Veuillez au moins saisir un champs pour une eventuelle mise a jour</p>
                 <span type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true" class="ti-close close" style="cursor: pointer">

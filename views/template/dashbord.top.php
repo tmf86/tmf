@@ -1,5 +1,6 @@
 <?php
 
+use Contoller\Http\Request;
 use Contoller\Middleware\AuthMiddleware;
 
 ?>
@@ -146,49 +147,100 @@ use Contoller\Middleware\AuthMiddleware;
             <div class="row align-items-center">
                 <div class="col-12">
                     <?php if (current_route() === makeRootOrFileUrl('profile')) : ?>
-                        <h4 class="page-title" style="font-size: 1rem !important;">Profile</h4>
+                        <h4 class="page-title text-center" style="font-size: 1.2rem !important;">
+                            <img src="<?= makeRootOrFileUrl('images/profile-icon.png') ?>" alt="user"
+                                 width="50"
+                                 height="50" class="rounded-circle img-cover">
+                            Profile
+                        </h4>
                     <?php endif; ?>
                     <?php $current_route = current_route();
                     if ($current_route === makeRootOrFileUrl('forum') || $current_route === makeRootOrFileUrl(sprintf('forum/categorie/%s', $slug ?? ''))) :?>
-                        <h4 class="page-title" style="font-size: 1rem !important;"><i
-                                    class="ti-comments m-r-5 m-l-5"></i>&nbsp;Forum</h4>
+                        <h4 class="page-title text-uppercase text-center" style="font-size: 1.2rem !important;">
+                            <img src="<?= makeRootOrFileUrl('images/forum.png') ?>" alt="user"
+                                 width="50"
+                                 height="50" class="rounded-circle img-cover">
+                            Forum</h4>
                     <?php endif; ?>
-                    <div class="d-flex align-items-center mt-3">
-                        <nav aria-label="breadcrumb">
-                            <ol class="breadcrumb" style="font-size: 0.9rem !important;">
-                                <li class="breadcrumb-item"><a href="<?= makeRootOrFileUrl('home') ?>"><i
-                                                class="ti-share m-r-5 m-l-5"></i>&nbsp;Acceuil</a></li>
+                    <nav class="navbar navbar-expand-lg navbar-light ">
+                        <a class="navbar-brand" href="<?= makeRootOrFileUrl('home') ?>"
+                           style="font-size: 14px !important;">
+                            <img src="<?= makeRootOrFileUrl('images/home2.jpg') ?>" alt="user" width="45"
+                                 height="45" class="rounded-circle img-cover">
+                            Acceuil
+                        </a>
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarNav">
+                            <ul class="navbar-nav">
                                 <?php if (current_route() === makeRootOrFileUrl('forum')) : ?>
-                                    <li class="breadcrumb-item active" aria-current="page"><a
-                                                href="<?= makeRootOrFileUrl('forum') ?>"><i
-                                                    class="ti-comments m-r-5 m-l-5"></i>&nbsp;Forum</a></li>
+                                    <li class="nav-item active">
+                                        <a class="nav-link" href="<?= makeRootOrFileUrl('forum') ?>">
+                                            <img src="<?= makeRootOrFileUrl('images/forum.png') ?>" alt="user"
+                                                 width="25"
+                                                 height="25" class="rounded-circle img-cover">
+                                            Forum
+                                        </a>
+                                    </li>
                                 <?php endif ?>
                                 <?php if (current_route() === makeRootOrFileUrl(sprintf('forum/categorie/%s', $slug ?? ''))): ?>
-                                    <li class="breadcrumb-item" aria-current="page"><a
-                                                href="<?= makeRootOrFileUrl('forum') ?>"><i
-                                                    class="ti-comments m-r-5 m-l-5"></i>&nbsp;Forum</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page"><a
-                                                href="<?= makeRootOrFileUrl(sprintf('forum/categorie/%s', $slug ?? '')) ?>"><i
-                                                    class="ti-comments-smiley m-r-5 m-l-5"></i><?= $forumName ?>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="<?= makeRootOrFileUrl('forum') ?>">
+                                            <img src="<?= makeRootOrFileUrl('images/forum.png') ?>" alt="user"
+                                                 width="25"
+                                                 height="25" class="rounded-circle img-cover">
+                                            Forum
+                                        </a>
+                                    </li>
+                                    <li class="nav-item active">
+                                        <a class="nav-link"
+                                           href="<?= makeRootOrFileUrl(sprintf('forum/categorie/%s', $slug ?? '')) ?>">
+                                            <img src="<?= makeRootOrFileUrl($forum->icon) ?>" alt="user" width="23"
+                                                 height="23" class="rounded-circle img-cover">
+                                            <?= $forumName ?>
                                         </a>
                                     </li>
                                 <?php endif; ?>
                                 <?php if (current_route() === makeRootOrFileUrl('profile')) : ?>
-                                    <li class="breadcrumb-item active" aria-current="page"><a
-                                                href="<?= makeRootOrFileUrl('profile') ?>">Paramètres</a></li>
+                                    <li class="nav-item active">
+                                        <a class="nav-link" href="<?= makeRootOrFileUrl('profile') ?>">
+                                            <img src="<?= makeRootOrFileUrl('images/paramettre.png') ?>" alt="user"
+                                                 width="25"
+                                                 height="25" class="rounded-circle img-cover">
+                                            Paramètres</a>
+                                    </li>
                                 <?php endif; ?>
-
-                            </ol>
-                        </nav>
-                    </div>
+                            </ul>
+                        </div>
+                    </nav>
                 </div>
-                <div class="col-12">
-                    <div class="text-end upgrade-btn">
-                        <!--                        --><?php //if (AuthMiddleware::asUserAuthenticated() && current_route() === makeRootOrFileUrl('profile')): ?>
-                        <a href="" class="btn btn-danger text-white"
-                           target="">Supprimer le compte</a>
-                        <!--                        --><?php //endif; ?>
+                <?php if (session('subject')): ?>
+                    <div class="col-md-12 mt-1">
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            <div class="d-flex justify-content-between">
+                                <div>
+                                    Le sujet a été ajouté avec succès , il sera maintenant visible par tous les
+                                    visiteurs et
+                                    membres du forum et avec une aussi grande communauté vous trouverai certainement
+                                    ceque
+                                    vous cherchiez.
+                                    <div style="font-size: 2rem; text-align: center">
+                                        😇
+                                    </div>
+                                </div>
+                                <div>
+                                <span aria-hidden="true" class="ti-close close" data-dismiss="alert" aria-label="Close"
+                                      style="cursor: pointer;font-weight: 700">
+                                </span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </div>
+                <?php
+                endif;
+                Request::staticSessionUnset('subject')
+                ?>
             </div>
         </div>

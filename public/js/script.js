@@ -434,6 +434,10 @@ $('#subject-form').submit(function (e) {
             console.log(data)
             $('#subject-btn').html(`soumettre`);
             $('#debug').html(data)
+            $('#forum-add').modal('hide')
+            setTimeout(function () {
+                window.location.reload()
+            }, 2000)
         },
         error: function (xhr) {
             $('#subject-btn').html(`soumettre`);
@@ -448,7 +452,7 @@ $('#subject-form').submit(function (e) {
                             $(`textarea[name="${property}"]`).addClass("error")
                             console.log(`${property}: ${errors[property]}`);
                         }
-                        break;
+                        break
                     case false :
                         if (errors.setsession === true) {
                             $('#forum-add').modal('hide')

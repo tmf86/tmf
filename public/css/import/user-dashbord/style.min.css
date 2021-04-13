@@ -5007,20 +5007,26 @@ textarea.form-control-lg {
     border-bottom-left-radius: 0
 }
 
+/*.breadcrumb {*/
+/*    display: -webkit-box;*/
+/*    display: -ms-flexbox;*/
+/*    display: flex;*/
+/*    -ms-flex-wrap: wrap;*/
+/*    flex-wrap: wrap;*/
+/*    padding: 0 0;*/
+/*    margin-bottom: 1.5rem;*/
+/*    list-style: none;*/
+/*    background-color: #eef5f9*/
+/*}*/
 .breadcrumb {
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
-    -ms-flex-wrap: wrap;
-    flex-wrap: wrap;
-    padding: 0 0;
-    margin-bottom: 1.5rem;
     list-style: none;
-    background-color: #eef5f9
+    align-items: center;
+    justify-content: space-between;
 }
 
 .breadcrumb-item + .breadcrumb-item {
-    padding-left: 0.5rem
+    /*padding-left: 0.5rem*/
 }
 
 .breadcrumb-item + .breadcrumb-item:before {
@@ -12681,7 +12687,7 @@ label {
 }
 
 .page-breadcrumb .breadcrumb .breadcrumb-item + .breadcrumb-item:before {
-    content: "";
+    content: "";
     font-family: themify;
     color: #ced4da;
     font-size: 11px
@@ -13385,6 +13391,7 @@ html body .waves-notransition {
     align-items: center;
     justify-content: space-between;
     cursor: pointer;
+    border-radius: 1rem;
 }
 
 .feed-widget .feed-body .feed-item:nth-child(2n) {
@@ -13396,7 +13403,7 @@ html body .waves-notransition {
 }
 
 .feed-widget .feed-body .feed-item:hover {
-    background: #f8f9fa;
+    background: transparedash;
 }
 
 .feed-widget .feed-body .feed-item > .feed-icon {
@@ -13460,7 +13467,7 @@ html body .waves-notransition {
         display: none !important; /*Ajutement de la colonne contenant le nom du forum en mode responsive*/
     }
 
-    .feed-icon {
-        display: none !important;
-    }
+    /*.feed-icon {*/
+    /*    display: none !important;*/
+    /*}*/
 }

@@ -77,10 +77,7 @@ $dispatcher = FastRoute\simpleDispatcher(function (FastRoute\RouteCollector $rou
         return new View\View('pages.apropos', compact('title'));
     });
     $route->get('/Cpy-Mvc/test', function () {
-        $func = function ($a) {
-            echo $${$a};
-        };
-        $func('m');
+//        debug(preg_match('', 'bNa5588'));
     });
 });
 

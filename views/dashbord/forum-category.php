@@ -4,52 +4,62 @@
             <div class="mt-2">
                 <div class="p-2">
                     <div class="feed-widget">
-                        <div class="page-title d-flex  justfy-content-space-between">
-                            <h4 class="underline"><i class="fa fa-tasks"></i>&nbsp;<?= strtoupper($forumName) ?></h4>
+                        <div class="col-sm-12 page-title d-flex justfy-content-space-between">
+                            <h4>
+                                <div class="feed-icon">
+                                    <img src="<?= makeRootOrFileUrl($forum->icon) ?>" alt="user" width="30"
+                                         height="30" class="rounded-circle img-cover"> <?= strtoupper($forumName) ?>
+                                </div>
+                            </h4>
                             <div>
                                 <button class="btn btn-success text-white" id="showAddSubjectForm">
                                     creer
                                 </button>
                             </div>
                         </div>
-                        <div class="col-sm-12 d-flex mb-4 justfy-content-space-between">
+                        <div class="col-sm-12 d-flex justfy-content-space-between">
                             <div class="forum-msg w-75">
-                                <?php if ($subjects): ?>
-                                    Les sujets les plus recents du forum <i><strong><?= $forumName ?></strong></i>
-                                <?php endif; ?>
+
                             </div>
                         </div>
-                        <?php if ($subjects):foreach ($subjects as $subject): ?>
-                            <ul class="list-style-none feed-body m-0 p-b-20">
-                                <li class="feed-item p-3">
-                                    <div class="feed-icon">
-                                        <img src="<?= makeRootOrFileUrl($subject->user->image) ?>" alt="user"
-                                             width="40" height="40"
-                                             class="rounded-circle">
+                        <div class="container-fluid jumbotron card border mt-1 p-4">
+                            <?php if ($subjects):foreach ($subjects as $subject): ?>
+                                <a href="" class="suject-link">
+                                    <div class="row  bg-gradient p-3 mb-5 rounded cursor-pointer subject-list">
+                                        <div class="col-md-6">
+                                            <div class="row">
+                                                <div class="col-3">
+                                                    <img src="<?= makeRootOrFileUrl($subject->user->image) ?>"
+                                                         alt="user"
+                                                         width="50"
+                                                         height="50"
+                                                         class="rounded-circle img-cover">
+                                                </div>
+                                                <div class="col-9" style="text-overflow: ellipsis;">
+                                                    <?= substr($subject->message, 0, 255) ?>...<br>
+                                                    Par <?= $subject->user->prenom ?><br>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            0 messages
+                                        </div>
+                                        <div class="col-md-2 p-r-5">
+                                            Dernier message par SkyFyxs <br>
+                                            Il y a 9 minutes
+                                        </div>
                                     </div>
-                                    <div class="p-2">
-                                        <!--                                        Comment afficher du text a la console en python ... <br>-->
-                                        <!--                                        <span style="opacity: 0.8; font-size: 13px; font-weight: 700 ; fp"> Par JulienFeraux1 27 mars 2021 à 22:58:16</span>-->
-                                        <?= $subject->message ?><br>
+                                </a>
+                            <?php endforeach; else: ?>
+                                <div class="text-center">
+                                    <img src="<?= makeRootOrFileUrl('images/not.png') ?>" alt="not-subject">
+                                    <div class="not-subject">
+                                        Oops ... pas de sujet dans cette categorie pour le moment . <br>
+                                        Vous pouvez en creer un en cliquant sur le bouton créer ci-dessus .🙄
                                     </div>
-                                    <div class="p-2">
-                                        <span class="">0 messages</span>
-                                    </div>
-                                    <div class="px-2">
-                                     <span class="">Dernier message  <br> par <strong>NadfriJS</strong>
-                                    Il y a environ 5 heures</span>
-                                    </div>
-                                </li>
-                            </ul>
-                        <?php endforeach; else: ?>
-                            <div class="text-center">
-                                <img src="<?= makeRootOrFileUrl('images/not.png') ?>" alt="not-subject">
-                                <div class="not-subject">
-                                    Oops ... pas de sujet dans cette categorie pour le moment . <br>
-                                    Vous pouvez en creer un en cliquant sur le bouton créer ci-dessus .🙄
                                 </div>
-                            </div>
-                        <?php endif; ?>
+                            <?php endif; ?>
+                        </div>
                     </div>
                 </div>
             </div>
