@@ -22,7 +22,6 @@ $(function () {
             $(`input[name="${this.name}"] ~ span.icon `).removeClass("error")
             $(`i[data-name='${this.name}']`).removeClass('error')
             $(`input[name="${this.name}"]`).removeClass("error")
-            $('#fix-update-box').css({padding: '2.5rem'});
 
         }
     })
@@ -345,9 +344,6 @@ $(function () {
                                     $(`input[name="${property}"]`).addClass("error")
                                     $(`textarea[name="${property}"]`).addClass("error")
                                     console.log(`${property}: ${errors[property]}`);
-                                    if (property === 'password') {
-                                        $('#fix-update-box').css({padding: '0.6rem'});
-                                    }
                                 }
                                 break;
                             case false :

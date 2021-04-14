@@ -46,9 +46,7 @@
 <script src="<?= makeRootOrFileUrl('public/js/import/mdb/mdb.js') ?>"></script>
 <?= suppl_tags($scripts ?? [], SCRIPT) ?>
 <script>
-    setTimeout(function () {
-        $(".waiting").toggleClass("hidden")
-    }, 3000)
+    $(".preloader").fadeOut();
 </script>
 <!--end of js files loading  -->
 </body>

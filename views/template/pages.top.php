@@ -20,20 +20,19 @@
     <title><?= $title ?? "Title" ?></title>
 </head>
 <body>
-<!--<div class="waiting">-->
-<!--    <div class="loader">-->
-<!--        <div class="spinner-grow rezise" role="status">-->
-<!--            <span class="sr-only">Loading...</span>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--</div>-->
+<div class="preloader">
+    <div class="lds-ripple">
+        <div class="lds-pos"></div>
+        <div class="lds-pos"></div>
+    </div>
+</div>
 <header class="header">
     <nav class="mb-1 navbar navbar-expand-lg navbar-light our-background darken-2 lighten-1">
         <a href="#" class="navbar-brand"><img src="<?= makeRootOrFileUrl('images/cpy.jpeg') ?>" alt=""
                                               class="img-responsive rounded-circle" width="40px"><span class="ml-2 ">CIPY</span></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#cpy"
                 aria-controls="navbarSupportedContent-555" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
+            <span class="navbar-toggler-icon " style="color: #fff"></span>
         </button>
         <div class="collapse navbar-collapse" id="cpy">
             <ul class="navbar-nav ml-auto">

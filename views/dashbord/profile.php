@@ -5,7 +5,7 @@
                 <div class="card-body">
                     <center class="m-t-30"><img src="<?= makeRootOrFileUrl($user->image) ?>"
                                                 class="rounded-circle" width="150" height="150" alt="user-profile-img"/>
-                        <h4 class="card-title m-t-10"><?= $user->nom . ' ' . $user->prenom ?></h4>
+                        <h4 class="card-title m-t-10"><?= $user->nom . ' ' . $user->prenom ?><?= ($user->username) ? sprintf('(%s)', $user->username) : '' ?></h4>
                         <h6 class="card-subtitle"><?= ($user->about_me) ? substr($user->about_me, 0, 39) : 'Donnez aux autres une bref decription de qui vous êtes ..' ?>
                             ...
                             <label for="about">&nbsp;<i class="fas fa-pencil-alt cursor-pointer"></i></label>&nbsp;<a
@@ -46,8 +46,6 @@
                     <div class="map-box">
                     </div>
                 </div>
-                <div style="padding:2.5rem">
-                </div>
             </div>
         </div>
         <!-- Column -->
@@ -87,6 +85,15 @@
                             </div>
                         </div>
                         <div class="form-group">
+                            <label for="username" class="col-md-12">Nom d'utilisateur <small
+                                        class="small not-required"></small></label>
+                            <div class="col-md-12">
+                                <input type="text" placeholder=""
+                                       class="form-control form-control-line" name="username"
+                                       id="username">
+                            </div>
+                        </div>
+                        <div class="form-group">
                             <label for="password" class="col-md-12">Mot de passe <small
                                         class="small not-required"></small></label>
                             <div class="col-md-12">
@@ -122,7 +129,6 @@
                                 jour
                             </button>
                         </div>
-                        <div id='fix-update-box' style="padding:2.5rem"></div>
                     </form>
                 </div>
             </div>

@@ -79,7 +79,7 @@ class ProfileController extends Controller
         $fileName = $this->user->identifiant;
         $image = (!$this->request->file('user-pic')->asError()) ?
             $this->request->file('user-pic')->save($path, $fileName, true) : '';
-        $fields = ['contact', 'email', 'about'];
+        $fields = ['contact', 'email', 'about', 'username'];
         $last_update = '';
         foreach ($fields as $field) {
             if ($this->request->{$field} != '' || $image != '') {
@@ -90,6 +90,7 @@ class ProfileController extends Controller
             'image' => $image,
             'contact' => $this->request->contact,
             'email' => $this->request->email,
+            'username' => $this->request->username,
             'about_me' => $this->request->about,
             'last_update' => $last_update
         ], (int)$this->user->mat_membre);

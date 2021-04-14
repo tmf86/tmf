@@ -2484,12 +2484,12 @@ textarea.form-control-lg {
 }
 
 .form-range:focus::-webkit-slider-thumb {
-    -webkit-box-shadow: 0 0 0 1px , transparent;
-    box-shadow: 0 0 0 1px , transparent
+    -webkit-box-shadow: 0 0 0 1px, transparent;
+    box-shadow: 0 0 0 1px, transparent
 }
 
 .form-range:focus::-moz-range-thumb {
-    box-shadow: 0 0 0 1px , transparent
+    box-shadow: 0 0 0 1px, transparent
 }
 
 .form-range::-moz-focus-outer {
@@ -8294,7 +8294,7 @@ textarea.form-control-lg {
 }
 
 .bg-body {
-    background-color:  !important
+    background-color: !important
 }
 
 .bg-white {
@@ -12382,7 +12382,7 @@ label {
 
 .lds-ripple .lds-pos {
     position: absolute;
-    border: 2px solid #2962FF;
+    border: 2px solid #339FFF;
     opacity: 1;
     border-radius: 50%;
     -webkit-animation: lds-ripple 1s cubic-bezier(0, 0.1, 0.5, 1) infinite;
