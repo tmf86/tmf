@@ -1,7 +1,7 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-6">
-            <div class="jumbotron card">
+            <div class="card">
                 <div class="card-body">
                     <center class="m-t-30"><img src="<?= makeRootOrFileUrl($user->image) ?>"
                                                 class="rounded-circle" width="150" height="150" alt="user-profile-img"/>

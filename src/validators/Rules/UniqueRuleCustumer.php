@@ -20,6 +20,7 @@ class UniqueRuleCustumer extends Rule
      */
     public function check($value): bool
     {
+        $value = replaceQuotion($value);
         $table = $this->parameter('table');
         $column = $this->parameter('column');
         $model = new Model();

@@ -1,3 +1,8 @@
+<?php
+
+use Contoller\Middleware\AuthMiddleware;
+
+?>
 <div class="container">
     <div class="row">
         <div class="col-lg-12">
@@ -29,24 +34,27 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-12">
+        <div class="col-md-12 p-0">
             <div class="card">
                 <div class="card-body">
                     <form class="form-horizontal form-material mx-2">
-                        <div class="alert alert-info alert-dismissible fade show" role="alert">
-                            <div class="d-flex justify-content-between">
-                                <div>
-                                    Après avoir cliqué sur "Répondre" vous serez invité à vous connecter pour que votre
-                                    message soit publié.
-                                </div>
-                                <div class="p-1">
+                        <?php if (!AuthMiddleware::asUserAuthenticated()): ?>
+                            <div class="alert alert-info alert-dismissible fade show" role="alert">
+                                <div class="d-flex justify-content-between">
+                                    <div>
+                                        Après avoir cliqué sur "Répondre" vous serez invité à vous connecter pour que
+                                        votre
+                                        message soit publié.
+                                    </div>
+                                    <div class="p-1">
                                     <span aria-hidden="true" class="ti-close close" data-dismiss="alert"
                                           aria-label="Close"
                                           style="cursor: pointer;font-weight: 700">
                                     </span>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        <?php endif; ?>
                         <div class="form-group">
                             <div class="d-flex justfy-content-space-between">
                                 <div>

@@ -7,6 +7,15 @@ html, body {
     box-sizing: border-box;
 }
 
+.our-background {
+    background: #414755 !important;
+}
+
+.our-background a {
+    color: rgba(255, 255, 255, 0.9) !important;
+    font-weight: 400;
+}
+
 .header {
     font-size: 1.1rem !important;
 }

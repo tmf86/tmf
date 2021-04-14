@@ -79,9 +79,9 @@ class ForumController extends Controller
 
     }
 
-    public function subjectView(ValidateSubjectRequest $validateSubjectRequest, string $subject)
+    public function subjectView(ValidateSubjectRequest $validateSubjectRequest, string $slug)
     {
-        $subject = $validateSubjectRequest->doTask($subject);
+        $subject = $validateSubjectRequest->doTask($slug);
         $forum = $subject->forum;
         $user = $this->user;
         return $this->load_views('dashbord.subject', compact('user', 'subject', 'forum'));
@@ -110,7 +110,6 @@ class ForumController extends Controller
      */
     private function addSubject(Forum $forum, $useSession = false)
     {
-
         $forumSubject = new ForumSubject();
         if ($useSession) {
             $data = session($this->request->getClientIp());
@@ -120,8 +119,9 @@ class ForumController extends Controller
                     $subjects[] = $forumSubject->create(
                         [
                             'title' => strtolower($value['title']),
+                            'slug' => slug(strtolower($value['title'])),
                             'subtitle' => str_replace(' ', '-', $value['subtitle']),
-                            'message' => strtolower($value['message']),
+                            'message' => $value['message'],
                             'forum_id' => $forum->id,
                             'user_id' => $this->user->mat_mmbre
                         ]
@@ -134,8 +134,9 @@ class ForumController extends Controller
         return $forumSubject->create(
             [
                 'title' => strtolower($this->request->title),
-                'subtitle' => str_replace(' ', '-', $this->request->subtitle),
-                'message' => strtolower($this->request->message),
+                'slug' => slug(strtolower($this->request->title)),
+                'subtitle' => strtolower($this->request->subtitle),
+                'message' => $this->request->message,
                 'forum_id' => $forum->id,
                 'user_id' => $this->user->mat_mmbre
             ]
@@ -150,6 +151,7 @@ class ForumController extends Controller
     {
         $data = [
             'title' => $this->request->title,
+            'slug' => slug(strtolower($this->request->title)),
             'subtitle' => $this->request->subtitle,
             'message' => $this->request->message
         ];

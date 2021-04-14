@@ -3,6 +3,10 @@
         <div class="col-lg-12 p-0">
             <div class="card-body">
                 <h4>Liste des forums</h4>
+                <div>
+                    <i class="fa fa-exclamation-triangle" style="color: red"></i>
+                    Veuillez cliquer sur l'icone ou le nom du forum pour acceder au forum en question.
+                </div>
             </div>
             <div class="table-responsive">
                 <table class="table v-middle">

@@ -67,7 +67,8 @@ function rootUrl()
  */
 function replaceQuotion($string)
 {
-    return str_replace("'", "\'", $string) ? str_replace("'", "\'", $string) : $string;
+    $search = ["'", '"'];
+    return str_replace($search, "\'", $string) ? str_replace($search, "\'", $string) : $string;
 }
 
 /**
@@ -288,4 +289,15 @@ function session(string $index, $value = '')
 function makeStrong(string $string)
 {
     return str_replace(array('<*', '*>'), array('<strong>', '</strong>'), $string);
+}
+
+/**
+ * @param $string
+ * @return string
+ * Cré une chaine ulisable comme URL
+ */
+function slug($string)
+{
+    $slugify = new Cocur\Slugify\Slugify();
+    return $slugify->slugify($string);
 }

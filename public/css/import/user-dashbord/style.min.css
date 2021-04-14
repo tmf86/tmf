@@ -32,7 +32,6 @@ body {
     font-weight: 300;
     line-height: 1.5;
     color: #3e5569;
-    background-color: #eef5f9;
     -webkit-text-size-adjust: 100%;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0)
 }
@@ -524,7 +523,7 @@ progress {
 
 .img-thumbnail {
     padding: 0.25rem;
-    background-color: #eef5f9;
+    background-color: ;
     border: 1px solid #dee2e6;
     border-radius: 2px;
     max-width: 100%;
@@ -2356,7 +2355,7 @@ textarea.form-control-lg {
     height: 1em;
     margin-top: 0.25em;
     vertical-align: top;
-    background-color: #eef5f9;
+    background-color: ;
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
@@ -2485,12 +2484,12 @@ textarea.form-control-lg {
 }
 
 .form-range:focus::-webkit-slider-thumb {
-    -webkit-box-shadow: 0 0 0 1px #eef5f9, transparent;
-    box-shadow: 0 0 0 1px #eef5f9, transparent
+    -webkit-box-shadow: 0 0 0 1px , transparent;
+    box-shadow: 0 0 0 1px , transparent
 }
 
 .form-range:focus::-moz-range-thumb {
-    box-shadow: 0 0 0 1px #eef5f9, transparent
+    box-shadow: 0 0 0 1px , transparent
 }
 
 .form-range::-moz-focus-outer {
@@ -4046,7 +4045,7 @@ textarea.form-control-lg {
 .dropdown-item.active, .dropdown-item:active {
     color: #1e2125;
     text-decoration: none;
-    background-color: #EEF5F9;
+    background-color: ;
 }
 
 .dropdown-item.disabled, .dropdown-item:disabled {
@@ -5016,7 +5015,7 @@ textarea.form-control-lg {
 /*    padding: 0 0;*/
 /*    margin-bottom: 1.5rem;*/
 /*    list-style: none;*/
-/*    background-color: #eef5f9*/
+/*    background-color: */
 /*}*/
 .breadcrumb {
     display: flex;
@@ -8295,7 +8294,7 @@ textarea.form-control-lg {
 }
 
 .bg-body {
-    background-color: #eef5f9 !important
+    background-color:  !important
 }
 
 .bg-white {
@@ -11818,7 +11817,7 @@ html[dir=ltr] body .p-l-0 {
 }
 
 .page-wrapper {
-    background: #eef5f9;
+    background: ;
     position: relative
 }
 

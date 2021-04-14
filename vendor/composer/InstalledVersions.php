@@ -19,11 +19,20 @@ private static $installed = array (
     'aliases' => 
     array (
     ),
-    'reference' => '8aeb22ff9778ecf3ca983a0dee1af58a839e2445',
+    'reference' => '1d5fefecc3916d76bb493064701d4d106b92f881',
     'name' => 'samy/cpy-mvc',
   ),
   'versions' => 
   array (
+    'cocur/slugify' => 
+    array (
+      'pretty_version' => 'v4.0.0',
+      'version' => '4.0.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '3f1ffc300f164f23abe8b64ffb3f92d35cec8307',
+    ),
     'firebase/php-jwt' => 
     array (
       'pretty_version' => 'v5.2.1',
@@ -60,15 +69,6 @@ private static $installed = array (
       ),
       'reference' => 'ff003a35cdf5030a5f2482299f4c93f344a35b29',
     ),
-    'roave/security-advisories' => 
-    array (
-      'pretty_version' => 'dev-master',
-      'version' => 'dev-master',
-      'aliases' => 
-      array (
-      ),
-      'reference' => '3dfe1d2b81a55b9c51dc87ce89f1ee2beaaf1093',
-    ),
     'samy/cpy-mvc' => 
     array (
       'pretty_version' => 'dev-main',
@@ -76,7 +76,7 @@ private static $installed = array (
       'aliases' => 
       array (
       ),
-      'reference' => '8aeb22ff9778ecf3ca983a0dee1af58a839e2445',
+      'reference' => '1d5fefecc3916d76bb493064701d4d106b92f881',
     ),
   ),
 );

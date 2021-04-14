@@ -82,7 +82,8 @@ $dispatcher = FastRoute\simpleDispatcher(function (FastRoute\RouteCollector $rou
         return new View\View('pages.apropos', compact('title'));
     });
     $route->get('/Cpy-Mvc/test', function () {
-//        debug(preg_match('', 'bNa5588'));
+        debug(str_replace($search, "\'", "salut \"c\"est moi"));
+
     });
 });
 

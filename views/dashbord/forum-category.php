@@ -22,9 +22,9 @@
 
                             </div>
                         </div>
-                        <div class="container-fluid jumbotron card border mt-1 p-4">
+                        <div class="container-fluid  card mt-1 p-4">
                             <?php if ($subjects):foreach ($subjects as $subject): ?>
-                                <a href="<?= makeRootOrFileUrl(sprintf('forum/subject/%s', $subject->subtitle)) ?>"
+                                <a href="<?= makeRootOrFileUrl(sprintf('forum/subject/%s', $subject->slug)) ?>"
                                    class="suject-link">
                                     <div class="row  bg-gradient p-3 mb-5 rounded cursor-pointer subject-list">
                                         <div class="col-md-6">
@@ -91,7 +91,7 @@
                         </div>
                         <div class="form-group">
                             <label for="subtitle" class="col-md-12">Sous-titre <small
-                                        class="small">*</small></label>
+                                        class="small not-required"></small></label>
                             <div class="col-md-12">
                                 <input type="text" placeholder=""
                                        class="form-control form-control-line" name="subtitle"

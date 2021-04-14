@@ -23,4 +23,5 @@ return array(
     'Contoller\\Middleware\\' => array($baseDir . '/controllers/Middleware'),
     'Contoller\\Http\\' => array($baseDir . '/controllers/Http'),
     'Contoller\\' => array($baseDir . '/controllers'),
+    'Cocur\\Slugify\\' => array($vendorDir . '/cocur/slugify/src'),
 );

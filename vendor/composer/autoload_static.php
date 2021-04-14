@@ -48,6 +48,7 @@ class ComposerStaticInit6264916c20b8cdaf967ae3749af8fbef
             'Contoller\\Middleware\\' => 21,
             'Contoller\\Http\\' => 15,
             'Contoller\\' => 10,
+            'Cocur\\Slugify\\' => 14,
         ),
     );
 
@@ -119,6 +120,10 @@ class ComposerStaticInit6264916c20b8cdaf967ae3749af8fbef
         'Contoller\\' => 
         array (
             0 => __DIR__ . '/../..' . '/controllers',
+        ),
+        'Cocur\\Slugify\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/cocur/slugify/src',
         ),
     );
 

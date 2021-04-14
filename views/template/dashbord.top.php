@@ -30,7 +30,7 @@ use Contoller\Middleware\AuthMiddleware;
     <script src="https://kit.fontawesome.com/37da887623.js" crossorigin="anonymous"></script>
 </head>
 
-<body <?php if (!AuthMiddleware::asUserAuthenticated()): ?> style="background: #eef5f9;" <?php endif; ?> >
+<body>
 <!--<div class="preloader">-->
 <!--    <div class="lds-ripple">-->
 <!--        <div class="lds-pos"></div>-->
@@ -40,20 +40,12 @@ use Contoller\Middleware\AuthMiddleware;
 <div id="main-wrapper" data-layout="vertical" data-navbarbg="skin5" data-sidebartype="full"
      data-sidebar-position="absolute" data-header-position="absolute" data-boxed-layout="full">
     <header class="topbar" data-navbarbg="skin5">
-        <nav class="navbar top-navbar navbar-expand-md navbar-dark">
+        <nav class="navbar top-navbar navbar-expand-md navbar-dark shadow fixed-top">
             <div class="navbar-header" data-logobg="skin5">
-                <a class="navbar-brand" href="index.html">
-                    <b class="logo-icon">
-                        <img src="<?= makeRootOrFileUrl('images/logo-icon.png') ?>" alt="homepage" class="dark-logo"/>
-                        <img src="<?= makeRootOrFileUrl('images/logo-light-icon.png') ?>" alt="homepage"
-                             class="light-logo"/>
-                    </b>
-                    <span class="logo-text">
-                            <img src="<?= makeRootOrFileUrl('images/logo-text.png') ?>" alt="homepage"
-                                 class="dark-logo"/>
-                            <img src="<?= makeRootOrFileUrl('images/logo-light-text.png') ?>" class="light-logo"
-                                 alt="homepage"/>
-                        </span>
+                <a class="navbar-brand" href="<?= makeRootOrFileUrl('home') ?>">
+                    <img src="<?= makeRootOrFileUrl('images/cpy.jpeg') ?>" width="45" alt="homepage"
+                         class="img-responsive rounded-circle"/>
+                    &nbsp;CIPY
                 </a>
                 <?php if (AuthMiddleware::asUserAuthenticated()): ?>
                     <a class="nav-toggler waves-effect waves-light d-block d-md-none" href="javascript:void(0)"><i
@@ -157,7 +149,7 @@ use Contoller\Middleware\AuthMiddleware;
                     <?php $current_route = current_route();
                     if ($current_route === makeRootOrFileUrl('forum') ||
                         $current_route === makeRootOrFileUrl(sprintf('forum/categorie/%s', $slug ?? '')) ||
-                        current_route() === makeRootOrFileUrl(sprintf('forum/subject/%s', $subject->subtitle ?? ''))) :?>
+                        current_route() === makeRootOrFileUrl(sprintf('forum/subject/%s', $subject->slug ?? ''))) :?>
                         <h4 class="page-title text-uppercase text-center" style="font-size: 1.2rem !important;">
                             <img src="<?= makeRootOrFileUrl('images/forum.png') ?>" alt="user"
                                  width="50"
@@ -219,7 +211,7 @@ use Contoller\Middleware\AuthMiddleware;
                                            href="<?= makeRootOrFileUrl(sprintf('forum/categorie/%s', $forum->slug ?? '')) ?>">
                                             <img src="<?= makeRootOrFileUrl($forum->icon) ?>" alt="user" width="23"
                                                  height="23" class="rounded-circle img-cover">
-                                            <?= $forum->name ?>
+                                            <?= ucfirst($forum->name) ?>
                                         </a>
                                     </li>
                                 <?php endif; ?>

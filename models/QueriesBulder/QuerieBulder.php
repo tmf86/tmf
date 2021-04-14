@@ -75,6 +75,7 @@ abstract class QuerieBulder extends RelationalShema
         if (!empty($data)) {
             foreach ($data as $key => $value):
                 $fields[] = replaceQuotion($key);
+                $value = replaceQuotion($value);
                 $values[] = "'$value'";
             endforeach;
             $fields = implode(",", $fields);
