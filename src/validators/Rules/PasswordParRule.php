@@ -21,7 +21,7 @@ class PasswordParRule extends Rule
     }
 
     public function check($value): bool{
-
+        return  $this->VerifInfo($value);
         // TODO: Implement check() method.
     }
 }

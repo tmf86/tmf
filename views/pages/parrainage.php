@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300&display=swap"
           rel="stylesheet">
     <link rel="stylesheet" href='<?= makeRootOrFileUrl("public/css/style.css") ?>'>
-
+    <title><?= $title ?? "Title" ?></title>
     <!-- Main Content -->
     <style>
         body {
@@ -144,7 +144,6 @@
             /* padding: 0.7rem;*/
         }
     </style>
-    <title></title>
 </head>
 <body>
 <div class="container-fluid">
