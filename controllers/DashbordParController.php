@@ -29,37 +29,24 @@ class DashbordParController extends Controller
         $current_usr = $this->user();
         $dm = new Demande();
         $dm = $dm->select("demande")->whereEqual("id_membre",$current_usr->mat_membre)->run();
-
+        //var_dump($dm);
         $mb = new User();
         $mb_par = $mb
             ->select("membre")
             ->whereEqual("filiere",$this->recupFilere($dm->filiere,'2'))
-            ->andEqual("validation","vrai")->run();
+            ->andEqual("validation","vrai")->run(true);
         $mb_fil= $mb
             ->select("membre")
             ->whereEqual("filiere",$this->recupFilere($dm->filiere,'1'))
-            ->andEqual("validation","vrai")->run();
-        /*$o =0;
-        $o1=0;
-        foreach ($mb_par as $par){
-            $o++;
-        }
-        foreach ($mb_fil as $fil){
-            $o1++;
-        }
-       // $nb_p = (is_countable($mb_par)) ? false : count($mb_par);
-        //var_dump($nb_p);
-        echo $o;
-
-        echo  $o1;*/
-        var_dump($mb_par);
-        echo "<br>";
-       var_dump($mb_fil);
+            ->andEqual("validation","vrai")->run(true);
+       // var_dump($mb_par);
+       // echo "<br>";
+       //var_dump($mb_fil);
        // var_dump(count($mb_par));
         //echo "<br>";
         $tb_info=$this->equlibrateMenber(count($mb_par),count($mb_fil));
-        $info_parrainage = ["parrain"=>$mb_par,"filleul"=>$mb_fil,$tb_info];
-        return json_encode($info_parrainage);
+        $info_parrainage = ["parrain"=>$mb_par,"filleul"=>$mb_fil,$tb_info,$dm];
+        echo json_encode($info_parrainage);
     }
     private function recupFilere($champ,$annee){
        $dt = new \DateTime();
@@ -119,5 +106,24 @@ class DashbordParController extends Controller
         }
         $tab_info = ["tab_aletoire_p"=>$pos_p,"tab_aletoire_f"=>$pos_f,"nbr_tentative"=>$max];
         return $tab_info;
+    }
+    private function random_c($nberToRandom,$next){
+        $random_i=$this->random_s($nberToRandom);
+        $k=$i=count($random_i)+1;
+        $random_i[$i]=random_int(1,$nberToRandom);
+        while($i<=$next){
+            $ver=false;
+            $val=random_int(1,$nberToRandom);
+            for($j=$k;$j<$i;$j++){
+                if($random_i[$j]===$val){
+                    $ver=true;
+                }
+            }
+            if(!$ver){
+                $random_i[$i]=$val;
+                $i++;
+            }
+        }
+        return $random_i;
     }
 }

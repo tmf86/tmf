@@ -32,8 +32,8 @@ class LogParController extends Controller
             $scripts= [
                 sprintf("<script  src='%spublic/js/DashbordPar.js'></script>", rootUrl())
             ];
-            //$this->load_views('parrainage.tableau_bord',compact("title","rq","scripts"));
-            return header("location:tabl");
+            $this->load_views('parrainage.tableau_bord',compact("title","rq","scripts"),true);
+         //   return header("location:tabl");
 
         }
 
