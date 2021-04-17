@@ -14,20 +14,30 @@ use Contoller\Middleware\AuthMiddleware;
                 </div>
                 <div class="comment-widgets scrollable">
                     <div class="d-flex flex-row comment-row m-t-0">
-                        <div class="p-2"><img src="<?= makeRootOrFileUrl($subject->user->image) ?>" alt="user"
-                                              width="50"
-                                              class="rounded-circle" height="50"></div>
+                        <div class="p-2">
+                            <img src="<?= makeRootOrFileUrl($subject->user->image) ?>" alt="user"
+                                 width="50" class="rounded-circle img-cover cursor-pointer" height="50">
+                        </div>
                         <div class="comment-text w-100">
-                            <h6 class="font-medium"><?= $subject->user->prenom ?></h6>
-                            <div class="m-b-15 d-block">
+                            <h6 class="font-medium"><?= $subject->user->username ?? $subject->user->prenom ?></h6>
+                            <div class="m-b-15">
                                 <?= $subject->message ?>
                             </div>
                             <div class="comment-footer">
-                              <span class="action-icons">
-                                    <a href="javascript:void(0)"><i class="ti-pencil-alt"></i></a>
-                                  <!--                                    <a href="javascript:void(0)"><i class="ti-check"></i></a>-->
-                                  <!--                                    <a href="javascript:void(0)"><i class="ti-heart"></i></a>-->
-                              </span>
+                                <?php if ($subject->attachment) : ?>
+                                    <div class="mb-2">
+                                        <a href="<?= makeRootOrFileUrl($subject->attachment) ?>"
+                                           data-lightbox="image-1">
+                                            <img src="<?= makeRootOrFileUrl($subject->attachment) ?>" width="400"
+                                                 alt="message attachment" class="attachment">
+                                        </a>
+                                    </div>
+                                <?php endif; ?>
+                                <span class="text-muted float-end">April 14, 2021</span>
+                                <!--                                <span class="label label-rounded label-primary">Pending</span>-->
+                                <span style="font-size: 1.2rem">
+                                    <label for="message" class="cursor-pointer"><i class="ti-pencil-alt"></i></label>
+                                </span>
                             </div>
                         </div>
                     </div>
@@ -68,7 +78,8 @@ use Contoller\Middleware\AuthMiddleware;
                                 </div>
                             </div>
                             <div class="col-md-12">
-                                <textarea rows="5" class="form-control form-control-line"></textarea>
+                                <textarea rows="5" id="message" class="form-control form-control-line"
+                                          name="message"></textarea>
                             </div>
                         </div>
                         <div class="form-group">

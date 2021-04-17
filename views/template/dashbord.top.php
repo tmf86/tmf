@@ -31,12 +31,12 @@ use Contoller\Middleware\AuthMiddleware;
 </head>
 
 <body>
-<div class="preloader">
-    <div class="lds-ripple">
-        <div class="lds-pos"></div>
-        <div class="lds-pos"></div>
-    </div>
-</div>
+<!--<div class="preloader">-->
+<!--    <div class="lds-ripple">-->
+<!--        <div class="lds-pos"></div>-->
+<!--        <div class="lds-pos"></div>-->
+<!--    </div>-->
+<!--</div>-->
 <div id="main-wrapper" data-layout="vertical" data-navbarbg="skin5" data-sidebartype="full"
      data-sidebar-position="absolute" data-header-position="absolute" data-boxed-layout="full">
     <header class="topbar" data-navbarbg="skin5">
@@ -211,7 +211,7 @@ use Contoller\Middleware\AuthMiddleware;
                                            href="<?= makeRootOrFileUrl(sprintf('forum/categorie/%s', $forum->slug ?? '')) ?>">
                                             <img src="<?= makeRootOrFileUrl($forum->icon) ?>" alt="user" width="23"
                                                  height="23" class="rounded-circle img-cover">
-                                            <?= ucfirst($forum->name) ?>
+                                            <?= ucwords($forum->name) ?>
                                         </a>
                                     </li>
                                 <?php endif; ?>

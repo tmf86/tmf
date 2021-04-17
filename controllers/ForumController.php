@@ -84,9 +84,11 @@ class ForumController extends Controller
     public function subjectView(ValidateSubjectRequest $validateSubjectRequest, string $slug)
     {
         $subject = $validateSubjectRequest->doTask($slug);
+        $links = [sprintf('<link rel="stylesheet" href="%spublic/css/lightbox.css">', rootUrl())];
+        $scripts = [sprintf('<script src="%spublic/js/lightbox.js"></script>', rootUrl()),];
         $forum = $subject->forum;
         $user = $this->user;
-        return $this->load_views('dashbord.subject', compact('user', 'subject', 'forum'));
+        return $this->load_views('dashbord.subject', compact('user', 'subject', 'forum', 'scripts', 'links'));
     }
 
     /**
@@ -100,7 +102,7 @@ class ForumController extends Controller
             return $forum->select('forum_subject')
                 ->whereEqual('forum_id', $forum->id)
                 ->OrderByDesc('created_at')
-                ->limit(5)->run(true);
+                ->run(true);
         }
         return false;
     }

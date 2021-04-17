@@ -278,6 +278,10 @@ input:disabled, textarea:disabled {
         left: 50%;
         transform: translate(-50%, -50%);
     }
+
+    img.attachment {
+        width: 220px;
+    }
 }
 
 @media (max-width: 400px) {

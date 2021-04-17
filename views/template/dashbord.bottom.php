@@ -5,16 +5,12 @@
 </div>
 </div>
 <script src="<?= makeRootOrFileUrl('public/js/import/jquery/jquery.js') ?>"></script>
-<!-- Bootstrap tether Core JavaScript -->
 <script src="<?= makeRootOrFileUrl('public/js/import/boostrap/bootstrap.js') ?>"></script>
 <script src="<?= makeRootOrFileUrl('public/js/import/boostrap/popper.js') ?>"></script>
 <script src="<?= makeRootOrFileUrl('public/js/import/boostrap/bootstrap.bundle.min.js') ?>"></script>
 <script src="<?= makeRootOrFileUrl('public/js/import/user-dashbord/app-style-switcher.js') ?>"></script>
-<!--Wave Effects -->
 <script src="<?= makeRootOrFileUrl('public/js/import/user-dashbord/waves.js') ?>"></script>
-<!--Menu sidebar -->
 <script src="<?= makeRootOrFileUrl('public/js/import/user-dashbord/sidebarmenu.js') ?>"></script>
-<!--Custom JavaScript -->
 <script src="<?= makeRootOrFileUrl('public/js/import/user-dashbord/custom.js') ?>"></script>
 <?= suppl_tags($scripts ?? [], SCRIPT) ?>
 </body>
