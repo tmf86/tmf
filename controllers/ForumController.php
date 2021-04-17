@@ -130,6 +130,7 @@ class ForumController extends Controller
                             'user_id' => $this->user->mat_mmbre
                         ]
                     );
+                    Request::sleep(2);
                 }
             }
             $this->request->sessionUnset(UuidToString());

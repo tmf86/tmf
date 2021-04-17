@@ -472,6 +472,8 @@ $('#subject-form').submit(function (e) {
                         break
                     case false :
                         if (errors.setsession === true) {
+                            $("#subject-form").trigger('reset')
+                            $("#image-getted").css('display', 'none')
                             $('#forum-add').modal('hide')
                             $('#session-alert').modal('show')
                         }
