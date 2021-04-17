@@ -26,7 +26,7 @@
                             <?php if ($subjects):foreach ($subjects as $subject): ?>
                                 <a href="<?= makeRootOrFileUrl(sprintf('forum/subject/%s', $subject->slug)) ?>"
                                    class="suject-link">
-                                    <div class="row  bg-gradient p-3 mb-5 rounded cursor-pointer subject-list">
+                                    <div class="row  bg-gradient p-3 mb-0 rounded cursor-pointer subject-list">
                                         <div class="col-md-6">
                                             <div class="row">
                                                 <div class="col-3">
@@ -99,8 +99,26 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for='message' class="col-md-12">Votre message <small
-                                        class="small">*</small></label>
+                            <div class="d-flex justfy-content-space-between">
+                                <div>
+                                    <label for="message" class="col-md-12">Votre message <small class="small">*</small></label>
+                                </div>
+                                <div>
+                                    Joindre une image
+                                    <label for="attachment">
+                                        <img class="cursor-pointer"
+                                             src="<?= makeRootOrFileUrl('images/icon-img.png') ?>"
+                                             width="20" height="20"
+                                             alt="icon-image">
+                                    </label>
+                                    <img src="<?= makeRootOrFileUrl('images/image-getted.png') ?>"
+                                         width="20" height="20"
+                                         alt="image getted" id="image-getted" style="display: none">
+                                    <input type="file" id="attachment" name="attachment" class="d-none">
+                                </div>
+                            </div>
+                            <div class="col-md-12 small" id="error-container">
+                            </div>
                             <div class="col-md-12">
                                 <textarea rows="5" id='message' class="form-control form-control-line"
                                           name="message"></textarea>

@@ -56,7 +56,7 @@ abstract class ValidatorCustumer extends Validator
      */
     public function makeValidate()
     {
-        Request::sleepRequest(1);
+        Request::sleep(1);
         $request = new Request();
         $inputs = $request->inputs();
         if (!empty($request->inputs())) {

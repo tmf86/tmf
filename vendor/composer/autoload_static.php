@@ -11,6 +11,10 @@ class ComposerStaticInit6264916c20b8cdaf967ae3749af8fbef
     );
 
     public static $prefixLengthsPsr4 = array (
+        'W' => 
+        array (
+            'Webpatser\\Uuid\\' => 15,
+        ),
         'V' => 
         array (
             'View\\' => 5,
@@ -53,6 +57,10 @@ class ComposerStaticInit6264916c20b8cdaf967ae3749af8fbef
     );
 
     public static $prefixDirsPsr4 = array (
+        'Webpatser\\Uuid\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/webpatser/laravel-uuid/src/Webpatser/Uuid',
+        ),
         'View\\' => 
         array (
             0 => __DIR__ . '/../..' . '/views',

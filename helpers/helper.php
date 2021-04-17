@@ -2,6 +2,7 @@
 
 use Contoller\Http\Request;
 use View\View;
+use Webpatser\Uuid\Uuid;
 
 /**
  * @param array $rootResult
@@ -300,4 +301,51 @@ function slug($string)
 {
     $slugify = new Cocur\Slugify\Slugify();
     return $slugify->slugify($string);
+}
+
+/**
+ * @param $fileName
+ * @return false|string
+ * Cette fonction permet d'obtenir l'extension d'un fichier sans tenir compte du vrai type
+ * de ce fichier
+ */
+function getFileExtension($fileName)
+{
+    $lastPointPos = strripos($fileName, '.');
+    if ($lastPointPos !== 0) {
+        return substr($fileName, $lastPointPos);
+    }
+    return '';
+}
+
+/**
+ * @return false|mixed|string
+ * @throws Exception
+ * Génère un identifiant unique
+ */
+function UuidGenerete()
+{
+    if (!session('Uuid')) {
+        return session('Uuid', Uuid::generate());
+    }
+    return false;
+}
+
+/**
+ * @return mixed
+ * Permet d'obtenir une version en chaine de caractère de l'identifiant de session de
+ * l'utilisateur
+ */
+function UuidToString()
+{
+    return session('Uuid')->string;
+}
+
+/**
+ * @return false|mixed|string
+ * Permet d'obtenir une version Objet de l'identfiant de la session de l'utilisateur
+ */
+function Uuid()
+{
+    return session('Uuid');
 }

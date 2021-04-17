@@ -106,7 +106,7 @@ class Request
      * @param int $value
      * @return void
      */
-    public static function sleepRequest(int $value)
+    public static function sleep(int $value)
     {
         sleep($value);
     }
@@ -226,7 +226,7 @@ class Request
     /**
      * @return mixed
      */
-    public function getClientIp()
+    public static function getClientIp()
     {
         if (isset ($_SERVER['HTTP_X_FORWARDED_FOR'])) {
             $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];

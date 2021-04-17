@@ -45,7 +45,7 @@ use Contoller\Middleware\AuthMiddleware;
                 <a class="navbar-brand" href="<?= makeRootOrFileUrl('home') ?>">
                     <img src="<?= makeRootOrFileUrl('images/cpy.jpeg') ?>" width="45" alt="homepage"
                          class="img-responsive rounded-circle"/>
-                    &nbsp;CIPY
+                    &nbsp;&nbsp;CIPY
                 </a>
                 <?php if (AuthMiddleware::asUserAuthenticated()): ?>
                     <a class="nav-toggler waves-effect waves-light d-block d-md-none" href="javascript:void(0)"><i
@@ -193,7 +193,7 @@ use Contoller\Middleware\AuthMiddleware;
                                            href="<?= makeRootOrFileUrl(sprintf('forum/categorie/%s', $slug ?? '')) ?>">
                                             <img src="<?= makeRootOrFileUrl($forum->icon) ?>" alt="user" width="23"
                                                  height="23" class="rounded-circle img-cover">
-                                            <?= $forumName ?>
+                                            <?= ucwords($forumName) ?>
                                         </a>
                                     </li>
                                 <?php endif; ?>

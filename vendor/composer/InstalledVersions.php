@@ -19,7 +19,7 @@ private static $installed = array (
     'aliases' => 
     array (
     ),
-    'reference' => '1d5fefecc3916d76bb493064701d4d106b92f881',
+    'reference' => '5d55ab5c734cf5860676572aa148eac35ca892c6',
     'name' => 'samy/cpy-mvc',
   ),
   'versions' => 
@@ -69,6 +69,16 @@ private static $installed = array (
       ),
       'reference' => 'ff003a35cdf5030a5f2482299f4c93f344a35b29',
     ),
+    'roave/security-advisories' => 
+    array (
+      'pretty_version' => 'dev-latest',
+      'version' => 'dev-latest',
+      'aliases' => 
+      array (
+        0 => '9999999-dev',
+      ),
+      'reference' => '593c4de369ca852cf3b86037f19435d47c136448',
+    ),
     'samy/cpy-mvc' => 
     array (
       'pretty_version' => 'dev-main',
@@ -76,7 +86,16 @@ private static $installed = array (
       'aliases' => 
       array (
       ),
-      'reference' => '1d5fefecc3916d76bb493064701d4d106b92f881',
+      'reference' => '5d55ab5c734cf5860676572aa148eac35ca892c6',
+    ),
+    'webpatser/laravel-uuid' => 
+    array (
+      'pretty_version' => '4.0.1',
+      'version' => '4.0.1.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'df92ebbc5ea71ee9e0d6e2861178be42ef7eb330',
     ),
   ),
 );

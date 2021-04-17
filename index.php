@@ -15,7 +15,6 @@ use Contoller\ProfileController;
 use Contoller\RegisterController;
 use Contoller\RegisterSuccess;
 use Contoller\SujetController;
-use Service\Mailer\FinalizeAccountMailer;
 use Validator\ForumAddSubjectValidator;
 use Validator\LoginValidator;
 use Validator\ProfileUpdateValidator;
@@ -28,7 +27,7 @@ require 'config/email.php';
 require 'config/jwt.php';
 require "helpers/helper.php";
 session_start();
-
+UuidGenerete();
 /*
  *  NB : Si jamais il est question d'instancier un controller qui a besoin a la fois de variable qui sera un paramettre envoyé
  *  dans la requête et aussi de variable passé depuis la route voici l'ordre dans la quelle les paramettres de
@@ -63,7 +62,7 @@ $dispatcher = FastRoute\simpleDispatcher(function (FastRoute\RouteCollector $rou
             new ForumAddSubjectValidator(),
             new ValidateForumCategoryRequest()
         ]]);
-    $route->get('/Cpy-Mvc/forum/subject/{subject:[A-Za-z\-]+}', ['class' => ForumController::class,
+    $route->get('/Cpy-Mvc/forum/subject/{subject:[A-Za-z0-9\-]+}', ['class' => ForumController::class,
         'method' => 'subjectView', 'gets' => true, 'vars' => [
             new ValidateSubjectRequest()
         ]]);
@@ -82,8 +81,16 @@ $dispatcher = FastRoute\simpleDispatcher(function (FastRoute\RouteCollector $rou
         return new View\View('pages.apropos', compact('title'));
     });
     $route->get('/Cpy-Mvc/test', function () {
-        debug(str_replace($search, "\'", "salut \"c\"est moi"));
-
+//        echo '
+//        <form action="" method="post" enctype="multipart/form-data">
+//                <input type="file" name="fihcier">
+//                <button type="submit">submit</button>
+//        </form>        ';
+//        debug(move_uploaded_file('C:\xamp-php-7.4.8\tmp\phpFCC2.tmp','new'));
+//        debug($_FILES);
+    });
+    $route->post('/Cpy-Mvc/test', function () {
+        debug($_FILES);
     });
 });
 

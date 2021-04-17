@@ -11,6 +11,8 @@ use Contoller\Middleware\TaskBeforeRequest\ValidateForumCategoryRequest;
 use Contoller\Middleware\TaskBeforeRequest\ValidateSubjectRequest;
 use Model\Forum;
 use Model\ForumSubject;
+use Service\File\Files;
+use Service\File\FilesUpload;
 use Validator\ForumAddSubjectValidator;
 use View\View;
 
@@ -49,10 +51,10 @@ class ForumController extends Controller
     public function category(ValidateForumCategoryRequest $validateForumCategoryRequest, string $slug)
     {
         $forum = $validateForumCategoryRequest->doTask($slug);
-        $recentSubjects = $this->addSubjectProcess($forum, $slug);
+        $recentSubjects = $this->addSubjectProcess($forum);
         $subjects = $this->checkIfHasSubject($forum);
         $forumName = ucfirst($forum->name);
-        $title = 'Forum | ' . $forumName;
+        $title = 'Forum | ' . ucwords($forumName);
         $scripts =
             [
                 sprintf("<script  src='%spublic/js/functions.js'></script>", rootUrl()),
@@ -72,7 +74,7 @@ class ForumController extends Controller
     {
         $forum = $validateForumCategoryRequest->doTask($slug);
         $addSubjectValidator->makeValidate();
-        $this->addSubjectProcess($forum, $slug);
+        $this->addSubjectProcess($forum);
         $this->setRedirectToURL(current_route());
         $this->setSubjectSession();
         Request::ajax(['inputs' => false, 'setsession' => true], 400);
@@ -112,23 +114,25 @@ class ForumController extends Controller
     {
         $forumSubject = new ForumSubject();
         if ($useSession) {
-            $data = session($this->request->getClientIp());
+            $data = session(UuidToString());
             $subjects = [];
             if (is_array($data)) {
                 foreach ($data as $value) {
+                    $attachment = ($value['attachment']) ? $this->saveSubjectAttachment(true, $value['attachment']) : NULL;
                     $subjects[] = $forumSubject->create(
                         [
                             'title' => strtolower($value['title']),
                             'slug' => slug(strtolower($value['title'])),
                             'subtitle' => str_replace(' ', '-', $value['subtitle']),
                             'message' => $value['message'],
+                            'attachment' => $attachment,
                             'forum_id' => $forum->id,
                             'user_id' => $this->user->mat_mmbre
                         ]
                     );
                 }
             }
-            $this->request->sessionUnset($this->request->getClientIp());
+            $this->request->sessionUnset(UuidToString());
             return $subjects;
         }
         return $forumSubject->create(
@@ -137,6 +141,7 @@ class ForumController extends Controller
                 'slug' => slug(strtolower($this->request->title)),
                 'subtitle' => strtolower($this->request->subtitle),
                 'message' => $this->request->message,
+                'attachment' => $this->saveSubjectAttachment(),
                 'forum_id' => $forum->id,
                 'user_id' => $this->user->mat_mmbre
             ]
@@ -153,17 +158,18 @@ class ForumController extends Controller
             'title' => $this->request->title,
             'slug' => slug(strtolower($this->request->title)),
             'subtitle' => $this->request->subtitle,
-            'message' => $this->request->message
+            'message' => $this->request->message,
+            'attachment' => $this->sessionAttachmentSaving($this->request->file('attachment'))
         ];
-        if (session($this->request->getClientIp())) {
-            $newData = $this->request->session($this->request->getClientIp());
+        if (session(UuidToString())) {
+            $newData = $this->request->session(UuidToString());
             if ($this->hasSameSubject($data, $newData)) {
                 $newData[] = $data;
-                return $this->request->session($this->request->getClientIp(), $newData);
+                return $this->request->session(UuidToString(), $newData);
             }
             return false;
         }
-        return $this->request->session($this->request->getClientIp(), [$data]);
+        return $this->request->session(UuidToString(), [$data]);
     }
 
     /**
@@ -186,12 +192,11 @@ class ForumController extends Controller
 
     /**
      * @param $forum
-     * @param $slug
      * @return array|Request|ForumSubject
      */
-    private function addSubjectProcess($forum, $slug)
+    private function addSubjectProcess($forum)
     {
-        if (AuthMiddleware::asUserAuthenticated() && $this->request->httpMethod() === 'post' && !session($this->request->getClientIp())) {
+        if (AuthMiddleware::asUserAuthenticated() && $this->request->httpMethod() === 'post' && !session(UuidToString())) {
             if (Request::isAjax()) {
                 if ($this->addSubject($forum)) {
                     session('subject', true);
@@ -200,7 +205,7 @@ class ForumController extends Controller
                 return Request::ajax(['success' => false, 'refresh' => false], 200);
             }
         }
-        if (AuthMiddleware::asUserAuthenticated() && session($this->request->getClientIp())) {
+        if (AuthMiddleware::asUserAuthenticated() && session(UuidToString())) {
             if ($this->addSubject($forum, true)) {
                 session('subject', true);
                 return $this->addSubject($forum, true);
@@ -208,4 +213,40 @@ class ForumController extends Controller
         }
         return [];
     }
+
+    /**
+     * @param bool $fromSession
+     * @return string|null
+     * @throws \Exception
+     */
+    private function saveSubjectAttachment(bool $fromSession = false, string $tempSavingPath = '')
+    {
+        Request::sleep(1);
+        if ($fromSession && $tempSavingPath) {
+            $path = sprintf('storage/forums/subject/attachment/%s/', $this->user->identifiant);
+            $name = date('Y-m-d-H-i-s') . md5(Request::getClientIp());
+            $fileName = uniqid($name, true) . getFileExtension($tempSavingPath);
+            $this->sessionAttachmentCreateFileIfNotExist($path);
+            $tempSavingPath = ROOT_DIRECTORY . $tempSavingPath;
+            return (rename($tempSavingPath, ROOT_DIRECTORY . $path . $fileName)) ? $path . $fileName : false;
+        }
+        $path = sprintf('storage/forums/subject/attachment/%s', $this->user->identifiant);
+        return $this->request->file('attachment')->save($path);
+    }
+
+    private function sessionAttachmentCreateFileIfNotExist($path)
+    {
+        if (!file_exists(ROOT_DIRECTORY . $path)) {
+            return Files::createDirectory($path);
+        }
+        return false;
+    }
+
+    private function sessionAttachmentSaving(FilesUpload $filesUpload)
+    {
+        Request::sleep(1);
+        $path = sprintf('storage/temp');
+        return $filesUpload->file('attachment')->save($path, UuidToString() . date('Y-m-d-H-i-s'));
+    }
+
 }

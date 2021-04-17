@@ -82,7 +82,7 @@ a.stars {
 }
 
 .subject-list {
-    border-bottom: 2px solid black !important;
+    border-bottom: 2px solid #414755 !important;
 }
 
 .subject-list:hover {

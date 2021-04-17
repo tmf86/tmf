@@ -405,6 +405,27 @@ $('#close-emoji-modal').click(function () {
 $('#showAddSubjectForm').click(function () {
     $('#forum-add').modal('show')
 })
+$('#attachment').on('change', function () {
+    $(`#error-container`).html('')
+    $("#image-getted").css('display', 'none')
+    $('#subject-btn').removeAttr('disabled')
+    const fileSelectedName = this.files[0].name
+    const fileSelectedExt = fileSelectedName.substring(fileSelectedName.indexOf("."))
+    const extValid = [".png", ".jpg", ".gif", ".jpeg"]
+    let isvalid = false
+    for (let i = 0; i < extValid.length; i++) {
+        if (extValid[i] === fileSelectedExt) {
+            isvalid = true;
+        }
+    }
+    if (isvalid) {
+        console.log('ok')
+        $("#image-getted").css('display', 'inline')
+    } else {
+        $(`#error-container`).html('desolé le fichier selectionné n\'est pas une image valide, veuillez en selectionner un autre .');
+        $('#subject-btn').attr('disabled', 'true')
+    }
+})
 //Envoie des donnée pour la creation du sujet  avec Ajax
 $('#subject-form').submit(function (e) {
     e.preventDefault()

@@ -4,13 +4,12 @@
 namespace Service\File;
 
 
+use Contoller\Http\Request;
 use Contoller\Middleware\AuthMiddleware;
 use DirectoryIterator;
 
 class Files implements FilesUpload
 {
-    use AuthMiddleware;
-
     /*** @var array */
     private $files;
     /*** @var array */
@@ -43,11 +42,7 @@ class Files implements FilesUpload
      */
     private function getExtension($fileName)
     {
-        $lastPointPos = strripos($fileName, '.');
-        if ($lastPointPos !== 0) {
-            return substr($fileName, $lastPointPos);
-        }
-        return $fileName;
+        return (getFileExtension($fileName)) ?: $fileName;
     }
 
     /**
@@ -103,6 +98,11 @@ class Files implements FilesUpload
         return false;
     }
 
+    /**
+     * @param string $path
+     * @param string $fileName
+     * @return false|string
+     */
     private function uploadFileWhithOneParameterEmpty(string $path, string $fileName)
     {
         switch ($this->getEmptyParameter($path, $fileName)) {
@@ -137,7 +137,8 @@ class Files implements FilesUpload
 
     private function generateUnknownFileName()
     {
-        return date("Y-H-i-s") . $this->getUserExtension();
+        $name = date('Y-m-d-H-i-s') . md5(Request::getClientIp());
+        return uniqid($name, true) . $this->getClientExtension();
     }
 
     private function deteFileIfExist(...$path)
@@ -147,7 +148,7 @@ class Files implements FilesUpload
         }
     }
 
-    private function createDirectory(...$path)
+    public static function createDirectory(...$path)
     {
         return (mkdir(ROOT_DIRECTORY . implode('', $path), 0777, true));
     }
@@ -169,7 +170,7 @@ class Files implements FilesUpload
 
     public function createFileIfNotExist(...$path)
     {
-        return (!$this->fileExist(...$path)) ? $this->createDirectory(...$path) : false;
+        return (!$this->fileExist(...$path)) ? self::createDirectory(...$path) : false;
     }
 
     /**
@@ -240,10 +241,6 @@ class Files implements FilesUpload
     public
     function getClientExtension(): string
     {
-        $lastPointPos = strripos($this->origineName(), '.');
-        if ($lastPointPos !== 0) {
-            return substr($this->origineName(), $lastPointPos);
-        }
-        return '';
+        return getFileExtension($this->origineName());
     }
 }

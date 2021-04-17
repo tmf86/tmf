@@ -6,6 +6,7 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'Webpatser\\Uuid\\' => array($vendorDir . '/webpatser/laravel-uuid/src/Webpatser/Uuid'),
     'View\\' => array($baseDir . '/views'),
     'Validator\\Rules\\' => array($baseDir . '/src/validators/Rules'),
     'Validator\\' => array($baseDir . '/src/validators'),
