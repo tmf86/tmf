@@ -29,7 +29,12 @@ class LogParController extends Controller
         }else{
             $rq = $this->request;
             $title="Tableau de Bord";
-            $this->load_views('parrainage.tableau_bord',compact("title","rq"));
+            $scripts= [
+                sprintf("<script  src='%spublic/js/DashbordPar.js'></script>", rootUrl())
+            ];
+            $this->load_views('parrainage.tableau_bord',compact("title","rq","scripts"),true);
+         //   return header("location:tabl");
+
         }
 
     }

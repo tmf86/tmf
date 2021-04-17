@@ -79,8 +79,8 @@ class ParrainageController extends Controller
 
     }
 
-    public function tableau_de_bord()
+   /* public function tableau_de_bord()
     {
         $this->load_views('pages.dashbord_par');
-    }
+    }*/
 }
