@@ -1,5 +1,6 @@
 <?php
 
+use Contoller\Http\Request;
 use Contoller\Middleware\AuthMiddleware;
 
 ?>
@@ -47,12 +48,14 @@ use Contoller\Middleware\AuthMiddleware;
         <div class="col-md-12 p-0">
             <div class="card">
                 <div class="card-body">
-                    <form class="form-horizontal form-material mx-2">
+                    <form class="form-horizontal form-material mx-2" action="" method="post"
+                          enctype="multipart/form-data">
                         <?php if (!AuthMiddleware::asUserAuthenticated()): ?>
                             <div class="alert alert-info alert-dismissible fade show" role="alert">
                                 <div class="d-flex justify-content-between">
                                     <div>
-                                        Après avoir cliqué sur "Répondre" vous serez invité à vous connecter pour que
+                                        Après avoir cliqué sur "Répondre" vous serez invité à vous connecter pour
+                                        que
                                         votre
                                         message soit publié.
                                     </div>
@@ -68,23 +71,44 @@ use Contoller\Middleware\AuthMiddleware;
                         <div class="form-group">
                             <div class="d-flex justfy-content-space-between">
                                 <div>
-                                    <label class="col-md-12">Votre message</label>
+                                    <label for="message" class="col-md-12">Votre message
+                                        <small class="small">
+                                            <?php if (Request::hasError('message')): ?>
+                                                <?= Request::error('message') ?>
+                                            <?php else: ?>
+                                                *
+                                            <?php endif; ?>
+                                        </small>
+                                    </label>
                                 </div>
                                 <div>
                                     Joindre une image
-                                    <img class="cursor-pointer" src="<?= makeRootOrFileUrl('images/icon-img.png') ?>"
+                                    <label for="attachment">
+                                        <img class="cursor-pointer"
+                                             src="<?= makeRootOrFileUrl('images/icon-img.png') ?>"
+                                             width="20" height="20"
+                                             alt="icon-image">
+                                    </label>
+                                    <img src="<?= makeRootOrFileUrl('images/image-getted.png') ?>"
                                          width="20" height="20"
-                                         alt="icon-image">
+                                         alt="image getted" id="image-getted" style="display: none">
+                                    <input type="file" id="attachment" name="attachment" class="d-none">
                                 </div>
                             </div>
+                            <div class="col-md-12 small mb-2" id="error-container">
+                            </div>
                             <div class="col-md-12">
-                                <textarea rows="5" id="message" class="form-control form-control-line"
+                                <textarea rows="5" id='message'
+                                          class="form-control form-control-line <?php if (Request::hasError('message')): ?>error<?php endif; ?>"
                                           name="message"></textarea>
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="col-sm-12">
-                                <button class="btn btn-success text-white">Repondre</button>
+                                <button class="btn btn-success text-white px-5" id="subject-btn"
+                                        style="width: 10rem">
+                                    repondre
+                                </button>
                             </div>
                         </div>
                     </form>
@@ -144,7 +168,8 @@ use Contoller\Middleware\AuthMiddleware;
             </div>
             <div class="card-body">
                 <i class="fas fa-book-open twinkle">
-                </i>&nbsp;&nbsp;<?= ($user->about_me) ?? 'Donnez aux autres une bref decription de qui vous êtes ..' ?>.
+                </i>&nbsp;&nbsp;<?= ($user->about_me) ?? 'Donnez aux autres une bref decription de qui vous êtes ..' ?>
+                .
             </div>
         </div>
     </div>

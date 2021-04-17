@@ -14,6 +14,7 @@ use Model\ForumSubject;
 use Service\File\Files;
 use Service\File\FilesUpload;
 use Validator\ForumAddSubjectValidator;
+use Validator\ReplaySubjectValidator;
 use View\View;
 
 class ForumController extends Controller
@@ -81,14 +82,42 @@ class ForumController extends Controller
 
     }
 
+    /**
+     * @param ForumSubject $subject
+     * @return array
+     */
+    private function subjectViewVariables(ForumSubject $subject)
+    {
+        $links = [sprintf('<link rel="stylesheet" href="%spublic/css/lightbox.css">', rootUrl())];
+        $scripts = [sprintf('<script src="%spublic/js/lightbox.js"></script>', rootUrl()),
+            sprintf('<script src="%spublic/js/script.js"></script>', rootUrl())];
+        $forum = $subject->forum;
+        $user = $this->user;
+        return compact('links', 'forum', 'user', 'scripts', 'subject');
+    }
+
+    /**
+     * @param ValidateSubjectRequest $validateSubjectRequest
+     * @param string $slug
+     * @return View
+     */
     public function subjectView(ValidateSubjectRequest $validateSubjectRequest, string $slug)
     {
         $subject = $validateSubjectRequest->doTask($slug);
-        $links = [sprintf('<link rel="stylesheet" href="%spublic/css/lightbox.css">', rootUrl())];
-        $scripts = [sprintf('<script src="%spublic/js/lightbox.js"></script>', rootUrl()),];
-        $forum = $subject->forum;
-        $user = $this->user;
-        return $this->load_views('dashbord.subject', compact('user', 'subject', 'forum', 'scripts', 'links'));
+        return $this->load_views('dashbord.subject', $this->subjectViewVariables($subject));
+    }
+
+    /**
+     * @param ValidateSubjectRequest $validateSubjectRequest
+     * @param ReplaySubjectValidator $replaySubjectValidator
+     * @param string $slug
+     * @return View
+     */
+    public function replyToSubject(ValidateSubjectRequest $validateSubjectRequest, ReplaySubjectValidator $replaySubjectValidator, string $slug)
+    {
+        $subject = $validateSubjectRequest->doTask($slug);
+        $replaySubjectValidator->makeValidate();
+        return redirect('dashbord.subject', false, 301, $this->subjectViewVariables($subject));
     }
 
     /**

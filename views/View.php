@@ -29,15 +29,18 @@ class View
      * View constructor.
      * @param string $view_name
      * @param array $vars
+     * @param bool $use_templating
+     * @param int $code
+     * @param bool $die
      */
-    public function __construct(string $view_name, array $vars = [], bool $use_templating = true, bool $die = true)
+    public function __construct(string $view_name, array $vars = [], bool $use_templating = true, int $code = 200, bool $die = true)
     {
         $this->view_name = $this->makePath($view_name);
         $this->directory = $this->getDirectory();
         $this->vars = $vars;
         $this->use_templating = $use_templating;
         $this->break = $die;
-        $this->view();
+        $this->view($code);
     }
 
     /**
@@ -45,7 +48,6 @@ class View
      */
     private function requireTemplateWithSwychCase(string $directory)
     {
-
 
 //        } else {
 //            $this->requireTemplate(VIEW_DIRECTORY, $this->view_name);
@@ -55,20 +57,23 @@ class View
 //        }
     }
 
-    private function requireWithTemplate()
+    private function requireWithTemplate(int $code = 200)
     {
+        http_response_code($code);
         extract($this->vars);
         require sprintf('%stemplate/%s.top.php', VIEW_DIRECTORY, $this->directory);
         require sprintf('%s%s.php', VIEW_DIRECTORY, $this->view_name);
         require sprintf('%stemplate/%s.bottom.php', VIEW_DIRECTORY, $this->directory);
+        unsetErrorSession();
 
     }
 
-    private function requireWithoutTemplate()
+    private function requireWithoutTemplate(int $code = 200)
     {
+        http_response_code($code);
         extract($this->vars);
-//        $paths = implode('', $path);
         require sprintf('%s%s.php', VIEW_DIRECTORY, $this->view_name);
+//        unsetErrorSession();
     }
 
     /**
@@ -91,9 +96,9 @@ class View
     /**
      * @return $this
      */
-    public function view()
+    public function view(int $code = 200)
     {
-        ($this->use_templating) ? $this->requireWithTemplate() : $this->requireWithoutTemplate();
+        ($this->use_templating) ? $this->requireWithTemplate($code) : $this->requireWithoutTemplate($code);
         if ($this->break) {
             die();
         }

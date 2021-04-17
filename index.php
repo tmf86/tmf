@@ -20,6 +20,7 @@ use Validator\ForumAddSubjectValidator;
 use Validator\LoginValidator;
 use Validator\ProfileUpdateValidator;
 use Validator\RegisterValidator;
+use Validator\ReplaySubjectValidator;
 
 require "vendor/autoload.php";
 require 'config/app.php';
@@ -29,6 +30,7 @@ require 'config/jwt.php';
 require "helpers/helper.php";
 session_start();
 UuidGenerete();
+
 /*
  *  NB : Si jamais il est question d'instancier un controller qui a besoin a la fois de variable qui sera un paramettre envoyé
  *  dans la requête et aussi de variable passé depuis la route voici l'ordre dans la quelle les paramettres de
@@ -68,6 +70,11 @@ $dispatcher = FastRoute\simpleDispatcher(function (FastRoute\RouteCollector $rou
     $route->get('/Cpy-Mvc/forum/subject/{subject:[A-Za-z0-9\-]+}', ['class' => ForumController::class,
         'method' => 'subjectView', 'gets' => true, 'vars' => [
             new ValidateSubjectRequest()
+        ]]);
+    $route->post('/Cpy-Mvc/forum/subject/{subject:[A-Za-z0-9\-]+}', ['class' => ForumController::class,
+        'method' => 'replyToSubject', 'gets' => true, 'vars' => [
+            new ValidateSubjectRequest(),
+            new ReplaySubjectValidator()
         ]]);
     $route->get('/Cpy-Mvc/logout', ['class' => Logout::class, 'method' => 'logout']);
     $route->addGroup('/Cpy-Mvc/finalize_account_creation/', function (FastRoute\RouteCollector $route) {

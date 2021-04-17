@@ -83,7 +83,6 @@ class Request
             case 404 :
                 http_response_code(404);
                 return redirect('pages.404.404', false, 404, [], false);
-                break;
         }
         return true;
     }
@@ -180,7 +179,7 @@ class Request
      */
     public static function hasError(string $key)
     {
-        return (isset(self::$errors[$key]));
+        return (array_key_exists($key, self::$errors));
     }
 
     /**
@@ -205,12 +204,11 @@ class Request
 
     /**
      * @param array $errors
-     * @return array
+     * @return false|mixed|string
      */
     public static function setErrors(array $errors)
     {
-        self::$errors = $errors;
-        return self::$errors;
+        return self::$errors = $errors;
     }
 
     /**

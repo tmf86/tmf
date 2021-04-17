@@ -219,12 +219,10 @@ function associative_array(array $initial_array)
 function redirect(string $adresse, bool $location = false, int $code = 301, array $vars = [], bool $use_templating = true, bool $die = true)
 {
     if ($location) {
-        header("Status: 301 Moved Permanently", false, $code);
-        header(sprintf("Location: %s", APP_URL . $adresse));
+        header(sprintf("Location: %s", APP_URL . $adresse), true, $code);
         exit();
     }
-    header("Status: 301 Moved Permanently", false, $code);
-    return new View($adresse, $vars, $use_templating, $die);
+    return new View($adresse, $vars, $use_templating, $code, $die);
 }
 
 /**
@@ -348,4 +346,16 @@ function UuidToString()
 function Uuid()
 {
     return session('Uuid');
+}
+
+function unsetErrorSession()
+{
+    if (session('errors')) {
+        $i = session('i') ?: 0;
+        $i++;
+        session('i', $i);
+    }
+    if (session(('errors')) && session('i') === 2) {
+        unset($_SESSION['errors']);
+    }
 }

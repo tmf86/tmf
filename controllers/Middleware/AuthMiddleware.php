@@ -88,6 +88,8 @@ trait AuthMiddleware
         $this->UnsetUserSession();
         if ($completedLogout) {
             $this->request->sessionUnset('redirectTo');
+            $this->request->sessionUnset('errors');
+            $this->request->sessionUnset('code');
             $this->request->sessionUnset($this->request->getClientIp());
         }
         return redirect('home', true);

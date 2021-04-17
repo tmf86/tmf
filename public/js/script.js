@@ -9,7 +9,7 @@ $(function () {
             $(this).html("MOINS");
         }
     });
-//Annimation des fa icon a coté des inputs et aussi des labels lorsqu'il y a une erreur
+    /*Annimation des fa icon a coté des inputs et aussi des labels lorsqu'il y a une erreur*/
     const input = $("input")
     input.focus(function () {
         ($('#alert')) ? $('#alert').html('') : '';
@@ -35,7 +35,7 @@ $(function () {
             $(`textarea[name="${this.name}"]`).removeClass("error")
         }
     })
-//Getion dynamique des select de la date de naissance
+    /*Getion dynamique des select de la date de naissance*/
     const [day, month, year] = [$("#jour"), $("#mois"), $("#annee")]
     const Leap = function () {
         // const yearVal = $(year).val();
@@ -90,7 +90,7 @@ $(function () {
     day.change(function () {
         Leap()
     })
-//  Annimation des inputs de type password
+    /*  Annimation des inputs de type password*/
     $(".password-eye").click(function () {
         let class_name = '';
         for (let i = 0; i < $(this)[0].classList.length; i++) {
@@ -109,7 +109,7 @@ $(function () {
             input_neighbour.attr(`type`, 'password')
         }
     })
-//Soumission du formulaire d'inscription en Ajax
+    /*Soumission du formulaire d'inscription en Ajax*/
     $("#form-register").submit(function (e) {
         e.preventDefault()
         $(".cloud").toggleClass("active")
@@ -169,7 +169,7 @@ $(function () {
             }
         })
     })
-//Animation du loader pour faire patienter l'utilisateur durant la soumission du formulaire
+    /*Animation du loader pour faire patienter l'utilisateur durant la soumission du formulaire*/
     const id = setInterval(function () {
         if ($(".loader-conatiner").hasClass("active")) {
             if ($("#point-loader").html().length === 3) {
@@ -178,7 +178,7 @@ $(function () {
             $("#point-loader").html($("#point-loader").html() + ".")
         }
     }, 1000)
-//Soumission du formulaire de connexion en Ajax
+    /*Soumission du formulaire de connexion en Ajax*/
     $('#form-login').submit(function (e) {
         e.preventDefault()
         $('.cipy-loader-container').toggleClass('active')
@@ -232,7 +232,7 @@ $(function () {
             }
         })
     })
-//Commencement du processus de  mise a jour du profile
+    /*Commencement du processus de  mise a jour du profile*/
     $("#user-pic").on("change", function () {
         $(`label[for='${this.name}'] small`).html('')
         $("#img-container").css("border", "none")
@@ -277,7 +277,7 @@ $(function () {
         $('#session-alert').modal('hide')
         $('#forum-add').modal('hide')
     })
-//Envoie des donnée pour la mise a jour du profile avec Ajax
+    /*Envoie des donnée pour la mise a jour du profile avec Ajax*/
     $('#form-update-profile').submit(function (e) {
         e.preventDefault()
         $('#update-btn').html(`
@@ -399,16 +399,14 @@ $(window).click(function (e) {
 $('#close-emoji-modal').click(function () {
     KeyBoardEmojiModalHideTask();
 })
-//Fin du processus de  mise a jour du profile
-//Processus de creation d'un nouveau sujet de discussion
-//Afficahge du formulaire d'ajout de sujets au clic du boutton ayant l'ID showAddSubjectForm
-$('#showAddSubjectForm').click(function () {
-    $('#forum-add').modal('show')
-})
+/*Fin du processus de  mise a jour du profile*/
+
+//Script de selection de fichier
 $('#attachment').on('change', function () {
     $(`#error-container`).html('')
     $("#image-getted").css('display', 'none')
     $('#subject-btn').removeAttr('disabled')
+    console.log(this.files[0].hasOwnProperty('name'))
     const fileSelectedName = this.files[0].name
     const fileSelectedExt = fileSelectedName.substring(fileSelectedName.indexOf("."))
     const extValid = [".png", ".jpg", ".gif", ".jpeg"]
@@ -426,7 +424,13 @@ $('#attachment').on('change', function () {
         $('#subject-btn').attr('disabled', 'true')
     }
 })
-//Envoie des donnée pour la creation du sujet  avec Ajax
+
+/*Processus de creation d'un nouveau sujet de discussion*/
+//Afficahge du formulaire d'ajout de sujets au clic du boutton ayant l'ID showAddSubjectForm
+$('#showAddSubjectForm').click(function () {
+    $('#forum-add').modal('show')
+})
+/*Envoie des donnée pour la creation du sujet  avec Ajax*/
 $('#subject-form').submit(function (e) {
     e.preventDefault()
     $('#subject-btn').html(`
