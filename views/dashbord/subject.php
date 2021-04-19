@@ -2,6 +2,8 @@
 
 use Contoller\Http\Request;
 use Contoller\Middleware\AuthMiddleware;
+use Service\DateTime\DateTimeCommentStyle;
+use Wikimedia\Timestamp\TimestampException;
 
 ?>
 <div class="container-fluid">
@@ -34,8 +36,15 @@ use Contoller\Middleware\AuthMiddleware;
                                         </a>
                                     </div>
                                 <?php endif; ?>
-                                <span class="text-muted float-end">April 14, 2021</span>
-                                <!--                                <span class="label label-rounded label-primary">Pending</span>-->
+                                <span class="text-muted float-end">
+                                            <?php
+                                            try {
+                                                echo DateTimeCommentStyle::setTimestamp($subject->created_at)::getDateCommentStyle();
+                                            } catch (TimestampException $e) {
+                                                echo $e->getMessage();
+                                            } ?>
+                                        </span>
+                                <!-- <span class="label label-rounded label-primary">Pending</span>-->
                                 <span style="font-size: 1.2rem">
                                     <label for="message" class="cursor-pointer"><i class="ti-pencil-alt"></i></label>
                                 </span>
@@ -66,7 +75,14 @@ use Contoller\Middleware\AuthMiddleware;
                                                 </a>
                                             </div>
                                         <?php endif; ?>
-                                        <span class="text-muted float-end">April 14, 2021</span>
+                                        <span class="text-muted float-end">
+                                            <?php
+                                            try {
+                                                echo DateTimeCommentStyle::setTimestamp($answer->created_at)::getDateCommentStyle();
+                                            } catch (TimestampException $e) {
+                                                echo $e->getMessage();
+                                            } ?>
+                                        </span>
                                         <!--                                <span class="label label-rounded label-primary">Pending</span>-->
                                         <span style="font-size: 1.2rem">
                                     <label for="message" class="cursor-pointer"><i class="ti-pencil-alt"></i></label>

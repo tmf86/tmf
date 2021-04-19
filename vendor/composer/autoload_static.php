@@ -34,6 +34,7 @@ class ComposerStaticInit6264916c20b8cdaf967ae3749af8fbef
             'Symfony\\Component\\Translation\\' => 30,
             'Service\\Mailer\\' => 15,
             'Service\\File\\' => 13,
+            'Service\\DateTime\\' => 17,
         ),
         'R' => 
         array (
@@ -114,6 +115,10 @@ class ComposerStaticInit6264916c20b8cdaf967ae3749af8fbef
         'Service\\File\\' => 
         array (
             0 => __DIR__ . '/../..' . '/src/Services/File',
+        ),
+        'Service\\DateTime\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/src/Services/DateTime',
         ),
         'Rakit\\Validation\\' => 
         array (

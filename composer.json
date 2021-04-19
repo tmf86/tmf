@@ -18,6 +18,7 @@
       "Contoller\\Middleware\\TaskBeforeRequest\\": "controllers/Middleware/TaskBeforeRequest",
       "Service\\Mailer\\": "src/Services/mailer",
       "Service\\File\\": "src/Services/File",
+      "Service\\DateTime\\": "src/Services/DateTime",
       "Validator\\": "src/validators",
       "Validator\\Rules\\": "src/validators/Rules",
       "View\\": "views",
@@ -41,8 +42,7 @@
     "webpatser/laravel-uuid": "^4.0",
     "wikimedia/timestamp": "^3.0",
     "jenssegers/date": "^4.0"
-  }
-  ,
+  },
   "require-dev": {
     "roave/security-advisories": "dev-latest"
   },
