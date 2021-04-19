@@ -279,7 +279,7 @@ use Contoller\Middleware\AuthMiddleware;
                             <div class="d-flex justify-content-between">
                                 <div>
                                     <i class="fa fa-exclamation-triangle" style="color: red"></i>&ensp;
-                                    Votre message a été sauvegarder et sera ajouté a votre prochaine connexion ,
+                                    Votre message a été sauvegarder mais ne sera ajouté qu' a votre prochaine connexion ,
                                     veuillez vous connecter <a href="<?= makeRootOrFileUrl('login') ?>">ici</a> ou
                                     si vous n'avez pas encore de compte veuillez en créer un <a
                                             href="<?= makeRootOrFileUrl('register') ?>">ici</a>

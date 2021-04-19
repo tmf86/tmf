@@ -5,7 +5,7 @@ namespace Model;
 
 use Model\QueriesBulder\QuerieBulder;
 
-class Model extends QuerieBulder
+class Model extends QuerieBulder implements ModelInterface
 {
     /**
      * @param $name

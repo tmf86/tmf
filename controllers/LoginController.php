@@ -43,10 +43,11 @@ class LoginController extends Controller
     public function postLogin(LoginValidator $loginValidator)
     {
         if (Request::isAjax()) {
-            $loginValidator->makeValidate();
-            $logWihEmailAdressOrID = filter_var($this->request->email_ou_identifiant, FILTER_VALIDATE_EMAIL);
-            $data = $this->proceedToLogin($logWihEmailAdressOrID);
-            Request::ajax($data, 200);
+            if ($loginValidator->makeValidate()) {
+                $logWihEmailAdressOrID = filter_var($this->request->email_ou_identifiant, FILTER_VALIDATE_EMAIL);
+                $data = $this->proceedToLogin($logWihEmailAdressOrID);
+                Request::ajax($data, 200);
+            }
         }
         return Request::abort(404);
     }

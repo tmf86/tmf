@@ -37,7 +37,7 @@
                                                          class="rounded-circle img-cover">
                                                 </div>
                                                 <div class="col-9" style="text-overflow: ellipsis;">
-                                                    <?= substr($subject->message, 0, 255) ?>...<br>
+                                                    <?= substr($subject->message, 0, 150) ?>...<br>
                                                     Par <?= $subject->user->prenom ?><br>
                                                 </div>
                                             </div>

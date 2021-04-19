@@ -23,6 +23,6 @@ class User extends Model
      */
     public function account()
     {
-        return $this->setCurrentForeignTable('compte')->one(Account::class);
+        return $this->setCurrentForeignTable('compte')->one(Account::class, false);
     }
 }
