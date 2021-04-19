@@ -192,8 +192,8 @@ a.suject-link {
 
 .emoticon-container {
     position: absolute;
-    top: 18%;
-    right: 8rem;
+    top: 33%;
+    right: 11rem;
     z-index: -1;
     opacity: 0;
     visibility: hidden;

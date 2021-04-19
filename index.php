@@ -91,16 +91,31 @@ $dispatcher = FastRoute\simpleDispatcher(function (FastRoute\RouteCollector $rou
         return new View\View('pages.apropos', compact('title'));
     });
     $route->get('/Cpy-Mvc/test', function () {
-//        echo '
-//        <form action="" method="post" enctype="multipart/form-data">
-//                <input type="file" name="fihcier">
-//                <button type="submit">submit</button>
-//        </form>        ';
-//        debug(move_uploaded_file('C:\xamp-php-7.4.8\tmp\phpFCC2.tmp','new'));
-//        debug($_FILES);
-    });
-    $route->post('/Cpy-Mvc/test', function () {
-        debug($_FILES);
+        $now = time();
+        $date2 = time()+10;
+
+        function dateDiff($date1, $date2)
+        {
+            $diff = abs($date1 - $date2); // abs pour avoir la valeur absolute, ainsi éviter d'avoir une différence négative
+            $retour = array();
+
+            $tmp = $diff;
+            $retour['second'] = $tmp % 60;
+
+            $tmp = floor(($tmp - $retour['second']) / 60);
+            $retour['minute'] = $tmp % 60;
+
+            $tmp = floor(($tmp - $retour['minute']) / 60);
+            $retour['hour'] = $tmp % 24;
+
+            $tmp = floor(($tmp - $retour['hour']) / 24);
+            $retour['day'] = $tmp;
+
+            return $retour;
+        }
+
+// Test de la fonction
+        print_r(dateDiff($now, $date2));
     });
 });
 

@@ -142,8 +142,7 @@
         <div class="modal-content">
             <div class="modal-header" style="border-bottom: none !important;">
                 <p style="font-size: .9rem;padding: 0.1rem" class="modal-title">
-                    <i class="fa fa-exclamation-triangle" style="color: red">
-                    </i>
+                    <i class="fa fa-exclamation-triangle" style="color: red"></i>
                     Veuillez au moins saisir un champs pour une eventuelle mise a jour</p>
                 <span type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true" class="ti-close close" style="cursor: pointer">
@@ -185,8 +184,10 @@
                 </span>
             </div>
             <div class="card-body">
-                <i class="fas fa-book-open twinkle">
-                </i>&nbsp;&nbsp;<?= ($user->about_me) ?? 'Donnez aux autres une bref decription de qui vous êtes ..' ?>.
+                <div class="text-center"><i class="fas fa-book-open twinkle"></i></div>
+                <div class="text-center">
+                    <?= ($user->about_me) ?? 'Donnez aux autres une bref decription de qui vous êtes ...' ?>
+                </div>
             </div>
         </div>
     </div>

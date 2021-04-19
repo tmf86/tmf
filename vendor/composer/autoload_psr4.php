@@ -6,10 +6,15 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'Wikimedia\\Timestamp\\' => array($vendorDir . '/wikimedia/timestamp/src'),
     'Webpatser\\Uuid\\' => array($vendorDir . '/webpatser/laravel-uuid/src/Webpatser/Uuid'),
     'View\\' => array($baseDir . '/views'),
     'Validator\\Rules\\' => array($baseDir . '/src/validators/Rules'),
     'Validator\\' => array($baseDir . '/src/validators'),
+    'Symfony\\Polyfill\\Php80\\' => array($vendorDir . '/symfony/polyfill-php80'),
+    'Symfony\\Polyfill\\Mbstring\\' => array($vendorDir . '/symfony/polyfill-mbstring'),
+    'Symfony\\Contracts\\Translation\\' => array($vendorDir . '/symfony/translation-contracts'),
+    'Symfony\\Component\\Translation\\' => array($vendorDir . '/symfony/translation'),
     'Service\\Mailer\\' => array($baseDir . '/src/Services/mailer'),
     'Service\\File\\' => array($baseDir . '/src/Services/File'),
     'Rakit\\Validation\\' => array($vendorDir . '/rakit/validation/src'),
@@ -18,6 +23,7 @@ return array(
     'Model\\QueriesBulder\\' => array($baseDir . '/models/QueriesBulder'),
     'Model\\DataBaseManagement\\' => array($baseDir . '/models/Trait'),
     'Model\\' => array($baseDir . '/models'),
+    'Jenssegers\\Date\\' => array($vendorDir . '/jenssegers/date/src'),
     'Firebase\\JWT\\' => array($vendorDir . '/firebase/php-jwt/src'),
     'FastRoute\\' => array($vendorDir . '/nikic/fast-route/src'),
     'Contoller\\Middleware\\TaskBeforeRequest\\' => array($baseDir . '/controllers/Middleware/TaskBeforeRequest'),
@@ -25,4 +31,5 @@ return array(
     'Contoller\\Http\\' => array($baseDir . '/controllers/Http'),
     'Contoller\\' => array($baseDir . '/controllers'),
     'Cocur\\Slugify\\' => array($vendorDir . '/cocur/slugify/src'),
+    'Carbon\\' => array($vendorDir . '/nesbot/carbon/src/Carbon'),
 );

@@ -19,7 +19,7 @@ private static $installed = array (
     'aliases' => 
     array (
     ),
-    'reference' => '5d55ab5c734cf5860676572aa148eac35ca892c6',
+    'reference' => '723416bcdf5d1c6461533138aaec35ac981ce2c5',
     'name' => 'samy/cpy-mvc',
   ),
   'versions' => 
@@ -41,6 +41,24 @@ private static $installed = array (
       array (
       ),
       'reference' => 'f42c9110abe98dd6cfe9053c49bc86acc70b2d23',
+    ),
+    'jenssegers/date' => 
+    array (
+      'pretty_version' => 'v4.0.0',
+      'version' => '4.0.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '506f86096e0b512f9ece6ad0ccae62b03c125771',
+    ),
+    'nesbot/carbon' => 
+    array (
+      'pretty_version' => '2.46.0',
+      'version' => '2.46.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '2fd2c4a77d58a4e95234c8a61c5df1f157a91bf4',
     ),
     'nikic/fast-route' => 
     array (
@@ -86,7 +104,50 @@ private static $installed = array (
       'aliases' => 
       array (
       ),
-      'reference' => '5d55ab5c734cf5860676572aa148eac35ca892c6',
+      'reference' => '723416bcdf5d1c6461533138aaec35ac981ce2c5',
+    ),
+    'symfony/polyfill-mbstring' => 
+    array (
+      'pretty_version' => 'v1.22.1',
+      'version' => '1.22.1.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '5232de97ee3b75b0360528dae24e73db49566ab1',
+    ),
+    'symfony/polyfill-php80' => 
+    array (
+      'pretty_version' => 'v1.22.1',
+      'version' => '1.22.1.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'dc3063ba22c2a1fd2f45ed856374d79114998f91',
+    ),
+    'symfony/translation' => 
+    array (
+      'pretty_version' => 'v5.2.6',
+      'version' => '5.2.6.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '2cc7f45d96db9adfcf89adf4401d9dfed509f4e1',
+    ),
+    'symfony/translation-contracts' => 
+    array (
+      'pretty_version' => 'v2.4.0',
+      'version' => '2.4.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '95c812666f3e91db75385749fe219c5e494c7f95',
+    ),
+    'symfony/translation-implementation' => 
+    array (
+      'provided' => 
+      array (
+        0 => '2.3',
+      ),
     ),
     'webpatser/laravel-uuid' => 
     array (
@@ -96,6 +157,15 @@ private static $installed = array (
       array (
       ),
       'reference' => 'df92ebbc5ea71ee9e0d6e2861178be42ef7eb330',
+    ),
+    'wikimedia/timestamp' => 
+    array (
+      'pretty_version' => 'v3.0.0',
+      'version' => '3.0.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '42ce5586d2189826e28ebcf4cedc96226b6d77e2',
     ),
   ),
 );
