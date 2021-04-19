@@ -61,8 +61,9 @@ abstract class RelationalShema
     private function relationShipOneToOne(int $id)
     {
         $foreignkey = $this->foreignkeys[$this->currentForeignTable];
-        $foreignTableKey = $this->foreignTableKeys[$this->currentForeignTable];
-        $relationship = "select * from $this->table inner join $this->currentForeignTable on $this->table.$foreignkey = $this->currentForeignTable.$foreignTableKey where $this->table.$this->primaryKeyStr = $id  limit 1";
+//        $foreignTableKey = $this->foreignTableKeys[$this->currentForeignTable];
+        $relationship = "select * from $this->table inner join $this->currentForeignTable on $this->table.{$this->primaryKeyStr} = $this->currentForeignTable.$foreignkey where $this->table.$this->primaryKeyStr = $id  limit 1";
+//        debug($relationship);
         $this->relationQuery = $relationship;
         return $this;
     }

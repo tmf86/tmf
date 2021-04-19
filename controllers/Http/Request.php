@@ -89,7 +89,9 @@ class Request
 
     /**
      * @param array $data
-     * @param $code
+     * @param int $code
+     * @param bool $break
+     * @return Request
      */
     public static function ajax(array $data, int $code, bool $break = true)
     {
@@ -208,7 +210,8 @@ class Request
      */
     public static function setErrors(array $errors)
     {
-        return self::$errors = $errors;
+        self::$errors = $errors;
+        return false;
     }
 
     /**

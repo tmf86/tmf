@@ -43,6 +43,40 @@ use Contoller\Middleware\AuthMiddleware;
                         </div>
                     </div>
                 </div>
+                <?php if ($answers): ?>
+                    <?php foreach ($answers as $answer): ?>
+                        <div class="comment-widgets scrollable">
+                            <div class="d-flex flex-row comment-row m-t-0">
+                                <div class="p-2">
+                                    <img src="<?= makeRootOrFileUrl($answer->user->image) ?>" alt="user" width="50"
+                                         class="rounded-circle img-cover cursor-pointer" height="50">
+                                </div>
+                                <div class="comment-text w-100">
+                                    <h6 class="font-medium"><?= $answer->user->username ?? $answer->user->prenom ?></h6>
+                                    <div class="m-b-15">
+                                        <?= $answer->message ?>
+                                    </div>
+                                    <div class="comment-footer">
+                                        <?php if ($answer->attachment) : ?>
+                                            <div class="mb-2">
+                                                <a href="<?= makeRootOrFileUrl($answer->attachment) ?>"
+                                                   data-lightbox="image-1">
+                                                    <img src="<?= makeRootOrFileUrl($answer->attachment) ?>" width="400"
+                                                         alt="message attachment" class="attachment">
+                                                </a>
+                                            </div>
+                                        <?php endif; ?>
+                                        <span class="text-muted float-end">April 14, 2021</span>
+                                        <!--                                <span class="label label-rounded label-primary">Pending</span>-->
+                                        <span style="font-size: 1.2rem">
+                                    <label for="message" class="cursor-pointer"><i class="ti-pencil-alt"></i></label>
+                                </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
+                <?php endif; ?>
             </div>
         </div>
         <div class="col-md-12 p-0">

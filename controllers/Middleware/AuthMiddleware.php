@@ -25,7 +25,7 @@ trait AuthMiddleware
     /**
      * @return bool
      */
-    public function isAuth()
+    protected function isAuth()
     {
         $isAuth = ($this->request->hasSession('user_id') && $this->getToken($this->request->session('token')) && $this->user());
         if (!$isAuth) {
@@ -39,7 +39,7 @@ trait AuthMiddleware
     /**
      * @return string
      */
-    public function generateToken(): string
+    protected function generateToken(): string
     {
         return JWT::encode([
             "iat" => time() + 2,
@@ -51,7 +51,7 @@ trait AuthMiddleware
      * @param string $jwt
      * @return false|object
      */
-    public function getToken(string $jwt)
+    protected function getToken(string $jwt)
     {
         try {
             $jwted = JWT::decode($jwt, JWT_KEY, JWT_ALGORITHM);
@@ -75,7 +75,7 @@ trait AuthMiddleware
     /**
      * @return array|false|mixed
      */
-    public function user()
+    protected function user()
     {
         return (self::asUser()) ? self::asUser()->account() : false;
     }
@@ -83,19 +83,20 @@ trait AuthMiddleware
     /**
      * @return View
      */
-    public function makelogout(bool $completedLogout = false)
+    protected function makelogout(bool $completedLogout = false)
     {
         $this->UnsetUserSession();
         if ($completedLogout) {
             $this->request->sessionUnset('redirectTo');
-            $this->request->sessionUnset('errors');
-            $this->request->sessionUnset('code');
+            $this->request->sessionUnset('setreplaysession');
+            $this->request->sessionUnset('replay');
+            $this->request->sessionUnset('subject');
             $this->request->sessionUnset($this->request->getClientIp());
         }
         return redirect('home', true);
     }
 
-    private function UnsetUserSession()
+    protected function UnsetUserSession()
     {
         $this->request->sessionUnset('user_id');
         $this->request->sessionUnset('token');
@@ -116,7 +117,7 @@ trait AuthMiddleware
     /**
      * @return User|bool
      */
-    public static function asUser()
+    protected static function asUser()
     {
         $user = new User();
         if (session('user_id')) {

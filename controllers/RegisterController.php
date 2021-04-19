@@ -40,19 +40,20 @@ class RegisterController extends Controller
     public function registerStore(RegisterValidator $registerValidator)
     {
         if (Request::isAjax()) {
-            $registerValidator->makeValidate();
-            $user = new User();
-            $user = $user->create($this->request->inputs());
-            if ($user) {
-                $name = sprintf("%s %s", $this->request->nom, $this->request->prenom);
-                $name_id = sprintf("%s%s", str_replace(" ", '', $this->request->nom), str_replace(" ", '', $this->request->prenom));
-                $url = makeRootOrFileUrl(sprintf('finalize_account_creation/%s/%s',
-                    buildUniqueID($user->mat_membre, $user->filiere, $user->contact, $name_id), $this->request->email));
-                $this->setSessions($name, $url);
+            if ($registerValidator->makeValidate()) {
+                $user = new User();
+                $user = $user->create($this->request->inputs());
+                if ($user) {
+                    $name = sprintf("%s %s", $this->request->nom, $this->request->prenom);
+                    $name_id = sprintf("%s%s", str_replace(" ", '', $this->request->nom), str_replace(" ", '', $this->request->prenom));
+                    $url = makeRootOrFileUrl(sprintf('finalize_account_creation/%s/%s',
+                        buildUniqueID($user->mat_membre, $user->filiere, $user->contact, $name_id), $this->request->email));
+                    $this->setSessions($name, $url);
 //                Envoie du mail de finalisation de la creation de compte
-                $mailer = new FinalizeAccountMailer(['name' => $name, 'url' => $url]);
-                $mailer->to($this->request->email, $name)->forward();
-                Request::ajax(["success" => true, 'redirectTo' => makeRootOrFileUrl('registration-success')], 200);
+                    $mailer = new FinalizeAccountMailer(['name' => $name, 'url' => $url]);
+                    $mailer->to($this->request->email, $name)->forward();
+                    Request::ajax(["success" => true, 'redirectTo' => makeRootOrFileUrl('registration-success')], 200);
+                }
             }
             Request::ajax(["inputs" => false], 400);
 

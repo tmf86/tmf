@@ -93,13 +93,14 @@ abstract class  Mailer extends PHPMailer
      * @param string $name
      * @param array $data
      * @param bool $use_template
+     * @param int $code
      * @param bool $die
      * @return $this
      */
-    protected function view(string $name, array $data = [], bool $use_template = false, bool $die = false)
+    protected function view(string $name, array $data = [], bool $use_template = true, int $code = 200, bool $die = false)
     {
         ob_start();
-        view($name, $data, $use_template, $die);
+        view($name, $data, $use_template, $code, $die);
         $view = ob_get_clean();
         $this->mail->Body = $view;
         return $this;

@@ -52,7 +52,7 @@ abstract class ValidatorCustumer extends Validator
     }
 
     /**
-     * @return  void
+     * @return array|Request|false|mixed|string
      */
     public function makeValidate()
     {
@@ -64,8 +64,9 @@ abstract class ValidatorCustumer extends Validator
             if ($validate->fails()) {
                 $errors = $validate->errors()->firstOfAll();
                 $errors['inputs'] = true;
-                (Request::isAjax()) ? Request::ajax($errors, 400) : Request::setErrors($errors);
+                return (Request::isAjax()) ? Request::ajax($errors, 400) : Request::setErrors($errors);
             }
         }
+        return true;
     }
 }

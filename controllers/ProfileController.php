@@ -23,13 +23,14 @@ class ProfileController extends Controller
     /**
      * ProfileController constructor.
      * @param Request $request
+     * @throws \Exception
      */
     public function __construct(Request $request)
     {
         parent::__construct($request);
+        $this->useAuth();
         $this->user = $this->user();
         $this->setRedirectToURL(current_route());
-        $this->useAuth();
     }
 
     /**

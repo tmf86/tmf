@@ -9,6 +9,7 @@ use Contoller\Middleware\AuthMiddleware;
 use Contoller\Middleware\RedirectUsersMiddleware;
 use Contoller\Middleware\TaskBeforeRequest\ValidateForumCategoryRequest;
 use Contoller\Middleware\TaskBeforeRequest\ValidateSubjectRequest;
+use Model\AnswerFromSubject;
 use Model\Forum;
 use Model\ForumSubject;
 use Service\File\Files;
@@ -30,6 +31,7 @@ class ForumController extends Controller
     public function __construct(Request $request)
     {
         parent::__construct($request);
+        $this->setRedirectToURL(current_route());
         $this->user = $this->user();
     }
 
@@ -74,12 +76,11 @@ class ForumController extends Controller
     public function addNewSubject(ForumAddSubjectValidator $addSubjectValidator, ValidateForumCategoryRequest $validateForumCategoryRequest, string $slug)
     {
         $forum = $validateForumCategoryRequest->doTask($slug);
-        $addSubjectValidator->makeValidate();
-        $this->addSubjectProcess($forum);
-        $this->setRedirectToURL(current_route());
-        $this->setSubjectSession();
-        Request::ajax(['inputs' => false, 'setsession' => true], 400);
-
+        if ($addSubjectValidator->makeValidate()) {
+            $this->addSubjectProcess($forum);
+            $this->setSubjectSession();
+            Request::ajax(['inputs' => false, 'setsession' => true], 400);
+        }
     }
 
     /**
@@ -93,7 +94,9 @@ class ForumController extends Controller
             sprintf('<script src="%spublic/js/script.js"></script>', rootUrl())];
         $forum = $subject->forum;
         $user = $this->user;
-        return compact('links', 'forum', 'user', 'scripts', 'subject');
+        $answer = new AnswerFromSubject();
+        $answers = $answer->select('answers_from_subjects')->whereEqual('subject_id', $subject->id)->run(true);
+        return compact('links', 'forum', 'user', 'scripts', 'subject', 'answers');
     }
 
     /**
@@ -104,6 +107,7 @@ class ForumController extends Controller
     public function subjectView(ValidateSubjectRequest $validateSubjectRequest, string $slug)
     {
         $subject = $validateSubjectRequest->doTask($slug);
+        $this->replaySubjectProcess($subject);
         return $this->load_views('dashbord.subject', $this->subjectViewVariables($subject));
     }
 
@@ -116,7 +120,11 @@ class ForumController extends Controller
     public function replyToSubject(ValidateSubjectRequest $validateSubjectRequest, ReplaySubjectValidator $replaySubjectValidator, string $slug)
     {
         $subject = $validateSubjectRequest->doTask($slug);
-        $replaySubjectValidator->makeValidate();
+        if ($replaySubjectValidator->makeValidate()) {
+            $this->replaySubjectProcess($subject);
+            $this->setReplaySubjectSession();
+            return redirect('dashbord.subject', false, 301, $this->subjectViewVariables($subject));
+        }
         return redirect('dashbord.subject', false, 301, $this->subjectViewVariables($subject));
     }
 
@@ -158,7 +166,7 @@ class ForumController extends Controller
                             'message' => $value['message'],
                             'attachment' => $attachment,
                             'forum_id' => $forum->id,
-                            'user_id' => $this->user->mat_mmbre
+                            'user_id' => $this->user->mat_membre
                         ]
                     );
                     Request::sleep(2);
@@ -175,7 +183,41 @@ class ForumController extends Controller
                 'message' => $this->request->message,
                 'attachment' => $this->saveSubjectAttachment(),
                 'forum_id' => $forum->id,
-                'user_id' => $this->user->mat_mmbre
+                'user_id' => $this->user->mat_membre
+            ]
+        );
+    }
+
+    private function replaySubject(ForumSubject $forumSubject, $useSession = false)
+    {
+        $sessionName = sprintf('replay-%s', UuidToString());
+        $answerFromSubject = new AnswerFromSubject();
+        if ($useSession) {
+            $data = session($sessionName);
+            $answers = [];
+            if (is_array($data)) {
+                foreach ($data as $value) {
+                    $attachment = ($value['attachment']) ? $this->saveSubjectAttachment(true, $value['attachment']) : NULL;
+                    $answers[] = $answerFromSubject->create(
+                        [
+                            'message' => $value['message'],
+                            'attachment' => $attachment,
+                            'subject_id' => $forumSubject->id,
+                            'user_id' => $this->user->mat_membre
+                        ]
+                    );
+                    Request::sleep(2);
+                }
+            }
+            $this->request->sessionUnset($sessionName);
+            return $answers;
+        }
+        return $answerFromSubject->create(
+            [
+                'message' => $this->request->message,
+                'attachment' => $this->saveSubjectAttachment(),
+                'subject_id' => $forumSubject->id,
+                'user_id' => $this->user->mat_membre
             ]
         );
     }
@@ -186,22 +228,48 @@ class ForumController extends Controller
      */
     private function setSubjectSession()
     {
-        $data = [
-            'title' => $this->request->title,
-            'slug' => slug(strtolower($this->request->title)),
-            'subtitle' => $this->request->subtitle,
-            'message' => $this->request->message,
-            'attachment' => $this->sessionAttachmentSaving($this->request->file('attachment'))
-        ];
-        if (session(UuidToString())) {
-            $newData = $this->request->session(UuidToString());
-            if ($this->hasSameSubject($data, $newData)) {
-                $newData[] = $data;
-                return $this->request->session(UuidToString(), $newData);
+        if (!AuthMiddleware::asUserAuthenticated()) {
+            $data = [
+                'title' => $this->request->title,
+                'slug' => slug(strtolower($this->request->title)),
+                'subtitle' => $this->request->subtitle,
+                'message' => $this->request->message,
+                'attachment' => $this->sessionAttachmentSaving($this->request->file('attachment'))
+            ];
+            if (session(UuidToString())) {
+                $newData = $this->request->session(UuidToString());
+                if ($this->hasSameSubject($data, $newData)) {
+                    $newData[] = $data;
+                    return $this->request->session(UuidToString(), $newData);
+                }
+                return false;
             }
-            return false;
+            return $this->request->session(UuidToString(), [$data]);
         }
-        return $this->request->session(UuidToString(), [$data]);
+        return false;
+    }
+
+    private function setReplaySubjectSession()
+    {
+        if (!AuthMiddleware::asUserAuthenticated()) {
+            $data = [
+                'message' => $this->request->message,
+                'attachment' => $this->sessionAttachmentSaving($this->request->file('attachment'))
+            ];
+            $sessionName = sprintf('replay-%s', UuidToString());
+            if (session($sessionName)) {
+                $newData = $this->request->session($sessionName);
+                if ($this->hasSameSubject($data, $newData, true)) {
+                    $newData[] = $data;
+                    $this->request->session('setreplaysession', true);
+                    return $this->request->session($sessionName, $newData);
+                }
+                return false;
+            }
+            $this->request->session('setreplaysession', true);
+            return $this->request->session($sessionName, [$data]);
+        }
+        return false;
     }
 
     /**
@@ -209,14 +277,23 @@ class ForumController extends Controller
      * @param $data2
      * @return bool
      */
-    private function hasSameSubject($data1, $data2)
+    private function hasSameSubject($data1, $data2, $replay = false)
     {
-        foreach ($data2 as $value) {
-            $title = ($data1['title'] === $value['title']);
-            $subtitle = ($data1['subtitle'] === $value['subtitle']);
-            $message = ($data1['message'] === $value['message']);
-            if ($title || $subtitle || $message) {
-                return false;
+        if ($replay) {
+            foreach ($data2 as $value) {
+                $message = ($data1['message'] === $value['message']);
+                if ($message) {
+                    return false;
+                }
+            }
+        } else {
+            foreach ($data2 as $value) {
+                $title = ($data1['title'] === $value['title']);
+                $subtitle = ($data1['subtitle'] === $value['subtitle']);
+                $message = ($data1['message'] === $value['message']);
+                if ($title || $subtitle || $message) {
+                    return false;
+                }
             }
         }
         return true;
@@ -238,10 +315,22 @@ class ForumController extends Controller
             }
         }
         if (AuthMiddleware::asUserAuthenticated() && session(UuidToString())) {
-            if ($this->addSubject($forum, true)) {
-                session('subject', true);
-                return $this->addSubject($forum, true);
-            }
+            session('subject', true);
+            return $this->addSubject($forum, true);
+        }
+        return [];
+    }
+
+    private function replaySubjectProcess($forumSubject)
+    {
+        $sessionName = sprintf('replay-%s', UuidToString());
+        if (AuthMiddleware::asUserAuthenticated() && $this->request->httpMethod() === 'post' && !session($sessionName)) {
+            session('replay', true);
+            return $this->replaySubject($forumSubject);
+        }
+        if (AuthMiddleware::asUserAuthenticated() && session($sessionName)) {
+            session('replay', true);
+            return $this->replaySubject($forumSubject, true);
         }
         return [];
     }

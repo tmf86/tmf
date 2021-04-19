@@ -59,21 +59,19 @@ class View
 
     private function requireWithTemplate(int $code = 200)
     {
-        http_response_code($code);
+//        http_response_code($code);
         extract($this->vars);
         require sprintf('%stemplate/%s.top.php', VIEW_DIRECTORY, $this->directory);
         require sprintf('%s%s.php', VIEW_DIRECTORY, $this->view_name);
         require sprintf('%stemplate/%s.bottom.php', VIEW_DIRECTORY, $this->directory);
-        unsetErrorSession();
 
     }
 
     private function requireWithoutTemplate(int $code = 200)
     {
-        http_response_code($code);
+//        http_response_code($code);
         extract($this->vars);
         require sprintf('%s%s.php', VIEW_DIRECTORY, $this->view_name);
-//        unsetErrorSession();
     }
 
     /**

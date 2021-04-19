@@ -260,12 +260,13 @@ function sprintf_custuming(string $format, string $subject, $value)
  * @param string $view_name
  * @param array $vars
  * @param bool $use_templating
+ * @param int $code
  * @param bool $die
  * @return View
  */
-function view(string $view_name, array $vars = [], bool $use_templating = true, bool $die = true)
+function view(string $view_name, array $vars = [], bool $use_templating = true,int $code = 200, bool $die = true)
 {
-    return new View($view_name, $vars, $use_templating, $die);
+    return new View($view_name, $vars, $use_templating, $code, $die);
 }
 
 /**
@@ -346,16 +347,4 @@ function UuidToString()
 function Uuid()
 {
     return session('Uuid');
-}
-
-function unsetErrorSession()
-{
-    if (session('errors')) {
-        $i = session('i') ?: 0;
-        $i++;
-        session('i', $i);
-    }
-    if (session(('errors')) && session('i') === 2) {
-        unset($_SESSION['errors']);
-    }
 }

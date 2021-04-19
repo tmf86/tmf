@@ -9,7 +9,7 @@ class ForumSubject extends Model
     protected $table = 'forum_subject';
     protected $primaryKeyStr = 'id';
     protected $foreignkeys = ['forum' => 'forum_id', 'membre' => 'user_id'];
-    protected $foreignTableKeys = ['forum' => 'id', 'membre' => 'mat_membre'];
+    protected $foreignTableKeys = ['forum' => 'id', 'membre' => 'mat_membre', 'forum_subject' => 'id'];
 
     public function forum()
     {

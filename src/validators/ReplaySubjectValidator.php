@@ -16,6 +16,6 @@ class ReplaySubjectValidator extends ValidatorCustumer
      * @var string[]
      */
     protected $rules = [
-        'message' => 'required'
+        'message' => 'required|unique:answers_from_subjects,message'
     ];
 }

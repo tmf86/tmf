@@ -252,7 +252,49 @@ use Contoller\Middleware\AuthMiddleware;
                     </div>
                 <?php
                 endif;
-                Request::staticSessionUnset('subject')
+                Request::staticSessionUnset('subject');
+                ?>
+                <?php if (session('replay')): ?>
+                    <div class="col-md-12 mt-1">
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            <div class="d-flex justify-content-between">
+                                <div>
+                                    Votre reponse a été ajouté
+                                </div>
+                                <div>
+                                <span aria-hidden="true" class="ti-close close" data-dismiss="alert" aria-label="Close"
+                                      style="cursor: pointer;font-weight: 700">
+                                </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <?php
+                endif;
+                Request::staticSessionUnset('replay');
+                ?>
+                <?php if (session('setreplaysession')): ?>
+                    <div class="col-md-12 mt-1">
+                        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                            <div class="d-flex justify-content-between">
+                                <div>
+                                    <i class="fa fa-exclamation-triangle" style="color: red"></i>&ensp;
+                                    Votre message a été sauvegarder et sera ajouté a votre prochaine connexion ,
+                                    veuillez vous connecter <a href="<?= makeRootOrFileUrl('login') ?>">ici</a> ou
+                                    si vous n'avez pas encore de compte veuillez en créer un <a
+                                            href="<?= makeRootOrFileUrl('register') ?>">ici</a>
+                                </div>
+                                <div>
+                                <span aria-hidden="true" class="ti-close close" data-dismiss="alert" aria-label="Close"
+                                      style="cursor: pointer;font-weight: 700">
+                                </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <?php
+                endif;
+                Request::staticSessionUnset('setreplaysession');
                 ?>
             </div>
         </div>
