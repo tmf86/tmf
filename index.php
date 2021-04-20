@@ -38,10 +38,10 @@ UuidGenerete();
 */
 $dispatcher = FastRoute\simpleDispatcher(function (FastRoute\RouteCollector $route) {
     $route->get('/Cpy-Mvc/', ['class' => HomeController::class, 'method' => 'index']);
+    $route->get('/Cpy-Mvc/home', ['class' => HomeController::class, 'method' => 'index']);
     $route->get('/Cpy-Mvc/login', ['class' => LoginController::class, 'method' => 'index']);
     $route->post('/Cpy-Mvc/login', ['class' => LoginController::class, 'method' => 'postLogin',
         'vars' => [new LoginValidator()]]);
-    $route->get('/Cpy-Mvc/home', ['class' => HomeController::class, 'method' => 'index']);
     $route->get('/Cpy-Mvc/register', ['class' => RegisterController::class, 'method' => 'index']);
     $route->post('/Cpy-Mvc/registerstore', ['class' => RegisterController::class, 'method' => 'registerStore',
         'vars' => [new RegisterValidator()]]);

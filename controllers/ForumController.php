@@ -94,9 +94,10 @@ class ForumController extends Controller
             sprintf('<script src="%spublic/js/script.js"></script>', rootUrl())];
         $forum = $subject->forum;
         $user = $this->user;
+        $title = 'Forum | ' . ucwords($forum->name);
         $answer = new AnswerFromSubject();
         $answers = $answer->select('answers_from_subjects')->whereEqual('subject_id', $subject->id)->run(true);
-        return compact('links', 'forum', 'user', 'scripts', 'subject', 'answers');
+        return compact('links', 'forum', 'user', 'scripts', 'subject', 'answers', 'title');
     }
 
     /**
