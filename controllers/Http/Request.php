@@ -252,10 +252,11 @@ class Request
         } else if (array_key_exists($name, $this->get)) {
             $value = $this->get["$name"];
         } else {
-            throw new \Exception("The property don't exist.");
+            throw new \Exception("The property $name don't exist.");
         }
         return $value;
     }
+
 
     public function __set($name, $value)
     {

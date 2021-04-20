@@ -5,7 +5,7 @@
                 <h4>Liste des forums</h4>
                 <div>
                     <i class="fa fa-exclamation-triangle" style="color: red"></i>
-                    Veuillez cliquer sur l'icone ou le nom du forum pour acceder au forum en question.$
+                    Veuillez cliquer sur l'icone ou le nom du forum pour acceder au forum en question.
                 </div>
             </div>
             <div class="table-responsive">

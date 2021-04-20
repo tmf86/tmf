@@ -2,6 +2,10 @@ html, body {
     background-color: #fff !important;
 }
 
+strong {
+    font-weight: 700;
+}
+
 /*Profile Dashbord Fix Css*/
 .btn:focus {
     outline: 0;
@@ -27,7 +31,7 @@ li.nav-item.active > .nav-link {
 }
 
 .forum-name a {
-    color: black !important;
+    color: #3E5569 !important;
 }
 
 a.freinds {
@@ -82,7 +86,7 @@ a.stars {
 }
 
 .subject-list {
-    border-bottom: 2px solid #414755 !important;
+    border-bottom: 3px solid #7B7B7B !important;
 }
 
 .subject-list:hover {
@@ -101,6 +105,11 @@ a.suject-link {
 .subject-list:last-child {
     border-bottom: none;
 }
+
+.comment-widgets:nth-of-type(2n) {
+    background: rgba(0, 0, 0, 0.05)
+}
+
 
 /*Update Profile Loader*/
 .cipy-loader-container {
@@ -280,7 +289,7 @@ input:disabled, textarea:disabled {
     }
 
     img.attachment {
-        width: 220px;
+        width: 200px;
     }
 }
 

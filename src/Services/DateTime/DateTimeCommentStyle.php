@@ -17,6 +17,18 @@ class DateTimeCommentStyle
     private static $nowTimestamp;
     /*** @var string */
     private static $date;
+    /*** @var array */
+    private static $messages;
+
+    public function __construct()
+    {
+        self::$messages = [
+            'now' => 'A l\'instant',
+            'h-m' => 'Il y a environ :hour h :min minutes',
+            'm' => 'Il y a environ :min minutes',
+            'ago' => 'l j F Y'
+        ];
+    }
 
     /**
      * @param $timestamp
@@ -29,6 +41,16 @@ class DateTimeCommentStyle
         self::$convertibleTimeStamp = new ConvertibleTimestamp();
         self::$convertibleTimeStamp->setTimestamp($date);
         return new self();
+    }
+
+    /**
+     * @param array $messages
+     * @return DateTimeCommentStyle
+     */
+    public function setMessages(array $messages)
+    {
+        self::$messages = $messages;
+        return new self;
     }
 
     /**
@@ -54,7 +76,6 @@ class DateTimeCommentStyle
         $infos['hour'] = $tmp % 24;
         $tmp = floor(($tmp - $infos['hour']) / 24);
         $infos['day'] = $tmp;
-//        var_dump($infos);
         return $infos;
     }
 
@@ -66,16 +87,46 @@ class DateTimeCommentStyle
     {
 
         if ((int)$data['day'] === 0 && (int)$data['minute'] === 0 && (int)$data['hour'] == 0) {
-            return 'a l\'instant';
+            return self::buildMessage(self::$messages['now']);
         }
         if ((int)$data['day'] === 0 && (int)$data['minute'] <= 59 && ((int)$data['hour'] <= 24 && (int)$data['hour'] > 0)) {
-            return 'il y a ' . (int)$data['hour'] . ' h ' . (int)$data['minute'] . ' minutes';
+            return self::buildMessage(self::$messages['h-m'], (int)$data['minute'], (int)$data['hour']);
         }
         if ((int)$data['day'] === 0 && (int)$data['minute'] <= 59 && (int)$data['hour'] == 0) {
-            return 'il y a ' . (int)$data['minute'] . ' minutes';
+            return self::buildMessage(self::$messages['m'], (int)$data['minute']);
         }
+        return self::ago(self::$messages['ago']);
+
+    }
+
+    private static function ago($format)
+    {
         self::$dateFormat = new Date(self::$date);
         self::$dateFormat::setLocale('fr');
-        return ucfirst(self::$dateFormat->format('l j F Y'));
+        return ucfirst(self::$dateFormat->format($format));
+    }
+
+    /**
+     * @param string $message
+     * @param mixed ...$values
+     * @return string|string[]
+     */
+    private static function buildMessage(string $message, $minutes = 0, $hour = 0)
+    {
+        if ($minutes !== 0 && $hour === 0) {
+            return str_replace(':min', $minutes, $message);
+        }
+        if ($minutes === 0 && $hour === 0) {
+            return $message;
+        }
+        if ($minutes !== 0 && $hour !== 0) {
+            $message = str_replace(array(':min', ':hour'), array($minutes, $hour), $message);
+            return $message;
+        }
+        if ($minutes === 0 && $hour !== 0) {
+            $message = str_replace(array(':min', 'h', ':hour'), array($minutes, '', ''), $message);
+            return $message;
+        }
+        return '';
     }
 }

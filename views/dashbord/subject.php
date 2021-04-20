@@ -15,7 +15,7 @@ use Wikimedia\Timestamp\TimestampException;
                         <?= $subject->title ?>
                     </div>
                 </div>
-                <div class="comment-widgets scrollable">
+                <div class="comment-widgets scrollable" style="background: rgba(25%, 28%, 33%,0.2)">
                     <div class="d-flex flex-row comment-row m-t-0">
                         <div class="p-2">
                             <img src="<?= makeRootOrFileUrl($subject->user->image) ?>" alt="user"
@@ -54,7 +54,7 @@ use Wikimedia\Timestamp\TimestampException;
                 </div>
                 <?php if ($answers): ?>
                     <?php foreach ($answers as $answer): ?>
-                        <div class="comment-widgets scrollable">
+                        <div class="comment-widgets scrollable subject-list">
                             <div class="d-flex flex-row comment-row m-t-0">
                                 <div class="p-2">
                                     <img src="<?= makeRootOrFileUrl($answer->user->image) ?>" alt="user" width="50"

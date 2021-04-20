@@ -96,7 +96,8 @@ class ForumController extends Controller
         $user = $this->user;
         $title = 'Forum | ' . ucwords($forum->name);
         $answer = new AnswerFromSubject();
-        $answers = $answer->select('answers_from_subjects')->whereEqual('subject_id', $subject->id)->run(true);
+//        $answers = $answer->select('answers_from_subjects')->whereEqual('subject_id', $subject->id)->run(true);
+        $answers = $subject->answers;
         return compact('links', 'forum', 'user', 'scripts', 'subject', 'answers', 'title');
     }
 
@@ -124,7 +125,7 @@ class ForumController extends Controller
         if ($replaySubjectValidator->makeValidate()) {
             $this->replaySubjectProcess($subject);
             $this->setReplaySubjectSession();
-            return redirect('dashbord.subject', false, 301, $this->subjectViewVariables($subject));
+            return redirect('dashbord.subject', false, 200, $this->subjectViewVariables($subject));
         }
         return redirect('dashbord.subject', false, 301, $this->subjectViewVariables($subject));
     }

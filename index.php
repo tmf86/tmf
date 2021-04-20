@@ -91,15 +91,11 @@ $dispatcher = FastRoute\simpleDispatcher(function (FastRoute\RouteCollector $rou
         return new View\View('pages.apropos', compact('title'));
     });
     $route->get('/Cpy-Mvc/test', function () {
-        $date = new Jenssegers\Date\Date(time());
-        $date::setLocale('fr');
-        debug($date->format('l j F Y H:i:s'));
-
-// Test de la fonction
-        print_r(dateDiff($now, $date2));
+        echo '<?php
+        "Hello word";
+       ?>';
     });
 });
-
 // Fetch method and URI from somewhere
 $httpMethod = $_SERVER['REQUEST_METHOD'];
 $uri = $_SERVER['REQUEST_URI'];

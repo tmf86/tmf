@@ -1,3 +1,8 @@
+<?php
+
+use Service\DateTime\DateTimeCommentStyle;
+
+?>
 <div class="container-fluid">
     <div class="row">
         <div class="col-lg-12">
@@ -19,7 +24,6 @@
                         </div>
                         <div class="col-sm-12 d-flex justfy-content-space-between">
                             <div class="forum-msg w-75">
-
                             </div>
                         </div>
                         <div class="container-fluid  card mt-1 p-4">
@@ -38,16 +42,26 @@
                                                 </div>
                                                 <div class="col-9" style="text-overflow: ellipsis;">
                                                     <?= substr($subject->message, 0, 150) ?>...<br>
-                                                    Par <?= $subject->user->prenom ?><br>
+                                                    Par
+                                                    <strong><?= $subject->user->username ?? $subject->user->prenom ?></strong>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="col-md-2">
-                                            0 messages
+                                            <?= count($subject->answers) ?> messages
                                         </div>
                                         <div class="col-md-2 p-r-5">
-                                            Dernier message par SkyFyxs <br>
-                                            Il y a 9 minutes
+                                            Dernier message
+                                            par
+                                            <?php if (count($subject->answers)): ?>
+                                                <strong><?= $subject->answers[count($subject->answers) - 1]->user->username ?? $subject->answers[count($subject->answers) - 1]->user->prenom ?></strong>
+                                                <br>
+                                                <?= DateTimeCommentStyle::setTimestamp($subject->answers[count($subject->answers) - 1]->created_at)::getDateCommentStyle() ?>
+                                            <?php else: ?>
+                                                <strong><?= $subject->user->username ?? $subject->user->prenom ?></strong>
+                                                <br>
+                                                <?= DateTimeCommentStyle::setTimestamp($subject->created_at)::getDateCommentStyle() ?>
+                                            <?php endif; ?>
                                         </div>
                                     </div>
                                 </a>
