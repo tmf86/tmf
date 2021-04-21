@@ -24,8 +24,8 @@ class DateTimeCommentStyle
     {
         self::$messages = [
             'now' => 'A l\'instant',
-            'h-m' => 'Il y a environ :hour h :min minutes',
-            'm' => 'Il y a environ :min minutes',
+            'h-m' => 'Il y a :hour h :min minutes',
+            'm' => 'Il y a :min minutes',
             'ago' => 'l j F Y'
         ];
     }
@@ -124,7 +124,7 @@ class DateTimeCommentStyle
             return $message;
         }
         if ($minutes === 0 && $hour !== 0) {
-            $message = str_replace(array(':min', 'h', ':hour'), array($minutes, '', ''), $message);
+            $message = str_replace(array(':hour', 'h', ':min', 'minutes'), array($hour, 'heures', '', ''), $message);
             return $message;
         }
         return '';

@@ -13261,7 +13261,7 @@ html body .waves-notransition {
 }
 
 .comment-widgets .comment-row.active, .comment-widgets .comment-row:hover {
-    background: rgba(0, 0, 0, 0.05)
+    background: rgba(0, 0, 0, 0.01)
 }
 
 .comment-text {

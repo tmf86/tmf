@@ -163,10 +163,13 @@ use Contoller\Middleware\AuthMiddleware;
                                  height="45" class="rounded-circle img-cover">
                             Acceuil
                         </a>
-                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-                                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                            <span class="navbar-toggler-icon"></span>
-                        </button>
+                        <span class="navbar-toggler ti-menu ti-close cursor-pointer" data-toggle="collapse"
+                              data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+                              aria-label="Toggle navigation"></span>
+                        <!--                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"-->
+                        <!--                                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">-->
+                        <!--                            <span class="navbar-toggler-icon"></span>-->
+                        <!--                        </button>-->
                         <div class="collapse navbar-collapse" id="navbarNav">
                             <ul class="navbar-nav">
                                 <?php if (current_route() === makeRootOrFileUrl('forum')) : ?>

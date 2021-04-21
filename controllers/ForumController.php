@@ -44,7 +44,9 @@ class ForumController extends Controller
         $user = $this->user;
         $forums = new Forum();
         $forums = $forums->all();
-        return $this->load_views('dashbord.forum', compact('title', 'user', 'forums'));
+        $forumRecentSubjects = new ForumSubject();
+        $forumRecentSubjects = $forumRecentSubjects->select('forum_subject')->OrderByDesc('created_at')->limit(5)->run(true);
+        return $this->load_views('dashbord.forum', compact('title', 'user', 'forums', 'forumRecentSubjects'));
     }
 
     /**
