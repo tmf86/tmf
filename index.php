@@ -91,9 +91,11 @@ $dispatcher = FastRoute\simpleDispatcher(function (FastRoute\RouteCollector $rou
         return new View\View('pages.apropos', compact('title'));
     });
     $route->get('/Cpy-Mvc/test', function () {
-        echo '<?php
-        "Hello word";
-       ?>';
+        echo ' <xmp>
+            <?php
+            "Hello word";
+             ?>
+        </xmp>';
     });
 });
 // Fetch method and URI from somewhere

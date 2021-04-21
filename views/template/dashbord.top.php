@@ -288,7 +288,7 @@ use Contoller\Middleware\AuthMiddleware;
                                     si vous n'avez pas encore de compte veuillez en créer un <a
                                             href="<?= makeRootOrFileUrl('register') ?>">ici</a>
                                 </div>
-                                <div>
+                                <div class="text-end">
                                 <span aria-hidden="true" class="ti-close close" data-dismiss="alert" aria-label="Close"
                                       style="cursor: pointer;font-weight: 700">
                                 </span>

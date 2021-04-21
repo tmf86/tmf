@@ -1,6 +1,5 @@
-<footer class="footer text-center">
-    <!--    All Rights Reserved by Xtreme Admin. Designed and Developed by <a-->
-    <!--            href="https://www.wrappixel.com">WrapPixel</a>.-->
+<footer class="footer text-center mt-5 p-5" style="background: #37474F;color: #fff;font-size: 1rem;">
+    ©2020 Copyright: Club Imformatique Pigier Yamoussoukro
 </footer>
 </div>
 </div>

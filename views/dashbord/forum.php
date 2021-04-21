@@ -13,8 +13,8 @@
                     <thead>
                     <tr class="bg-light">
                         <th class="border-top-0 text-start">Nom</th>
-                        <th class="border-top-0 text-center">Description</th>
-                        <th class="border-top-0 text-end">Action</th>
+                        <th class="border-top-0 text-end">Description</th>
+                        <!--                        <th class="border-top-0 text-end">Action</th>-->
                     </tr>
                     </thead>
                     <tbody>
@@ -41,9 +41,9 @@
                             <td class="text-justify">
                                 <?= makeStrong($forum->description) ?>
                             </td>
-                            <td class="text-end">
-                                <label class="label label-danger">Quitter</label>
-                            </td>
+                            <!--                            <td class="text-end">-->
+                            <!--                                <label class="label label-danger">Quitter</label>-->
+                            <!--                            </td>-->
                         </tr>
                     <?php endforeach; ?>
                     </tbody>

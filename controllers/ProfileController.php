@@ -45,7 +45,8 @@ class ProfileController extends Controller
                 sprintf("<script  src='%spublic/js/script.js'></script>", rootUrl())
             ];
         $user = $this->user;
-        return $this->load_views('dashbord.profile', compact('title', 'user', 'scripts'));
+        $userNumbersOfsubjects = count($user->user()->subjects());
+        return $this->load_views('dashbord.profile', compact('title', 'user', 'scripts', 'userNumbersOfsubjects'));
     }
 
     /**

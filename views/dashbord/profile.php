@@ -15,16 +15,18 @@
                         <div class="row text-center justify-content-md-center text-center">
                             <div class="col-4"><a href="" class="link freinds"><i
                                             class="icon-people"></i>
-                                    <font class="font-medium"><i class="fas fa-users"></i>Amis(0)</font>
+                                    <font class="font-medium"><i class="fas fa-users"></i>&nbsp;Amis(0)</font>
                                 </a></div>
                             <div class="col-4"><a href="" class="link subject"><i
                                             class="icon-people"></i>
-                                    <font class="font-medium"><i class="fas fa-pen-square"></i>Sujets(0)</font>
+                                    <font class="font-medium"><i
+                                                class="fas fa-pen-square"></i>&nbsp;Sujets(<?= $userNumbersOfsubjects ?? '0' ?>
+                                        )</font>
                                 </a></div>
                             <div class="col-4"><a href="" class="link stars"><i
                                             class="icon-picture"></i>
                                     <font class="font-medium"><i class="fa fa-star"
-                                                                 aria-hidden="true"></i>Etoiles(0)</font>
+                                                                 aria-hidden="true"></i>&nbsp;Etoiles(0)</font>
                                 </a></div>
                         </div>
                     </center>
