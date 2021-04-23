@@ -69,7 +69,7 @@ abstract class QuerieBulder extends RelationalShema
      * @param array $data
      * @return array|mixed
      */
-    public function create(array $data)
+    public function create(array $data, bool $secureData = true)
     {
         $recentRecording = [];
         if (!empty($data)) {
@@ -80,7 +80,7 @@ abstract class QuerieBulder extends RelationalShema
             endforeach;
             $fields = implode(",", $fields);
             $values = implode(',', $values);
-            $action = sprintf('insert into %s (%s) values (%s)', secureData($this->table), secureData($fields), secureData($values));
+            $action = sprintf('insert into %s (%s) values (%s)', secureData($this->table), secureData($fields), ($secureData) ? secureData($values) : $values);
             if ($this->pdo->exec($action)) {
                 $recentRecording = $this->select($this->table)->OrderByDesc($this->primaryKeyStr)->limit(1)->run();
             }

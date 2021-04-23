@@ -17,9 +17,11 @@ use Service\DateTime\DateTimeCommentStyle;
                                 </div>
                             </h4>
                             <div>
-                                <button class="btn btn-success text-white" id="showAddSubjectForm">
-                                    creer
-                                </button>
+                                <label for="title">
+                                    <a class="btn btn-success text-white">
+                                        creer
+                                    </a>
+                                </label>
                             </div>
                         </div>
                         <div class="col-sm-12 d-flex justfy-content-space-between">
@@ -80,74 +82,63 @@ use Service\DateTime\DateTimeCommentStyle;
             </div>
         </div>
     </div>
-</div>
-<!-- Modal -->
-<div class="modal fade" id="forum-add" tabindex="-1" role="dialog" aria-labelledby="Forum Add"
-     aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-header" style="border-bottom: none !important;">
-                <h5 class="modal-title" id="exampleModalLongTitle">Ajoutez un nouveau sujet de discussion</h5>
-                <span aria-hidden="true" class="ti-close close" data-dismiss="modal" aria-label="Close"
-                      style="cursor: pointer"></span>
-            </div>
-            <div class="modal-body">
-                <div class="card-body">
-                    <form class="form-horizontal form-material mx-2" method="post" id="subject-form">
-                        <div class="form-group">
-                            <label for="title" class="col-md-12">Titre<small
-                                        class="small">*</small></label>
-                            <div class="col-md-12">
-                                <input type="text" placeholder=""
-                                       class="form-control form-control-line" name="title"
-                                       id="title">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="subtitle" class="col-md-12">Sous-titre <small
-                                        class="small not-required"></small></label>
-                            <div class="col-md-12">
-                                <input type="text" placeholder=""
-                                       class="form-control form-control-line" name="subtitle"
-                                       id="subtitle">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="d-flex justfy-content-space-between">
-                                <div>
-                                    <label for="message" class="col-md-12">Votre message <small class="small">*</small></label>
-                                </div>
-                                <div>
-                                    Joindre une image
-                                    <label for="attachment">
-                                        <img class="cursor-pointer"
-                                             src="<?= makeRootOrFileUrl('images/icon-img.png') ?>"
-                                             width="20" height="20"
-                                             alt="icon-image">
-                                    </label>
-                                    <img src="<?= makeRootOrFileUrl('images/image-getted.png') ?>"
-                                         width="20" height="20"
-                                         alt="image getted" id="image-getted" style="display: none">
-                                    <input type="file" id="attachment" name="attachment" class="d-none">
-                                </div>
-                            </div>
-                            <div class="col-md-12 small" id="error-container">
-                            </div>
-                            <div class="col-md-12">
-                                <textarea rows="5" id='message' class="form-control form-control-line"
-                                          name="message"></textarea>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-sm-12">
-                                <button class="btn btn-success text-white px-5" id="subject-btn" style="width: 10rem">
-                                    soumettre
-                                </button>
-                            </div>
-                        </div>
-                    </form>
+    <div class="row">
+        <h4 class="text-center">Ajoutez un nouveau sujet de discussion</h4>
+        <div class="col-md-12">
+            <form class="form-horizontal form-material mx-2" method="post" id="subject-form">
+                <div class="form-group">
+                    <label for="title" class="col-md-12">Titre<small
+                                class="small">*</small></label>
+                    <div class="col-md-12">
+                        <input type="text" placeholder=""
+                               class="form-control form-control-line" name="title"
+                               id="title">
+                    </div>
                 </div>
-            </div>
+                <div class="form-group">
+                    <label for="subtitle" class="col-md-12">Sous-titre <small
+                                class="small not-required"></small></label>
+                    <div class="col-md-12">
+                        <input type="text" placeholder=""
+                               class="form-control form-control-line" name="subtitle"
+                               id="subtitle">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="d-flex justfy-content-space-between">
+                        <div>
+                            <label for="message" class="col-md-12">Message <small
+                                        class="small">*</small></label>
+                        </div>
+                        <div>
+                            Joindre une image
+                            <label for="attachment">
+                                <img class="cursor-pointer"
+                                     src="<?= makeRootOrFileUrl('images/icon-img.png') ?>"
+                                     width="20" height="20"
+                                     alt="icon-image">
+                            </label>
+                            <img src="<?= makeRootOrFileUrl('images/image-getted.png') ?>"
+                                 width="20" height="20"
+                                 alt="image getted" id="image-getted" style="display: none">
+                            <input type="file" id="attachment" name="attachment" class="d-none">
+                        </div>
+                    </div>
+                    <div class="col-md-12 small" id="error-container">
+                    </div>
+                    <div class="col-md-12">
+                                <textarea rows="3" id='message' class="form-control form-control-line"
+                                          name="message"></textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-12">
+                        <button class="btn btn-success text-white px-5" id="subject-btn" style="width: 10rem">
+                            soumettre
+                        </button>
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
 </div>

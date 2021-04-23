@@ -426,65 +426,61 @@ $('#attachment').on('change', function () {
 })
 
 /*Processus de creation d'un nouveau sujet de discussion*/
-//Afficahge du formulaire d'ajout de sujets au clic du boutton ayant l'ID showAddSubjectForm
-$('#showAddSubjectForm').click(function () {
-    $('#forum-add').modal('show')
-})
 /*Envoie des donnée pour la creation du sujet  avec Ajax*/
 $('#subject-form').submit(function (e) {
     e.preventDefault()
     $('#subject-btn').html(`
-        <div class="loader-center">
-            <div class="loader-d-flex">
-                <div>
-                    <div class="round nb"></div>
-                    <div class="round nb-1"></div>
-                    <div class="round nb-2"></div>
+            <div class="loader-center">
+                <div class="loader-d-flex">
+                    <div>
+                        <div class="round nb"></div>
+                        <div class="round nb-1"></div>
+                        <div class="round nb-2"></div>
+                    </div>
                 </div>
-            </div>
-        </div>`)
-    $.ajax({
-        url: window.location.href,
-        type: 'post',
-        dataType: 'json',
-        cache: false,
-        contentType: false,
-        processData: false,
-        data: new FormData(this),
-        success: function (data) {
-            console.log(data)
-            $('#subject-btn').html(`soumettre`);
-            $('#debug').html(data)
-            $('#forum-add').modal('hide')
-            setTimeout(function () {
-                window.location.reload()
-            }, 2000)
-        },
-        error: function (xhr) {
-            $('#subject-btn').html(`soumettre`);
-            $('#debug').html(xhr.responseText)
-            const errors = xhr.responseJSON
-            if (xhr.status === 400) {
-                switch (errors.inputs) {
-                    case true :
-                        for (const property in errors) {
-                            $(`label[for='${property}'] small`).html(errors[property])
-                            $(`input[name="${property}"]`).addClass("error")
-                            $(`textarea[name="${property}"]`).addClass("error")
-                            console.log(`${property}: ${errors[property]}`);
-                        }
-                        break
-                    case false :
-                        if (errors.setsession === true) {
-                            $("#subject-form").trigger('reset')
-                            $("#image-getted").css('display', 'none')
-                            $('#forum-add').modal('hide')
-                            $('#session-alert').modal('show')
-                        }
-                        break;
+            </div>`)
+    setTimeout(function () {
+        $.ajax({
+            url: window.location.href,
+            type: 'post',
+            dataType: 'json',
+            cache: false,
+            contentType: false,
+            processData: false,
+            data: new FormData(document.querySelector('#subject-form')),
+            success: function (data) {
+                console.log(data)
+                $('#subject-btn').html(`soumettre`);
+                $('#debug').html(data)
+                $('#forum-add').modal('hide')
+                setTimeout(function () {
+                    window.location.reload()
+                }, 2000)
+            },
+            error: function (xhr) {
+                $('#subject-btn').html(`soumettre`);
+                $('#debug').html(xhr.responseText)
+                const errors = xhr.responseJSON
+                if (xhr.status === 400) {
+                    switch (errors.inputs) {
+                        case true :
+                            for (const property in errors) {
+                                $(`label[for='${property}'] small`).html(errors[property])
+                                $(`input[name="${property}"]`).addClass("error")
+                                $(`textarea[name="${property}"]`).addClass("error")
+                                console.log(`${property}: ${errors[property]}`);
+                            }
+                            break
+                        case false :
+                            if (errors.setsession === true) {
+                                $("#image-getted").css('display', 'none')
+                                $('#session-alert').modal('show')
+                            }
+                            break;
+                    }
                 }
             }
-        }
-    })
+        })
+    }, 3000)
 
 })

@@ -26,7 +26,7 @@ class DateTimeCommentStyle
             'now' => 'A l\'instant',
             'h-m' => 'Il y a :hour h :min minutes',
             'm' => 'Il y a :min minutes',
-            'ago' => 'l j F Y'
+            'ago' => 'l j F Y à H:i'
         ];
     }
 

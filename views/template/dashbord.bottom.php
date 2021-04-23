@@ -1,4 +1,4 @@
-<footer class="footer text-center mt-5 p-5" style="background: #37474F;color: #fff;font-size: 1rem;">
+<footer class="footer text-center p-5" style="background: #37474F;color: #fff;font-size: 1rem;margin-top: 4.2rem;">
     ©2020 Copyright: Club Imformatique Pigier Yamoussoukro
 </footer>
 </div>

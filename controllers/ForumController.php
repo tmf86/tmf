@@ -62,6 +62,8 @@ class ForumController extends Controller
         $title = 'Forum | ' . ucwords($forumName);
         $scripts =
             [
+                sprintf("<script src='%snode_modules/ckeditor4/ckeditor.js'></script>", rootUrl()),
+                "<script>CKEDITOR.replace('message')</script>",
                 sprintf("<script  src='%spublic/js/functions.js'></script>", rootUrl()),
                 sprintf("<script  src='%spublic/js/script.js'></script>", rootUrl())
             ];
@@ -92,8 +94,12 @@ class ForumController extends Controller
     private function subjectViewVariables(ForumSubject $subject)
     {
         $links = [sprintf('<link rel="stylesheet" href="%spublic/css/lightbox.css">', rootUrl())];
-        $scripts = [sprintf('<script src="%spublic/js/lightbox.js"></script>', rootUrl()),
-            sprintf('<script src="%spublic/js/script.js"></script>', rootUrl())];
+        $scripts = [
+            sprintf("<script src='%snode_modules/ckeditor4/ckeditor.js'></script>", rootUrl()),
+            "<script>CKEDITOR.replace('message')</script>",
+            sprintf('<script src="%spublic/js/lightbox.js"></script>', rootUrl()),
+            sprintf('<script src="%spublic/js/script.js"></script>', rootUrl())
+        ];
         $forum = $subject->forum;
         $user = $this->user;
         $title = 'Forum | ' . ucwords($forum->name);
@@ -171,7 +177,7 @@ class ForumController extends Controller
                             'attachment' => $attachment,
                             'forum_id' => $forum->id,
                             'user_id' => $this->user->mat_membre
-                        ]
+                        ], false
                     );
                     Request::sleep(2);
                 }
@@ -188,7 +194,7 @@ class ForumController extends Controller
                 'attachment' => $this->saveSubjectAttachment(),
                 'forum_id' => $forum->id,
                 'user_id' => $this->user->mat_membre
-            ]
+            ], false
         );
     }
 
@@ -208,7 +214,7 @@ class ForumController extends Controller
                             'attachment' => $attachment,
                             'subject_id' => $forumSubject->id,
                             'user_id' => $this->user->mat_membre
-                        ]
+                        ], false
                     );
                     Request::sleep(2);
                 }
@@ -222,7 +228,7 @@ class ForumController extends Controller
                 'attachment' => $this->saveSubjectAttachment(),
                 'subject_id' => $forumSubject->id,
                 'user_id' => $this->user->mat_membre
-            ]
+            ], false
         );
     }
 
