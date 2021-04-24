@@ -62,7 +62,7 @@ use Wikimedia\Timestamp\TimestampException;
                                 </div>
                                 <div class="comment-text w-100">
                                     <h6 class="font-medium"><?= $answer->user->username ?? $answer->user->prenom ?></h6>
-                                    <div class="m-b-15">
+                                    <div class="m-b-15 subject-msg">
                                         <?= $answer->message ?>
                                     </div>
                                     <div class="comment-footer">

@@ -11,6 +11,9 @@
     <link rel="icon" type="image/png" href="<?= makeRootOrFileUrl("images/logo.png") ?>"/>
     <!-- Custom CSS -->
     <link href="<?= makeRootOrFileUrl("public/css/import/user-dashbord/style.min.css") ?>" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300&display=swap"
+          rel="stylesheet">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -18,6 +21,10 @@
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
     <style>
+        html, body {
+            font-family: 'Ubuntu', sans-serif;
+        }
+
         @media (max-width: 767px) {
             .error-box .error-title {
                 font-size: 12rem;

@@ -68,8 +68,8 @@ function rootUrl()
  */
 function replaceQuotion($string)
 {
-    $search = ["'", '"'];
-    return str_replace($search, "\'", $string) ? str_replace($search, "\'", $string) : $string;
+    $search = ["'", '"', '`'];
+    return str_replace($search, array("\'", "\'", ''), $string) ?: $string;
 }
 
 /**
@@ -264,7 +264,7 @@ function sprintf_custuming(string $format, string $subject, $value)
  * @param bool $die
  * @return View
  */
-function view(string $view_name, array $vars = [], bool $use_templating = true,int $code = 200, bool $die = true)
+function view(string $view_name, array $vars = [], bool $use_templating = true, int $code = 200, bool $die = true)
 {
     return new View($view_name, $vars, $use_templating, $code, $die);
 }

@@ -295,6 +295,11 @@ input:disabled, textarea:disabled {
     img.attachment {
         width: 200px;
     }
+
+    .subject-msg {
+        width: 14rem;
+        /*word-wrap: break-word;*/
+    }
 }
 
 @media (max-width: 400px) {

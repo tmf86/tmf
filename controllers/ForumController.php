@@ -93,10 +93,15 @@ class ForumController extends Controller
      */
     private function subjectViewVariables(ForumSubject $subject)
     {
-        $links = [sprintf('<link rel="stylesheet" href="%spublic/css/lightbox.css">', rootUrl())];
+        $links = [
+            sprintf('<link rel="stylesheet" href="%spublic/css/lightbox.css">', rootUrl()),
+            sprintf('<link rel="stylesheet" href="%snode_modules/ckeditor4/plugins/codesnippet/lib/highlight/styles/monokai_sublime.css">', rootUrl())
+        ];
         $scripts = [
             sprintf("<script src='%snode_modules/ckeditor4/ckeditor.js'></script>", rootUrl()),
+            sprintf("<script src='%snode_modules/ckeditor4/plugins/codesnippet/lib/highlight/highlight.pack.js'></script>", rootUrl()),
             "<script>CKEDITOR.replace('message')</script>",
+            "<script>hljs.initHighlightingOnLoad();</script>",
             sprintf('<script src="%spublic/js/lightbox.js"></script>', rootUrl()),
             sprintf('<script src="%spublic/js/script.js"></script>', rootUrl())
         ];

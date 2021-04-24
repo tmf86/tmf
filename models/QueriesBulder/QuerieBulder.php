@@ -81,6 +81,7 @@ abstract class QuerieBulder extends RelationalShema
             $fields = implode(",", $fields);
             $values = implode(',', $values);
             $action = sprintf('insert into %s (%s) values (%s)', secureData($this->table), secureData($fields), ($secureData) ? secureData($values) : $values);
+//            debug($action);
             if ($this->pdo->exec($action)) {
                 $recentRecording = $this->select($this->table)->OrderByDesc($this->primaryKeyStr)->limit(1)->run();
             }

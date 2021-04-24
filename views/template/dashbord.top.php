@@ -136,169 +136,140 @@ use Contoller\Middleware\AuthMiddleware;
     <div class="page-wrapper">
         <?php endif; ?>
         <div class="page-breadcrumb">
-            <div class="row align-items-center">
-                <div class="col-12">
-                    <?php if (current_route() === makeRootOrFileUrl('profile')) : ?>
-                        <h4 class="page-title text-center" style="font-size: 1.2rem !important;">
-                            <img src="<?= makeRootOrFileUrl('images/profile-icon.png') ?>" alt="user"
-                                 width="50"
-                                 height="50" class="rounded-circle img-cover">
-                            Profile
-                        </h4>
-                    <?php endif; ?>
-                    <?php $current_route = current_route();
-                    if ($current_route === makeRootOrFileUrl('forum') ||
-                        $current_route === makeRootOrFileUrl(sprintf('forum/categorie/%s', $slug ?? '')) ||
-                        current_route() === makeRootOrFileUrl(sprintf('forum/subject/%s', $subject->slug ?? ''))) :?>
-                        <h4 class="page-title text-uppercase text-center" style="font-size: 1.2rem !important;">
-                            <img src="<?= makeRootOrFileUrl('images/forum.png') ?>" alt="user"
-                                 width="50"
-                                 height="50" class="rounded-circle img-cover">
-                            Forum</h4>
-                    <?php endif; ?>
-                    <nav class="navbar navbar-expand-lg navbar-light ">
-                        <a class="navbar-brand" href="<?= makeRootOrFileUrl('home') ?>"
-                           style="font-size: 14px !important;">
-                            <img src="<?= makeRootOrFileUrl('images/home2.jpg') ?>" alt="user" width="45"
-                                 height="45" class="rounded-circle img-cover">
-                            Acceuil
-                        </a>
-                        <span class="navbar-toggler ti-menu ti-close cursor-pointer" data-toggle="collapse"
-                              data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
-                              aria-label="Toggle navigation"></span>
-                        <!--                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"-->
-                        <!--                                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">-->
-                        <!--                            <span class="navbar-toggler-icon"></span>-->
-                        <!--                        </button>-->
-                        <div class="collapse navbar-collapse" id="navbarNav">
-                            <ul class="navbar-nav">
-                                <?php if (current_route() === makeRootOrFileUrl('forum')) : ?>
-                                    <li class="nav-item active">
-                                        <a class="nav-link" href="<?= makeRootOrFileUrl('forum') ?>">
-                                            <img src="<?= makeRootOrFileUrl('images/forum.png') ?>" alt="user"
-                                                 width="25"
-                                                 height="25" class="rounded-circle img-cover">
-                                            Forum
-                                        </a>
-                                    </li>
-                                <?php endif ?>
-                                <?php if (current_route() === makeRootOrFileUrl(sprintf('forum/categorie/%s', $slug ?? ''))): ?>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="<?= makeRootOrFileUrl('forum') ?>">
-                                            <img src="<?= makeRootOrFileUrl('images/forum.png') ?>" alt="user"
-                                                 width="25"
-                                                 height="25" class="rounded-circle img-cover">
-                                            Forum
-                                        </a>
-                                    </li>
-                                    <li class="nav-item active">
-                                        <a class="nav-link"
-                                           href="<?= makeRootOrFileUrl(sprintf('forum/categorie/%s', $slug ?? '')) ?>">
-                                            <img src="<?= makeRootOrFileUrl($forum->icon) ?>" alt="user" width="23"
-                                                 height="23" class="rounded-circle img-cover">
-                                            <?= ucwords($forumName) ?>
-                                        </a>
-                                    </li>
-                                <?php endif; ?>
-                                <?php if (current_route() === makeRootOrFileUrl(sprintf('forum/subject/%s', $subject->slug ?? ''))): ?>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="<?= makeRootOrFileUrl('forum') ?>">
-                                            <img src="<?= makeRootOrFileUrl('images/forum.png') ?>" alt="user"
-                                                 width="25"
-                                                 height="25" class="rounded-circle img-cover">
-                                            Forum
-                                        </a>
-                                    </li>
-                                    <li class="nav-item active">
-                                        <a class="nav-link"
-                                           href="<?= makeRootOrFileUrl(sprintf('forum/categorie/%s', $forum->slug ?? '')) ?>">
-                                            <img src="<?= makeRootOrFileUrl($forum->icon) ?>" alt="user" width="23"
-                                                 height="23" class="rounded-circle img-cover">
-                                            <?= ucwords($forum->name) ?>
-                                        </a>
-                                    </li>
-                                <?php endif; ?>
-                                <?php if (current_route() === makeRootOrFileUrl('profile')) : ?>
-                                    <li class="nav-item active">
-                                        <a class="nav-link" href="<?= makeRootOrFileUrl('profile') ?>">
-                                            <img src="<?= makeRootOrFileUrl('images/paramettre.png') ?>" alt="user"
-                                                 width="25"
-                                                 height="25" class="rounded-circle img-cover">
-                                            Paramètres</a>
-                                    </li>
-                                <?php endif; ?>
-                            </ul>
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-md-12">
+                        <?php if (current_route() === makeRootOrFileUrl('profile')) : ?>
+                            <h4 class="page-title text-center" style="font-size: 1.2rem !important;">
+                                <img src="<?= makeRootOrFileUrl('images/profile-icon.png') ?>" alt="user"
+                                     width="50"
+                                     height="50" class="rounded-circle img-cover">
+                                Profile
+                            </h4>
+                        <?php endif; ?>
+                        <?php $current_route = current_route();
+                        if ($current_route === makeRootOrFileUrl('forum') ||
+                            $current_route === makeRootOrFileUrl(sprintf('forum/categorie/%s', $slug ?? '')) ||
+                            current_route() === makeRootOrFileUrl(sprintf('forum/subject/%s', $subject->slug ?? ''))) :?>
+                            <h4 class="page-title text-uppercase text-center" style="font-size: 1.2rem !important;">
+                                <img src="<?= makeRootOrFileUrl('images/forum.png') ?>" alt="user"
+                                     width="50"
+                                     height="50" class="rounded-circle img-cover">
+                                Forum</h4>
+                        <?php endif; ?>
+                        <nav class="navbar navbar-expand-lg navbar-light ">
+                            <a class="navbar-brand" href="<?= makeRootOrFileUrl('home') ?>"
+                               style="font-size: 14px !important;">
+                                <img src="<?= makeRootOrFileUrl('images/home2.jpg') ?>" alt="user" width="45"
+                                     height="45" class="rounded-circle img-cover">
+                                Acceuil
+                            </a>
+                            <span class="navbar-toggler ti-menu ti-close cursor-pointer" data-toggle="collapse"
+                                  data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+                                  aria-label="Toggle navigation"></span>
+                            <!--                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"-->
+                            <!--                                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">-->
+                            <!--                            <span class="navbar-toggler-icon"></span>-->
+                            <!--                        </button>-->
+                            <div class="collapse navbar-collapse" id="navbarNav">
+                                <ul class="navbar-nav">
+                                    <?php if (current_route() === makeRootOrFileUrl('forum')) : ?>
+                                        <li class="nav-item active">
+                                            <a class="nav-link" href="<?= makeRootOrFileUrl('forum') ?>">
+                                                <img src="<?= makeRootOrFileUrl('images/forum.png') ?>" alt="user"
+                                                     width="25"
+                                                     height="25" class="rounded-circle img-cover">
+                                                Forum
+                                            </a>
+                                        </li>
+                                    <?php endif ?>
+                                    <?php if (current_route() === makeRootOrFileUrl(sprintf('forum/categorie/%s', $slug ?? ''))): ?>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="<?= makeRootOrFileUrl('forum') ?>">
+                                                <img src="<?= makeRootOrFileUrl('images/forum.png') ?>" alt="user"
+                                                     width="25"
+                                                     height="25" class="rounded-circle img-cover">
+                                                Forum
+                                            </a>
+                                        </li>
+                                        <li class="nav-item active">
+                                            <a class="nav-link"
+                                               href="<?= makeRootOrFileUrl(sprintf('forum/categorie/%s', $slug ?? '')) ?>">
+                                                <img src="<?= makeRootOrFileUrl($forum->icon) ?>" alt="user" width="23"
+                                                     height="23" class="rounded-circle img-cover">
+                                                <?= ucwords($forumName) ?>
+                                            </a>
+                                        </li>
+                                    <?php endif; ?>
+                                    <?php if (current_route() === makeRootOrFileUrl(sprintf('forum/subject/%s', $subject->slug ?? ''))): ?>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="<?= makeRootOrFileUrl('forum') ?>">
+                                                <img src="<?= makeRootOrFileUrl('images/forum.png') ?>" alt="user"
+                                                     width="25"
+                                                     height="25" class="rounded-circle img-cover">
+                                                Forum
+                                            </a>
+                                        </li>
+                                        <li class="nav-item active">
+                                            <a class="nav-link"
+                                               href="<?= makeRootOrFileUrl(sprintf('forum/categorie/%s', $forum->slug ?? '')) ?>">
+                                                <img src="<?= makeRootOrFileUrl($forum->icon) ?>" alt="user" width="23"
+                                                     height="23" class="rounded-circle img-cover">
+                                                <?= ucwords($forum->name) ?>
+                                            </a>
+                                        </li>
+                                    <?php endif; ?>
+                                    <?php if (current_route() === makeRootOrFileUrl('profile')) : ?>
+                                        <li class="nav-item active">
+                                            <a class="nav-link" href="<?= makeRootOrFileUrl('profile') ?>">
+                                                <img src="<?= makeRootOrFileUrl('images/paramettre.png') ?>" alt="user"
+                                                     width="25"
+                                                     height="25" class="rounded-circle img-cover">
+                                                Paramètres</a>
+                                        </li>
+                                    <?php endif; ?>
+                                </ul>
+                            </div>
+                        </nav>
+                    </div>
+                    <?php if (session('subject')): ?>
+                        <div class="col-md-12 mt-1">
+                            <div class="alert alert-success fade show text-justify" role="alert">
+                                Le sujet a été ajouté avec succès , il sera maintenant visible par tous les
+                                visiteurs et
+                                membres du forum et avec une aussi grande communauté vous trouverai certainement
+                                ceque
+                                vous cherchiez.
+                            </div>
                         </div>
-                    </nav>
+                    <?php
+                    endif;
+                    Request::staticSessionUnset('subject');
+                    ?>
+                    <?php if (session('replay')): ?>
+                        <div class="col-md-12 mt-1">
+                            <div class="alert alert-success  fade show text-center" role="alert">
+                                Réponse(s) ajoutée(s) !
+                            </div>
+                        </div>
+                    <?php
+                    endif;
+                    Request::staticSessionUnset('replay');
+                    ?>
+                    <?php if (session('setreplaysession')): ?>
+                        <div class="col-md-12 mt-1">
+                            <div class="alert alert-warning fade show text-justify" role="alert">
+                                <i class="fa fa-exclamation-triangle" style="color: red"></i>&ensp;
+                                Votre message a été sauvegarder mais ne sera ajouté qu' a votre prochaine
+                                connexion , veuillez vous connecter <a href="<?= makeRootOrFileUrl('login') ?>">ici</a>
+                                ou si vous n'avez pas encore de compte veuillez en créer un <a
+                                        href="<?= makeRootOrFileUrl('register') ?>">ici</a>
+                            </div>
+                        </div>
+                    <?php
+                    endif;
+                    Request::staticSessionUnset('setreplaysession');
+                    ?>
                 </div>
-                <?php if (session('subject')): ?>
-                    <div class="col-md-12 mt-1">
-                        <div class="alert alert-success alert-dismissible fade show" role="alert">
-                            <div class="d-flex justify-content-between">
-                                <div>
-                                    Le sujet a été ajouté avec succès , il sera maintenant visible par tous les
-                                    visiteurs et
-                                    membres du forum et avec une aussi grande communauté vous trouverai certainement
-                                    ceque
-                                    vous cherchiez.
-                                    <div style="font-size: 2rem; text-align: center">
-                                        😇
-                                    </div>
-                                </div>
-                                <div>
-                                <span aria-hidden="true" class="ti-close close" data-dismiss="alert" aria-label="Close"
-                                      style="cursor: pointer;font-weight: 700">
-                                </span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                <?php
-                endif;
-                Request::staticSessionUnset('subject');
-                ?>
-                <?php if (session('replay')): ?>
-                    <div class="col-md-12 mt-1">
-                        <div class="alert alert-success alert-dismissible fade show" role="alert">
-                            <div class="d-flex justify-content-between">
-                                <div>
-                                    Votre reponse a été ajouté
-                                </div>
-                                <div>
-                                <span aria-hidden="true" class="ti-close close" data-dismiss="alert" aria-label="Close"
-                                      style="cursor: pointer;font-weight: 700">
-                                </span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                <?php
-                endif;
-                Request::staticSessionUnset('replay');
-                ?>
-                <?php if (session('setreplaysession')): ?>
-                    <div class="col-md-12 mt-1">
-                        <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                            <div class="d-flex justify-content-between">
-                                <div>
-                                    <i class="fa fa-exclamation-triangle" style="color: red"></i>&ensp;
-                                    Votre message a été sauvegarder mais ne sera ajouté qu' a votre prochaine connexion
-                                    ,
-                                    veuillez vous connecter <a href="<?= makeRootOrFileUrl('login') ?>">ici</a> ou
-                                    si vous n'avez pas encore de compte veuillez en créer un <a
-                                            href="<?= makeRootOrFileUrl('register') ?>">ici</a>
-                                </div>
-                                <div class="text-end">
-                                <span aria-hidden="true" class="ti-close close" data-dismiss="alert" aria-label="Close"
-                                      style="cursor: pointer;font-weight: 700">
-                                </span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                <?php
-                endif;
-                Request::staticSessionUnset('setreplaysession');
-                ?>
             </div>
         </div>
