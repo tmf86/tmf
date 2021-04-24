@@ -37,60 +37,60 @@ UuidGenerete();
     Cette methode du controller doivent - être definis : --->($variables_envoyé_depuis_la_route,$variales_envoyé_depuis_la_requête)
 */
 $dispatcher = FastRoute\simpleDispatcher(function (FastRoute\RouteCollector $route) {
-    $route->get('/Cpy-Mvc/', ['class' => HomeController::class, 'method' => 'index']);
-    $route->get('/Cpy-Mvc/home', ['class' => HomeController::class, 'method' => 'index']);
-    $route->get('/Cpy-Mvc/login', ['class' => LoginController::class, 'method' => 'index']);
-    $route->post('/Cpy-Mvc/login', ['class' => LoginController::class, 'method' => 'postLogin',
+    $route->get('/', ['class' => HomeController::class, 'method' => 'index']);
+    $route->get('/home', ['class' => HomeController::class, 'method' => 'index']);
+    $route->get('/login', ['class' => LoginController::class, 'method' => 'index']);
+    $route->post('/login', ['class' => LoginController::class, 'method' => 'postLogin',
         'vars' => [new LoginValidator()]]);
-    $route->get('/Cpy-Mvc/register', ['class' => RegisterController::class, 'method' => 'index']);
-    $route->post('/Cpy-Mvc/registerstore', ['class' => RegisterController::class, 'method' => 'registerStore',
+    $route->get('/register', ['class' => RegisterController::class, 'method' => 'index']);
+    $route->post('/registerstore', ['class' => RegisterController::class, 'method' => 'registerStore',
         'vars' => [new RegisterValidator()]]);
-    $route->get('/Cpy-Mvc/sujets', ['class' => SujetController::class, 'method' => 'index']);
-    $route->get('/Cpy-Mvc/demande', ['class' => ParrainageController::class, 'method' => 'demande']);
-    $route->post('/Cpy-Mvc/demande', ['class' => ParrainageController::class, 'method' => 'generatDemand']);
-    $route->post('/Cpy-Mvc/parrainage', ['class' => LogParController::class, 'method' => 'loging']);
-    $route->get('/Cpy-Mvc/parrainage', ['class' => LogParController::class, 'method' => 'parrainage']);
-    $route->get('/Cpy-Mvc/tabl', ['class' => DashbordParController::class, 'method' => 'index']);
-    $route->get('/Cpy-Mvc/initPar', ['class' => DashbordParController::class, 'method' => 'initParrainage']);
+    $route->get('/sujets', ['class' => SujetController::class, 'method' => 'index']);
+    $route->get('/demande', ['class' => ParrainageController::class, 'method' => 'demande']);
+    $route->post('/demande', ['class' => ParrainageController::class, 'method' => 'generatDemand']);
+    $route->post('/parrainage', ['class' => LogParController::class, 'method' => 'loging']);
+    $route->get('/parrainage', ['class' => LogParController::class, 'method' => 'parrainage']);
+    $route->get('/tabl', ['class' => DashbordParController::class, 'method' => 'index']);
+    $route->get('/initPar', ['class' => DashbordParController::class, 'method' => 'initParrainage']);
 
-    $route->get('/Cpy-Mvc/cours', ['class' => FormationController::class, 'method' => 'index']);
-    $route->get('/Cpy-Mvc/videos_formation', ['class' => FormationController::class, 'method' => 'index']);
-    $route->get('/Cpy-Mvc/registration-success', ['class' => RegisterSuccess::class, 'method' => 'index']);
-    $route->get('/Cpy-Mvc/profile', ['class' => ProfileController::class, 'method' => 'index']);
-    $route->post('/Cpy-Mvc/profile-update', ['class' => ProfileController::class, 'method' => 'profileUpdate',
+    $route->get('/cours', ['class' => FormationController::class, 'method' => 'index']);
+    $route->get('/videos_formation', ['class' => FormationController::class, 'method' => 'index']);
+    $route->get('/registration-success', ['class' => RegisterSuccess::class, 'method' => 'index']);
+    $route->get('/profile', ['class' => ProfileController::class, 'method' => 'index']);
+    $route->post('/profile-update', ['class' => ProfileController::class, 'method' => 'profileUpdate',
         'vars' => [new ProfileUpdateValidator()]]);
-    $route->get('/Cpy-Mvc/forum', ['class' => ForumController::class, 'method' => 'index']);
-    $route->get('/Cpy-Mvc/forum/categorie/{forum:[A-Za-z\-]+}', ['class' => ForumController::class,
+    $route->get('/forum', ['class' => ForumController::class, 'method' => 'index']);
+    $route->get('/forum/categorie/{forum:[A-Za-z\-]+}', ['class' => ForumController::class,
         'method' => 'category', 'gets' => true, 'vars' => [new ValidateForumCategoryRequest()]]);
-    $route->post('/Cpy-Mvc/forum/categorie/{forum:[A-Za-z\-]+}', ['class' => ForumController::class,
+    $route->post('/forum/categorie/{forum:[A-Za-z\-]+}', ['class' => ForumController::class,
         'method' => 'addNewSubject', 'gets' => true, 'vars' => [
             new ForumAddSubjectValidator(),
             new ValidateForumCategoryRequest()
         ]]);
-    $route->get('/Cpy-Mvc/forum/subject/{subject:[A-Za-z0-9\-]+}', ['class' => ForumController::class,
+    $route->get('/forum/subject/{subject:[A-Za-z0-9\-]+}', ['class' => ForumController::class,
         'method' => 'subjectView', 'gets' => true, 'vars' => [
             new ValidateSubjectRequest()
         ]]);
-    $route->post('/Cpy-Mvc/forum/subject/{subject:[A-Za-z0-9\-]+}', ['class' => ForumController::class,
+    $route->post('/forum/subject/{subject:[A-Za-z0-9\-]+}', ['class' => ForumController::class,
         'method' => 'replyToSubject', 'gets' => true, 'vars' => [
             new ValidateSubjectRequest(),
             new ReplaySubjectValidator()
         ]]);
-    $route->get('/Cpy-Mvc/logout', ['class' => Logout::class, 'method' => 'logout']);
-    $route->addGroup('/Cpy-Mvc/finalize_account_creation/', function (FastRoute\RouteCollector $route) {
+    $route->get('/logout', ['class' => Logout::class, 'method' => 'logout']);
+    $route->addGroup('/finalize_account_creation/', function (FastRoute\RouteCollector $route) {
         $route->get('{id:[A-Z0-9\-]+}/{email:[A-Za-z0-9.@]+}', ['class' => FinalizeAccountController::class, 'method' => 'index', 'gets' => true]);
         $route->post('{id:[A-Z0-9\-]+}/{email:[A-Za-z0-9@.]+}', ['class' => FinalizeAccountController::class, 'method' => 'accountStore', 'gets' => true]);
     });
-    $route->get('/Cpy-Mvc/videos_formation/{id:\d+}',
+    $route->get('/videos_formation/{id:\d+}',
         function () {
             echo 'Hello !';
         }
     );
-    $route->get('/Cpy-Mvc/about-us', function () {
+    $route->get('/about-us', function () {
         $title = 'A propos';
         return new View\View('pages.apropos', compact('title'));
     });
-    $route->get('/Cpy-Mvc/test', function () {
+    $route->get('/test', function () {
 
     });
 });
