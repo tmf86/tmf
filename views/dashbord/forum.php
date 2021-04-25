@@ -69,10 +69,10 @@
                                                 class="rounded-circle"></div>
                                     <div class="comment-text w-100">
                                         <h6 class="font-medium"><?= $forumRecentSubject->user->username ?? $forumRecentSubject->user->prenom ?></h6>
-                                        <span class="m-b-15 d-block"><?= $forumRecentSubject->message ?></span>
+                                        <span class="m-b-15 d-block"> <?= (strlen($forumRecentSubject->title) > 255) ? substr($forumRecentSubject->title, 0, 255) . '...' : $forumRecentSubject->title ?></span>
                                         <div class="comment-footer">
                                             <span class="text-muted float-end"><?= DateTimeCommentStyle::setTimestamp($forumRecentSubject->created_at)::getDateCommentStyle() ?></span>
-                                            <span class="label label-rounded label-primary float-left">En cours...</span>
+                                            <span class="label label-rounded label-primary float-left" id="statut">En cours...</span>
                                         </div>
                                     </div>
                                 </div>

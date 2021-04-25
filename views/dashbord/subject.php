@@ -31,7 +31,7 @@ use Wikimedia\Timestamp\TimestampException;
                                     <div class="mb-2">
                                         <a href="<?= makeRootOrFileUrl($subject->attachment) ?>"
                                            data-lightbox="image-1">
-                                            <img src="<?= makeRootOrFileUrl($subject->attachment) ?>" width="400"
+                                            <img src="<?= makeRootOrFileUrl($subject->attachment) ?>" width="500"
                                                  alt="message attachment" class="attachment">
                                         </a>
                                     </div>
@@ -62,7 +62,7 @@ use Wikimedia\Timestamp\TimestampException;
                                 </div>
                                 <div class="comment-text w-100">
                                     <h6 class="font-medium"><?= $answer->user->username ?? $answer->user->prenom ?></h6>
-                                    <div class="m-b-15 subject-msg">
+                                    <div class="m-b-5 subject-msg">
                                         <?= $answer->message ?>
                                     </div>
                                     <div class="comment-footer">
@@ -70,7 +70,7 @@ use Wikimedia\Timestamp\TimestampException;
                                             <div class="mb-2">
                                                 <a href="<?= makeRootOrFileUrl($answer->attachment) ?>"
                                                    data-lightbox="image-1">
-                                                    <img src="<?= makeRootOrFileUrl($answer->attachment) ?>" width="400"
+                                                    <img src="<?= makeRootOrFileUrl($answer->attachment) ?>" width="500"
                                                          alt="message attachment" class="attachment">
                                                 </a>
                                             </div>
@@ -84,9 +84,9 @@ use Wikimedia\Timestamp\TimestampException;
                                             } ?>
                                         </span>
                                         <!--                                <span class="label label-rounded label-primary">Pending</span>-->
-                                        <span style="font-size: 1.2rem">
-                                    <label for="message" class="cursor-pointer"><i class="ti-pencil-alt"></i></label>
-                                </span>
+                                        <!--                                        <span style="font-size: 1.2rem">-->
+                                        <!--                                    <label for="message" class="cursor-pointer"><i class="ti-pencil-alt"></i></label>-->
+                                        <!--                                </span>-->
                                     </div>
                                 </div>
                             </div>

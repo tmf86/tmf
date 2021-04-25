@@ -13266,6 +13266,7 @@ html body .waves-notransition {
 
 .comment-text {
     padding-left: 15px;
+    text-align: justify;
     width: 100%
 }
 
@@ -13274,9 +13275,9 @@ html body .waves-notransition {
 }
 
 .comment-text p {
-    max-height: 65px;
-    width: 100%;
-    overflow: hidden
+    /*max-height: 65px;*/
+    /*width: 100%;*/
+    /*overflow: hidden*/
 }
 
 .comment-footer .action-icons {

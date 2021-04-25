@@ -43,7 +43,8 @@ use Service\DateTime\DateTimeCommentStyle;
                                                          class="rounded-circle img-cover">
                                                 </div>
                                                 <div class="col-9" style="text-overflow: ellipsis;">
-                                                    <?= substr($subject->message, 0, 150) ?>...<br>
+                                                    <?= (strlen($subject->title) > 255) ? substr($subject->title, 0, 255) . '...' : $subject->title ?>
+                                                    <br>
                                                     Par
                                                     <strong><?= $subject->user->username ?? $subject->user->prenom ?></strong>
                                                 </div>

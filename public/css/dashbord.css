@@ -293,12 +293,11 @@ input:disabled, textarea:disabled {
     }
 
     img.attachment {
-        width: 200px;
+        width: 230px;
     }
 
-    .subject-msg {
-        width: 14rem;
-        /*word-wrap: break-word;*/
+    #statut {
+        display: none;
     }
 }
 
@@ -308,5 +307,12 @@ input:disabled, textarea:disabled {
         top: 65%;
         left: 50%;
         transform: translate(-50%, -50%);
+    }
+}
+
+@media (max-width: 360px) {
+    .subject-msg {
+        width: 14rem;
+        /*word-wrap: break-word;*/
     }
 }
