@@ -51,8 +51,9 @@
                 <?php $i = 0;
                 foreach ($sujet_bts as $sj) { ?>
                     <tr>
-                        <th scope="row"><?= $i++ ?></th>
-                        <td><a download="<?= $sj->lien_sujet ?>"><?= $sj->nom_sujet ?>(<?= $sj->matiere_sujet ?>)</a>
+                        <th scope="row"><? //= $i++ ?></th>
+                        <td><a download="<? //= $sj->lien_sujet ?>"><? //= $sj->nom_sujet ?>(<? //= $sj->matiere_sujet ?>
+                                )</a>
                         </td>
                         <td>
                             <?php
@@ -85,8 +86,9 @@
                 <?php $i = 0;
                 foreach ($sujet_autre as $sj) { ?>
                     <tr>
-                        <th scope="row"><?= $i++ ?></th>
-                        <td><a download="<?= $sj->lien_sujet ?>"><?= $sj->nom_sujet ?>(<?= $sj->matiere_sujet ?>)</a>
+                        <th scope="row"><? //= $i++ ?></th>
+                        <td><a download="<? //= $sj->lien_sujet ?>"><? //= $sj->nom_sujet ?>(<? //= $sj->matiere_sujet ?>
+                                )</a>
                         </td>
                         <td><?php
                             $correct = new \Model\Correction();
@@ -98,7 +100,7 @@
                             }
                             ?>
                         </td>
-                        <td><?= $sj->date_ajout ?></td>
+                        <td><? //= $sj->date_ajout ?></td>
                     </tr>
                 <?php } ?>
 
@@ -119,8 +121,9 @@
                 <?php $i = 0;
                 foreach ($sujet_projet as $sj) { ?>
                     <tr>
-                        <th scope="row"><?= $i++ ?></th>
-                        <td><a download="<?= $sj->lien_sujet ?>"><?= $sj->nom_sujet ?>(<?= $sj->matiere_sujet ?>)</a>
+                        <th scope="row"><? //= $i++ ?></th>
+                        <td><a download="<? //= $sj->lien_sujet ?>"><? //= $sj->nom_sujet ?>(<? //= $sj->matiere_sujet ?>
+                                )</a>
                         </td>
                         <td>
                             <?php
