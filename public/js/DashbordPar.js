@@ -28,20 +28,38 @@ $(document).ready(function () {
                     const demande = allInfo[1];
                      const tb_par = allInfo["parrain"];
                     const tb_fil = allInfo["filleul"];
-
-                    //alert(tb_par[0]["nom"]);
+                    console.log(demande);
+                    //alert(tb_fil[0]["nom"]);
                       alert(statut);
+                      document.getElementById("info_demand").innerHTML +=affich_info("Lieu",demande["lieu"]);
+                    document.getElementById("info_demand").innerHTML +=affich_info("Filiere",demande["filiere"]);
+                    document.getElementById("info_demand").innerHTML +=affich_info("Demandeur",demande["qualite"]);
+                    document.getElementById("fil_total").innerHTML =tb_fil.length;
+                    document.getElementById("fil_total_1").innerHTML =tb_fil.length;
+                    document.getElementById("par_total_1").innerHTML =tb_par.length;
+                    document.getElementById("par_total").innerHTML =tb_par.length;
+
+                   calcultemps(demande["date"]);
                     for (let p=0;p<tb_par.length;p++){
                          document.getElementById("parrain_liste").innerHTML +=affich_mb(tb_par[p],"parrain");
                         //alert(tb_par[p]);
                     }
+                    for (let o=0;o<tb_fil.length;o++){
+                        document.getElementById("filleul_liste").innerHTML +=affich_mb(tb_fil[o],"filleul");
+                        //alert(tb_par[p]);
+                    }
+                    $("#parrain_liste li ").onmouseover(
+                        function () {
+                            $(this).classList.add("active");
+                        }
+                    );
                 }
             });
 
     },200);
 
     function affich_mb(tb,tp_mb){
-        return ' <li class="active" >\n' +
+        return ' <li  >\n' +
             '                            <div class="d-flex bd-highlight">\n' +
             '                                <div class="img_cont">\n' +
             '                                    <img src="../public/images/icone1.jpg" class="rounded-circle user_img">\n' +
@@ -62,6 +80,28 @@ $(document).ready(function () {
             '                            </div>\n' +
             '                        </li>';
 
+    }
+    function affich_info(element,valeur) {
+        return '<li class="nav-item  ">\n' +
+            '                <button class="btn btn-dark-light" style="font-family: '+"Roboto"+', sans-serif;font-size: large;">'+element+': '+valeur+'</button>\n' +
+            '                    <span class="sr-only">(current)</span>\n' +
+            '                \n' +
+            '            </li>';
+    }
+    function calcultemps(date){
+        let d= toTimestamp(date);
+        alert(d);
+        setInterval(function () {
+            d--;
+            var newDate = new Date();
+            newDate.setTime(d *1000);
+            var dateString = newDate.toUTCString();
+            document.getElementById("decompte").innerHTML ="dans: "+dateString;
+        },1000);
+    }
+    function toTimestamp(strDate){
+        var datum = Date.parse(strDate);
+        return datum/1000;
     }
 
 });

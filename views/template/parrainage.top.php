@@ -61,7 +61,7 @@
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="cipy">
-        <ul class="navbar-nav  mb-0" >
+        <ul class="navbar-nav  mb-0" id="info_demand" >
             <li class="nav-item  ">
                 <a class="nav-link" href="acceuil.html"><button class="btn btn-dark-green"><i class="fa fa-home"></i>Acceuil</button>
                     <span class="sr-only">(current)</span>

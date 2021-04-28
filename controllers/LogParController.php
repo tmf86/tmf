@@ -4,11 +4,20 @@
 namespace Contoller;
 
 
+use Contoller\Http\Request;
+use Contoller\Middleware\RedirectUsersMiddleware;
 use Validator\LogParValidator;
 use View\View;
 
 class LogParController extends Controller
 {
+    use RedirectUsersMiddleware;
+    public function __construct(Request $request)
+    {
+        parent::__construct($request);
+        $this->setRedirectToURL(current_route());
+        $this->useAuth();
+    }
     public function parrainage(){
         $title="Acceder au Parrainage";
         $this->load_views('pages.parrainage',compact("title"),false);
