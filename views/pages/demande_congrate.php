@@ -116,7 +116,7 @@
                 <h2 id="time_d"></h2>
                 <p>Votre de <strong>parrainage</strong> a &eacute;t&eacute; bien pris en compte <br>
                     les <strong>information concernant votre authentification &aacute; &eacute;t&eacute; evonyer
-                        au mail : </strong></p> <a class="btn btn-out btn-square continue" href="parrainage">tttttt@gmail.com</a>
+                        au mail : </strong></p> <a class="btn btn-out btn-square continue" href="parrainage"><?=$usr->email;?></a>
             </div>
         </div>
     </div>

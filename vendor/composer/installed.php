@@ -1,12 +1,12 @@
 <?php return array (
   'root' => 
   array (
-    'pretty_version' => 'dev-main',
-    'version' => 'dev-main',
+    'pretty_version' => '1.0.0+no-version-set',
+    'version' => '1.0.0.0',
     'aliases' => 
     array (
     ),
-    'reference' => '723416bcdf5d1c6461533138aaec35ac981ce2c5',
+    'reference' => NULL,
     'name' => 'samy/cpy-mvc',
   ),
   'versions' => 
@@ -86,12 +86,12 @@
     ),
     'samy/cpy-mvc' => 
     array (
-      'pretty_version' => 'dev-main',
-      'version' => 'dev-main',
+      'pretty_version' => '1.0.0+no-version-set',
+      'version' => '1.0.0.0',
       'aliases' => 
       array (
       ),
-      'reference' => '723416bcdf5d1c6461533138aaec35ac981ce2c5',
+      'reference' => NULL,
     ),
     'symfony/polyfill-mbstring' => 
     array (

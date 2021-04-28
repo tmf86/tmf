@@ -13,12 +13,12 @@ $(document).ready(function () {
    // alert("ok");
     let chemin = buildUrl('initPar');
     //chemin = toString(chemin);
-    //alert(chemin);
+    //let tb_par= [];
     setTimeout(function (){
 
             $.ajax({
                 url : chemin,
-                type : 'GET',
+                type : 'POST',
                 dataType : 'json', // On désire recevoir du HTML
                 success : function(code_html, statut){ // code_html contient le HTML renvoyé
                     const allInfo = code_html;
@@ -26,33 +26,41 @@ $(document).ready(function () {
                     const tb_alea_f = allInfo[0]["tab_aleatoir_f"];
                     const tb_alea_p = allInfo[0]["tab_aleatoir_p"];
                     const demande = allInfo[1];
-                    const tb_par = allInfo["parrain"];
+                     const tb_par = allInfo["parrain"];
                     const tb_fil = allInfo["filleul"];
+
                     //alert(tb_par[0]["nom"]);
-                    //  alert(statut);
+                      alert(statut);
+                    for (let p=0;p<tb_par.length;p++){
+                         document.getElementById("parrain_liste").innerHTML +=affich_mb(tb_par[p],"parrain");
+                        //alert(tb_par[p]);
+                    }
                 }
             });
 
     },200);
-    function affich_mb(tb,tp_mb){
-        var ul = document.createElement("ul");
-        var div_bloc = document.createElement("div");
-        div_bloc.classList.add("d-flex bd-highlight");
-        var div_photo = document.createElement("div");
-        div_photo.classList.add("img_cont");
-        var photo = document.createElement("img");
-        photo.classList.add("rounded-circle user_img");
-        photo.src =tb["image"];
-        div_photo.appendChild(photo);
-        div_bloc_usr1 = document.createElement("div");
-        div_bloc_usr1.classList.add("user_info");
-        var span_nom = document.createElement("span");
-        span_nom.innerHTML = tb["nom"]+" "+tb["prenom"];
-        span_nom.style.float = "left";
-        div_bloc_usr1.appendChild(span_nom);
-        var div_bull = document.createElement("div");
-        
 
+    function affich_mb(tb,tp_mb){
+        return ' <li class="active" >\n' +
+            '                            <div class="d-flex bd-highlight">\n' +
+            '                                <div class="img_cont">\n' +
+            '                                    <img src="../public/images/icone1.jpg" class="rounded-circle user_img">\n' +
+            '                                </div>\n' +
+            '                                <div class="user_info">\n' +
+            '                                    <span style="float: left;">'+tb["nom"]+" &emsp;"+tb["prenom"]+'</span>\n' +
+            '                                    <div style="display: none">\n' +
+            '                                         \n' +
+            '                                         <div class="user_info" >\n' +
+            '                                            <img src="../../fast-rooter-test/public/images/icone2" class="rounded-circle" style="width:3em;height:3em;border:1.5px solid #f5f6fa; float: left; margin-left: 1rem;">\n' +
+            '                                             <span>Samuel</span>\n' +
+            '                                         <p>'+tp_mb+'</p>\n' +
+            '                                         </div> \n' +
+            '                                    </div>\n' +
+            '                                   \n' +
+            '                                    <p style="clear: left;">parrainer</p>\n' +
+            '                                </div>\n' +
+            '                            </div>\n' +
+            '                        </li>';
 
     }
 
