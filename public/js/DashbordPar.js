@@ -13,7 +13,12 @@ $(document).ready(function () {
    // alert("ok");
     let chemin = buildUrl('initPar');
     //chemin = toString(chemin);
-    //let tb_par= [];
+    let tb_alea_f=[];
+    let tentative=[];
+    let tb_alea_p = [];
+    let demande = [];
+    let tb_par = [];
+    let tb_fil = [];
     setTimeout(function (){
 
             $.ajax({
@@ -22,13 +27,14 @@ $(document).ready(function () {
                 dataType : 'json', // On désire recevoir du HTML
                 success : function(code_html, statut){ // code_html contient le HTML renvoyé
                     const allInfo = code_html;
-                    const tentive = allInfo[0]["nb_tentative"];
-                    const tb_alea_f = allInfo[0]["tab_aleatoir_f"];
-                    const tb_alea_p = allInfo[0]["tab_aleatoir_p"];
-                    const demande = allInfo[1];
-                     const tb_par = allInfo["parrain"];
-                    const tb_fil = allInfo["filleul"];
-                    console.log(demande);
+                     tentative = allInfo[0]["nb_tentative"];
+                     tb_alea_f = allInfo[0]["tab_aleatoire_f"];
+                     //alert(tb_alea_f);
+                    tb_alea_p = allInfo[0]["tab_aleatoire_p"];
+                     demande = allInfo[1];
+                      tb_par = allInfo["parrain"];
+                    tb_fil = allInfo["filleul"];
+                    //console.log(demande);
                     //alert(tb_fil[0]["nom"]);
                       alert(statut);
                       document.getElementById("info_demand").innerHTML +=affich_info("Lieu",demande["lieu"]);
@@ -48,11 +54,18 @@ $(document).ready(function () {
                         document.getElementById("filleul_liste").innerHTML +=affich_mb(tb_fil[o],"filleul");
                         //alert(tb_par[p]);
                     }
-                    $("#parrain_liste li ").onmouseover(
-                        function () {
-                            $(this).classList.add("active");
-                        }
-                    );
+
+                   // $("#parrain_liste li ")
+                    //const liste = document.querySelectorAll("li");
+                    //alert(liste[2].className);
+                   /* for (let i = 0;i<liste.length;i++){
+                        liste[i].addEventListener("mouse",function () {
+                            liste[i].classList.add("active");
+                        });
+                        liste[i].addEventListener("mouseout",function () {
+                            liste[i].classList.remove("active");
+                        });
+                    }*/
                 }
             });
 
@@ -90,7 +103,7 @@ $(document).ready(function () {
     }
     function calcultemps(date){
         let d= toTimestamp(date);
-        alert(d);
+       // alert(d);
         setInterval(function () {
             d--;
             var newDate = new Date();
@@ -103,6 +116,13 @@ $(document).ready(function () {
         var datum = Date.parse(strDate);
         return datum/1000;
     }
+    /*$("#btn_begin").click(function () {
+        alert("parrainage debuter");
+    });*/
+    document.getElementById("btn_begin").addEventListener("click",function (){
+        alert("parrainage debuter");
+        //alert(tb_par[tb_alea_f[1]]);
+    });
 
 });
 

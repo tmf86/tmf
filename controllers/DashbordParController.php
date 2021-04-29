@@ -114,7 +114,7 @@ class DashbordParController extends Controller
             $pos_f = $this->random_s($nombre_f);
             $max = $nombre_f;
         }
-        $tab_info = ["tab_aletoire_p" => $pos_p, "tab_aletoire_f" => $pos_f, "nbr_tentative" => $max];
+        $tab_info = ["tab_aleatoire_p" => $pos_p, "tab_aleatoire_f" => $pos_f, "nbr_tentative" => $max];
         return $tab_info;
     }
 

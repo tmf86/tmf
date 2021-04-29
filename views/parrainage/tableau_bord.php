@@ -25,7 +25,7 @@
                 <div class="animer">
                     
                 </div> 
-                <div style="position: relative; align-items: center;top: -9rem;left: 9.10rem; "><button class="btn btn-primary bouton_active" style="" >Jour J -12
+                <div style="position: absolute; align-items: center;top: -9rem;left: 9.10rem; "><button class="btn btn-primary bouton_active" style="" id="btn_begin" >
                     <span id="decompte"></span>
                     </button></div><!--left: 9.80rem;top: -6rem;-->
             </div>
