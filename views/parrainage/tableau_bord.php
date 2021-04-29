@@ -25,9 +25,9 @@
                 <div class="animer">
                     
                 </div> 
-                <div style="position: absolute; align-items: center;top: -9rem;left: 9.10rem; "><button class="btn btn-primary bouton_active" style="" id="btn_begin" >
+                <!--div style="position: absolute; align-items: center;top: -9rem;left: 9.10rem; "><button class="btn btn-primary bouton_active" style="" id="btn_begin" >
                     <span id="decompte"></span>
-                    </button></div><!--left: 9.80rem;top: -6rem;-->
+                    </button></div--><!--left: 9.80rem;top: -6rem;-->
             </div>
             <div class="progress">
                 <div class="progress-bar" role="progressbar" aria-valuenow="70"
@@ -53,5 +53,26 @@
             </div>
     </div>
     </div>
+<div class="popup center">
+    <div class="icon">
+        <i class="fa fa-check"></i>
+    </div>
+    <div class="title">
+        Success!!
+    </div>
+    <div class="description glob">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias nihil provident voluptatem nulla placeat
+    </div>
+    <div class="dismiss-btn">
+        <button id="dismiss-popup-btn">
+            Dismiss
+        </button>
+    </div>
+</div>
+<div class="center ">
+    <button class="btn btn-primary bouton_active " id="open-popup-btn">
+        Commencer
+    </button>
+</div>
         <!--end content-->
 

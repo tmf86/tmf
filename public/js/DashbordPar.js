@@ -1,4 +1,5 @@
-$(document).ready(function () {
+$(document).ready(function (e) {
+   // e.preventDefault();
     const sprintf = (str, format, ...args) => {
         return !(args.length) ? str : sprintf(str.replace(format, args.shift()), format, ...args)
     }
@@ -45,7 +46,7 @@ $(document).ready(function () {
                     document.getElementById("par_total_1").innerHTML =tb_par.length;
                     document.getElementById("par_total").innerHTML =tb_par.length;
 
-                   calcultemps(demande["date"]);
+                   //calcultemps(demande["date"]);
                     for (let p=0;p<tb_par.length;p++){
                          document.getElementById("parrain_liste").innerHTML +=affich_mb(tb_par[p],"parrain");
                         //alert(tb_par[p]);
@@ -119,9 +120,30 @@ $(document).ready(function () {
     /*$("#btn_begin").click(function () {
         alert("parrainage debuter");
     });*/
-    document.getElementById("btn_begin").addEventListener("click",function (){
+    /*document.getElementById("btn_begin").addEventListener("click",function (){
         alert("parrainage debuter");
-        //alert(tb_par[tb_alea_f[1]]);
+        console.log(tb_fil[tb_alea_f[1]]);
+        console.log(tb_par[tb_alea_p[1]]);
+    });*/
+    document.getElementById("open-popup-btn").addEventListener("click",function(){
+        document.getElementsByClassName("popup")[0].classList.add("active");
+        document.querySelector(".description").innerHTML='<div class="glob">\n' +
+            '\t\t<div class="cardre">\n' +
+            '\t\t\t<div class="cercle"></div>\n' +
+            '\t\t\t<div class="contenue_cadre">\n' +
+            '\t\t\t\t<h2>Toure Marc</h2>\n' +
+            '\t\t\t\t<p>Etudiant , ghjksgxgyhdyghdvhdAnother Course : Build Complete Real World Responsive Websites from Scratch</p>\n' +
+            '\t\t\t\t<a href="#">parrainer</a>\n' +
+            '\t\t\t</div>\n' +
+            '\t\t\t<img src="images/carousel1.jpg">\n' +
+            '\t\t</div>\n' +
+            '\t</div>';
+            //"filleul:"+JSON.stringify(tb_fil[tb_alea_f[1]], null, 4)+"<br/>"+"parrain:"+JSON.stringify(tb_par[tb_alea_p[1]], null, 4);
+
+    });
+
+    document.getElementById("dismiss-popup-btn").addEventListener("click",function(){
+        document.getElementsByClassName("popup")[0].classList.remove("active");
     });
 
 });
