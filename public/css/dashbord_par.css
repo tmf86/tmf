@@ -1,4 +1,11 @@
-	body{
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100&display=swap');
+*{
+	margin: 0px;
+	padding: 0px;
+	box-sizing: border-box;
+	font-family: "Poppins",sans-serif;
+}
+body{
 		background-color: #7F7FD5;
 	}
 	nav{
@@ -202,12 +209,19 @@
 		transform:translate(-50%,-50%);
 	}
 	.popup {
-		width:99%;
-		height:95%;
-		padding:30px 20px;
+		display: inline-grid;
+		justify-content: center;
+		align-items: center;
+		flex-wrap: wrap;
+		box-sizing: content-box;
+		min-height: 100vh;
+		width:150%;
+		height:100%;
+		padding-left: 6%;
+		padding-right: 4%;
 		background:#f5f5f5;
 		border-radius:10px;
-		box-sizing:border-box;
+		/*box-sizing:border-box*/;
 		z-index:2;
 		text-align:center;
 		opacity:0;
@@ -244,13 +258,18 @@
 	}
 	.popup .description {
 		color:#222;
+		/*display: flex;*/
+		justify-content: center;
 		font-size:15px;
-		padding:5px;
+		padding:0px;
 	}
 	.popup .dismiss-btn {
+		display: unset;
 		margin-top:15px;
+
 	}
 	.popup .dismiss-btn button {
+		display: unset;
 		padding:10px 20px;
 		background:#111;
 		color:#f5f5f5;
@@ -326,18 +345,18 @@
 	}
 	.cardre{
 		position: relative;
-		width: 600px;
-		height: 350px;
+		width: 500px;
+		height: 300px;
 		/*background: #ccc;*/
 		border-radius: 20px;
 		display: flex;
-		align-items: center;
-		transition: 0.5s
+		align-items: flex-start;
+		transition: 0.6s
 	}
 	.cardre .cercle{
 		position: absolute;
 		top: 0;
-		left: 0;
+		left: -3%;
 		width: 100%;
 		height: 100%;
 		overflow: hidden;
@@ -360,16 +379,19 @@
 	}
 	.cardre img{
 		position: absolute;
-		top: 50%;
+		top: 31%;
 		left: 50%;
-		transform: translate(-50%,50%);
-		height: 300px;
+		transform: translate(-35%,-15%);
+		height: 200px;
 		pointer-events: none;
-		transition: 0.5s;
+		border-radius: 7px;
+		transition: 0.6s;
 	}
 	.cardre:hover img{
-		left: 72%;
-		height: 500px;
+		top: 0.5%;
+		left: 68%;
+		height: 400px;
+		width: 350px;
 	}
 	.cardre .contenue_cadre{
 		position: relative;
@@ -390,9 +412,15 @@
 		text-transform: uppercase;
 		font-size: 2em;
 		line-height: 1em;
+		padding-right: 5px;
+		padding-left: 0px;
+		text-align: center;
+		margin-right: 3.5%;
 		margin-bottom: 5px;
 	}
 	.cardre .contenue_cadre p{
+		/*margin-right: 20%;*/
+		margin-left:-10% ;
 		color: #fff;
 	}
 	.cardre .contenue_cadre a{

@@ -127,13 +127,26 @@ $(document).ready(function (e) {
     });*/
     document.getElementById("open-popup-btn").addEventListener("click",function(){
         document.getElementsByClassName("popup")[0].classList.add("active");
-        document.querySelector(".description").innerHTML='<div class="glob">\n' +
+        document.querySelector(".description").innerHTML='' +
+            '<div class="container-fluid"> \n' +
             '\t\t<div class="cardre">\n' +
             '\t\t\t<div class="cercle"></div>\n' +
             '\t\t\t<div class="contenue_cadre">\n' +
             '\t\t\t\t<h2>Toure Marc</h2>\n' +
             '\t\t\t\t<p>Etudiant , ghjksgxgyhdyghdvhdAnother Course : Build Complete Real World Responsive Websites from Scratch</p>\n' +
-            '\t\t\t\t<a href="#">parrainer</a>\n' +
+            '\t\t\t\t<a href="#">Parrain</a>\n' +
+            '\t\t\t</div>\n' +
+            '\t\t\t<img src="images/carousel1.jpg">\n' +
+            '\t\t</div>\n' +
+            '\t</div>';
+        document.querySelector(".description").innerHTML+='' +
+            '<div class="container-fluid"> \n' +
+            '\t\t<div class="cardre">\n' +
+            '\t\t\t<div class="cercle"></div>\n' +
+            '\t\t\t<div class="contenue_cadre">\n' +
+            '\t\t\t\t<h2>Toure Marc FABRICE</h2>\n' +
+            '\t\t\t\t<p>Etudiant , ghjksgxgyhdyghdvhdAnother Course : Build Complete Real World Responsive Websites from Scratch</p>\n' +
+            '\t\t\t\t<a href="#">Filleul</a>\n' +
             '\t\t\t</div>\n' +
             '\t\t\t<img src="images/carousel1.jpg">\n' +
             '\t\t</div>\n' +

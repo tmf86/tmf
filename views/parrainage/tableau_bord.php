@@ -54,20 +54,35 @@
     </div>
     </div>
 <div class="popup center">
-    <div class="icon">
+    <!--div class="icon">
         <i class="fa fa-check"></i>
     </div>
     <div class="title">
         Success!!
+    </div-->
+<div class="row">
+    <div class="col-md">
+        <div class="dismiss-btn">
+            <button id="dismiss-popup-btn">
+                Dismiss
+            </button>
+        </div>
     </div>
-    <div class="description glob">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias nihil provident voluptatem nulla placeat
+</div>
+    <div class="row">
+        <div class="col-md">
+            <div class="description glob">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias nihil provident voluptatem nulla placeat
+            </div>
+        </div>
     </div>
-    <div class="dismiss-btn">
-        <button id="dismiss-popup-btn">
-            Dismiss
-        </button>
-    </div>
+
+
+</div>
+<div class="dismiss-btn">
+    <button id="dismiss-popup-btn">
+        Dismiss
+    </button>
 </div>
 <div class="center ">
     <button class="btn btn-primary bouton_active " id="open-popup-btn">
