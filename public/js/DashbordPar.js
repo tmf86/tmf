@@ -127,31 +127,21 @@ $(document).ready(function (e) {
     });*/
     document.getElementById("open-popup-btn").addEventListener("click",function(){
         document.getElementsByClassName("popup")[0].classList.add("active");
-        document.querySelector(".description").innerHTML='' +
-            '<div class="container-fluid"> \n' +
-            '\t\t<div class="cardre">\n' +
-            '\t\t\t<div class="cercle"></div>\n' +
-            '\t\t\t<div class="contenue_cadre">\n' +
-            '\t\t\t\t<h2>Toure Marc</h2>\n' +
-            '\t\t\t\t<p>Etudiant , ghjksgxgyhdyghdvhdAnother Course : Build Complete Real World Responsive Websites from Scratch</p>\n' +
-            '\t\t\t\t<a href="#">Parrain</a>\n' +
-            '\t\t\t</div>\n' +
-            '\t\t\t<img src="images/carousel1.jpg">\n' +
-            '\t\t</div>\n' +
-            '\t</div>';
-        document.querySelector(".description").innerHTML+='' +
-            '<div class="container-fluid"> \n' +
-            '\t\t<div class="cardre">\n' +
-            '\t\t\t<div class="cercle"></div>\n' +
-            '\t\t\t<div class="contenue_cadre">\n' +
-            '\t\t\t\t<h2>Toure Marc FABRICE</h2>\n' +
-            '\t\t\t\t<p>Etudiant , ghjksgxgyhdyghdvhdAnother Course : Build Complete Real World Responsive Websites from Scratch</p>\n' +
-            '\t\t\t\t<a href="#">Filleul</a>\n' +
-            '\t\t\t</div>\n' +
-            '\t\t\t<img src="images/carousel1.jpg">\n' +
-            '\t\t</div>\n' +
-            '\t</div>';
             //"filleul:"+JSON.stringify(tb_fil[tb_alea_f[1]], null, 4)+"<br/>"+"parrain:"+JSON.stringify(tb_par[tb_alea_p[1]], null, 4);
+        var cade1= document.getElementById("card_hover_1");
+        var cadre2=document.getElementById("card_hover_2");
+        cade1.addEventListener("mouseover",function () {
+            console.log("ok valider");
+        });
+        var event = new MouseEvent("mouseover",{
+            'view':window,
+            'bubbles':true,
+            'cancelable':true
+        });
+        setTimeout(function (){
+            cade1.dispatchEvent(event);
+        },500);
+        cadre2.dispatchEvent(new MouseEvent(('mouseenter',{bubbles: true})))
 
     });
 

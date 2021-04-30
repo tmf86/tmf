@@ -72,7 +72,33 @@
     <div class="row">
         <div class="col-md">
             <div class="description glob">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias nihil provident voluptatem nulla placeat
+                <div class="container-fluid">
+                    <div class="cardre" ">
+                        <div class="cercle"></div>
+                        <div class="contenue_cadre">
+
+                            <h2>Toure Marc</h2>
+
+                            <p>Etudiant , ghjksgxgyhdyghdvhdAnother Course : Build Complete Real World Responsive Websites from Scratch</p>
+
+                            <a href="#">Parrain</a>
+                        </div>
+                        <img src="images/carousel1.jpg" id="card_hover_1>
+                        </div>
+                    </div>
+                <div class="cardre" >
+                    <div class="cercle"></div>
+                    <div class="contenue_cadre">
+
+                        <h2>Toure Marc Fabrice</h2>
+
+                        <p>Etudiant , ghjksgxgyhdyghdvhdAnother Course : Build Complete Real World Responsive Websites from Scratch</p>
+
+                        <a href="#">Filleul</a>
+                    </div>
+                    <img src="images/carousel1.jpg" id="card_hover_2">
+                </div>
+            </div>
             </div>
         </div>
     </div>
