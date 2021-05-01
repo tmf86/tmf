@@ -4,11 +4,20 @@
 namespace Contoller;
 
 
+use Contoller\Http\Request;
+use Contoller\Middleware\RedirectUsersMiddleware;
 use Validator\LogParValidator;
 use View\View;
 
 class LogParController extends Controller
 {
+    use RedirectUsersMiddleware;
+    public function __construct(Request $request)
+    {
+        parent::__construct($request);
+        $this->setRedirectToURL(current_route());
+        $this->useAuth();
+    }
     public function parrainage(){
         $title="Acceder au Parrainage";
         $this->load_views('pages.parrainage',compact("title"),false);
@@ -32,8 +41,8 @@ class LogParController extends Controller
             $scripts= [
                 sprintf("<script  src='%spublic/js/DashbordPar.js'></script>", rootUrl())
             ];
-            $this->load_views('parrainage.tableau_bord',compact("title","rq","scripts"),true);
-         //   return header("location:tabl");
+           // $this->load_views('parrainage.tableau_bord',compact("title","rq","scripts"),true);
+           return header("location:tabl");
 
         }
 

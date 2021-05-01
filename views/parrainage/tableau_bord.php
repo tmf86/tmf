@@ -9,84 +9,11 @@
                <div class="card mb-sm-3 mb-md-0 contacts_card">
                    <div class="card-header">
                        <div class="user_info">
-                           <span>Filleu :15 Parrainer : 7/15 </span>
+                           <span>Filleul :<span id="fil_total">15</span> Parrainer : 7/<span id="fil_total_1">15</span> </span>
                        </div>
                     </div>
                         <div class="card-body contacts_body">
-                        <ul class="contacts" id="liste">
-                        <li class="active" >
-                            <div class="d-flex bd-highlight">
-                                <div class="img_cont">
-                                    <img src="../public/images/icone1.jpg" class="rounded-circle user_img">
-                                </div>
-                                <div class="user_info">
-                                    <span style="float: left;">Khalid</span>
-                                    <div>
-                                         
-                                         <div class="user_info" >
-                                            <img src="../../fast-rooter-test/public/images/icone2" class="rounded-circle" style="width:3em;height:3em;border:1.5px solid #f5f6fa; float: left; margin-left: 1rem;">
-                                             <span>Samuel</span>
-                                         <p>Parrain</p>
-                                         </div> 
-                                    </div>
-                                   
-                                    <p style="clear: left;">parrainer</p>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="d-flex bd-highlight">
-                                <div class="img_cont">
-                                    <img src="../../fast-rooter-test/public/images/icone2.jpg" class="rounded-circle user_img1">
-                                </div>
-                                <div class="user_info">
-                                    <span>Taherah Big</span>
-                                    <p>En attente de filleu</p>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="d-flex bd-highlight">
-                                <div class="img_cont">
-                                    <img src="../public/images/icone1.jpg" class="rounded-circle user_img">
-                                    <span class="online_icon"></span>
-                                </div>
-                                <div class="user_info">
-                                    <span>Sami Rafi</span>
-                                    <p>Parrainer</p>
-                                </div>
-                                <div>
-                                         
-                                         <div class="user_info" >
-                                            <img src="../public/images/icone3.jpg" class="rounded-circle" style="width:3em;height:3em;border:1.5px solid #f5f6fa; float: left; margin-left: 1rem;">
-                                             <span>Samuel</span>
-                                         <p>Parrain</p>
-                                         </div> 
-                                    </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="d-flex bd-highlight">
-                                <div class="img_cont">
-                                    <img src="../public/images/icone3.jpg" class="rounded-circle user_img1">
-                                </div>
-                                <div class="user_info">
-                                    <span>Nargis Hawa</span>
-                                    <p>En attente</p>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="d-flex bd-highlight">
-                                <div class="img_cont">
-                                    <img src="../public/images/icone1.jpg" class="rounded-circle user_img1">
-                                </div>
-                                <div class="user_info">
-                                    <span>Rashid Samim</span>
-                                    <p>En attente</p>
-                                </div>
-                            </div>
-                        </li>
+                        <ul class="contacts" id="filleul_liste">
                         </ul>
                     </div>
                     <div class="card-footer"></div>
@@ -98,7 +25,9 @@
                 <div class="animer">
                     
                 </div> 
-                <div style="position: relative; align-items: center;top: -9rem;left: 9.10rem; "><button class="btn btn-primary bouton_active" style="">Jour J -12</button></div><!--left: 9.80rem;top: -6rem;-->
+                <!--div style="position: absolute; align-items: center;top: -9rem;left: 9.10rem; "><button class="btn btn-primary bouton_active" style="" id="btn_begin" >
+                    <span id="decompte"></span>
+                    </button></div--><!--left: 9.80rem;top: -6rem;-->
             </div>
             <div class="progress">
                 <div class="progress-bar" role="progressbar" aria-valuenow="70"
@@ -111,77 +40,54 @@
                <div class="card mb-sm-3 mb-md-0 contacts_card">
                    <div class="card-header">
                             <div class="user_info">
-                           <span>Parrain :16 Parrainer : 8/15 </span>
-                       </div>
+                                <span>Parrain :<span id="par_total">15</span> Parrainer : 9/<span id="par_total_1">15</span> </span>
+                            </div>
                     </div>
                         <div class="card-body contacts_body">
-                        <ui class="contacts">
-                        <li class="active">
-                            <div class="d-flex bd-highlight">
-                                <div class="img_cont">
-                                    <img src="../../fast-rooter-test/public/images/icone2.jpg" class="rounded-circle user_img">
-                                    <span class="online_icon"></span>
-                                </div>
-                                <div class="user_info">
-                                    <span>Khalid</span>
-                                    <p>Kalid is online</p>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="d-flex bd-highlight">
-                                <div class="img_cont">
-                                    <img src="../../fast-rooter-test/public/images/icone2.jpg" class="rounded-circle user_img">
-                                    <span class="online_icon offline"></span>
-                                </div>
-                                <div class="user_info">
-                                    <span>Taherah Big</span>
-                                    <p>Taherah left 7 mins ago</p>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="d-flex bd-highlight">
-                                <div class="img_cont">
-                                    <img src="../public/images/icone1.jpg" class="rounded-circle user_img">
-                                    <span class="online_icon"></span>
-                                </div>
-                                <div class="user_info">
-                                    <span>Sami Rafi</span>
-                                    <p>Sami is online</p>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="d-flex bd-highlight">
-                                <div class="img_cont">
-                                    <img src="../public/images/icone1.jpg" class="rounded-circle user_img">
-                                    <span class="online_icon offline"></span>
-                                </div>
-                                <div class="user_info">
-                                    <span>Nargis Hawa</span>
-                                    <p>Nargis left 30 mins ago</p>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="d-flex bd-highlight">
-                                <div class="img_cont">
-                                    <img src="../public/images/icone3.jpg" class="rounded-circle user_img">
-                                    <span class="online_icon offline"></span>
-                                </div>
-                                <div class="user_info">
-                                    <span>Rashid Samim</span>
-                                    <p>Rashid left 50 mins ago</p>
-                                </div>
-                            </div>
-                        </li>
-                        </ui>
+                        <ul class="contacts" id="parrain_liste">
+
+                        </ul>
                     </div>
                     <div class="card-footer"></div>
                </div>
             </div>
     </div>
     </div>
+<div class="popup center">
+    <!--div class="icon">
+        <i class="fa fa-check"></i>
+    </div>
+    <div class="title">
+        Success!!
+    </div-->
+<div class="row">
+    <div class="col-md">
+        <div class="dismiss-btn">
+            <button id="dismiss-popup-btn">
+                Dismiss
+            </button>
+        </div>
+    </div>
+</div>
+    <div class="row">
+        <div class="col-md">
+            <div class="description glob">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias nihil provident voluptatem nulla placeat
+            </div>
+        </div>
+    </div>
+
+
+</div>
+<div class="dismiss-btn">
+    <button id="dismiss-popup-btn">
+        Dismiss
+    </button>
+</div>
+<div class="center ">
+    <button class="btn btn-primary bouton_active " id="open-popup-btn">
+        Commencer
+    </button>
+</div>
         <!--end content-->
 

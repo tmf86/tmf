@@ -5,7 +5,7 @@ namespace FastRoute;
 interface DataGenerator
 {
     /**
-     * Adds a route to the data generator. The route data utils the
+     * Adds a route to the data generator. The route data uses the
      * same format that is returned by RouterParser::parser().
      *
      * The handler doesn't necessarily need to be a callable, it

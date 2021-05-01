@@ -51,7 +51,7 @@ $dispatcher = FastRoute\simpleDispatcher(function (FastRoute\RouteCollector $rou
     $route->post('/Cpy-Mvc/parrainage', ['class' => LogParController::class, 'method' => 'loging']);
     $route->get('/Cpy-Mvc/parrainage', ['class' => LogParController::class, 'method' => 'parrainage']);
     $route->get('/Cpy-Mvc/tabl', ['class' => DashbordParController::class, 'method' => 'index']);
-    $route->get('/Cpy-Mvc/initPar', ['class' => DashbordParController::class, 'method' => 'initParrainage']);
+    $route->post('/Cpy-Mvc/initPar', ['class' => DashbordParController::class, 'method' => 'initParrainage']);
 
     $route->get('/Cpy-Mvc/cours', ['class' => FormationController::class, 'method' => 'index']);
     $route->get('/Cpy-Mvc/videos_formation', ['class' => FormationController::class, 'method' => 'index']);

@@ -193,11 +193,11 @@
                             <!-- <span class="fa fa-lock"></span> -->
                             <label for="qualite_par">Qualit&eacute;</label>
                             <select name="qualite" class="form-control custom-select" id="qualite_par">
-                                <option value="RGL">DELEGUE</option>
-                                <option value="AD">1er ADJOINT</option>
-                                <option value="CDM">2eme ADJOINT</option>
+                                <option value="DELEGUE">DELEGUE</option>
+                                <option value="ADJOINT_1">1er ADJOINT</option>
+                                <option value="ADJOINT_2">2eme ADJOINT</option>
                             </select>
-                            <input type="hidden" value="<?= $user->mat_membre; ?>" name="id_menbre">
+                            <input type="hidden" value="<?= $user->mat_membre; ?>" name="id_membre">
                         </div>
                         <div class="row">
                             <input type="submit" value="Demander" class="btn">

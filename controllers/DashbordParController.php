@@ -11,13 +11,13 @@ use Model\User;
 
 class DashbordParController extends Controller
 {
-    /* use RedirectUsersMiddleware;
+     use RedirectUsersMiddleware;
      public function __construct(Request $request)
      {
          parent::__construct($request);
          $this->setRedirectToURL(current_route());
          $this->useAuth();
-     }*/
+     }
     public function index()
     {
         $title = "Tableau de Bord";
@@ -42,10 +42,11 @@ class DashbordParController extends Controller
             ->select("membre")
             ->whereEqual("filiere", $this->recupFilere($dm->filiere, '1'))
             ->andEqual("validation", "vrai")->run(true);
-        // var_dump($mb_par);
+        //var_dump($mb_par);
         // echo "<br>";
         //var_dump($mb_fil);
-        // var_dump(count($mb_par));
+       // var_dump(count($mb_fil));
+        //var_dump(count($mb_par));
         //echo "<br>";
         $tb_info = $this->equlibrateMenber(count($mb_par), count($mb_fil));
         $info_parrainage = ["parrain" => $mb_par, "filleul" => $mb_fil, $tb_info, $dm];
@@ -113,7 +114,7 @@ class DashbordParController extends Controller
             $pos_f = $this->random_s($nombre_f);
             $max = $nombre_f;
         }
-        $tab_info = ["tab_aletoire_p" => $pos_p, "tab_aletoire_f" => $pos_f, "nbr_tentative" => $max];
+        $tab_info = ["tab_aleatoire_p" => $pos_p, "tab_aleatoire_f" => $pos_f, "nbr_tentative" => $max];
         return $tab_info;
     }
 
