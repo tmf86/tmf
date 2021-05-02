@@ -125,28 +125,33 @@ $(document).ready(function (e) {
         console.log(tb_fil[tb_alea_f[1]]);
         console.log(tb_par[tb_alea_p[1]]);
     });*/
+    const root = document.querySelector(":root");
     document.getElementById("open-popup-btn").addEventListener("click",function(){
         document.getElementsByClassName("popup")[0].classList.add("active");
-            //"filleul:"+JSON.stringify(tb_fil[tb_alea_f[1]], null, 4)+"<br/>"+"parrain:"+JSON.stringify(tb_par[tb_alea_p[1]], null, 4);
-        var cade1= document.getElementById("card_hover_1");
-        var cadre2=document.getElementById("card_hover_2");
-        cade1.addEventListener("mouseover",function () {
-            console.log("ok valider");
-        });
-        var event = new MouseEvent("mouseover",{
-            'view':window,
-            'bubbles':true,
-            'cancelable':true
-        });
-        setTimeout(function (){
-            cade1.dispatchEvent(event);
-        },500);
-        cadre2.dispatchEvent(new MouseEvent(('mouseenter',{bubbles: true})))
+       // document.getElementById("mb_name").innerHTML=tb_par[]
+        setTimeout(function () {
+            root.style.setProperty("--clip","clip-path: circle(400px at center)");
+            root.style.setProperty("--bg","#0065c3");
+            root.style.setProperty("--lef","72%");
+            root.style.setProperty("--haut","350px");
+            root.style.setProperty("--lef_un","0");
+            root.style.setProperty("--opacite","1");
+            root.style.setProperty("--cache","visible");
+        },3000);
+        console.log(tb_par[0]);
 
     });
 
     document.getElementById("dismiss-popup-btn").addEventListener("click",function(){
+        root.style.setProperty("--clip","clip-path: circle(120px at center)");
+        root.style.setProperty("--bg","#d83133");
+        root.style.setProperty("--lef","50%%");
+        root.style.setProperty("--haut","300px");
+        root.style.setProperty("--lef_un","20%");
+        root.style.setProperty("--opacite","0");
+        root.style.setProperty("--cache","hidden");
         document.getElementsByClassName("popup")[0].classList.remove("active");
+
     });
 
 });

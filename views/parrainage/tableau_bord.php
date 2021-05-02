@@ -1,4 +1,3 @@
-
 <!--Navbar -->
 
 <!--/.Navbar -->
@@ -19,7 +18,6 @@
                     <div class="card-footer"></div>
                </div>
             </div>
-
             <div class="col-md-2 col-xl-4 chat">
                 <!--button class="btn btn-grey">Commencer</button-->
                 <div class="animer">
@@ -35,7 +33,6 @@
                     <span class="sr-only">70% Complete</span>
                 </div>
             </div>
-
             <div class="col-md-5 col-xl-4 chat">
                <div class="card mb-sm-3 mb-md-0 contacts_card">
                    <div class="card-header">
@@ -45,7 +42,6 @@
                     </div>
                         <div class="card-body contacts_body">
                         <ul class="contacts" id="parrain_liste">
-
                         </ul>
                     </div>
                     <div class="card-footer"></div>
@@ -72,38 +68,41 @@
     <div class="row">
         <div class="col-md">
             <div class="description glob">
-                <div class="container-fluid">
-                    <div class="cardre" ">
+                <div class="glob">
+                    <div class="cardre" >
+                        <div class="cercle" ></div>
+                        <div class="contenue_cadre" >
+                            <h2 id="mb_name">Toure Marc</h2>
+                            <p>Contact:<span id="mb_contact"></span><br>
+                                Mail: <span id="mb_mail"></span><br>
+                                Classe:<span id="mb_fil"></span><br>
+                                Genre:<span id="mb_genre"></span>
+                            </p>
+                            <a href="#" id="mb_status">Parrain</a>
+                        </div>
+                        <img src="images/image-1.png" id="mb_photo" >
+                    </div>
+                </div>
+                <div class="glob">
+                    <div class="cardre" style="margin-left: 8%;">
                         <div class="cercle"></div>
                         <div class="contenue_cadre">
-
-                            <h2>Toure Marc</h2>
-
-                            <p>Etudiant , ghjksgxgyhdyghdvhdAnother Course : Build Complete Real World Responsive Websites from Scratch</p>
-
-                            <a href="#">Parrain</a>
+                            <h2 id="mb_name_1">Toure Marc</h2>
+                            <p>
+                            <p>Contact:<span id="mb_contact_1"></span><br>
+                                Mail: <span id="mb_mail_1"></span><br>
+                                Classe:<span id="mb_fil_1"></span><br>
+                                Genre:<span id="mb_genre_1"></span>
+                            </p>
+                            <a href="#"id="mb_status_1">Filleul</a>
                         </div>
-                        <img src="images/carousel1.jpg" id="card_hover_1>
-                        </div>
+                        <img src="images/image-1.png" alt="imge" id="mb_photo_1">
                     </div>
-                <div class="cardre" >
-                    <div class="cercle"></div>
-                    <div class="contenue_cadre">
-
-                        <h2>Toure Marc Fabrice</h2>
-
-                        <p>Etudiant , ghjksgxgyhdyghdvhdAnother Course : Build Complete Real World Responsive Websites from Scratch</p>
-
-                        <a href="#">Filleul</a>
-                    </div>
-                    <img src="images/carousel1.jpg" id="card_hover_2">
                 </div>
             </div>
             </div>
         </div>
     </div>
-
-
 </div>
 <div class="dismiss-btn">
     <button id="dismiss-popup-btn">
@@ -116,4 +115,3 @@
     </button>
 </div>
         <!--end content-->
-
