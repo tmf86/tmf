@@ -28,9 +28,9 @@ $(document).ready(function (e) {
                 dataType : 'json', // On désire recevoir du HTML
                 success : function(code_html, statut){ // code_html contient le HTML renvoyé
                     const allInfo = code_html;
-                    console.log(allInfo);
+                    //console.log(allInfo);
                      tentative = allInfo[0]["nbr_tentative"];
-                     alert(tentative);
+                    // alert(tentative);
                      tb_alea_f = allInfo[0]["tab_aleatoire_f"];
                     tb_alea_p = allInfo[0]["tab_aleatoire_p"];
                      demande = allInfo[1];
@@ -117,14 +117,25 @@ $(document).ready(function (e) {
     const root = document.querySelector(":root");
     let nbr_tentative=1;
     //alert("tentative: "+tentative);
+
     document.getElementById("open-popup-btn").addEventListener("click",function(){
         document.getElementsByClassName("popup")[0].classList.add("active");
        // document.getElementById("mb_name").innerHTML=tb_par[]
+        console.log(tb_par);
+        console.log(tb_fil);
+        console.log(tb_alea_p);
+        console.log(tb_alea_f);
+        for (let h=1;h<=tentative;h++){
+            console.log(tb_par[tb_alea_p[h]]+":index="+tb_alea_p[h]);
+            console.log(tb_fil[tb_alea_f[h]]+":index="+tb_alea_f[h]);
+
+        }
         affiche_mbre_par(tb_alea_p[nbr_tentative]);
        affiche_mbre_fil(tb_alea_f[nbr_tentative]);
        alert(nbr_tentative);
         if (nbr_tentative === tentative){
             alert("parrainage terminer");
+            document.getElementById("dismiss-popup-btn").innerHTML = "Terminer";
             nbr_tentative=0;
         }else {
             setTimeout(function () {
@@ -156,8 +167,8 @@ $(document).ready(function (e) {
 
     });
     function affiche_mbre_par(index){
-        console.log(index);
-        document.getElementById("mb_name").innerHTML=" "+tb_par[index]['nom']+"&emsp;"+tb_par[index]['prenom']+" ";
+        //console.log(index);
+        document.getElementById("mb_name").innerHTML=tb_par[index]['nom']+tb_par[index]['prenom'];
         document.getElementById("mb_contact").innerHTML=tb_par[index]['contact'];
         document.getElementById("mb_mail").innerHTML=tb_par[index]['email'];
         document.getElementById("mb_fil").innerHTML=tb_par[index]['filiere'];
@@ -165,7 +176,7 @@ $(document).ready(function (e) {
         document.getElementById("mb_status").innerHTML=tb_par[index]['status'];
     }
     function affiche_mbre_fil(index){
-        document.getElementById("mb_name_1").innerHTML=tb_fil[index]['nom']+"&emsp;"+tb_fil[index]['prenom'];
+        document.getElementById("mb_name_1").innerHTML=tb_fil[index]['nom']+tb_fil[index]['prenom'];
         document.getElementById("mb_contact_1").innerHTML=tb_fil[index]['contact'];
         document.getElementById("mb_mail_1").innerHTML=tb_fil[index]['email'];
         document.getElementById("mb_fil_1").innerHTML=tb_fil[index]['filiere'];
