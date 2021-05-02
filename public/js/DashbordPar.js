@@ -71,7 +71,7 @@ $(document).ready(function (e) {
             '                                    <span style="float: left;">'+tb["nom"]+" &emsp;"+tb["prenom"]+'</span>\n' +
             '                                    <div style="display: none" class="bule_par">\n' +
             '                                         \n' +
-            '                                         <div class="user_info" >\n' +
+            '                                         <div class="user_info bule_info" >\n' +
             '                                            <img src="../../fast-rooter-test/public/images/icone2" class="rounded-circle" style="width:3em;height:3em;border:1.5px solid #f5f6fa; float: left; margin-left: 1rem;">\n' +
             '                                             <span>Samuel</span>\n' +
             '                                         <p>'+tp_mb+'</p>\n' +
@@ -130,8 +130,8 @@ $(document).ready(function (e) {
             console.log(tb_fil[tb_alea_f[h]]+":index="+tb_alea_f[h]);
 
         }*/
-        affiche_mbre_par(tb_alea_p[nbr_tentative],nbr_tentative);
-       affiche_mbre_fil(tb_alea_f[nbr_tentative],nbr_tentative);
+        affiche_mbre_par(tb_alea_p[nbr_tentative],nbr_tentative,tb_alea_f[nbr_tentative]);
+       affiche_mbre_fil(tb_alea_f[nbr_tentative],nbr_tentative,tb_alea_p[nbr_tentative]);
        alert(nbr_tentative);
         if (nbr_tentative === tentative){
             alert("parrainage terminer");
@@ -168,7 +168,7 @@ $(document).ready(function (e) {
         document.getElementsByClassName("popup")[0].classList.remove("active");
 
     });
-    function affiche_mbre_par(index,n){
+    function affiche_mbre_par(index,n,n1){
         //console.log(index);
         document.getElementById("mb_name").innerHTML=tb_par[index]['nom']+tb_par[index]['prenom'];
         document.getElementById("mb_contact").innerHTML=tb_par[index]['contact'];
@@ -180,11 +180,17 @@ $(document).ready(function (e) {
        // document.getElementById("bule_par").style.display="inline-block";
        // $("#parrain_liste .user_info")[1].css("display","inline-block");
         var  bule = document.querySelectorAll("#parrain_liste .bule_par");
-        console.log(bule);
+       // console.log(bule);
         bule[n].style.display="inline-block";
+        var nom_fil = document.querySelectorAll("#filleul_liste .bule_info span");
+        var img_fil = document.querySelectorAll("#filleul_liste .bule_info img");
+        //console.log(img_par[n]);
+        // console.log(nom_par[n]);
+        img_fil[n].src= tb_par[index]['image'];
+        nom_fil[n].innerHTML=tb_fil[n1]['nom']+tb_fil[n1]['prenom'];
 
     }
-    function affiche_mbre_fil(index,n){
+    function affiche_mbre_fil(index,n,n1){
         document.getElementById("mb_name_1").innerHTML=tb_fil[index]['nom']+tb_fil[index]['prenom'];
         document.getElementById("mb_contact_1").innerHTML=tb_fil[index]['contact'];
         document.getElementById("mb_mail_1").innerHTML=tb_fil[index]['email'];
@@ -195,8 +201,14 @@ $(document).ready(function (e) {
         //document.getElementById("bule_par").style.display="inline-block";
        // $("#filleul_liste .user_info")[1].display="inline-block";
         var  bule_f = document.querySelectorAll("#filleul_liste .bule_par");
-        console.log(bule_f);
+       // console.log(bule_f);
         bule_f[n].style.display="inline-block";
+
+        var nom_par = document.querySelectorAll("#parrain_liste .bule_info span");
+        var img_par = document.querySelectorAll("#parrain_liste .bule_info img");
+        img_par[n].src= tb_par[index]['image'];
+        nom_par[n].innerHTML=tb_par[n1]['nom']+tb_par[n1]['prenom'];
+
     }
 });
 
