@@ -78,10 +78,10 @@ class DashbordParController extends Controller
     private function random_s($nberToRandom)
     {
         $i = 1;
-        $random_i[$i] = random_int(1, $nberToRandom);
+        $random_i[$i] = random_int(0, $nberToRandom);
         while ($i <= $nberToRandom) {
             $ver = false;
-            $val = random_int(1, $nberToRandom);
+            $val = random_int(0, $nberToRandom);
             for ($j = 1; $j < $i; $j++) {
                 if ($random_i[$j] === $val) {
                     $ver = true;
@@ -122,10 +122,10 @@ class DashbordParController extends Controller
     {
         $random_i = $this->random_s($nberToRandom);
         $k = $i = count($random_i) + 1;
-        $random_i[$i] = random_int(1, $nberToRandom);
+        $random_i[$i] = random_int(0, $nberToRandom);
         while ($i <= $next) {
             $ver = false;
-            $val = random_int(1, $nberToRandom);
+            $val = random_int(0, $nberToRandom);
             for ($j = $k; $j < $i; $j++) {
                 if ($random_i[$j] === $val) {
                     $ver = true;

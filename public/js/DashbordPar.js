@@ -15,7 +15,7 @@ $(document).ready(function (e) {
     let chemin = buildUrl('initPar');
     //chemin = toString(chemin);
     let tb_alea_f=[];
-    let tentative=[];
+    let tentative=0;
     let tb_alea_p = [];
     let demande = [];
     let tb_par = [];
@@ -28,9 +28,10 @@ $(document).ready(function (e) {
                 dataType : 'json', // On désire recevoir du HTML
                 success : function(code_html, statut){ // code_html contient le HTML renvoyé
                     const allInfo = code_html;
-                     tentative = allInfo[0]["nb_tentative"];
+                    console.log(allInfo);
+                     tentative = allInfo[0]["nbr_tentative"];
+                     alert(tentative);
                      tb_alea_f = allInfo[0]["tab_aleatoire_f"];
-                     //alert(tb_alea_f);
                     tb_alea_p = allInfo[0]["tab_aleatoire_p"];
                      demande = allInfo[1];
                       tb_par = allInfo["parrain"];
@@ -55,18 +56,6 @@ $(document).ready(function (e) {
                         document.getElementById("filleul_liste").innerHTML +=affich_mb(tb_fil[o],"filleul");
                         //alert(tb_par[p]);
                     }
-
-                   // $("#parrain_liste li ")
-                    //const liste = document.querySelectorAll("li");
-                    //alert(liste[2].className);
-                   /* for (let i = 0;i<liste.length;i++){
-                        liste[i].addEventListener("mouse",function () {
-                            liste[i].classList.add("active");
-                        });
-                        liste[i].addEventListener("mouseout",function () {
-                            liste[i].classList.remove("active");
-                        });
-                    }*/
                 }
             });
 
@@ -126,19 +115,32 @@ $(document).ready(function (e) {
         console.log(tb_par[tb_alea_p[1]]);
     });*/
     const root = document.querySelector(":root");
+    let nbr_tentative=1;
+    //alert("tentative: "+tentative);
     document.getElementById("open-popup-btn").addEventListener("click",function(){
         document.getElementsByClassName("popup")[0].classList.add("active");
        // document.getElementById("mb_name").innerHTML=tb_par[]
-        setTimeout(function () {
-            root.style.setProperty("--clip","clip-path: circle(400px at center)");
-            root.style.setProperty("--bg","#0065c3");
-            root.style.setProperty("--lef","72%");
-            root.style.setProperty("--haut","350px");
-            root.style.setProperty("--lef_un","0");
-            root.style.setProperty("--opacite","1");
-            root.style.setProperty("--cache","visible");
-        },3000);
-        console.log(tb_par[0]);
+        affiche_mbre_par(tb_alea_p[nbr_tentative]);
+       affiche_mbre_fil(tb_alea_f[nbr_tentative]);
+       alert(nbr_tentative);
+        if (nbr_tentative === tentative){
+            alert("parrainage terminer");
+            nbr_tentative=0;
+        }else {
+            setTimeout(function () {
+                root.style.setProperty("--clip","clip-path: circle(400px at center)");
+                root.style.setProperty("--bg","#0065c3");
+                root.style.setProperty("--lef","72%");
+                root.style.setProperty("--haut","350px");
+                root.style.setProperty("--lef_un","0");
+                root.style.setProperty("--opacite","1");
+                root.style.setProperty("--cache","visible");
+            },3000);
+            nbr_tentative++;
+        }
+
+       // console.log(tb_par[tb_alea_p[nbr_tentative]]['nom']);
+        //console.log(tb_alea_p[nbr_tentative]);
 
     });
 
@@ -153,6 +155,22 @@ $(document).ready(function (e) {
         document.getElementsByClassName("popup")[0].classList.remove("active");
 
     });
-
+    function affiche_mbre_par(index){
+        console.log(index);
+        document.getElementById("mb_name").innerHTML=" "+tb_par[index]['nom']+"&emsp;"+tb_par[index]['prenom']+" ";
+        document.getElementById("mb_contact").innerHTML=tb_par[index]['contact'];
+        document.getElementById("mb_mail").innerHTML=tb_par[index]['email'];
+        document.getElementById("mb_fil").innerHTML=tb_par[index]['filiere'];
+        document.getElementById("mb_genre").innerHTML=tb_par[index]['genre'];
+        document.getElementById("mb_status").innerHTML=tb_par[index]['status'];
+    }
+    function affiche_mbre_fil(index){
+        document.getElementById("mb_name_1").innerHTML=tb_fil[index]['nom']+"&emsp;"+tb_fil[index]['prenom'];
+        document.getElementById("mb_contact_1").innerHTML=tb_fil[index]['contact'];
+        document.getElementById("mb_mail_1").innerHTML=tb_fil[index]['email'];
+        document.getElementById("mb_fil_1").innerHTML=tb_fil[index]['filiere'];
+        document.getElementById("mb_genre_1").innerHTML=tb_fil[index]['genre'];
+        document.getElementById("mb_status_1").innerHTML=tb_fil[index]['status'];
+    }
 });
 
