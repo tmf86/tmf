@@ -15,7 +15,7 @@ $(document).ready(function (e) {
     let chemin = buildUrl('initPar');
     //chemin = toString(chemin);
     let tb_alea_f=[];
-    let tentative=[];
+    let tentative=0;
     let tb_alea_p = [];
     let demande = [];
     let tb_par = [];
@@ -28,9 +28,10 @@ $(document).ready(function (e) {
                 dataType : 'json', // On désire recevoir du HTML
                 success : function(code_html, statut){ // code_html contient le HTML renvoyé
                     const allInfo = code_html;
-                     tentative = allInfo[0]["nb_tentative"];
+                    //console.log(allInfo);
+                     tentative = allInfo[0]["nbr_tentative"];
+                    // alert(tentative);
                      tb_alea_f = allInfo[0]["tab_aleatoire_f"];
-                     //alert(tb_alea_f);
                     tb_alea_p = allInfo[0]["tab_aleatoire_p"];
                      demande = allInfo[1];
                       tb_par = allInfo["parrain"];
@@ -55,18 +56,6 @@ $(document).ready(function (e) {
                         document.getElementById("filleul_liste").innerHTML +=affich_mb(tb_fil[o],"filleul");
                         //alert(tb_par[p]);
                     }
-
-                   // $("#parrain_liste li ")
-                    //const liste = document.querySelectorAll("li");
-                    //alert(liste[2].className);
-                   /* for (let i = 0;i<liste.length;i++){
-                        liste[i].addEventListener("mouse",function () {
-                            liste[i].classList.add("active");
-                        });
-                        liste[i].addEventListener("mouseout",function () {
-                            liste[i].classList.remove("active");
-                        });
-                    }*/
                 }
             });
 
@@ -125,39 +114,74 @@ $(document).ready(function (e) {
         console.log(tb_fil[tb_alea_f[1]]);
         console.log(tb_par[tb_alea_p[1]]);
     });*/
+    const root = document.querySelector(":root");
+    let nbr_tentative=1;
+    //alert("tentative: "+tentative);
+
     document.getElementById("open-popup-btn").addEventListener("click",function(){
         document.getElementsByClassName("popup")[0].classList.add("active");
-        document.querySelector(".description").innerHTML='' +
-            '<div class="container-fluid"> \n' +
-            '\t\t<div class="cardre">\n' +
-            '\t\t\t<div class="cercle"></div>\n' +
-            '\t\t\t<div class="contenue_cadre">\n' +
-            '\t\t\t\t<h2>Toure Marc</h2>\n' +
-            '\t\t\t\t<p>Etudiant , ghjksgxgyhdyghdvhdAnother Course : Build Complete Real World Responsive Websites from Scratch</p>\n' +
-            '\t\t\t\t<a href="#">Parrain</a>\n' +
-            '\t\t\t</div>\n' +
-            '\t\t\t<img src="images/carousel1.jpg">\n' +
-            '\t\t</div>\n' +
-            '\t</div>';
-        document.querySelector(".description").innerHTML+='' +
-            '<div class="container-fluid"> \n' +
-            '\t\t<div class="cardre">\n' +
-            '\t\t\t<div class="cercle"></div>\n' +
-            '\t\t\t<div class="contenue_cadre">\n' +
-            '\t\t\t\t<h2>Toure Marc FABRICE</h2>\n' +
-            '\t\t\t\t<p>Etudiant , ghjksgxgyhdyghdvhdAnother Course : Build Complete Real World Responsive Websites from Scratch</p>\n' +
-            '\t\t\t\t<a href="#">Filleul</a>\n' +
-            '\t\t\t</div>\n' +
-            '\t\t\t<img src="images/carousel1.jpg">\n' +
-            '\t\t</div>\n' +
-            '\t</div>';
-            //"filleul:"+JSON.stringify(tb_fil[tb_alea_f[1]], null, 4)+"<br/>"+"parrain:"+JSON.stringify(tb_par[tb_alea_p[1]], null, 4);
+       // document.getElementById("mb_name").innerHTML=tb_par[]
+        console.log(tb_par);
+        console.log(tb_fil);
+        console.log(tb_alea_p);
+        console.log(tb_alea_f);
+        for (let h=1;h<=tentative;h++){
+            console.log(tb_par[tb_alea_p[h]]+":index="+tb_alea_p[h]);
+            console.log(tb_fil[tb_alea_f[h]]+":index="+tb_alea_f[h]);
+
+        }
+        affiche_mbre_par(tb_alea_p[nbr_tentative]);
+       affiche_mbre_fil(tb_alea_f[nbr_tentative]);
+       alert(nbr_tentative);
+        if (nbr_tentative === tentative){
+            alert("parrainage terminer");
+            document.getElementById("dismiss-popup-btn").innerHTML = "Terminer";
+            nbr_tentative=0;
+        }else {
+            setTimeout(function () {
+                root.style.setProperty("--clip","clip-path: circle(400px at center)");
+                root.style.setProperty("--bg","#0065c3");
+                root.style.setProperty("--lef","72%");
+                root.style.setProperty("--haut","350px");
+                root.style.setProperty("--lef_un","0");
+                root.style.setProperty("--opacite","1");
+                root.style.setProperty("--cache","visible");
+            },3000);
+            nbr_tentative++;
+        }
+
+       // console.log(tb_par[tb_alea_p[nbr_tentative]]['nom']);
+        //console.log(tb_alea_p[nbr_tentative]);
 
     });
 
     document.getElementById("dismiss-popup-btn").addEventListener("click",function(){
+        root.style.setProperty("--clip","clip-path: circle(120px at center)");
+        root.style.setProperty("--bg","#d83133");
+        root.style.setProperty("--lef","50%%");
+        root.style.setProperty("--haut","300px");
+        root.style.setProperty("--lef_un","20%");
+        root.style.setProperty("--opacite","0");
+        root.style.setProperty("--cache","hidden");
         document.getElementsByClassName("popup")[0].classList.remove("active");
-    });
 
+    });
+    function affiche_mbre_par(index){
+        //console.log(index);
+        document.getElementById("mb_name").innerHTML=tb_par[index]['nom']+tb_par[index]['prenom'];
+        document.getElementById("mb_contact").innerHTML=tb_par[index]['contact'];
+        document.getElementById("mb_mail").innerHTML=tb_par[index]['email'];
+        document.getElementById("mb_fil").innerHTML=tb_par[index]['filiere'];
+        document.getElementById("mb_genre").innerHTML=tb_par[index]['genre'];
+        document.getElementById("mb_status").innerHTML=tb_par[index]['status'];
+    }
+    function affiche_mbre_fil(index){
+        document.getElementById("mb_name_1").innerHTML=tb_fil[index]['nom']+tb_fil[index]['prenom'];
+        document.getElementById("mb_contact_1").innerHTML=tb_fil[index]['contact'];
+        document.getElementById("mb_mail_1").innerHTML=tb_fil[index]['email'];
+        document.getElementById("mb_fil_1").innerHTML=tb_fil[index]['filiere'];
+        document.getElementById("mb_genre_1").innerHTML=tb_fil[index]['genre'];
+        document.getElementById("mb_status_1").innerHTML=tb_fil[index]['status'];
+    }
 });
 
