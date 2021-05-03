@@ -49,13 +49,14 @@
             </div>
     </div>
     </div>
-<div class="popup center">
-    <!--div class="icon">
+<div class="popup center" style="background-image:url('images/back_par_2.jpg'); background-size: cover;
+    height: 100%;background-origin: ">
+    <div class="icon">
         <i class="fa fa-check"></i>
     </div>
     <div class="title">
         Success!!
-    </div-->
+    </div>
 <div class="row">
     <div class="col-md">
         <div class="dismiss-btn">
@@ -68,8 +69,8 @@
     <div class="row">
         <div class="col-md">
             <div class="description glob">
-                <div class="glob">
-                    <div class="cardre" >
+                <div class="glob" >
+                    <div class="cardre"style="margin-left: -2%; " >
                         <div class="cercle" ></div>
                         <div class="contenue_cadre" >
                             <h2 id="mb_name">Toure Marc</h2>
@@ -84,7 +85,7 @@
                     </div>
                 </div>
                 <div class="glob">
-                    <div class="cardre" style="margin-left: 8%;">
+                    <div class="cardre" style="margin-left: 10%;">
                         <div class="cercle"></div>
                         <div class="contenue_cadre">
                             <h2 id="mb_name_1">Toure Marc</h2>
@@ -104,14 +105,15 @@
         </div>
     </div>
 </div>
-<div class="dismiss-btn">
-    <button id="dismiss-popup-btn">
-        Dismiss
-    </button>
-</div>
+
 <div class="center ">
     <button class="btn btn-primary bouton_active " id="open-popup-btn">
         Commencer
+    </button>
+</div>
+<div class="dismiss-btn">
+    <button id="dismiss-popup-btn">
+        Dismiss
     </button>
 </div>
         <!--end content-->
