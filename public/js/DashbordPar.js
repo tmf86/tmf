@@ -120,12 +120,12 @@ $(document).ready(function (e) {
 
     document.getElementById("open-popup-btn").addEventListener("click",function(){
         document.getElementsByClassName("popup")[0].classList.add("active");
-       // document.getElementById("mb_name").innerHTML=tb_par[]
-       /* console.log(tb_par);
-        console.log(tb_fil);
+       /*// document.getElementById("mb_name").innerHTML=tb_par[]
+        console.log(tb_par);
+        console.log(tb_fil);*/
         console.log(tb_alea_p);
         console.log(tb_alea_f);
-        for (let h=1;h<=tentative;h++){
+        /*for (let h=1;h<=tentative;h++){
             console.log(tb_par[tb_alea_p[h]]+":index="+tb_alea_p[h]);
             console.log(tb_fil[tb_alea_f[h]]+":index="+tb_alea_f[h]);
 
@@ -139,13 +139,16 @@ $(document).ready(function (e) {
             nbr_tentative=0;
         }else {
             setTimeout(function () {
-                root.style.setProperty("--clip","clip-path: circle(400px at center)");
+                root.style.setProperty("--clip","clip-path: circle(400px at right)");
                 root.style.setProperty("--bg","#0065c3");
-                root.style.setProperty("--lef","72%");
+                root.style.setProperty("--lef","59%");
                 root.style.setProperty("--haut","350px");
-                root.style.setProperty("--lef_un","0");
+                root.style.setProperty("--lef_un","-3");
                 root.style.setProperty("--opacite","1");
                 root.style.setProperty("--cache","visible");
+                root.style.setProperty("--marge_img","8.5%");
+                root.style.setProperty("--bg_cadre","linear-gradient(90deg, rgba(54,209,220,1) 0%, rgba(9,9,121,1) 35%, rgba(91,134,229,1) 100%)");
+
             },3000);
             nbr_tentative++;
             /*var user_bule = document.querySelectorAll("#parrain_liste .user_info");
@@ -169,7 +172,7 @@ $(document).ready(function (e) {
 
     });
     function affiche_mbre_par(index,n,n1){
-        //console.log(index);
+        console.log(index);
         document.getElementById("mb_name").innerHTML=tb_par[index]['nom']+tb_par[index]['prenom'];
         document.getElementById("mb_contact").innerHTML=tb_par[index]['contact'];
         document.getElementById("mb_mail").innerHTML=tb_par[index]['email'];
@@ -180,14 +183,17 @@ $(document).ready(function (e) {
        // document.getElementById("bule_par").style.display="inline-block";
        // $("#parrain_liste .user_info")[1].css("display","inline-block");
         var  bule = document.querySelectorAll("#parrain_liste .bule_par");
+        //console.log("nombre bulle fil:"+bule.length);
        // console.log(bule);
-        bule[n].style.display="inline-block";
+        console.log(n1);
+
+        bule[index].style.display="inline-block";
         var nom_fil = document.querySelectorAll("#filleul_liste .bule_info span");
         var img_fil = document.querySelectorAll("#filleul_liste .bule_info img");
-        //console.log(img_par[n]);
-        // console.log(nom_par[n]);
-        img_fil[n].src= tb_par[index]['image'];
-        nom_fil[n].innerHTML=tb_fil[n1]['nom']+tb_fil[n1]['prenom'];
+        //console.log("nombre img fil:"+img_fil.length);
+        // console.log("nombre nom fil:"+nom_fil.length);
+        img_fil[index].src= tb_par[index]['image'];
+        nom_fil[index].innerHTML=tb_par[n1]['nom']+tb_par[n1]['prenom'];
 
     }
     function affiche_mbre_fil(index,n,n1){
@@ -200,14 +206,14 @@ $(document).ready(function (e) {
         document.getElementById("mb_photo_1").src=tb_fil[index]['image'];
         //document.getElementById("bule_par").style.display="inline-block";
        // $("#filleul_liste .user_info")[1].display="inline-block";
-        var  bule_f = document.querySelectorAll("#filleul_liste .bule_par");
+       var  bule_f = document.querySelectorAll("#filleul_liste .bule_par");
        // console.log(bule_f);
-        bule_f[n].style.display="inline-block";
+        bule_f[index].style.display="inline-block";
 
         var nom_par = document.querySelectorAll("#parrain_liste .bule_info span");
         var img_par = document.querySelectorAll("#parrain_liste .bule_info img");
-        img_par[n].src= tb_par[index]['image'];
-        nom_par[n].innerHTML=tb_par[n1]['nom']+tb_par[n1]['prenom'];
+        img_par[index].src= tb_fil[n1]['image'];
+        nom_par[index].innerHTML=tb_fil[n1]['nom']+tb_fil[n1]['prenom'];
 
     }
 });
