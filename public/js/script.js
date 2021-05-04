@@ -1,4 +1,7 @@
 $(function () {
+
+//Section Script Clobal
+
     $(".annonce_click").click(function () {
         //alert("ok");
         if ($(".annonce_content").css("display") === "block") {
@@ -9,6 +12,7 @@ $(function () {
             $(this).html("MOINS");
         }
     });
+
     /*Annimation des fa icon a coté des inputs et aussi des labels lorsqu'il y a une erreur*/
     const input = $("input")
     input.focus(function () {
@@ -35,6 +39,7 @@ $(function () {
             $(`textarea[name="${this.name}"]`).removeClass("error")
         }
     })
+
     /*Getion dynamique des select de la date de naissance*/
     const [day, month, year] = [$("#jour"), $("#mois"), $("#annee")]
     const Leap = function () {
@@ -90,7 +95,9 @@ $(function () {
     day.change(function () {
         Leap()
     })
-    /*  Annimation des inputs de type password*/
+
+    /* Annimation des inputs de type password*/
+
     $(".password-eye").click(function () {
         let class_name = '';
         for (let i = 0; i < $(this)[0].classList.length; i++) {
@@ -109,7 +116,20 @@ $(function () {
             input_neighbour.attr(`type`, 'password')
         }
     })
+
+    /*Systeme de table des Sujets*/
+
+    $('.tab-item').click(function (e) {
+        e.preventDefault();
+        const href = $(this).attr('href')
+        $('li.active').removeClass('active');
+        $(`li[data-container='${href}']`).toggleClass('active')
+    })
+
+//Section Inscriprion
+
     /*Soumission du formulaire d'inscription en Ajax*/
+
     $("#form-register").submit(function (e) {
         e.preventDefault()
         $(".cloud").toggleClass("active")
@@ -169,7 +189,9 @@ $(function () {
             }
         })
     })
+
     /*Animation du loader pour faire patienter l'utilisateur durant la soumission du formulaire*/
+
     const id = setInterval(function () {
         if ($(".loader-conatiner").hasClass("active")) {
             if ($("#point-loader").html().length === 3) {
@@ -178,7 +200,11 @@ $(function () {
             $("#point-loader").html($("#point-loader").html() + ".")
         }
     }, 1000)
+
+//Section Connexion
+
     /*Soumission du formulaire de connexion en Ajax*/
+
     $('#form-login').submit(function (e) {
         e.preventDefault()
         $('.cipy-loader-container').toggleClass('active')
@@ -232,7 +258,11 @@ $(function () {
             }
         })
     })
-    /*Commencement du processus de  mise a jour du profile*/
+
+//Section de mise a jour du profile*/
+
+    /*Preview de l'image de profile*/
+
     $("#user-pic").on("change", function () {
         $(`label[for='${this.name}'] small`).html('')
         $("#img-container").css("border", "none")
@@ -270,14 +300,17 @@ $(function () {
         }
         console.log(isvalid)
     })
-//Hide Modal de notification de l'utilisateur
+
+    /*Fermeture des modal de notification de l'utilisateur*/
+
     $('.close').click(function () {
         $('#notif').modal('hide')
         $('#updated').modal('hide')
         $('#session-alert').modal('hide')
         $('#forum-add').modal('hide')
     })
-    /*Envoie des donnée pour la mise a jour du profile avec Ajax*/
+    /*Mise a jour du profile avec Ajax*/
+
     $('#form-update-profile').submit(function (e) {
         e.preventDefault()
         $('#update-btn').html(`
@@ -362,74 +395,76 @@ $(function () {
             $('#notif').modal('show')
         }
     })
-//Proccessus de cration d'un clavier a emoticonnes
-})
-const emoticonsStr =
-    '😀 😃 😄 😁 😆 😅 😂 🤣 😊 😇 🙃 😉 😌 😍 🥰 😘 😗 😙 😚 😋 😛 😝 😜 🤪 👩‍💻 💻 ' +
-    '🤨 🧐 🤓 😎 🤩 🥳 😏 😒 😞 😟 😕 🙁 ☹ 😣 😖 😫 😩 🥺 😢 😭 😤 😠 🐶 🐱 🐭 🐹 🐰 🦊 🐻 🐼 ' +
-    '🤬 🤯 😳 🥵 🥶 😱 😨 😰 😥 😓 🤗 🤔 🤭 🤫 🤥 😶 😐 😑 😬 🙄 😯 😦 😧 😮 😲 🍏 🍎 🍐 🍊 🍋 🍌 🍉 ' +
-    '😴 🤤 😪 😵 🤐 🥴 🤢 🤮 🤧 😷 🤒 🤕 🤑 🤠 😈 👿 👹 👺 🤡 💩 👻 💀 ☠ 👽 👾 ⚽ 🏀 🏈 🥎 🎾 🏐 🏉 🥏 🎱 🏓 🏸 🏒 ' +
-    '🤖 🎃 😺 😸 😹 😻 😼 😽 🙀 😿 😾 👋 🤚 🖐 ✋ 🖖 👌  ✌ 🤞 🤟 🤘 🤙 👈 👉 👆 🚗 🚕 🚙 🚌 🚎 🚓 🚑 🚒 🚐 ' +
-    '🖕 👇 ☝ 👍 👎 ✊ 👊 🤛 🤜 👏 🙌 👐 🤲 🤝 🙏 ✍ 💅 🤳 💪 🦵 🦶 👣 👂 ⌚ 📱 📲 💽 💾 💿 📀 ' +
-    '👃 🧠 🦷 🦴 👀 👅 👄 💋 👶 👩'
-const emoticons = emoticonsStr.split(' ')
-for (let i = 0; i < emoticons.length; i++) {
-    const content = $('#emoticons').html();
-    $('#emoticons').html(content + `<a href="#" class="emoji" data-emoji=${i} title="click sur l'emoticone pour le selectioner" >${emoticons[i]}</a>`)
-}
-$('#emojiKeyboard').click(function () {
-    if ($('.emoticon-container').hasClass('active')) {
-        KeyBoardEmojiModalHideTask()
-    }
-    KeyBoardEmojiModalShowTask()
-})
-$('.emoji').click(function (e) {
-    e.preventDefault()
-    const emoticonID = $(this).attr('data-emoji');
-    const textAreaLastContent = $(`textarea[name='about']`).val() + emoticons[emoticonID];
-    $(`textarea[name='about']`).val(textAreaLastContent)
-    console.log()
-})
-$(window).click(function (e) {
-    const is = $(e.target).is($('.emoji-fixed.active'))
-    if (is) {
-        KeyBoardEmojiModalHideTask()
-    }
-})
-$('#close-emoji-modal').click(function () {
-    KeyBoardEmojiModalHideTask();
-})
-/*Fin du processus de  mise a jour du profile*/
 
-//Script de selection de fichier
-$('#attachment').on('change', function () {
-    $(`#error-container`).html('')
-    $("#image-getted").css('display', 'none')
-    $('#subject-btn').removeAttr('disabled')
-    console.log(this.files[0].hasOwnProperty('name'))
-    const fileSelectedName = this.files[0].name
-    const fileSelectedExt = fileSelectedName.substring(fileSelectedName.indexOf("."))
-    const extValid = [".png", ".jpg", ".gif", ".jpeg"]
-    let isvalid = false
-    for (let i = 0; i < extValid.length; i++) {
-        if (extValid[i] === fileSelectedExt) {
-            isvalid = true;
+    /*Clavier a emoticonnes*/
+    const emoticonsStr =
+        '😀 😃 😄 😁 😆 😅 😂 🤣 😊 😇 🙃 😉 😌 😍 🥰 😘 😗 😙 😚 😋 😛 😝 😜 🤪 👩‍💻 💻 ' +
+        '🤨 🧐 🤓 😎 🤩 🥳 😏 😒 😞 😟 😕 🙁 ☹ 😣 😖 😫 😩 🥺 😢 😭 😤 😠 🐶 🐱 🐭 🐹 🐰 🦊 🐻 🐼 ' +
+        '🤬 🤯 😳 🥵 🥶 😱 😨 😰 😥 😓 🤗 🤔 🤭 🤫 🤥 😶 😐 😑 😬 🙄 😯 😦 😧 😮 😲 🍏 🍎 🍐 🍊 🍋 🍌 🍉 ' +
+        '😴 🤤 😪 😵 🤐 🥴 🤢 🤮 🤧 😷 🤒 🤕 🤑 🤠 😈 👿 👹 👺 🤡 💩 👻 💀 ☠ 👽 👾 ⚽ 🏀 🏈 🥎 🎾 🏐 🏉 🥏 🎱 🏓 🏸 🏒 ' +
+        '🤖 🎃 😺 😸 😹 😻 😼 😽 🙀 😿 😾 👋 🤚 🖐 ✋ 🖖 👌  ✌ 🤞 🤟 🤘 🤙 👈 👉 👆 🚗 🚕 🚙 🚌 🚎 🚓 🚑 🚒 🚐 ' +
+        '🖕 👇 ☝ 👍 👎 ✊ 👊 🤛 🤜 👏 🙌 👐 🤲 🤝 🙏 ✍ 💅 🤳 💪 🦵 🦶 👣 👂 ⌚ 📱 📲 💽 💾 💿 📀 ' +
+        '👃 🧠 🦷 🦴 👀 👅 👄 💋 👶 👩'
+    const emoticons = emoticonsStr.split(' ')
+    for (let i = 0; i < emoticons.length; i++) {
+        const content = $('#emoticons').html();
+        $('#emoticons').html(content + `<a href="#" class="emoji" data-emoji=${i} title="click sur l'emoticone pour le selectioner" >${emoticons[i]}</a>`)
+    }
+    $('#emojiKeyboard').click(function () {
+        if ($('.emoticon-container').hasClass('active')) {
+            KeyBoardEmojiModalHideTask()
         }
-    }
-    if (isvalid) {
-        console.log('ok')
-        $("#image-getted").css('display', 'inline')
-    } else {
-        $(`#error-container`).html('desolé le fichier selectionné n\'est pas une image valide, veuillez en selectionner un autre .');
-        $('#subject-btn').attr('disabled', 'true')
-    }
-})
+        KeyBoardEmojiModalShowTask()
+    })
+    $('.emoji').click(function (e) {
+        e.preventDefault()
+        const emoticonID = $(this).attr('data-emoji');
+        const textAreaLastContent = $(`textarea[name='about']`).val() + emoticons[emoticonID];
+        $(`textarea[name='about']`).val(textAreaLastContent)
+        console.log()
+    })
+    $(window).click(function (e) {
+        const is = $(e.target).is($('.emoji-fixed.active'))
+        if (is) {
+            KeyBoardEmojiModalHideTask()
+        }
+    })
+    $('#close-emoji-modal').click(function () {
+        KeyBoardEmojiModalHideTask();
+    })
 
-/*Processus de creation d'un nouveau sujet de discussion*/
-/*Envoie des donnée pour la creation du sujet  avec Ajax*/
-$('#subject-form').submit(function (e) {
-    e.preventDefault()
-    $('#subject-btn').html(`
+//Section du Forum
+
+    /*Image Preview*/
+
+    $('#attachment').on('change', function () {
+        $(`#error-container`).html('')
+        $("#image-getted").css('display', 'none')
+        $('#subject-btn').removeAttr('disabled')
+        console.log(this.files[0].hasOwnProperty('name'))
+        const fileSelectedName = this.files[0].name
+        const fileSelectedExt = fileSelectedName.substring(fileSelectedName.indexOf("."))
+        const extValid = [".png", ".jpg", ".gif", ".jpeg"]
+        let isvalid = false
+        for (let i = 0; i < extValid.length; i++) {
+            if (extValid[i] === fileSelectedExt) {
+                isvalid = true;
+            }
+        }
+        if (isvalid) {
+            console.log('ok')
+            $("#image-getted").css('display', 'inline')
+        } else {
+            $(`#error-container`).html('desolé le fichier selectionné n\'est pas une image valide, veuillez en selectionner un autre .');
+            $('#subject-btn').attr('disabled', 'true')
+        }
+    })
+
+    /*Creation du sujet d'un nouveau sujet en Ajax*/
+
+    $('#subject-form').submit(function (e) {
+        e.preventDefault()
+        $('#subject-btn').html(`
             <div class="loader-center">
                 <div class="loader-d-flex">
                     <div>
@@ -439,48 +474,49 @@ $('#subject-form').submit(function (e) {
                     </div>
                 </div>
             </div>`)
-    setTimeout(function () {
-        $.ajax({
-            url: window.location.href,
-            type: 'post',
-            dataType: 'json',
-            cache: false,
-            contentType: false,
-            processData: false,
-            data: new FormData(document.querySelector('#subject-form')),
-            success: function (data) {
-                console.log(data)
-                $('#subject-btn').html(`soumettre`);
-                $('#debug').html(data)
-                $('#forum-add').modal('hide')
-                setTimeout(function () {
-                    window.location.reload()
-                }, 2000)
-            },
-            error: function (xhr) {
-                $('#subject-btn').html(`soumettre`);
-                $('#debug').html(xhr.responseText)
-                const errors = xhr.responseJSON
-                if (xhr.status === 400) {
-                    switch (errors.inputs) {
-                        case true :
-                            for (const property in errors) {
-                                $(`label[for='${property}'] small`).html(errors[property])
-                                $(`input[name="${property}"]`).addClass("error")
-                                $(`textarea[name="${property}"]`).addClass("error")
-                                console.log(`${property}: ${errors[property]}`);
-                            }
-                            break
-                        case false :
-                            if (errors.setsession === true) {
-                                $("#image-getted").css('display', 'none')
-                                $('#session-alert').modal('show')
-                            }
-                            break;
+        setTimeout(function () {
+            $.ajax({
+                url: window.location.href,
+                type: 'post',
+                dataType: 'json',
+                cache: false,
+                contentType: false,
+                processData: false,
+                data: new FormData(document.querySelector('#subject-form')),
+                success: function (data) {
+                    console.log(data)
+                    $('#subject-btn').html(`soumettre`);
+                    $('#debug').html(data)
+                    $('#forum-add').modal('hide')
+                    setTimeout(function () {
+                        window.location.reload()
+                    }, 2000)
+                },
+                error: function (xhr) {
+                    $('#subject-btn').html(`soumettre`);
+                    $('#debug').html(xhr.responseText)
+                    const errors = xhr.responseJSON
+                    if (xhr.status === 400) {
+                        switch (errors.inputs) {
+                            case true :
+                                for (const property in errors) {
+                                    $(`label[for='${property}'] small`).html(errors[property])
+                                    $(`input[name="${property}"]`).addClass("error")
+                                    $(`textarea[name="${property}"]`).addClass("error")
+                                    console.log(`${property}: ${errors[property]}`);
+                                }
+                                break
+                            case false :
+                                if (errors.setsession === true) {
+                                    $("#image-getted").css('display', 'none')
+                                    $('#session-alert').modal('show')
+                                }
+                                break;
+                        }
                     }
                 }
-            }
-        })
-    }, 3000)
+            })
+        }, 3000)
 
+    })
 })
