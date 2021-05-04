@@ -1,5 +1,5 @@
 <!-- Footer -->
-<footer class="page-footer font-small special-color pt-4 mt-5">
+<footer class="page-footer font-small  pt-4" style="background: #414755">
     <div class="container-fluid text-center text-md-left">
         <div class="row">
             <div class="col-md-6 mt-md-0 mt-3">
@@ -47,6 +47,19 @@
 <?= suppl_tags($scripts ?? [], SCRIPT) ?>
 <script>
     $(".preloader").fadeOut();
+    var fullHeight = function () {
+
+        $('.js-fullheight').css('height', $(window).height());
+        $(window).resize(function () {
+            $('.js-fullheight').css('height', $(window).height());
+        });
+
+    };
+    fullHeight();
+
+    $('#sidebarCollapse').on('click', function () {
+        $('#sidebar').toggleClass('active');
+    });
 </script>
 <!--end of js files loading  -->
 </body>

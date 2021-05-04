@@ -90,8 +90,8 @@ $dispatcher = FastRoute\simpleDispatcher(function (FastRoute\RouteCollector $rou
         $title = 'A propos';
         return new View\View('pages.apropos', compact('title'));
     });
-    $route->get('/Cpy-Mvc/test', function () {
-
+    $route->get('/Cpy-Mvc/root', function () {
+        require 'test/responsive-table.php';
     });
 });
 // Fetch method and URI from somewhere

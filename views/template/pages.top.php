@@ -24,7 +24,7 @@
     </div>
 </div>
 <header class="header">
-    <nav class="mb-1 navbar navbar-expand-lg navbar-light our-background darken-2 lighten-1">
+    <nav class="navbar navbar-expand-lg navbar-light our-background darken-2 lighten-1 shadow mb-1">
         <a href="#" class="navbar-brand"><img src="<?= makeRootOrFileUrl('images/cpy.jpeg') ?>" alt=""
                                               class="img-responsive rounded-circle" width="40px"><span class="ml-2 ">CIPY</span></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#cpy"
