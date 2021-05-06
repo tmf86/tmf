@@ -14,12 +14,12 @@ $(document).ready(function (e) {
    // alert("ok");
     let chemin = buildUrl('initPar');
     //chemin = toString(chemin);
-    let tb_alea_f=[];
+    var tb_alea_f= [];
     let tentative=0;
     let tb_alea_p = [];
     let demande = [];
     let tb_par = [];
-    let tb_fil = [];
+    var tb_fil = [];
     setTimeout(function (){
 
             $.ajax({
@@ -34,7 +34,7 @@ $(document).ready(function (e) {
                      tb_alea_f = allInfo[0]["tab_aleatoire_f"];
                     tb_alea_p = allInfo[0]["tab_aleatoire_p"];
                      demande = allInfo[1];
-                      tb_par = allInfo["parrain"];
+                      tb_par =allInfo["parrain"];
                     tb_fil = allInfo["filleul"];
                     //console.log(demande);
                     //alert(tb_fil[0]["nom"]);
@@ -71,14 +71,14 @@ $(document).ready(function (e) {
             '                                    <span style="float: left;">'+tb["nom"]+" &emsp;"+tb["prenom"]+'</span>\n' +
             '                                    <div style="display: none" class="bule_par">\n' +
             '                                         \n' +
-            '                                         <div class="user_info bule_info" >\n' +
+            '                                         <div class="user_info bule_info"  >\n' +
             '                                            <img src="../../fast-rooter-test/public/images/icone2" class="rounded-circle" style="width:3em;height:3em;border:1.5px solid #f5f6fa; float: left; margin-left: 1rem;">\n' +
             '                                             <span>Samuel</span>\n' +
             '                                         <p>'+tp_mb+'</p>\n' +
             '                                         </div> \n' +
             '                                    </div>\n' +
             '                                   \n' +
-            '                                    <p style="clear: left;">parrainer</p>\n' +
+            '                                    <!--p style="clear: left;">parrainer</p-->\n' +
             '                                </div>\n' +
             '                            </div>\n' +
             '                        </li>';
@@ -115,21 +115,24 @@ $(document).ready(function (e) {
         console.log(tb_par[tb_alea_p[1]]);
     });*/
     const root = document.querySelector(":root");
-    let nbr_tentative=1;
+    let nbr_tentative=0;
     //alert("tentative: "+tentative);
 
     document.getElementById("open-popup-btn").addEventListener("click",function(){
         document.getElementsByClassName("popup")[0].classList.add("active");
-       /*// document.getElementById("mb_name").innerHTML=tb_par[]
+       /*// document.getElementById("mb_name").innerHTML=tb_par[]*/
         console.log(tb_par);
-        console.log(tb_fil);*/
-        console.log(tb_alea_p);
-        console.log(tb_alea_f);
-        /*for (let h=1;h<=tentative;h++){
+        console.log(tb_fil);
+
+        for (let h=1;h<=tentative;h++){
             console.log(tb_par[tb_alea_p[h]]+":index="+tb_alea_p[h]);
             console.log(tb_fil[tb_alea_f[h]]+":index="+tb_alea_f[h]);
 
-        }*/
+        }
+        console.log(tb_par[tb_par.length]);
+        console.log(tb_fil[tb_fil.length]);
+        console.log(tb_alea_p[nbr_tentative]);
+        console.log(tb_alea_f[nbr_tentative]);
         affiche_mbre_par(tb_alea_p[nbr_tentative],nbr_tentative,tb_alea_f[nbr_tentative]);
        affiche_mbre_fil(tb_alea_f[nbr_tentative],nbr_tentative,tb_alea_p[nbr_tentative]);
        alert(nbr_tentative);
@@ -139,8 +142,8 @@ $(document).ready(function (e) {
             nbr_tentative=0;
         }else {
             setTimeout(function () {
-                root.style.setProperty("--clip","clip-path: circle(400px at right)");
-                root.style.setProperty("--bg","#0065c3");
+                root.style.setProperty("--clip","circle(400px at center)");
+                root.style.setProperty("--bg","linear-gradient(90deg, rgba(33,147,176,1) 0%, rgba(9,102,121,1) 35%, rgba(109,213,237,1) 100%)");
                 root.style.setProperty("--lef","59%");
                 root.style.setProperty("--haut","350px");
                 root.style.setProperty("--lef_un","-3");
@@ -149,7 +152,7 @@ $(document).ready(function (e) {
                 root.style.setProperty("--marge_img","8.5%");
                 root.style.setProperty("--bg_cadre","linear-gradient(90deg, rgba(54,209,220,1) 0%, rgba(9,9,121,1) 35%, rgba(91,134,229,1) 100%)");
 
-            },3000);
+            },2500);
             nbr_tentative++;
             /*var user_bule = document.querySelectorAll("#parrain_liste .user_info");
             console.log(user_bule[1]);*/
@@ -161,18 +164,20 @@ $(document).ready(function (e) {
     });
 
     document.getElementById("dismiss-popup-btn").addEventListener("click",function(){
-        root.style.setProperty("--clip","clip-path: circle(120px at center)");
-        root.style.setProperty("--bg","#d83133");
-        root.style.setProperty("--lef","50%%");
+        root.style.setProperty("--clip","circle(120px at center)");
+        root.style.setProperty("--bg","linear-gradient(90deg, rgba(33,147,176,1) 0%, rgba(9,102,121,1) 35%, rgba(109,213,237,1) 100%)");
+        root.style.setProperty("--lef","50%");
         root.style.setProperty("--haut","300px");
         root.style.setProperty("--lef_un","20%");
         root.style.setProperty("--opacite","0");
         root.style.setProperty("--cache","hidden");
+        root.style.setProperty("--over_flo","hidden");
+        root.style.setProperty("--bg_cadre","transparent");
         document.getElementsByClassName("popup")[0].classList.remove("active");
 
     });
     function affiche_mbre_par(index,n,n1){
-        console.log(index);
+        //console.log(index);
         document.getElementById("mb_name").innerHTML=tb_par[index]['nom']+tb_par[index]['prenom'];
         document.getElementById("mb_contact").innerHTML=tb_par[index]['contact'];
         document.getElementById("mb_mail").innerHTML=tb_par[index]['email'];
@@ -185,7 +190,7 @@ $(document).ready(function (e) {
         var  bule = document.querySelectorAll("#parrain_liste .bule_par");
         //console.log("nombre bulle fil:"+bule.length);
        // console.log(bule);
-        console.log(n1);
+       // console.log(n1);
 
         bule[index].style.display="inline-block";
         var nom_fil = document.querySelectorAll("#filleul_liste .bule_info span");

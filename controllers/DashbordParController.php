@@ -37,15 +37,17 @@ class DashbordParController extends Controller
         $mb_par = $mb
             ->select("membre")
             ->whereEqual("filiere", $this->recupFilere($dm->filiere, '2'))
-            ->andEqual("validation", "vrai")->run(true);
+            ->andEqual("validation", "vrai")->andEqual("status","parrain")
+            ->run(true);
         $mb_fil = $mb
             ->select("membre")
             ->whereEqual("filiere", $this->recupFilere($dm->filiere, '1'))
-            ->andEqual("validation", "vrai")->run(true);
-        //var_dump($mb_par);
+            ->andEqual("validation", "vrai")->andEqual("status","filleul")
+            ->run(true);
+        //($mb_par);
         // echo "<br>";
         //var_dump($mb_fil);
-       // var_dump(count($mb_fil));
+       //var_dump(count($mb_fil));
         //var_dump(count($mb_par));
         //echo "<br>";
         $tb_info = $this->equlibrateMenber(count($mb_par), count($mb_fil));
@@ -74,15 +76,17 @@ class DashbordParController extends Controller
     /**
      * @Fonction qui genere un tableau de nombre aleatoire d'une manière très
      * simmple sans prendre en compte de valeur a complèter !
+     * @throws \Exception
      */
     private function random_s($nberToRandom)
     {
-        $i = 1;
-        $random_i[$i] = random_int(0, ($nberToRandom - 1 ));
-        while ($i <= $nberToRandom) {
+        $nberToRandom =$nberToRandom - 1;
+        $i = 0;
+        $random_i[$i] = random_int(0, $nberToRandom );
+        while ($i < $nberToRandom) {
             $ver = false;
-            $val = random_int(0, ($nberToRandom-1));
-            for ($j = 1; $j < $i; $j++) {
+            $val = random_int(0, $nberToRandom);
+            for ($j = 0; $j < $i; $j++) {
                 if ($random_i[$j] === $val) {
                     $ver = true;
                 }
@@ -118,14 +122,18 @@ class DashbordParController extends Controller
         return $tab_info;
     }
 
+    /**
+     * @throws \Exception
+     */
     private function random_c($nberToRandom, $next)
     {
-        $random_i = $this->random_s($nberToRandom-1);
+        $nberToRandom = $nberToRandom - 1;
+        $random_i = $this->random_s($nberToRandom);
         $k = $i = count($random_i) + 1;
-        $random_i[$i] = random_int(0, ($nberToRandom -1));
+        $random_i[$i] = random_int(0, $nberToRandom );
         while ($i <= $next) {
             $ver = false;
-            $val = random_int(0, $nberToRandom-1);
+            $val = random_int(0, $nberToRandom);
             for ($j = $k; $j < $i; $j++) {
                 if ($random_i[$j] === $val) {
                     $ver = true;

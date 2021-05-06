@@ -10,6 +10,7 @@
 	--cache:hidden;
 	--marge_img:0.5;
 	--bg_cadre:transparent;
+	--over_flo:hidden;
 }
 *{
 	margin: 0px;
@@ -160,6 +161,12 @@ nav{
 .user_info p{
 	font-size: 10px;
 	color: rgba(255,255,255,0.6);
+}
+.bule_par .user_info{
+	clear: left;
+	position: absolute;
+	top: 65%;
+	left: 20%;
 }
 .video_cam{
 	margin-left: 50px;
@@ -318,19 +325,22 @@ nav{
 .popup.active .icon {
 	position: absolute;
 	left: 50%;
-	top: 0.5%;
-	transition: all 300ms ease-in-out 250ms;
+	top: 2.5%;
+	transition: all 350ms ease-in-out 270ms;
 }
 .popup.active .title {
 	position: absolute;
-	left: 53%;
+	left: 56%;
 	transition: all 300ms ease-in-out 300ms;
 }
 .popup.active .description {
-	margin-top: 0px;
+	margin-top: 3px;
 	transition: all 300ms ease-in-out 350ms;
 }
 .popup.active .dismiss-btn {
+	position: absolute;
+	top: 80%;
+	left: 50%;
 	transition: all 300ms ease-in-out 400ms;
 }
 
@@ -381,13 +391,16 @@ nav{
 	transition: 0.6s;
 	background: var(--bg_cadre);
 }
+/*.cardre:before{
+	background: var(--bg_cadre);
+}*/
 .cardre .cercle{
 	position: absolute;
 	top: 0;
 	left: -3%;
 	width: 100%;
 	height: 100%;
-	overflow: hidden;
+	overflow: var(--over_flo);
 }
 .cardre .cercle:before{
 	content: '';
@@ -398,7 +411,8 @@ nav{
 	height: 100%;
 	background: var(--bg);
 	clip-path: var(--clip);
-	transform: 0.5s;
+	/*overflow: var(--over_flo);*/
+	/*transform: translate(50%,-50%);*/
 }
 /*.cardre:hover .cercle:before{
 	clip-path: circle(400px at center);
@@ -454,7 +468,7 @@ nav{
 	color: #fff;
 }
 .cardre .contenue_cadre a{
-	color: #fff;
+	/*color: #fff;*/
 	padding: 10px 20px;
 	border-radius: 10px;
 	background: #fff;

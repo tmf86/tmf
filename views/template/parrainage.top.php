@@ -30,12 +30,14 @@
             border-radius: 50%;
             width: 240px;
             height: 240px;
-            align-items: center;
+            /*align-items: center;*/
+            bottom: -2.59011rem;
+            right: -0.5rem;
             margin: 20px auto;
             animation: spin 2s linear infinite;
-            position: relative;
-            left: 1.52rem;
-            top: 0.56rem;
+            position: absolute;
+            /*left: 4rem;
+            top: -6rem;*/
         }
 
         @keyframes spin {
