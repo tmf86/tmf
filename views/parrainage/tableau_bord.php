@@ -2,6 +2,8 @@
 
 <!--/.Navbar -->
 <!--Begin content-->
+<!--<div id="debug"></div>-->
+
     <div class="container-fluid h-100" id="cadre">
         <div class="row justify-content-center h-100">
             <div class="col-md-5 col-xl-4 chat">

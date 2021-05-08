@@ -52,6 +52,7 @@ class DashbordParController extends Controller
         //echo "<br>";
         $tb_info = $this->equlibrateMenber(count($mb_par), count($mb_fil));
         $info_parrainage = ["parrain" => $mb_par, "filleul" => $mb_fil, $tb_info, $dm];
+        //debug($info_parrainage);
         echo json_encode($info_parrainage);
     }
 
@@ -80,12 +81,12 @@ class DashbordParController extends Controller
      */
     private function random_s($nberToRandom)
     {
-        $nberToRandom =$nberToRandom - 1;
+        //$nberToRandom =$nberToRandom - 1;
         $i = 0;
-        $random_i[$i] = random_int(0, $nberToRandom );
+        $random_i[$i] = random_int(0, $nberToRandom -1);
         while ($i < $nberToRandom) {
             $ver = false;
-            $val = random_int(0, $nberToRandom);
+            $val = random_int(0, $nberToRandom-1);
             for ($j = 0; $j < $i; $j++) {
                 if ($random_i[$j] === $val) {
                     $ver = true;
@@ -106,6 +107,7 @@ class DashbordParController extends Controller
             $add = ($nombre_p - $nombre_f) + $nombre_f;
             $max = $nombre_p;
             $pos_f = $this->random_c($nombre_f, $add);
+            //debug($this->random_c($nombre_f, $add));
             $pos_p = $this->random_s($nombre_p);
 
         } elseif ($this->test_val($nombre_p, $nombre_f) === "secondMax") {
@@ -127,13 +129,14 @@ class DashbordParController extends Controller
      */
     private function random_c($nberToRandom, $next)
     {
-        $nberToRandom = $nberToRandom - 1;
+       // $nberToRandom = $nberToRandom - 1;
         $random_i = $this->random_s($nberToRandom);
-        $k = $i = count($random_i) + 1;
-        $random_i[$i] = random_int(0, $nberToRandom );
-        while ($i <= $next) {
+        //debug($random_i);
+        $k = $i = count($random_i);
+        $random_i[$i] = random_int(0, $nberToRandom -1);
+        while ($i < $next) {
             $ver = false;
-            $val = random_int(0, $nberToRandom);
+            $val = random_int(0, $nberToRandom-1);
             for ($j = $k; $j < $i; $j++) {
                 if ($random_i[$j] === $val) {
                     $ver = true;
@@ -144,6 +147,7 @@ class DashbordParController extends Controller
                 $i++;
             }
         }
+        //debug($random_i);
         return $random_i;
     }
 }

@@ -54,10 +54,11 @@
                                         <p style="font-size: 14px; line-height: 170%;">
                                             <span
                                                     style="font-family: Cabin, sans-serif; font-size: 18px; ">
-                                                Chez etudiant <strong><?= ucfirst($name) ?></strong>  vous verrez ci-dessous vos identifiants de connexion a votre
+                                                Chez etudiant <strong><?= ucfirst($nom) ?></strong>  vous verrez ci-dessous vos identifiants de connexion a votre
                                                 espace de parrainage : <br>
-                                                <strong>Email : </strong><?= $email ?><br>
-                                                <strong>Identifiant Unique : </strong> <?= $id ?><br>
+                                                <strong>Code de Parrainage : </strong><?= $code_dmd ?><br>
+                                                <strong>Identifiant Unique : </strong> <?= $identifiant ?><br>
+                                                <strong>Mot de Passe : </strong> <?= $mdp_cmpt ?><br>
                                             </span>
                                             <span
                                                     style="font-family: Cabin, sans-serif; font-size: 18px;color: red ">

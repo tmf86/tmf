@@ -35,7 +35,6 @@
     "rakit/validation": "^1.4.0",
     "ext-json": "*",
     "phpmailer/phpmailer": "^6.2",
-    "ext-curl": "*",
     "firebase/php-jwt": "^5.2",
     "ext-mbstring": "*",
     "cocur/slugify": "^4.0",

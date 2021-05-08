@@ -27,12 +27,12 @@ class InstalledVersions
 private static $installed = array (
   'root' => 
   array (
-    'pretty_version' => '1.0.0+no-version-set',
-    'version' => '1.0.0.0',
+    'pretty_version' => 'dev-main',
+    'version' => 'dev-main',
     'aliases' => 
     array (
     ),
-    'reference' => NULL,
+    'reference' => 'ce6f5a417cbf95fab8b6fa197769f5fb02f63a33',
     'name' => 'samy/cpy-mvc',
   ),
   'versions' => 
@@ -66,12 +66,12 @@ private static $installed = array (
     ),
     'nesbot/carbon' => 
     array (
-      'pretty_version' => '2.46.0',
-      'version' => '2.46.0.0',
+      'pretty_version' => '2.47.0',
+      'version' => '2.47.0.0',
       'aliases' => 
       array (
       ),
-      'reference' => '2fd2c4a77d58a4e95234c8a61c5df1f157a91bf4',
+      'reference' => '606262fd8888b75317ba9461825a24fc34001e1e',
     ),
     'nikic/fast-route' => 
     array (
@@ -84,12 +84,12 @@ private static $installed = array (
     ),
     'phpmailer/phpmailer' => 
     array (
-      'pretty_version' => 'v6.3.0',
-      'version' => '6.3.0.0',
+      'pretty_version' => 'v6.4.1',
+      'version' => '6.4.1.0',
       'aliases' => 
       array (
       ),
-      'reference' => '4a08cf4cdd2c38d12ee2b9fa69e5d235f37a6dcb',
+      'reference' => '9256f12d8fb0cd0500f93b19e18c356906cbed3d',
     ),
     'rakit/validation' => 
     array (
@@ -108,16 +108,16 @@ private static $installed = array (
       array (
         0 => '9999999-dev',
       ),
-      'reference' => '593c4de369ca852cf3b86037f19435d47c136448',
+      'reference' => '07314cf15422b2e162d591fe8ef2b850612b808f',
     ),
     'samy/cpy-mvc' => 
     array (
-      'pretty_version' => '1.0.0+no-version-set',
-      'version' => '1.0.0.0',
+      'pretty_version' => 'dev-main',
+      'version' => 'dev-main',
       'aliases' => 
       array (
       ),
-      'reference' => NULL,
+      'reference' => 'ce6f5a417cbf95fab8b6fa197769f5fb02f63a33',
     ),
     'symfony/polyfill-mbstring' => 
     array (
@@ -139,12 +139,12 @@ private static $installed = array (
     ),
     'symfony/translation' => 
     array (
-      'pretty_version' => 'v5.2.6',
-      'version' => '5.2.6.0',
+      'pretty_version' => 'v5.2.7',
+      'version' => '5.2.7.0',
       'aliases' => 
       array (
       ),
-      'reference' => '2cc7f45d96db9adfcf89adf4401d9dfed509f4e1',
+      'reference' => 'e37ece5242564bceea54d709eafc948377ec9749',
     ),
     'symfony/translation-contracts' => 
     array (

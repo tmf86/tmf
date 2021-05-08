@@ -71,10 +71,10 @@ class ParrainageController extends Controller
         var_dump($mdp);
         $id_dmd = $dm->id_demad;
         return $tb_info = [
+            "nom"=>$this->user()->nom." ".$this->user()->prenom,
             "identifiant" => $userName,
             "mdp_cmpt" => $mdp,
-            "code_dmd" => $cmpt,
-            "id_demande" => $id_dmd
+            "code_dmd" => $cmpt
         ];
 
     }

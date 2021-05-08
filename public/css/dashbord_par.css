@@ -162,11 +162,15 @@ nav{
 	font-size: 10px;
 	color: rgba(255,255,255,0.6);
 }
+.bule_par{
+	position: relative;
+}
 .bule_par .user_info{
 	clear: left;
 	position: absolute;
-	top: 65%;
-	left: 20%;
+	margin-top: 3px;
+	top: 68%;
+	right: 4.32%;
 }
 .video_cam{
 	margin-left: 50px;

@@ -27,6 +27,7 @@ $(document).ready(function (e) {
                 type : 'POST',
                 dataType : 'json', // On désire recevoir du HTML
                 success : function(code_html, statut){ // code_html contient le HTML renvoyé
+                   // $("#debug").html(code_html);
                     const allInfo = code_html;
                     //console.log(allInfo);
                      tentative = allInfo[0]["nbr_tentative"];
@@ -68,11 +69,11 @@ $(document).ready(function (e) {
             '                                    <img src="'+tb['image']+'" class="rounded-circle user_img">\n' +
             '                                </div>\n' +
             '                                <div class="user_info">\n' +
-            '                                    <span style="float: left;">'+tb["nom"]+" &emsp;"+tb["prenom"]+'</span>\n' +
+            '                                    <span class="nom" style="float: left;">'+tb["nom"]+' '+tb["prenom"]+'</span>\n' +
             '                                    <div style="display: none" class="bule_par">\n' +
             '                                         \n' +
             '                                         <div class="user_info bule_info"  >\n' +
-            '                                            <img src="../../fast-rooter-test/public/images/icone2" class="rounded-circle" style="width:3em;height:3em;border:1.5px solid #f5f6fa; float: left; margin-left: 1rem;">\n' +
+            '                                            <img src="../../fast-rooter-test/public/images/icone2" class="rounded-circle" style="width:2.5em;height:2.5em;border:2.5px solid darkgreen; float: left; margin-left: 1.05rem; margin-top: 6px;">\n' +
             '                                             <span>Samuel</span>\n' +
             '                                         <p>'+tp_mb+'</p>\n' +
             '                                         </div> \n' +
@@ -121,22 +122,23 @@ $(document).ready(function (e) {
     document.getElementById("open-popup-btn").addEventListener("click",function(){
         document.getElementsByClassName("popup")[0].classList.add("active");
        /*// document.getElementById("mb_name").innerHTML=tb_par[]*/
-        console.log(tb_par);
-        console.log(tb_fil);
+        /*console.log(tb_alea_p);
+        console.log(tb_alea_f);
 
-        for (let h=1;h<=tentative;h++){
+        for (let h=0;h<tentative;h++){
             console.log(tb_par[tb_alea_p[h]]+":index="+tb_alea_p[h]);
             console.log(tb_fil[tb_alea_f[h]]+":index="+tb_alea_f[h]);
+           // console.log(h);
 
-        }
-        console.log(tb_par[tb_par.length]);
-        console.log(tb_fil[tb_fil.length]);
-        console.log(tb_alea_p[nbr_tentative]);
-        console.log(tb_alea_f[nbr_tentative]);
+        }*/
+        /*console.log(tb_par[tb_par.length -1]);
+        console.log(tb_fil[tb_fil.length -1]);*/
+        //console.log(tb_alea_p[nbr_tentative]);
+        //console.log(tb_alea_f[nbr_tentative]);
         affiche_mbre_par(tb_alea_p[nbr_tentative],nbr_tentative,tb_alea_f[nbr_tentative]);
        affiche_mbre_fil(tb_alea_f[nbr_tentative],nbr_tentative,tb_alea_p[nbr_tentative]);
        alert(nbr_tentative);
-        if (nbr_tentative === tentative){
+        if (nbr_tentative === tentative-1){
             alert("parrainage terminer");
             document.getElementById("dismiss-popup-btn").innerHTML = "Terminer";
             nbr_tentative=0;
@@ -153,7 +155,7 @@ $(document).ready(function (e) {
                 root.style.setProperty("--bg_cadre","linear-gradient(90deg, rgba(54,209,220,1) 0%, rgba(9,9,121,1) 35%, rgba(91,134,229,1) 100%)");
 
             },2500);
-            nbr_tentative++;
+
             /*var user_bule = document.querySelectorAll("#parrain_liste .user_info");
             console.log(user_bule[1]);*/
         }
@@ -164,6 +166,7 @@ $(document).ready(function (e) {
     });
 
     document.getElementById("dismiss-popup-btn").addEventListener("click",function(){
+        nbr_tentative++;
         root.style.setProperty("--clip","circle(120px at center)");
         root.style.setProperty("--bg","linear-gradient(90deg, rgba(33,147,176,1) 0%, rgba(9,102,121,1) 35%, rgba(109,213,237,1) 100%)");
         root.style.setProperty("--lef","50%");
@@ -187,18 +190,33 @@ $(document).ready(function (e) {
         document.getElementById("mb_photo").src=tb_par[index]['image'];
        // document.getElementById("bule_par").style.display="inline-block";
        // $("#parrain_liste .user_info")[1].css("display","inline-block");
-        var  bule = document.querySelectorAll("#parrain_liste .bule_par");
+        const bule = document.querySelectorAll("#parrain_liste .bule_par");
+        const nom = document.querySelectorAll("#parrain_liste .nom");
         //console.log("nombre bulle fil:"+bule.length);
        // console.log(bule);
        // console.log(n1);
+        var nom_par = document.querySelectorAll("#parrain_liste .bule_info span");
+        var img_par = document.querySelectorAll("#parrain_liste .bule_info img");
+        let old_name=tb_par[index]['nom']+' '+tb_par[index]['prenom'];
+        for (let e =0;e<nom.length;e++){
+            if (nom[e].innerHTML===old_name){
+                bule[e].style.display="inline-block";
+                console.log(tb_par[n1]['nom']+tb_par[n1]['prenom']);
+                if (img_par.length< bule.length){
+                    const l= bule.length - img_par.length;
+                    img_par[(e - l)].src= tb_fil[n1]['image'];
+                    nom_par[(e - l)].innerHTML=tb_fil[n1]['nom']+tb_fil[n1]['prenom'];
+                }else {
+                    img_par[e].src= tb_fil[n1]['image'];
+                    nom_par[e].innerHTML=tb_fil[n1]['nom']+tb_fil[n1]['prenom'];
+                }
+            }else {
+               // console.log(nom[e].innerHTML);
 
-        bule[index].style.display="inline-block";
-        var nom_fil = document.querySelectorAll("#filleul_liste .bule_info span");
-        var img_fil = document.querySelectorAll("#filleul_liste .bule_info img");
+            }
+        }
         //console.log("nombre img fil:"+img_fil.length);
         // console.log("nombre nom fil:"+nom_fil.length);
-        img_fil[index].src= tb_par[index]['image'];
-        nom_fil[index].innerHTML=tb_par[n1]['nom']+tb_par[n1]['prenom'];
 
     }
     function affiche_mbre_fil(index,n,n1){
@@ -209,17 +227,28 @@ $(document).ready(function (e) {
         document.getElementById("mb_genre_1").innerHTML=tb_fil[index]['genre'];
         document.getElementById("mb_status_1").innerHTML=tb_fil[index]['status'];
         document.getElementById("mb_photo_1").src=tb_fil[index]['image'];
-        //document.getElementById("bule_par").style.display="inline-block";
-       // $("#filleul_liste .user_info")[1].display="inline-block";
-       var  bule_f = document.querySelectorAll("#filleul_liste .bule_par");
-       // console.log(bule_f);
-        bule_f[index].style.display="inline-block";
+        const bule = document.querySelectorAll("#filleul_liste .bule_par");
+        const nom = document.querySelectorAll("#filleul_liste .nom");
+        const nom_fil = document.querySelectorAll("#filleul_liste .bule_info span");
+        const img_fil = document.querySelectorAll("#filleul_liste .bule_info img");
+        let old_name=tb_fil[index]['nom']+' '+tb_fil[index]['prenom'];
+        for (let e =0;e<nom.length;e++) {
+            if (nom[e].innerHTML === old_name) {
+                bule[e].style.display = "inline-block";
+                //console.log(tb_par[n1]['nom']+tb_par[n1]['prenom']);
+                if (img_fil.length < bule.length) {
+                    const l = bule.length - img_fil.length;
+                    img_fil[(e - l)].src = tb_par[n1]['image'];
+                    nom_fil[(e - l)].innerHTML = tb_par[n1]['nom'] + tb_par[n1]['prenom'];
+                } else {
+                    img_fil[e].src = tb_par[n1]['image'];
+                    nom_fil[e].innerHTML = tb_par[n1]['nom'] + tb_par[n1]['prenom'];
+                }
+            } else {
+                // console.log(nom[e].innerHTML);
 
-        var nom_par = document.querySelectorAll("#parrain_liste .bule_info span");
-        var img_par = document.querySelectorAll("#parrain_liste .bule_info img");
-        img_par[index].src= tb_fil[n1]['image'];
-        nom_par[index].innerHTML=tb_fil[n1]['nom']+tb_fil[n1]['prenom'];
-
+            }
+        }
     }
 });
 
