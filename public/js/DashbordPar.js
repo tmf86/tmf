@@ -121,7 +121,45 @@ $(document).ready(function (e) {
 
     document.getElementById("open-popup-btn").addEventListener("click",function(){
         document.getElementsByClassName("popup")[0].classList.add("active");
-       /*// document.getElementById("mb_name").innerHTML=tb_par[]*/
+        document.getElementById("section").style.display="flex";
+        let temps = 11;
+        //document.getElementById("section").style.display="flex";
+        const idvar=setInterval(function(){
+            if (temps===0){
+                document.getElementById("section").style.display="none";
+                clearInterval(idvar);
+                document.getElementById("desc").style.display="flex";
+                document.getElementById("icone").style.display="flex";
+                document.getElementById("feli").style.display="flex";
+                document.getElementById("suiv").style.display="flex";
+                if (nbr_tentative === tentative-1){
+                    alert("parrainage terminer");
+                    document.getElementById("dismiss-popup-btn").innerHTML = "Terminer";
+                    nbr_tentative=0;
+                }
+                affiche_mbre_par(tb_alea_p[nbr_tentative],nbr_tentative,tb_alea_f[nbr_tentative]);
+                affiche_mbre_fil(tb_alea_f[nbr_tentative],nbr_tentative,tb_alea_p[nbr_tentative]);
+                //alert(nbr_tentative);
+                setTimeout(function () {
+                    root.style.setProperty("--clip", "circle(400px at center)");
+                    root.style.setProperty("--bg", "linear-gradient(90deg, rgba(33,147,176,1) 0%, rgba(9,102,121,1) 35%, rgba(109,213,237,1) 100%)");
+                    root.style.setProperty("--lef", "59%");
+                    root.style.setProperty("--haut", "350px");
+                    root.style.setProperty("--lef_un", "-3");
+                    root.style.setProperty("--opacite", "1");
+                    root.style.setProperty("--cache", "visible");
+                    root.style.setProperty("--marge_img", "8.5%");
+                    root.style.setProperty("--bg_cadre", "linear-gradient(90deg, rgba(54,209,220,1) 0%, rgba(9,9,121,1) 35%, rgba(91,134,229,1) 100%)");
+
+                }, 2500);
+                temps=11;
+            }else{
+                temps--;
+                document.getElementById("temps_s").innerHTML=temps+"s";
+            }
+
+        },1000);
+        /*// document.getElementById("mb_name").innerHTML=tb_par[]*/
         /*console.log(tb_alea_p);
         console.log(tb_alea_f);
 
@@ -135,34 +173,8 @@ $(document).ready(function (e) {
         console.log(tb_fil[tb_fil.length -1]);*/
         //console.log(tb_alea_p[nbr_tentative]);
         //console.log(tb_alea_f[nbr_tentative]);
-        affiche_mbre_par(tb_alea_p[nbr_tentative],nbr_tentative,tb_alea_f[nbr_tentative]);
-       affiche_mbre_fil(tb_alea_f[nbr_tentative],nbr_tentative,tb_alea_p[nbr_tentative]);
-       alert(nbr_tentative);
-        if (nbr_tentative === tentative-1){
-            alert("parrainage terminer");
-            document.getElementById("dismiss-popup-btn").innerHTML = "Terminer";
-            nbr_tentative=0;
-        }else {
-            setTimeout(function () {
-                root.style.setProperty("--clip","circle(400px at center)");
-                root.style.setProperty("--bg","linear-gradient(90deg, rgba(33,147,176,1) 0%, rgba(9,102,121,1) 35%, rgba(109,213,237,1) 100%)");
-                root.style.setProperty("--lef","59%");
-                root.style.setProperty("--haut","350px");
-                root.style.setProperty("--lef_un","-3");
-                root.style.setProperty("--opacite","1");
-                root.style.setProperty("--cache","visible");
-                root.style.setProperty("--marge_img","8.5%");
-                root.style.setProperty("--bg_cadre","linear-gradient(90deg, rgba(54,209,220,1) 0%, rgba(9,9,121,1) 35%, rgba(91,134,229,1) 100%)");
-
-            },2500);
-
             /*var user_bule = document.querySelectorAll("#parrain_liste .user_info");
             console.log(user_bule[1]);*/
-        }
-
-       // console.log(tb_par[tb_alea_p[nbr_tentative]]['nom']);
-        //console.log(tb_alea_p[nbr_tentative]);
-
     });
 
     document.getElementById("dismiss-popup-btn").addEventListener("click",function(){
@@ -176,6 +188,11 @@ $(document).ready(function (e) {
         root.style.setProperty("--cache","hidden");
         root.style.setProperty("--over_flo","hidden");
         root.style.setProperty("--bg_cadre","transparent");
+        document.getElementById("section").style.display="none";
+        document.getElementById("desc").style.display="none";
+        document.getElementById("icone").style.display="none";
+        document.getElementById("feli").style.display="none";
+        document.getElementById("suiv").style.display="none";
         document.getElementsByClassName("popup")[0].classList.remove("active");
 
     });
@@ -250,5 +267,6 @@ $(document).ready(function (e) {
             }
         }
     }
+
 });
 

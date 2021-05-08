@@ -53,17 +53,24 @@
     </div>
     </div>
 <div class="popup center" style="background-image:url('images/back_par_2.jpg'); background-size: cover;
-    height: 100%;background-origin: ">
-        <div class="icon">
+    height: 100%;">
+    <section style="display: flex;" id="section" >
+        <div class="loader" id="ld">
+            <span style="--i:1;"></span><span style="--i:2;"></span><span style="--i:3;"></span><span style="--i:4;"></span><span style="--i:5;"></span><span style="--i:6;"></span><span style="--i:7;"></span><span style="--i:8;"></span><span style="--i:9;"></span><span style="--i:10;"></span><span style="--i:11;"></span><span style="--i:12;"></span><span style="--i:13;"></span><span style="--i:14;"></span><span style="--i:15;"></span><span style="--i:16;"></span><span style="--i:17;"></span><span style="--i:18;"></span><span style="--i:19;"></span>
+            <span style="--i:20;"></span>
+        </div>
+        <span id="temps_s" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji'; font-weight: bold; font-size: 6rem; color: whitesmoke; position: absolute; top:38%;left:30%" >5s</span>
+    </section>
+        <div class="icon" id="icone" style="display: none;">
             <i class="fa fa-check"></i>
         </div>
-        <div class="title">
+        <div class="title" id="feli" style="display: none;">
             F&eacute;licitation!!
         </div>
 
     <div class="row">
-        <div class="col-md">
-            <div class="description glob">
+        <div class="col-md" >
+            <div class="description glob"  style="display:none;" id="desc">
                 <div class="glob" >
                     <div class="cardre"style="margin-left: -2%; " >
                         <div class="cercle" ></div>
@@ -98,7 +105,7 @@
             </div>
             </div>
         </div>
-    <div class="dismiss-btn">
+    <div class="dismiss-btn" id="suiv" style="display: none;">
         <button id="dismiss-popup-btn">
             SUIVANT<i class="fa fa-arrow-right fa-1x"></i>
         </button>
