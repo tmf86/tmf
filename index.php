@@ -29,7 +29,10 @@ require 'config/email.php';
 require 'config/jwt.php';
 require "helpers/helper.php";
 session_start();
-UuidGenerete();
+try {
+    UuidGenerete();
+} catch (Exception $e) {
+}
 
 /*
  *  NB : Si jamais il est question d'instancier un controller qui a besoin a la fois de variable qui sera un paramettre envoyé
@@ -52,6 +55,7 @@ $dispatcher = FastRoute\simpleDispatcher(function (FastRoute\RouteCollector $rou
     $route->get('/Cpy-Mvc/parrainage', ['class' => LogParController::class, 'method' => 'parrainage']);
     $route->get('/Cpy-Mvc/tabl', ['class' => DashbordParController::class, 'method' => 'index']);
     $route->post('/Cpy-Mvc/initPar', ['class' => DashbordParController::class, 'method' => 'initParrainage']);
+    $route->post('/Cpy-Mvc/exit_Par', ['class' => DashbordParController::class, 'method' => 'sign_out']);
 
     $route->get('/Cpy-Mvc/cours', ['class' => FormationController::class, 'method' => 'index']);
     $route->get('/Cpy-Mvc/videos_formation', ['class' => FormationController::class, 'method' => 'index']);

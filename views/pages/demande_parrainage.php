@@ -209,7 +209,6 @@
                             <button class="btn btn-sm"><span style="text-align: center;padding-bottom: 4px;">ICI</span>
                             </button>
                         </a></p>
-                    <a href="tabl">Dashbord</a>
                 </div>
             </div>
         </div>

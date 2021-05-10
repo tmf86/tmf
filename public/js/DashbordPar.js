@@ -39,7 +39,7 @@ $(document).ready(function (e) {
                     tb_fil = allInfo["filleul"];
                     //console.log(demande);
                     //alert(tb_fil[0]["nom"]);
-                      alert(statut);
+                     // alert(statut);
                       document.getElementById("info_demand").innerHTML +=affich_info("Lieu",demande["lieu"]);
                     document.getElementById("info_demand").innerHTML +=affich_info("Filiere",demande["filiere"]);
                     document.getElementById("info_demand").innerHTML +=affich_info("Demandeur",demande["qualite"]);

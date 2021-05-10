@@ -22,22 +22,24 @@
     <style type="text/css">
 
         .animer {
-            border: 26px solid transparent; /* Light grey */
-            border-left: 26px solid  #d1f2eb;/* transparent;/* Blue #3498db*/
-            border-top: 26px solid #3498db;/* transparent; */
-            border-right: 26px solid  transparent;/*#1abc9c;*/
-            border-bottom: 26px solid  #808b96;
+            border: 20px solid transparent; /* Light grey */
+            border-left: 20px solid  #d1f2eb;/* transparent;/* Blue #3498db*/
+            border-top: 20px solid #3498db;/* transparent; */
+            border-right: 20px solid  transparent;/*#1abc9c;*/
+            border-bottom: 20px solid  #808b96;
             border-radius: 50%;
-            width: 240px;
-            height: 240px;
-            /*align-items: center;*/
-            bottom: -2.59011rem;
-            right: -0.5rem;
+            width: 150px;
+            height: 150px;
+            align-items: center;
+            justify-content: center;
+            /*bottom: 0;
+            right: 0;*/
             margin: 20px auto;
             animation: spin 2s linear infinite;
-            position: absolute;
-            /*left: 4rem;
-            top: -6rem;*/
+            position: relative;
+            right: 6.15%;
+            bottom:-32.1% ;
+            z-index: 50;
         }
 
         @keyframes spin {
@@ -45,17 +47,26 @@
             100% { transform: rotate(360deg); }
         }
         .bouton_active{
-            width: 195px;
-            height: 195px;
+            width: 125px;
+            height: 125px;
             padding: 0px;
             border-radius: 100px;
             position: relative;
-            left: -1.998rem;
-            top: -5.985rem;
+            align-items: center;
+            justify-content: center;
+            right: 13%;
+            bottom: -51.12%;
+            box-shadow: 5px 4px 5px #2d2d2d;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+            font-size: 14px;
+            color: #2a2e33;
+            font-weight: bolder;
+            z-index: 6000;
         }
     </style>
 </head>
-<nav class="mb-1 navbar navbar-expand-lg  mb-0">
+<body>
+<nav class="mb-1 navbar navbar-expand-lg  mb-0 ">
     <!--a class="navbar-brand" href="#">  <img src="../public/images/cpy.jpeg" class="img-responsive rounded-circle" width="50px" alt="logo"><span class="ml-2 font-weight-bold">CIPY</span>
     </a-->
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#cipy"
@@ -64,16 +75,6 @@
     </button>
     <div class="collapse navbar-collapse" id="cipy">
         <ul class="navbar-nav  mb-0" id="info_demand" >
-            <li class="nav-item  ">
-                <a class="nav-link" href="acceuil.html"><button class="btn btn-dark-green"><i class="fa fa-home"></i>Acceuil</button>
-                    <span class="sr-only">(current)</span>
-                </a>
-            </li>
-            <li class="nav-item  ">
-                <a class="nav-link" href="acceuil.html"><button class="btn btn-dark-green"><i class="fas fa-cogs"></i>Parametre</button>
-                    <span class="sr-only">(current)</span>
-                </a>
-            </li>
         </ul>
 
     </div>

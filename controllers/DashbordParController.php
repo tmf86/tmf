@@ -24,7 +24,36 @@ class DashbordParController extends Controller
         $scripts = [
             sprintf("<script  src='%spublic/js/DashbordPar.js'></script>", rootUrl())
         ];
-        $this->load_views("parrainage.tableau_bord", compact("title", "scripts"), true);
+        $current_usr = $this->user();
+        $dm = new Demande();
+        $dm = $dm->select("demande")->whereEqual("id_membre", $current_usr->mat_membre)->run();
+        //var_dump($dm);
+//        var_dump($this->request->hasSession('log_par'));
+//        var_dump($_SESSION['log_par']);
+                if (!$this->request->hasSession('log_par')){
+                    $title="Acceder au Parrainage";
+                    $this->load_views('pages.parrainage',compact("title"),false);
+        }else{
+                    /*var_dump($current_usr->mat_menbre);
+                    var_dump($dm->id_membre);*/
+                    if ($current_usr->mat_menbre != $dm->id_membre){
+                        echo "Seul le demandeur peut se connecter avec ce compte";
+                    }else{
+                        $this->load_views("parrainage.tableau_bord", compact("title", "scripts"), true);
+                    }
+                }
+//else{
+//
+//            }
+//           /* if ($current_usr->filiere===$dm->filiere){
+//
+//            }*/
+//
+//        }
+    }
+    public function sign_out(){
+             $this->request->sessionUnset('log_par');
+             header("location:parrainage");
     }
 
     public function initParrainage()
@@ -47,13 +76,14 @@ class DashbordParController extends Controller
         //($mb_par);
         // echo "<br>";
         //var_dump($mb_fil);
-       //var_dump(count($mb_fil));
+        //var_dump(count($mb_fil));
         //var_dump(count($mb_par));
         //echo "<br>";
         $tb_info = $this->equlibrateMenber(count($mb_par), count($mb_fil));
         $info_parrainage = ["parrain" => $mb_par, "filleul" => $mb_fil, $tb_info, $dm];
         //debug($info_parrainage);
         echo json_encode($info_parrainage);
+
     }
 
     private function recupFilere($champ, $annee)

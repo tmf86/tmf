@@ -19,8 +19,15 @@ class LogParController extends Controller
         $this->useAuth();
     }
     public function parrainage(){
-        $title="Acceder au Parrainage";
-        $this->load_views('pages.parrainage',compact("title"),false);
+//        $title="Acceder au Parrainage";
+//        $this->load_views('pages.parrainage',compact("title"),false);
+
+        if (!$this->request->hasSession('log_par')){
+            $title="Acceder au Parrainage";
+            $this->load_views('pages.parrainage',compact("title"),false);
+        }else{
+            return header("location:tabl");
+        }
     }
 
     public function loging(){
@@ -37,11 +44,13 @@ class LogParController extends Controller
 
         }else{
             $rq = $this->request;
+            $_SESSION['log_par']=true;
             $title="Tableau de Bord";
             $scripts= [
                 sprintf("<script  src='%spublic/js/DashbordPar.js'></script>", rootUrl())
             ];
            // $this->load_views('parrainage.tableau_bord',compact("title","rq","scripts"),true);
+            //$this->request->session('log_par',true);
            return header("location:tabl");
 
         }
