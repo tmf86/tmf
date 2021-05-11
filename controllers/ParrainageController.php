@@ -54,9 +54,9 @@ class ParrainageController extends Controller
         $usr = $this->user();
         $dm = $dm->create($this->request->inputs());
         $cmpt_dmd = new Demand_Acount();
-        $mailer = new DemandMailer($this->cmpt_info($dm));
+        $mailer = new DemandMailer($this->demand_cmpt_info($dm));
         $mailer->to($usr->email, $usr->nom . " " . $usr->prenom)->forward();
-        $cmpt_dmd = $cmpt_dmd->create($this->demand_cmpt_info($dm));
+        $cmpt_dmd = $cmpt_dmd->create($this->cmpt_info($dm));
         return new View("pages.demande_congrate", compact("title", "usr"), false);
     }
 
