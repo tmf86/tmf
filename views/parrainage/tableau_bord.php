@@ -23,19 +23,10 @@
             <div class="col-md-2 col-xl-4" >
                 <div class="center ">
                     <button class="btn  bouton_active bg-light " id="open-popup-btn">
-                        Commencer
+                        PARRAINER
                     </button>
                 </div>
-
-                <div class="animer " style="display: none;"></div>
-                <div class="progress" style="position: absolute;top: 5rem;left: 1.5rem; overflow: visible;display: block;background: transparent;">
-                    <h3>Bare de progression
-                    </h3>
-                    <div class="progress-bar" role="progressbar" aria-valuenow="10"
-                         aria-valuemin="0" aria-valuemax="100" style="width:70%;height: 15px;border-radius: 5px;box-shadow: 4px 2px #2a2e33;background-color:whitesmoke; ">
-                        <span class="sr-only h3" >70% Complete</span>
-                    </div>
-            </div>
+                <div class="progression"></div>
 
             </div>
             <div class="col-md-5 col-xl-4 chat">
@@ -121,6 +112,6 @@
     <button id="yes_exit" class="btn btn-light">Oui</button>
     <button id="no_exit"class="btn btn-light">Non</button>
 </div>
-
+<div class="animer " style="display: none;"></div>
 
         <!--end content-->

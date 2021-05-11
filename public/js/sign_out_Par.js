@@ -29,13 +29,20 @@ $(document).ready(function () {
             {
                 url : chemin,
                 type : 'POST',
-               // data:,
-                dataType : 'json', // On désire recevoir du HTML
+               data:"deconnecter="+true,
+                dataType : 'html', // On désire recevoir du HTML
                 success : function(code_html, statut){
-                    alert(statut);
                     $("#card_exit").hide();
+                    location.reload(true);
+                    //alert(statut);
                      }
             }
         );
+
     });
+       /* $('.progression').circleProgress({
+            max: 100,
+            value: 20
+        });*/
+
 });

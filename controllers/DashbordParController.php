@@ -8,6 +8,7 @@ use Contoller\Http\Request;
 use Contoller\Middleware\RedirectUsersMiddleware;
 use Model\Demande;
 use Model\User;
+use Wikimedia\Timestamp\ConvertibleTimestamp;
 
 class DashbordParController extends Controller
 {
@@ -53,9 +54,41 @@ class DashbordParController extends Controller
     }
     public function sign_out(){
              $this->request->sessionUnset('log_par');
-             header("location:parrainage");
+             var_dump($_POST['deconnecter']);
+             //header("location:parrainage");
+        echo "ok";
     }
 
+    public function calculeDate(){
+        $current_usr = $this->user();
+        $dm = new Demande();
+        try {
+            $dm = $dm->select("demande")->whereEqual("id_membre", $current_usr->mat_membre)->run();
+        } catch (\Exception $e) {
+        }
+        $timetemp = new ConvertibleTimestamp();
+        $timetemp->setTimestamp($dm->date);
+
+        $date_actuel = time();
+        $date_restante = $this->dateDiff($date_actuel,$timetemp->getTimestamp());
+        return $date_restante;
+       // var_dump($date_restante);
+
+    }
+    private  function dateDiff($date1, $date2)
+    {
+        $diff = abs($date1 - $date2); // abs pour avoir la valeur absolute, ainsi éviter d'avoir une différence négative
+        $infos = [];
+        $tmp = $diff;
+        $infos['second'] = $tmp % 60;
+        $tmp = floor(($tmp - $infos['second']) / 60);
+        $infos['minute'] = $tmp % 60;
+        $tmp = floor(($tmp - $infos['minute']) / 60);
+        $infos['hour'] = $tmp % 24;
+        $tmp = floor(($tmp - $infos['hour']) / 24);
+        $infos['day'] = $tmp;
+        return $infos;
+    }
     public function initParrainage()
     {
         $current_usr = $this->user();
@@ -80,7 +113,10 @@ class DashbordParController extends Controller
         //var_dump(count($mb_par));
         //echo "<br>";
         $tb_info = $this->equlibrateMenber(count($mb_par), count($mb_fil));
-        $info_parrainage = ["parrain" => $mb_par, "filleul" => $mb_fil, $tb_info, $dm];
+        $decompte =  $this->calculeDate();
+        //debug($this->calculeDate());
+        //var_dump($decompte);
+        $info_parrainage = ["parrain" => $mb_par, "filleul" => $mb_fil, $tb_info, $dm,$decompte];
         //debug($info_parrainage);
         echo json_encode($info_parrainage);
 

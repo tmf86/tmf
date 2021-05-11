@@ -19,6 +19,7 @@ $(document).ready(function (e) {
     let tb_alea_p = [];
     let demande = [];
     let tb_par = [];
+    let decompte = [];
     var tb_fil = [];
     setTimeout(function (){
 
@@ -29,9 +30,11 @@ $(document).ready(function (e) {
                 success : function(code_html, statut){ // code_html contient le HTML renvoyé
                    // $("#debug").html(code_html);
                     const allInfo = code_html;
-                    //console.log(allInfo);
+                   // console.log(allInfo);
                      tentative = allInfo[0]["nbr_tentative"];
                     // alert(tentative);
+                    decompte = allInfo[2];
+                    console.log(decompte["day"]);
                      tb_alea_f = allInfo[0]["tab_aleatoire_f"];
                     tb_alea_p = allInfo[0]["tab_aleatoire_p"];
                      demande = allInfo[1];
@@ -57,6 +60,7 @@ $(document).ready(function (e) {
                         document.getElementById("filleul_liste").innerHTML +=affich_mb(tb_fil[o],"filleul");
                         //alert(tb_par[p]);
                     }
+                    affich_dmpt(decompte);
                 }
             });
 
@@ -92,73 +96,72 @@ $(document).ready(function (e) {
             '                \n' +
             '            </li>';
     }
-    function calcultemps(date){
-        let d= toTimestamp(date);
-       // alert(d);
-        setInterval(function () {
-            d--;
-            var newDate = new Date();
-            newDate.setTime(d *1000);
-            var dateString = newDate.toUTCString();
-            document.getElementById("decompte").innerHTML ="dans: "+dateString;
+
+  function affich_dmpt(date_d){
+        setInterval(function (){
+            if (date_d["second"]===0){
+                date_d["minute"]--;
+                date_d["second"]=60;
+                if (date_d["minute"]===0){
+                    date_d["hour"]--;
+                    date_d["minute"]=60;
+                }
+            }else{
+                date_d["second"]--;
+                document.getElementById("open-popup-btn").innerHTML=date_d["day"]+'j:'+date_d["hour"]+'h:'+date_d["minute"]+'m:'+date_d["second"]+'s';
+            }
         },1000);
-    }
-    function toTimestamp(strDate){
-        var datum = Date.parse(strDate);
-        return datum/1000;
-    }
-    /*$("#btn_begin").click(function () {
-        alert("parrainage debuter");
-    });*/
-    /*document.getElementById("btn_begin").addEventListener("click",function (){
-        alert("parrainage debuter");
-        console.log(tb_fil[tb_alea_f[1]]);
-        console.log(tb_par[tb_alea_p[1]]);
-    });*/
+  }
+
     const root = document.querySelector(":root");
     let nbr_tentative=0;
     //alert("tentative: "+tentative);
 
     document.getElementById("open-popup-btn").addEventListener("click",function(){
-        document.getElementsByClassName("popup")[0].classList.add("active");
-        document.getElementById("section").style.display="flex";
-        let temps = 11;
-        //document.getElementById("section").style.display="flex";
-        const idvar=setInterval(function(){
-            if (temps===0){
-                document.getElementById("section").style.display="none";
-                clearInterval(idvar);
-                document.getElementById("desc").style.display="flex";
-                document.getElementById("icone").style.display="flex";
-                document.getElementById("feli").style.display="flex";
-                document.getElementById("suiv").style.display="flex";
-                if (nbr_tentative === tentative-1){
-                    alert("parrainage terminer");
-                    document.getElementById("dismiss-popup-btn").innerHTML = "Terminer";
-                    nbr_tentative=0;
+        console.log(decompte);
+        if (decompte["day"] !== 0 && decompte["hour"] !== 0 && decompte["minute"] !== 0 && decompte["second"] !==0 ){
+            alert("la date de parrainage est n'est pas encore arriver");
+        }else {
+            document.getElementsByClassName("popup")[0].classList.add("active");
+            document.getElementById("section").style.display="flex";
+            let temps = 11;
+            //document.getElementById("section").style.display="flex";
+            const idvar=setInterval(function(){
+                if (temps===0){
+                    document.getElementById("section").style.display="none";
+                    clearInterval(idvar);
+                    document.getElementById("desc").style.display="flex";
+                    document.getElementById("icone").style.display="flex";
+                    document.getElementById("feli").style.display="flex";
+                    document.getElementById("suiv").style.display="flex";
+                    if (nbr_tentative === tentative-1){
+                        alert("parrainage terminer");
+                        document.getElementById("dismiss-popup-btn").innerHTML = "Terminer";
+                        nbr_tentative=0;
+                    }
+                    affiche_mbre_par(tb_alea_p[nbr_tentative],nbr_tentative,tb_alea_f[nbr_tentative]);
+                    affiche_mbre_fil(tb_alea_f[nbr_tentative],nbr_tentative,tb_alea_p[nbr_tentative]);
+                    //alert(nbr_tentative);
+                    setTimeout(function () {
+                        root.style.setProperty("--clip", "circle(400px at center)");
+                        root.style.setProperty("--bg", "linear-gradient(90deg, rgba(33,147,176,1) 0%, rgba(9,102,121,1) 35%, rgba(109,213,237,1) 100%)");
+                        root.style.setProperty("--lef", "59%");
+                        root.style.setProperty("--haut", "350px");
+                        root.style.setProperty("--lef_un", "-3");
+                        root.style.setProperty("--opacite", "1");
+                        root.style.setProperty("--cache", "visible");
+                        root.style.setProperty("--marge_img", "8.5%");
+                        root.style.setProperty("--bg_cadre", "linear-gradient(90deg, rgba(54,209,220,1) 0%, rgba(9,9,121,1) 35%, rgba(91,134,229,1) 100%)");
+
+                    }, 2500);
+                    temps=11;
+                }else{
+                    temps--;
+                    document.getElementById("temps_s").innerHTML=temps+"s";
                 }
-                affiche_mbre_par(tb_alea_p[nbr_tentative],nbr_tentative,tb_alea_f[nbr_tentative]);
-                affiche_mbre_fil(tb_alea_f[nbr_tentative],nbr_tentative,tb_alea_p[nbr_tentative]);
-                //alert(nbr_tentative);
-                setTimeout(function () {
-                    root.style.setProperty("--clip", "circle(400px at center)");
-                    root.style.setProperty("--bg", "linear-gradient(90deg, rgba(33,147,176,1) 0%, rgba(9,102,121,1) 35%, rgba(109,213,237,1) 100%)");
-                    root.style.setProperty("--lef", "59%");
-                    root.style.setProperty("--haut", "350px");
-                    root.style.setProperty("--lef_un", "-3");
-                    root.style.setProperty("--opacite", "1");
-                    root.style.setProperty("--cache", "visible");
-                    root.style.setProperty("--marge_img", "8.5%");
-                    root.style.setProperty("--bg_cadre", "linear-gradient(90deg, rgba(54,209,220,1) 0%, rgba(9,9,121,1) 35%, rgba(91,134,229,1) 100%)");
 
-                }, 2500);
-                temps=11;
-            }else{
-                temps--;
-                document.getElementById("temps_s").innerHTML=temps+"s";
-            }
-
-        },1000);
+            },1000);
+        }
         /*// document.getElementById("mb_name").innerHTML=tb_par[]*/
         /*console.log(tb_alea_p);
         console.log(tb_alea_f);
@@ -167,7 +170,6 @@ $(document).ready(function (e) {
             console.log(tb_par[tb_alea_p[h]]+":index="+tb_alea_p[h]);
             console.log(tb_fil[tb_alea_f[h]]+":index="+tb_alea_f[h]);
            // console.log(h);
-
         }*/
         /*console.log(tb_par[tb_par.length -1]);
         console.log(tb_fil[tb_fil.length -1]);*/
@@ -176,7 +178,6 @@ $(document).ready(function (e) {
             /*var user_bule = document.querySelectorAll("#parrain_liste .user_info");
             console.log(user_bule[1]);*/
     });
-
     document.getElementById("dismiss-popup-btn").addEventListener("click",function(){
         nbr_tentative++;
         root.style.setProperty("--clip","circle(120px at center)");

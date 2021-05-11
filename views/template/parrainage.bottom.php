@@ -30,6 +30,7 @@
 <script src="<?= makeRootOrFileUrl('public/js/import/boostrap/popper.js') ?>"></script>
 <script src="<?= makeRootOrFileUrl('public/js/import/mdb/mdb.js') ?>"></script>
 <script src="<?= makeRootOrFileUrl('public/js/sign_out_Par.js') ?>"></script>
+<script src="<?= makeRootOrFileUrl('public/js/circle-progress.js') ?>"></script>
 
 <?= suppl_tags($scripts ?? [], SCRIPT) ?>
 <script></script>
