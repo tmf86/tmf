@@ -95,7 +95,6 @@ $dispatcher = FastRoute\simpleDispatcher(function (FastRoute\RouteCollector $rou
         return new View\View('pages.apropos', compact('title'));
     });
     $route->get('/Cpy-Mvc/root', function () {
-        require 'test/responsive-table.php';
     });
 });
 // Fetch method and URI from somewhere

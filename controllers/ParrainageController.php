@@ -54,10 +54,10 @@ class ParrainageController extends Controller
         $usr = $this->user();
         $dm = $dm->create($this->request->inputs());
         $cmpt_dmd = new Demand_Acount();
-        $mailer = new DemandMailer($this->demand_cmpt_info($dm));
+        $mailer = new DemandMailer($this->cmpt_info($dm));
         $mailer->to($usr->email, $usr->nom . " " . $usr->prenom)->forward();
         $cmpt_dmd = $cmpt_dmd->create($this->demand_cmpt_info($dm));
-        return new View("pages.demande_congrate", compact("title","usr"), false);
+        return new View("pages.demande_congrate", compact("title", "usr"), false);
     }
 
     private function demand_cmpt_info($dm)
@@ -68,10 +68,10 @@ class ParrainageController extends Controller
         $dt = $dt->format("Y");
         $userName = $this->request->filiere . $dt;
         $mdp = str_shuffle(substr($cmpt, 0, 8));
-        var_dump($mdp);
+//        var_dump($mdp);
         $id_dmd = $dm->id_demad;
         return $tb_info = [
-            "nom"=>$this->user()->nom." ".$this->user()->prenom,
+            "nom" => $this->user()->nom . " " . $this->user()->prenom,
             "identifiant" => $userName,
             "mdp_cmpt" => $mdp,
             "code_dmd" => $cmpt
@@ -79,8 +79,26 @@ class ParrainageController extends Controller
 
     }
 
-   /* public function tableau_de_bord()
+    private function cmpt_info($dm)
     {
-        $this->load_views('pages.dashbord_par');
-    }*/
+        $cmpt = new Demand_Acount();
+        $cmpt = $cmpt->generate_Code();
+        $dt = new \DateTime();
+        $dt = $dt->format("Y");
+        $userName = $this->request->filiere . $dt;
+        $mdp = str_shuffle(substr($cmpt, 0, 8));
+//        var_dump($mdp);
+        $id_dmd = $dm->id_demad;
+        return $tb_info = [
+            "identifiant" => $userName,
+            "mdp_cmpt" => $mdp,
+            "code_dmd" => $cmpt
+        ];
+
+    }
+
+    /* public function tableau_de_bord()
+     {
+         $this->load_views('pages.dashbord_par');
+     }*/
 }
