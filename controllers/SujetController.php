@@ -4,11 +4,20 @@
 namespace Contoller;
 
 
+use Contoller\Http\Request;
+use Contoller\Middleware\RedirectUsersMiddleware;
 use Model\Sujet;
 use View\View;
 
 class SujetController extends Controller
 {
+    use RedirectUsersMiddleware;
+    public function __construct(Request $request)
+    {
+        parent::__construct($request);
+        $this->setRedirectToURL(current_route());
+        $this->useAuth();
+    }
     /**
      * @return View
      * @throws \Exception

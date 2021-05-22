@@ -13,7 +13,9 @@
         <!--/.Indicators-->
         <!--Slides-->
         <div class="carousel-inner" role="listbox">
-            <?php $css_class = ""; ?>
+            <?php $css_class = "";
+                $e=0;
+            ?>
             <?php foreach ($annonce as $Annonce) { ?>
                 <?php if ($Annonce->id_ann == 1) {
                     $css_class = "active";
@@ -28,14 +30,16 @@
                         <h3 class="h3-responsive annonce_title">
                             <?= $Annonce->title_ann; ?>
                         </h3>
-                        <p style="overflow: auto;display: none;"
+                        <p
                            class="annonce_content"><?= $Annonce->content_ann; ?></p>
                         <p>
-                            <button class="btn btn-warning annonce_click">EN SAVOIR PLUS</button>
+                            <button class="btn btn_aceder annonce_click" onclick="display_annonce(<?=$e;?>)">EN SAVOIR PLUS</button>
                         </p>
                     </div>
                 </div>
-            <?php } ?>
+            <?php
+            $e++;
+            } ?>
 
         </div>
 
@@ -65,10 +69,10 @@
                 <div class="card-body">
                     <h5 class="card-title">Forum</h5>
                     <p class="card-text">
-                        Partager vos experiences , rencontrer vos mentors .
+                        Partager vos experiences, Rencontrer vos mentors
                     </p>
                     <div class="d-flex justify-content-center">
-                        <a href="<?= makeRootOrFileUrl('forum') ?>" class="btn btn-warning">Acceder au forum</a>
+                        <a href="<?= makeRootOrFileUrl('forum') ?>" class="btn btn_aceder">Acc&eacute;der au forum</a>
                     </div>
                 </div>
             </div>
@@ -78,12 +82,12 @@
             <div class="card">
                 <img src="images/img-card2.png" alt="" height="320" class="card-img-top">
                 <div class="card-body">
-                    <h5 class="card-title">Sujet</h5>
+                    <h5 class="card-title">Sujets</h5>
                     <p class="card-text">
-                        Collection de Sujets de 2010-2020 .
+                        Collection de Sujets d'examens depuis 2010
                     </p>
                     <div class="text-center">
-                        <a href="<?= makeRootOrFileUrl('sujets') ?>" class="btn btn-warning" id="acces_sujet">Acceder aux sujets</a>
+                        <a href="<?= makeRootOrFileUrl('sujets') ?>" class="btn btn_aceder" id="acces_sujet">Acc&eacute;der aux sujets</a>
                     </div>
                 </div>
             </div>
@@ -96,10 +100,10 @@
                 <div class="card-body">
                     <h5 class="card-title">Cours </h5>
                     <p class="card-text">
-                        Debuter en programmation .
+                         Renforcer vos connaissances avec les cours en videos
                     </p>
                     <div class="text-center">
-                        <a href="<?= makeRootOrFileUrl('cours') ?>" class="btn btn-warning">Acceder aux cours </a>
+                        <a href="<?= makeRootOrFileUrl('cours') ?>" class="btn btn_aceder">Acc&eacute;der aux cours </a>
                     </div>
                 </div>
             </div>
@@ -115,7 +119,7 @@
                         Organiser vos parrainnage en un clique .
                     </p>
                     <div class="text-center">
-                        <a href="<?= makeRootOrFileUrl('parrainage') ?>" class="btn btn-warning">Acceder au parrainnage</a>
+                        <a href="<?= makeRootOrFileUrl('parrainage') ?>" class="btn btn_aceder">Acc&eacute;der au parrainnage</a>
                     </div>
                 </div>
             </div>

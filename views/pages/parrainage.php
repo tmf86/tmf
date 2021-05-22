@@ -147,6 +147,13 @@
 </head>
 <body>
 <div class="container-fluid">
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-5"></div>
+        <div class="col-md-4">
+            <a href="home" class="btn btn_aceder" id="acces_sujet">Accueil</a>
+        </div>
+    </div>
     <div class="row main-content bg-success text-center">
         <div class="col-md-4 text-center company__info">
             <!--span class="company__logo"><h2><span class="fa fa-android"></span></h2></span>

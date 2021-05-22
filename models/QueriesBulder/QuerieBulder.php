@@ -550,6 +550,7 @@ abstract class QuerieBulder extends RelationalShema
      */
     public function update(array $data, int $id)
     {
+        //var_dump($id);
         $fieldsAndValues = [];
         if (!empty($data)) {
             foreach ($data as $key => $value):
@@ -559,15 +560,18 @@ abstract class QuerieBulder extends RelationalShema
                 }
             endforeach;
             $fieldsAndValues = implode(',', $fieldsAndValues);
+           // var_dump($fieldsAndValues);
             if ($fieldsAndValues !== '') {
                 $statement = sprintf('update %s set %s where %s=%d', $this->table, secureData($fieldsAndValues), $this->primaryKeyStr, $id);
+              //  var_dump($statement);
                 $result = $this->pdo->exec($statement);
+                //var_dump($result);
                 if ($result) {
                     return $this->find($id);
-                }
-                return false;
-            }
-            return false;
+                }else{ return false; }
+
+            }else{return false; }
+
         }
         return false;
     }

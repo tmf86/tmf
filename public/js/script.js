@@ -1,17 +1,7 @@
 $(function () {
 
-//Section Script Clobal
 
-    $(".annonce_click").click(function () {
-        //alert("ok");
-        if ($(".annonce_content").css("display") === "block") {
-            $(".annonce_content").hide(1500);
-            $(this).html("EN SAVOIR PLUS");
-        } else {
-            $(".annonce_content").show(1500);
-            $(this).html("MOINS");
-        }
-    });
+
 
     /*Annimation des fa icon a coté des inputs et aussi des labels lorsqu'il y a une erreur*/
     const input = $("input")

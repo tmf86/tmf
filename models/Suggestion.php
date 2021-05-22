@@ -4,7 +4,8 @@
 namespace Model;
 
 
-class Suggestion
+class Suggestion extends Model
 {
-
+    protected $table = "suggestion";
+    protected $primaryKeyStr="id_suggest";
 }

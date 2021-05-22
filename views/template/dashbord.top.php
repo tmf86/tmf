@@ -29,7 +29,36 @@ use Contoller\Middleware\AuthMiddleware;
     <![endif]-->
     <script src="https://kit.fontawesome.com/37da887623.js" crossorigin="anonymous"></script>
 </head>
-
+<style>
+    #msg_retour_bad,#msg_retour_ok{
+        display: none;
+    }
+    #btn_suggerer,#btn_valider{
+        margin-left: 5%;
+    }
+    .sup{
+        border: 1px solid white;
+        border-radius: 5rem;
+        padding: 5px;
+        width: 5%;
+        height: 0.6rem;
+        /*height: 100%;*/
+        background-color:deepskyblue;
+        color: white;
+        overflow: hidden;
+        box-sizing: content-box;
+        position: relative;
+        left: -15%;
+        top: -1.1rem;
+        text-align: center;
+        justify-content: center;
+        cursor: pointer;
+    }
+    .sup span{
+        position: relative;
+       top: 50%;
+    }
+</style>
 <body>
 <!--<div class="preloader">-->
 <!--    <div class="lds-ripple">-->
@@ -128,6 +157,24 @@ use Contoller\Middleware\AuthMiddleware;
                             <i class="ti-comments m-r-5 m-l-5"></i>
                             <span class="hide-menu">Forum</span></a>
                     </li>
+                    <li class="sidebar-item">
+                        <a class="sidebar-link waves-effect waves-dark sidebar-link <?php if (current_route() == makeRootOrFileUrl(sprintf('forum/categorie/%s', $slug ?? ''))): ?>active<?php endif; ?>"
+                           href="<?= makeRootOrFileUrl('validation') ?>" aria-expanded="false">
+                            <i class="ti-key m-r-5 m-l-5"></i>
+                            <span class="hide-menu">Validation</span></a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a class="sidebar-link waves-effect waves-dark sidebar-link <?php if (current_route() == makeRootOrFileUrl(sprintf('forum/categorie/%s', $slug ?? ''))): ?>active<?php endif; ?>"
+                           href="<?= makeRootOrFileUrl('suggestion') ?>" aria-expanded="false">
+                            <i class="ti-comment-alt m-r-5 m-l-5"></i>
+                            <span class="hide-menu">Suggestion</span></a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a class="sidebar-link waves-effect waves-dark sidebar-link <?php if (current_route() == makeRootOrFileUrl(sprintf('forum/categorie/%s', $slug ?? ''))): ?>active<?php endif; ?>"
+                           href="<?= makeRootOrFileUrl('notifications') ?>" aria-expanded="false">
+                            <i class="ti-bell m-r-5 m-l-5"></i><sup class="sup" ><span id="nbr_notif">0</span></sup>
+                            <span class="hide-menu">Notifications </span></a>
+                    </li>
                 </ul>
 
             </nav>
@@ -162,7 +209,7 @@ use Contoller\Middleware\AuthMiddleware;
                                style="font-size: 14px !important;">
                                 <img src="<?= makeRootOrFileUrl('images/home2.jpg') ?>" alt="user" width="45"
                                      height="45" class="rounded-circle img-cover">
-                                Acceuil
+                                Accueil
                             </a>
                             <span class="navbar-toggler ti-menu ti-close cursor-pointer" data-toggle="collapse"
                                   data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"

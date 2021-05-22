@@ -19,7 +19,7 @@
                         passe</label>
                 </div>
             </div>
-            <button class="btn btn-info btn-block my-4 fm-btn" id="login" type="submit"
+            <button class="btn btn_aceder btn-block my-4 fm-btn" id="login" type="submit"
                     style="font-weight: 300">se connecter
             </button>
         </form>

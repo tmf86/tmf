@@ -1,5 +1,6 @@
 <?php
 
+use Contoller\AdminController;
 use Contoller\DashbordParController;
 use Contoller\ForumController;
 use Contoller\LoginController;
@@ -56,11 +57,18 @@ $dispatcher = FastRoute\simpleDispatcher(function (FastRoute\RouteCollector $rou
     $route->get('/Cpy-Mvc/tabl', ['class' => DashbordParController::class, 'method' => 'index']);
     $route->post('/Cpy-Mvc/initPar', ['class' => DashbordParController::class, 'method' => 'initParrainage']);
     $route->post('/Cpy-Mvc/exit_Par', ['class' => DashbordParController::class, 'method' => 'sign_out']);
-
+    $route->get('/Cpy-Mvc/05c9831985d00cf6f4dc0740f7b2c361', ['class' =>AdminController::class, 'method' => 'index']);
     $route->get('/Cpy-Mvc/cours', ['class' => FormationController::class, 'method' => 'index']);
     $route->get('/Cpy-Mvc/videos_formation', ['class' => FormationController::class, 'method' => 'index']);
     $route->get('/Cpy-Mvc/registration-success', ['class' => RegisterSuccess::class, 'method' => 'index']);
     $route->get('/Cpy-Mvc/profile', ['class' => ProfileController::class, 'method' => 'index']);
+    $route->get('/Cpy-Mvc/suggestion', ['class' => ProfileController::class, 'method' => 'suggestion']);
+    $route->post('/Cpy-Mvc/suggestion', ['class' => ProfileController::class, 'method' => 'suggestion_send']);
+    $route->get('/Cpy-Mvc/validation', ['class' => ProfileController::class, 'method' => 'validation']);
+    $route->post('/Cpy-Mvc/validation', ['class' => ProfileController::class, 'method' => 'validation_send']);
+    $route->get('/Cpy-Mvc/notifications', ['class' => ProfileController::class, 'method' => 'notifications']);
+    $route->get('/Cpy-Mvc/all_notifs', ['class' => ProfileController::class, 'method' => 'AllNotifications']);
+
     $route->post('/Cpy-Mvc/profile-update', ['class' => ProfileController::class, 'method' => 'profileUpdate',
         'vars' => [new ProfileUpdateValidator()]]);
     $route->get('/Cpy-Mvc/forum', ['class' => ForumController::class, 'method' => 'index']);

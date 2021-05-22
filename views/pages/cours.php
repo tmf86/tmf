@@ -156,8 +156,28 @@
    echo sprintf('<link rel="stylesheet" href="%s" type="text/css" media="screen"/>', makeRootOrFileUrl('public/css/swiper.css'));
 
    ?>
+    <style>
+        .btn_aceder{
+            border-radius: 5rem;
+            background:rgba(255,255,255,0.7);
+            border: 1px solid rgba(0,0,0,0.4);
+            box-shadow: 3px 2px 1px rgba(0,0,0,0.3);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+            color: slategray;
+            font-weight: bolder;
+            margin-top: 0.5%;
+            margin-bottom: 4%;
+        }
+    </style>
 </head>
 <body>
+    <nav class="navbar navbar-expand-lg special-color-dark">
+        <ul class="nav">
+            <li class="nav-item">
+                <a class="nav-link btn-info" href="videos_formation">RETOUR AUX FORMATIONS</a>
+            </li>
+        </ul>
+    </nav>
 <section>
     <<div class="swiper-container">
         <div class="swiper-wrapper">

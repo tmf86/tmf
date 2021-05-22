@@ -7,6 +7,11 @@ namespace Contoller;
 use Contoller\Http\Request;
 use Contoller\Middleware\RedirectUsersMiddleware;
 use Model\Account;
+use Model\Demand_Acount;
+use Model\Demande;
+use Model\Notification;
+use Model\NotificationGlobal;
+use Model\Suggestion;
 use Model\User;
 use Validator\ProfileUpdateValidator;
 use View\View;
@@ -47,6 +52,84 @@ class ProfileController extends Controller
         $user = $this->user;
         $userNumbersOfsubjects = count($user->user()->subjects());
         return $this->load_views('dashbord.profile', compact('title', 'user', 'scripts', 'userNumbersOfsubjects'));
+    }
+    public function suggestion()
+    {
+        $title = 'Suggestion';
+        $user = $this->user;
+        $userNumbersOfsubjects = count($user->user()->subjects());
+        $scripts =
+            [
+                sprintf("<script  src='%spublic/js/functions.js'></script>", rootUrl()),
+                sprintf("<script  src='%spublic/js/script.js'></script>", rootUrl())
+            ];
+        return $this->load_views('dashbord.suggestion', compact('title', 'user', 'scripts', 'userNumbersOfsubjects'));
+    }
+    public function suggestion_send(){
+        $d= new \DateTime('now');
+        $d = $d->format('Y:m:d:h:m:s');
+      $content =[ "content_suggest"=>htmlspecialchars($_POST['content']),"date_suggest"=>$d,"id_membre"=>$_POST['id_mb']];
+       $suggest = new Suggestion();
+       $s= $suggest->create($content);
+       if ($s){
+           echo "ok";
+       }else{
+           echo "erreur";
+       }
+
+    }
+    public function validation()
+    {
+        $title = 'Validation';
+        $user = $this->user;
+        $userNumbersOfsubjects = count($user->user()->subjects());
+        $scripts =
+            [
+                sprintf("<script  src='%spublic/js/functions.js'></script>", rootUrl()),
+                sprintf("<script  src='%spublic/js/script.js'></script>", rootUrl())
+            ];
+        return $this->load_views('dashbord.validation', compact('title', 'user', 'scripts', 'userNumbersOfsubjects'));
+    }
+    public function notifications()
+    {
+        $title = 'Notications';
+        $user = $this->user;
+        $userNumbersOfsubjects = count($user->user()->subjects());
+        $scripts =
+            [
+                sprintf("<script  src='%spublic/js/functions.js'></script>", rootUrl()),
+                sprintf("<script  src='%spublic/js/script.js'></script>", rootUrl())
+            ];
+        return $this->load_views('dashbord.notif_list', compact('title', 'user', 'scripts', 'userNumbersOfsubjects'));
+    }
+    public function AllNotifications()
+    {
+      $notif_perso= new Notification();
+      $notif_global = new NotificationGlobal();
+      $notif_perso = $notif_perso->select("notification")->whereEqual("destinataire",$this->user->mat_membre)->run(true);
+      $notif_global = $notif_global->select("notification_global")->run(true);
+      $tab_notif = ["perso"=>$notif_perso,"global"=>$notif_global];
+      echo json_encode($tab_notif);
+    }
+    public function validation_send(){
+//        var_dump($_POST);
+//        die();
+        $demande = new Demand_Acount();
+        $usr = new User();
+        $demande = $demande->select("compte_demande")->whereEqual("code_dmd",$_POST["content_vld"])->run();
+        $tab = ["validation"=>"vrai"];
+        //var_dump($demande);
+        if ($demande){
+           $usr1= $usr->update($tab,$this->user->mat_membre);
+         //  var_dump($usr1);
+           if ($usr1){
+               echo "maj_ok";
+           }else{
+               echo "maj_done";
+           }
+        }else{
+            echo "erreur";
+        }
     }
 
     /**

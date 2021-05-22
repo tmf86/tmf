@@ -46,10 +46,10 @@ $(document).ready(function (e) {
                       document.getElementById("info_demand").innerHTML +=affich_info("Lieu",demande["lieu"]);
                     document.getElementById("info_demand").innerHTML +=affich_info("Filiere",demande["filiere"]);
                     document.getElementById("info_demand").innerHTML +=affich_info("Demandeur",demande["qualite"]);
-                    document.getElementById("fil_total").innerHTML =tb_fil.length;
-                    document.getElementById("fil_total_1").innerHTML =tb_fil.length;
-                    document.getElementById("par_total_1").innerHTML =tb_par.length;
-                    document.getElementById("par_total").innerHTML =tb_par.length;
+                    document.getElementById("fil_total").innerHTML =tb_fil[0]["filiere"]+" ("+tb_fil.length+" etudiants)";
+                    // document.getElementById("fil_total_1").innerHTML =tb_fil.length;
+                    // document.getElementById("par_total_1").innerHTML =tb_par.length;
+                    document.getElementById("par_total").innerHTML =tb_par[0]["filiere"]+" ("+tb_par.length+" etudiants)";
 
                    //calcultemps(demande["date"]);
                     for (let p=0;p<tb_par.length;p++){

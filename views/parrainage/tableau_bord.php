@@ -5,12 +5,13 @@
 <!--<div id="debug"></div>-->
 
     <div class="container-fluid h-100" id="cadre">
-        <div class="row justify-content-center h-100">
+        <div class="row justify-content-center blue-gradient-rgba " style="background-color: ghostwhite;">
             <div class="col-md-5 col-xl-4 chat">
                <div class="card mb-sm-3 mb-md-0 contacts_card">
                    <div class="card-header">
                        <div class="user_info">
-                           <span>Filleul :<span id="fil_total">15</span> Parrainer : 7/<span id="fil_total_1">15</span> </span>
+                           <span><span id="fil_total">15</span>  </span>
+<!--                           <span id="fil_total_1">15</span>-->
                        </div>
                     </div>
                         <div class="card-body contacts_body">
@@ -33,7 +34,8 @@
                <div class="card mb-sm-3 mb-md-0 contacts_card">
                    <div class="card-header">
                             <div class="user_info">
-                                <span>Parrain :<span id="par_total">15</span> Parrainer : 9/<span id="par_total_1">15</span> </span>
+                                <span><span id="par_total">15</span> </span>
+<!--                                <span id="par_total_1">15</span>-->
                             </div>
                     </div>
                         <div class="card-body contacts_body">
