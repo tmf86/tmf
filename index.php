@@ -58,6 +58,9 @@ $dispatcher = FastRoute\simpleDispatcher(function (FastRoute\RouteCollector $rou
     $route->post('/Cpy-Mvc/initPar', ['class' => DashbordParController::class, 'method' => 'initParrainage']);
     $route->post('/Cpy-Mvc/exit_Par', ['class' => DashbordParController::class, 'method' => 'sign_out']);
     $route->get('/Cpy-Mvc/05c9831985d00cf6f4dc0740f7b2c361', ['class' =>AdminController::class, 'method' => 'index']);
+    $route->post('/Cpy-Mvc/c9831985d00cf', ['class' =>AdminController::class, 'method' => 'login']);
+    $route->get('/Cpy-Mvc/home_admin', ['class' =>AdminController::class, 'method' => 'home_admin']);
+
     $route->get('/Cpy-Mvc/cours', ['class' => FormationController::class, 'method' => 'index']);
     $route->get('/Cpy-Mvc/videos_formation', ['class' => FormationController::class, 'method' => 'index']);
     $route->get('/Cpy-Mvc/registration-success', ['class' => RegisterSuccess::class, 'method' => 'index']);
